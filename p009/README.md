@@ -1,4 +1,4 @@
-# 9. Determine whether an integer is a palindrome. Do this without extra space.
+# 9. Determine whether an integer is a palindrome. Do this without extra space. (Easy)
 A palindromic number or numeral palindrome is a number that remains the same when its digits are reversed. Like 16461, for example, it is "symmetrical".
 
 ## Questions the candidate should ask

@@ -1,4 +1,4 @@
-# 498. Diagonal Traverse
+# 498. Diagonal Traverse (Medium)
 Given a matrix of M x N elements (M rows, N columns), return all elements of the matrix in diagonal order.
 Input:
 [ [1,2,3],

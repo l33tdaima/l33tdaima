@@ -1,4 +1,4 @@
-# Palindrome Linked List
+# 234. Palindrome Linked List (Easy/Medium)
 Given a singly linked list, determine if it is a palindrome.
 
 Follow up:

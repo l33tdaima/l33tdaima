@@ -1,4 +1,4 @@
-# Integer List Add
+# 2. Integer List Add (Medium)
 Given two positive integers represented as two singly linked lists of digits, implement a function to add the two numbers and produce the sum also as a singly linked list of digits. For example:           
 1->2->3 + 4->5->6 = 5->7->9
 

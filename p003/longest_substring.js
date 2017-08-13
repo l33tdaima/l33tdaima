@@ -9,19 +9,22 @@ var lengthOfLongestSubstring = function(s) {
     for (let i = 0; i < s.length; ++i) {
         let c = s.charAt(i);
         if (charMap[c] !== undefined) {
-            start = charMap[c];
+            start = Math.max(start, charMap[c]);
         }
         charMap[c] = i;
         maxLen = Math.max(maxLen, i-start);
+        console.log(i, c, "start=", start, "max=", maxLen);
     }
     return maxLen;
 };
 
 var tests = [
+    /*
     "abcabcbb",
     "bbbbb",
     "pwwkew",
     "c",
+    */
     "abba"
 ];
 tests.forEach(function(s) {

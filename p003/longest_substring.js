@@ -13,18 +13,16 @@ var lengthOfLongestSubstring = function(s) {
         }
         charMap[c] = i;
         maxLen = Math.max(maxLen, i-start);
-        console.log(i, c, "start=", start, "max=", maxLen);
+        // console.log(i, c, "start=", start, "max=", maxLen);
     }
     return maxLen;
 };
 
 var tests = [
-    /*
     "abcabcbb",
     "bbbbb",
     "pwwkew",
     "c",
-    */
     "abba"
 ];
 tests.forEach(function(s) {

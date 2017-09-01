@@ -1,4 +1,4 @@
-/**
+/** Functional style
  * @param {string} num1
  * @param {string} num2
  * @return {string}
@@ -62,8 +62,43 @@ var multiply = function(num1, num2) {
     return prodArray.join("");
 };
 
+/** Imperative style
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+var multiplyImp = function(num1, num2) {
+    let num1Array = Array.from(num1, (v) => parseInt(v));
+    let num2Array = Array.from(num2, (v) => parseInt(v));
+
+    // accumulated result
+    let resultArray = Array.from(
+        {length: num1Array.length + num2Array.length}, (v) => 0); 
+    for (let i2 = num2Array.length - 1; i2 >= 0; --i2) {
+        let digit = num2Array[i2];
+        let prodCarry = 0;
+        let sumCarry = 0;
+        for (let i1 = num1Array.length - 1; i1 >= 0; --i1) {
+            let prod = digit * num1Array[i1] + prodCarry;
+            prodCarry = Math.floor(prod / 10);
+            let i = i2 + 1 + i1;
+            let sum = resultArray[i] + prod % 10 + sumCarry;
+            sumCarry = Math.floor(sum / 10);
+            resultArray[i] = sum % 10;
+        }
+        resultArray[i2] = prodCarry + sumCarry;
+    }
+    // remove leading zeros
+    /*
+    while(resultArray[0] === 0 && resultArray.length > 1) {
+        resultArray.shift();
+    }*/
+    return resultArray.join("");
+}
+
 var num1 = process.argv[2];
 var num2 = process.argv[3];
-var prod = multiply(num1, num2);
-console.log("Multiply", num1, "by", num2, "=", prod, ", Test passed?",
-            (parseInt(num1)*parseInt(num2) === parseInt(prod)));
+var prodfun = multiply(num1, num2);
+var prodimp = multiplyImp(num1, num2);
+console.log("Multiply", num1, "by", num2, "=", prodimp, ", Test passed?",
+            (prodfun === prodimp));

@@ -5,12 +5,11 @@
 var subsets = function(nums) {
     var solutions = [];
     var backtrack = function(solution, start) {
-        let elemSolution = Array.from(solution);
-        solutions.push(elemSolution);
+        solutions.push(Array.from(solution));
         for (let i = start; i < nums.length; ++i) {
-            elemSolution.push(nums[i]);
-            backtrack(elemSolution, i + 1);
-            elemSolution.pop(nums[i]);
+            solution.push(nums[i]);
+            backtrack(solution, i + 1);
+            solution.pop();
         }
     };
 
@@ -31,4 +30,7 @@ var subsetsByBit = function(nums) {
 }
 
 var testArray = [1, 2, 3];
+console.log("Backtracking:")
+console.log(subsets(testArray));
+console.log("\nBit Manipulation:")
 console.log(subsetsByBit(testArray));

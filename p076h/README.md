@@ -12,6 +12,8 @@ If there is no such window in S that covers all characters in T, return the empt
 If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.
 
 Solution:
+There are a few min/max substring meeting certain conditions problem can be solved using the common pattern below
+p003m, p159h
 1. Use two pointers: start and end to represent a window.
 2. Move end to find a valid window.
 3. When a valid window is found, move start to find a smaller window.

@@ -15,3 +15,7 @@ If nums = [1,2,2], a solution is:
   [1,2],
   []
 ]
+
+Solutions:
+
+Backtracking problem

@@ -26,7 +26,7 @@ var combinationSum2 = function(candidates, target) {
             if (subTarget < 0) {
                 break;
             }
-            let subSol = recCombinationSum(candis.slice(i + 1), subTarget);
+            let subSol = recCombinationSum(candis.slice(i+1), subTarget);
             for (let j = 0; j < subSol.length; ++j) {
                 // insert parent node into each solution path
                 subSol[j].unshift(candis[i]);

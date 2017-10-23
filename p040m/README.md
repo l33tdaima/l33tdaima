@@ -1,3 +1,5 @@
+# 40. Combination Sum II (Medium)
+
 Given a collection of candidate numbers (C) (with duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
 
 Each number in C may only be used once in the combination.
@@ -13,3 +15,5 @@ A solution set is:
   [2, 6],
   [1, 1, 6]
 ]
+
+#Backtracking

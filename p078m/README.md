@@ -18,6 +18,4 @@ If nums = [1,2,3], a solution is:
   []
 ]
 
-Solutions:
-
-Backtracking problem
+#Backtracking

@@ -16,6 +16,4 @@ If nums = [1,2,2], a solution is:
   []
 ]
 
-Solutions:
-
-Backtracking problem
+#Backtracking

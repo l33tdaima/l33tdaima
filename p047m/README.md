@@ -1,4 +1,4 @@
-# 47. Permutations II (Medium
+# 47. Permutations II (Medium)
 
 Given a collection of numbers that might contain duplicates, return all possible unique permutations.
 

@@ -17,7 +17,7 @@ var generateParenthesis = function(n) {
         if (open > close) {
             recAddHelper(solutions, s+")", open, close + 1, max);
         }
-    }
+    };
 
     var solutions = new Array();
     recAddHelper(solutions, "", 0, 0, n);

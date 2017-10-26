@@ -6,10 +6,10 @@
 var combine = function(n, k) {
     // Recusive DFS helper
     var recCombineHelper = function(sol, currCombi, base) {
-        console.log("# s =", sol, ", combi =", currCombi);
+        // console.log("# s =", sol, ", combi =", currCombi);
         if (currCombi.length === k) {
             sol.push(Array.from(currCombi));
-            console.log("+ sol:", sol);
+            // console.log("+ sol:", sol);
             return;
         }
         for (let i = base; i <= n; ++i) {
@@ -26,4 +26,4 @@ var combine = function(n, k) {
 
 var n = (process.argv[2] === undefined) ? 1 : parseInt(process.argv[2]);
 var k = (process.argv[3] === undefined) ? 1 : parseInt(process.argv[3]);
-console.log("Final solutions:", combine(n, k));
+console.log("C(", n, ",", k, ") =", combine(n, k));

@@ -16,7 +16,7 @@ Trie.prototype.insert = function(word) {
     for (let i = 0, len = word.length; i < len; ++i) {
         let j = word.charCodeAt(i) - 97;
         if (curr.links[j] === null) {
-            curr.links[j] = new Trie;
+            curr.links[j] = new Trie();
         }
         curr = curr.links[j];
     }
@@ -69,7 +69,7 @@ Trie.prototype.startsWith = function(prefix) {
  * var param_3 = obj.startsWith(prefix)
  */
 
-var trie = new Trie;
+var trie = new Trie();
 var word = "app";
 trie.insert(word);
 trie.insert("apps");

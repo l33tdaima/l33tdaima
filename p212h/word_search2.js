@@ -21,7 +21,7 @@ var findWords = function(board, words) {
         for (let i = 0, len = word.length; i < len; ++i) {
             let j = word.charCodeAt(i) - 97;
             if (curr.links[j] === null) {
-                curr.links[j] = new Trie;
+                curr.links[j] = new Trie();
             }
             curr = curr.links[j];
         }
@@ -58,7 +58,7 @@ var findWords = function(board, words) {
     };
 
     // build the trie from the words dictionary
-    let trie = new Trie;
+    let trie = new Trie();
     for (let w = 0, len = words.length; w < len; ++w) {
         trie.insert(words[w]);
     }

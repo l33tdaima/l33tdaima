@@ -73,7 +73,6 @@ var trie = new Trie;
 var word = "app";
 trie.insert(word);
 trie.insert("apps");
-word = "app";
 console.log("Is '" + word + "'in the trie?:", trie.search(word));
 var prefix = "cod";
 console.log("Is there word in the trie start with", prefix + "?:", trie.startsWith(prefix));

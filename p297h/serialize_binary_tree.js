@@ -38,7 +38,7 @@ var deserialize = function(data) {
     var buffer = data.split(',');
     var recDeserialize = function(buffer) {
         let elem = buffer.shift();
-        if (elem === undefined || elem === '#') {
+        if (elem === undefined || elem === '#' || elem === '') {
             return null;
         }
         let node = new TreeNode(parseInt(elem));

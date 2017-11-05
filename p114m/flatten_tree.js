@@ -1,5 +1,4 @@
 const tm = require('../p297h/serialize_binary_tree');
-
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {

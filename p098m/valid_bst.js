@@ -1,30 +1,11 @@
+const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
  */
-function TreeNode(val) {
-    this.val = val;
-    this.left = this.right = null;
-}
-/**
- * Decodes your encoded data to tree.
- *
- * @param {string} data
- * @return {TreeNode}
- */
-var deserialize = function(data) {
-    var buffer = data.split(',');
-    var recDeserialize = function(buffer) {
-        let elem = buffer.shift();
-        if (elem === undefined || elem === '#' || elem === '') {
-            return null;
-        }
-        let node = new TreeNode(parseInt(elem));
-        node.left  = recDeserialize(buffer);
-        node.right = recDeserialize(buffer);
-        return node;
-    };
-    return recDeserialize(buffer);
-};
 /**
  * @param {TreeNode} root
  * @return {boolean}
@@ -52,6 +33,6 @@ var testCases = [
     "2,1,#,#,3,#,#"
 ];
 testCases.forEach(function(test) {
-    let t = deserialize(test);
+    let t = tm.deserialize(test);
     console.log(test, "is a valid BST? ->", isValidBST(t));
 }, this);

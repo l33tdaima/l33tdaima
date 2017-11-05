@@ -1,25 +1,11 @@
+const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *    this.val = val;
+ *    this.left = this.right = null;
+ * }
  */
-function TreeNode(val) {
-    this.val = val;
-    this.left = this.right = null;
-}
-
-var deserialize = function(data) {
-    var buffer = data.split(',');
-    var recDeserialize = function(buffer) {
-        let elem = buffer.shift();
-        if (elem === undefined || elem === '#' || elem === '') {
-            return null;
-        }
-        let node = new TreeNode(elem);
-        node.left  = recDeserialize(buffer);
-        node.right = recDeserialize(buffer);
-        return node;
-    };
-    return recDeserialize(buffer);
-};
 
 /**
  * @param {TreeNode} root
@@ -44,8 +30,8 @@ var isBalanced = function(root) {
 };
 
 var testData = "1,#,2,#,3,#,#";
-var tree = deserialize(testData);
+var tree = tm.deserialize(testData);
 console.log("isBalanced? ->", isBalanced(tree));
 testData = "1,2,#,#,3,#,#";
-tree = deserialize(testData);
+tree = tm.deserialize(testData);
 console.log("isBalanced? ->", isBalanced(tree));

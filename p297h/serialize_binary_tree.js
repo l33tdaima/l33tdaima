@@ -49,12 +49,19 @@ var deserialize = function(data) {
     return recDeserialize(buffer);
 };
 
+exports.TreeNode    = TreeNode;
+exports.serialize   = serialize;
+exports.deserialize = deserialize;
+
 /**
  * Your functions will be called as such:
  * deserialize(serialize(root));
  */
-var node = new TreeNode(1);
-console.log(serialize(node));
-var test = "1,2,#,#,3,4,5,#,#,#,#";
-console.log(serialize(deserialize(test)));
-console.assert(test === serialize(deserialize(test)));
+
+var test = function() {
+    var node = new TreeNode(1);
+    console.log(serialize(node));
+    var test = "1,2,#,#,3,4,5,#,#,#,#";
+    console.log(serialize(deserialize(test)));
+    console.assert(test === serialize(deserialize(test)));
+};

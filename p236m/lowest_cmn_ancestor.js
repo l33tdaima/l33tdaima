@@ -13,9 +13,6 @@ const tm = require('../p297h/serialize_binary_tree');
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function(root, p, q) {
-    if (root == null || p == null || q == null) {
-        return null;
-    }
     let lca = null;
     /**
      * @param {TreeNode} current node
@@ -96,3 +93,7 @@ var testData = "3,5,6,#,#,2,7,#,#,4,#,#,1,0,#,#,8,#,#";
                                      testObj.p,
                                      testObj.q));
 });
+testData = "#";
+let tree = tm.deserialize(testData);
+console.log("------");
+console.log("null case ->", lowestCommonAncestor(tree, null, null));

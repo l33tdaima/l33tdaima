@@ -1,4 +1,3 @@
-const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -6,6 +5,7 @@ const tm = require('../p297h/serialize_binary_tree');
  *     this.left = this.right = null;
  * }
  */
+const tm = require('../p297h/serialize_binary_tree');
 /**
  * @param {TreeNode} root
  * @return {void} Do not return anything, modify root in-place instead.

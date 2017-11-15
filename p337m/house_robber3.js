@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @return {number}
@@ -55,6 +55,6 @@ var rob = function(root) {
     "3,2,#,3,#,#,3,#,1,#,#",
     "3,4,1,#,#,3,#,#,5,#,1,#,#"
 ].forEach(function (test){
-    let tree = tm.deserialize(test);
+    let tree = Tree.deserialize(test);
     console.log("Max amount of robbery ->", rob(tree));
 });

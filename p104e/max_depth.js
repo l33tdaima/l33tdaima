@@ -1,4 +1,3 @@
-const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -6,6 +5,7 @@ const tm = require('../p297h/serialize_binary_tree');
  *   this.left = this.right = null;
  * }
  */
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @return {number}
@@ -16,5 +16,5 @@ var maxDepth = function(root) {
 };
 
 var testData = "1,2,#,#,3,4,#,5,#,#";
-var tree = tm.deserialize(testData);
+var tree = Tree.deserialize(testData);
 console.log("Max depth ->", maxDepth(tree));

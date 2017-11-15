@@ -1,4 +1,3 @@
-const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -10,6 +9,7 @@ const tm = require('../p297h/serialize_binary_tree');
  * @param {number} n
  * @return {TreeNode[]}
  */
+const Tree = require('binary_tree');
 var generateTrees = function(n) {
     if (n === 0) {
         return [];
@@ -26,7 +26,7 @@ var generateTrees = function(n) {
             return trees;
         }
         if (s === e) {
-            trees.push(new tm.TreeNode(parseInt(s)));
+            trees.push(new Tree.TreeNode(parseInt(s)));
             return trees;
         }
         for (let rtVal = s; rtVal <= e; ++rtVal) {
@@ -35,7 +35,7 @@ var generateTrees = function(n) {
             for (let il = 0, lenl = lhsTrees.length; il < lenl; ++il) {
                 let rhsTrees = recGenerateTreesByRange(rtVal + 1, e);
                 for (let ir = 0, lenr = rhsTrees.length; ir < lenr; ++ir) {
-                    let root = new tm.TreeNode(parseInt(rtVal));
+                    let root = new Tree.TreeNode(parseInt(rtVal));
                     root.left = lhsTrees[il];
                     root.right = rhsTrees[ir];
                     trees.push(root);
@@ -51,5 +51,5 @@ var n = (process.argv[2] === undefined) ? 1 : parseInt(process.argv[2]);
 var trees = generateTrees(n);
 console.log("The number of unique BSTs is:", trees.length);
 trees.forEach(function(tree) {
-    console.log(tm.serialize(tree));
+    console.log(Tree.serialize(tree));
 }, this);

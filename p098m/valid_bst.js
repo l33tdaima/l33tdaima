@@ -1,4 +1,3 @@
-const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -6,6 +5,7 @@ const tm = require('../p297h/serialize_binary_tree');
  *     this.left = this.right = null;
  * }
  */
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @return {boolean}
@@ -33,6 +33,6 @@ var testCases = [
     "2,1,#,#,3,#,#"
 ];
 testCases.forEach(function(test) {
-    let t = tm.deserialize(test);
+    let t = Tree.deserialize(test);
     console.log(test, "is a valid BST? ->", isValidBST(t));
 }, this);

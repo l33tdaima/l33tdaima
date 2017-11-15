@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @return {number}
@@ -36,7 +36,7 @@ var diameterOfBinaryTree = function(root) {
     "1,2,4,#,#,5,#,#,3,#,#",
     "1,2,4,6,7,#,#,#,#,5,#,8,#,9,#,#,3,#,#"
 ].forEach(function(test){
-    let tree = tm.deserialize(test);
+    let tree = Tree.deserialize(test);
     console.log("Diagmeter of", test,
                 "->", diameterOfBinaryTree(tree));
 });

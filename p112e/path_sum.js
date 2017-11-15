@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @param {number} sum
@@ -31,7 +31,7 @@ var hasPathSum = function(root, sum) {
     ["5,4,11,7,#,#,2,#,#,#,8,13,#,#,4,#,1,#,#", 22],
     ["5,4,11,7,#,#,2,#,#,#,8,13,#,#,4,#,1,#,#", 23]
 ].forEach(function (test) {
-    let tree = tm.deserialize(test[0]);
+    let tree = Tree.deserialize(test[0]);
     console.log(test[0], "has pash sum", test[1],
                 "->", hasPathSum(tree, test[1]));
 });

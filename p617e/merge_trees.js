@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} t1
  * @param {TreeNode} t2
@@ -16,7 +16,7 @@ var mergeTrees = function(t1, t2) {
         // this is t referrencing t1, ideally deep copy
         return t1;
     }
-    let t = new tm.TreeNode(t2.val);
+    let t = new Tree.TreeNode(t2.val);
     if (t1 !== null) {
         t.val += t1.val;
     }
@@ -33,8 +33,8 @@ var mergeTrees = function(t1, t2) {
     ["1,#,#", "1,2,#,4,#,#,3,#,#"],
     ["1,3,5,#,#,#,2,#,#", "2,1,#,4,#,#,3,#,#"],
 ].forEach(function(test) {
-    let t1 = tm.deserialize(test[0]);
-    let t2 = tm.deserialize(test[1]);
+    let t1 = Tree.deserialize(test[0]);
+    let t2 = Tree.deserialize(test[1]);
     let t = mergeTrees(t1, t2);
-    console.log("Merged tree ->", tm.serialize(t));
+    console.log("Merged tree ->", Tree.serialize(t));
 });

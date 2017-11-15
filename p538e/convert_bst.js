@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @return {TreeNode}
@@ -27,6 +27,6 @@ var convertBST = function(root) {
     "#",
     "5,2,#,#,13,#,#"
 ].forEach(function (test) {
-    let tree = tm.deserialize(test);
-    console.log(test, "->", tm.serialize(convertBST(tree)));
+    let tree = Tree.deserialize(test);
+    console.log(test, "->", Tree.serialize(convertBST(tree)));
 });

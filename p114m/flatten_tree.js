@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @return {void} Do not return anything, modify root in-place instead.
@@ -54,7 +54,7 @@ var testData = [
     "3,9,#,#,20,15,#,#,7,#,#"
 ];
 testData.forEach(function(test) {
-    let tree = tm.deserialize(test);
+    let tree = Tree.deserialize(test);
     flatten(tree);
-    console.log("After flatten ->", tm.serialize(tree));
+    console.log("After flatten ->", Tree.serialize(tree));
 });

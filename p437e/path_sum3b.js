@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @param {number} sum
@@ -30,7 +30,7 @@ var pathSum = function(root, sum) {
     ["1,-2,1,-1,#,#,3,#,#,-3,-2,#,#,#", -1],
     ["10,5,3,3,#,#,-2,#,#,2,#,1,#,#,-3,#,11,#,#", 8]
 ].forEach(function (test) {
-    let tree = tm.deserialize(test[0]);
+    let tree = Tree.deserialize(test[0]);
     console.log(test[0], "total num of path sum of", test[1],
                 "->", pathSum(tree, test[1]));
     console.log("--------");

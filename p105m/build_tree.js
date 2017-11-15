@@ -1,4 +1,3 @@
-const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -6,7 +5,7 @@ const tm = require('../p297h/serialize_binary_tree');
  *     this.left = this.right = null;
  * }
  */
-
+const Tree = require('binary_tree');
 /**
  * @param {number[]} preorder
  * @param {number[]} inorder
@@ -17,7 +16,7 @@ var buildTree = function(preorder, inorder) {
     if (preorder.length === 0) {
         return null;
     }
-    let root = new tm.TreeNode(preorder[0]);
+    let root = new Tree.TreeNode(preorder[0]);
     // find the root index at the inorder array
     let rootAtInorder = inorder.findIndex((element) => element === preorder[0]);
     // this number is also the length we want to cut in preorder
@@ -36,5 +35,5 @@ var testData = [
     {pre:[1,2,3,4], in:[2,1,4,3]},
 ];
 testData.forEach(function(test) {
-    console.log("Build tree ->", tm.serialize(buildTree(test.pre, test.in)));
+    console.log("Build tree ->", Tree.serialize(buildTree(test.pre, test.in)));
 });

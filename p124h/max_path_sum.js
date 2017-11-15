@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @return {number}
@@ -38,6 +38,6 @@ var testData = [
     "1,2,#,#,3,#,#",
 ];
 testData.forEach(function(test) {
-    let tree = tm.deserialize(test);
+    let tree = Tree.deserialize(test);
     console.log("Max path sum ->", maxPathSum(tree));
 });

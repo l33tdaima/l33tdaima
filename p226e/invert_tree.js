@@ -1,4 +1,3 @@
-const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -6,6 +5,7 @@ const tm = require('../p297h/serialize_binary_tree');
  *     this.left = this.right = null;
  * }
  */
+const Tree = require('binary_tree');
 /**
  * This is a in-place inversion
  * @param {TreeNode} root
@@ -38,6 +38,6 @@ var testData = [
 ];
 
 testData.forEach(function(test) {
-    let tree = tm.deserialize(test);
-    console.log("Invert", test, "->", tm.serialize(invertTree(tree)));
+    let tree = Tree.deserialize(test);
+    console.log("Invert", test, "->", Tree.serialize(invertTree(tree)));
 });

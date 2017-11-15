@@ -1,4 +1,3 @@
-const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -6,6 +5,7 @@ const tm = require('../p297h/serialize_binary_tree');
  *     this.left = this.right = null;
  * }
  */
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @return {boolean}
@@ -21,11 +21,11 @@ var isSymmetric = function(root) {
     return (root === null) || isMirror(root.left, root.right);
 };
 
-var root = new tm.TreeNode(1);
-root.left = new tm.TreeNode(2);
-root.left.left = new tm.TreeNode(3);
-root.left.right = new tm.TreeNode(4);
-root.right = new tm.TreeNode(2);
-root.right.left = new tm.TreeNode(4);
-root.right.right = new tm.TreeNode(3);
+var root = new Tree.TreeNode(1);
+root.left = new Tree.TreeNode(2);
+root.left.left = new Tree.TreeNode(3);
+root.left.right = new Tree.TreeNode(4);
+root.right = new Tree.TreeNode(2);
+root.right.left = new Tree.TreeNode(4);
+root.right.right = new Tree.TreeNode(3);
 console.log("isSymmetric? ->", isSymmetric(root));

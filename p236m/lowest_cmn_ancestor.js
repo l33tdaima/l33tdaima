@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @param {TreeNode} p
@@ -59,7 +59,7 @@ var buildTestCase = function(data, pNum, qNum) {
         if (elem === undefined || elem === '#' || elem === '') {
             return null;
         }
-        let node = new tm.TreeNode(parseInt(elem));
+        let node = new Tree.TreeNode(parseInt(elem));
         if (parseInt(elem) === pNum) {
             pNode = node;
         }
@@ -94,6 +94,6 @@ var testData = "3,5,6,#,#,2,7,#,#,4,#,#,1,0,#,#,8,#,#";
                                      testObj.q));
 });
 testData = "#";
-let tree = tm.deserialize(testData);
+let tree = Tree.deserialize(testData);
 console.log("------");
 console.log("null case ->", lowestCommonAncestor(tree, null, null));

@@ -1,4 +1,3 @@
-const tm = require('../p297h/serialize_binary_tree');
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -6,6 +5,7 @@ const tm = require('../p297h/serialize_binary_tree');
  *     this.left = this.right = null;
  * }
  */
+const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
  * @return {number[][]}
@@ -50,6 +50,6 @@ var testData = [
     "3,9,#,#,20,15,#,#,7,#,#"
 ];
 testData.forEach(function(val) {
-    let tree = tm.deserialize(val);
+    let tree = Tree.deserialize(val);
     console.log("Level order traversal ->", levelOrder(tree));
 });

@@ -5,7 +5,7 @@
  *     this.left = this.right = null;
  * }
  */
-const tm = require('../p297h/serialize_binary_tree');
+const Tree = require('binary_tree');
 /** Is two tree equal
  * @param {TreeNode} a
  * @param {TreeNode} b
@@ -48,8 +48,8 @@ var isSubtree = function(s, t) {
     ["3,4,1,#,#,2,#,#,5,#,#", "4,1,#,#,2,#,#"],
     ["3,4,1,#,#,2,0,#,#,#,5,#,#", "4,1,#,#,2,#,#"],
 ].forEach(function(test) {
-    let s = tm.deserialize(test[0]);
-    let t = tm.deserialize(test[1]);
+    let s = Tree.deserialize(test[0]);
+    let t = Tree.deserialize(test[1]);
     console.log("Is", test[1], "a subtree of", test[0],
                 "->", isSubtree(s,t));
 });

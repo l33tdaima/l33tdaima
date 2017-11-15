@@ -5,30 +5,7 @@
  *     this.next = null;
  * }
  */
-
-function ListNode(val) {
-    this.val = val;
-    this.next = null;
-}
-
-function makeList(array) {
-    if(array.length === 0) {
-        return null;
-    }
-    var node = new ListNode(array.shift());
-    node.next = makeList(array);
-    return node;
-}
-
-function toArray(head) {
-    var ret = new Array();
-    while(head !== null) {
-        ret.push(head.val);
-        head = head.next;
-    }
-    return ret;
-}
-
+const List = require('list');
 /**
  * @param {ListNode[]} lists
  * @return {ListNode}
@@ -40,7 +17,7 @@ var merge2Lists = function(lst1, lst2) {
     if (!lst2) {
         return lst1;
     }
-    var hd = new ListNode(0);
+    var hd = new List.ListNode(0);
     var p = hd;
     while (lst1 && lst2) {
         if(lst1.val < lst2.val) {
@@ -80,7 +57,7 @@ var testArray = [
 
 var testLists = [];
 testArray.forEach(function(elem) {
-    testLists.push(makeList(elem));
+    testLists.push(List.fromArray(elem));
 }, this);
 var merged = mergeKLists(testLists);
-console.log("Merged K Sorted Lists:", toArray(merged));
+console.log("Merged K Sorted Lists:", List.toArray(merged));

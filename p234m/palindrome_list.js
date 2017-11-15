@@ -5,25 +5,11 @@
  *     this.next = null;
  * }
  */
+const List = require('list');
 /**
  * @param {ListNode} head
  * @return {boolean}
  */
-
-function ListNode(val) {
-    this.val = val;
-    this.next = null;
-}
-
-function makeList(array) {
-    if(array.length === 0) {
-        return null;
-    }
-    var node = new ListNode(array.shift());
-    node.next = makeList(array);
-    return node;
-}
-
 var isPalindrome = function(head) {
     var slow = head;
     var fast = head;
@@ -46,7 +32,7 @@ var isPalindrome = function(head) {
     return !rev;
 };
 
-console.log("Test Case []: " + isPalindrome(makeList([])));
-console.log("Test Case [1,2,1]: " + isPalindrome(makeList([1,2,1])));
-console.log("Test Case [1,2,3,4]: " + isPalindrome(makeList([1,2,3,4])));
-console.log("Test Case [1,2,2,1]: " + isPalindrome(makeList([1,2,2,1])));
+console.log("Test Case []: " + isPalindrome(List.fromArray([])));
+console.log("Test Case [1,2,1]: " + isPalindrome(List.fromArray([1,2,1])));
+console.log("Test Case [1,2,3,4]: " + isPalindrome(List.fromArray([1,2,3,4])));
+console.log("Test Case [1,2,2,1]: " + isPalindrome(List.fromArray([1,2,2,1])));

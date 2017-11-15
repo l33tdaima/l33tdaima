@@ -5,29 +5,7 @@
  *     this.next = null;
  * }
  */
-
-function ListNode(val) {
-    this.val = val;
-    this.next = null;
-}
-
-function makeList(array) {
-    if(array.length === 0) {
-        return null;
-    }
-    var node = new ListNode(array.shift());
-    node.next = makeList(array);
-    return node;
-}
-
-function toArray(head) {
-    var ret = new Array();
-    while(head !== null) {
-        ret.push(head.val);
-        head = head.next;
-    }
-    return ret;
-}
+const List = require('list');
 /**
  * @param {ListNode} head
  * @return {ListNode}
@@ -47,8 +25,8 @@ var reverseList = function(head) {
 };
 
 console.log("Reversed List of [1,2,3]:" + 
-            toArray(reverseList(makeList([1,2,3]))).toString());
+            List.toArray(reverseList(List.fromArray([1,2,3]))).toString());
 console.log("Reversed List of []:" + 
-            toArray(reverseList(makeList([]))).toString());
+            List.toArray(reverseList(List.fromArray([]))).toString());
 console.log("Reversed List of [1]:" + 
-            toArray(reverseList(makeList([1]))).toString());
+            List.toArray(reverseList(List.fromArray([1]))).toString());

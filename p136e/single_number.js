@@ -3,11 +3,7 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-    let worknum = 0;
-    for (let i = 0, len = nums.length; i < len; ++i) {
-        worknum = worknum ^ nums[i];
-    }
-    return worknum;
+    return nums.reduce((s, n) => s ^ n, 0);
 };
 // TEST
 [

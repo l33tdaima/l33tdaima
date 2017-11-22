@@ -22,7 +22,7 @@ var search = function(nums, target) {
             return (nums[start] === target) ? start : -1;
         }
         // exact mid index if odd elements, low mid if even elements
-        let mid = Math.floor((end + start)/2);
+        let mid = ~~((end + start)/2); // integer quotient
         if (mid === start) {
             if(target === nums[mid]) {
                 return mid;

@@ -18,7 +18,7 @@ var myPow = function(x, n) {
         return sqrt * sqrt;
     }
     else {
-        let sqrt = myPow(x, Math.floor(n/2));
+        let sqrt = myPow(x, ~~(n/2));
         return x * sqrt * sqrt;
     }
 };

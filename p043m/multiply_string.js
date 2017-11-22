@@ -17,7 +17,7 @@ var multiply = function(num1, num2) {
         var msd = numArray.reduceRight(function(carry, val, i) {
             let prod = val * digit + carry; // ie. 9*9+8 (carry from the previous 9*9)
             res[i] = prod % 10;
-            return Math.floor(prod / 10);
+            return ~~(prod / 10);
         }, 0);
         return (msd === 0) ? res: [msd].concat(res);
     };
@@ -35,7 +35,7 @@ var multiply = function(num1, num2) {
         for (let i = res.length - 1; i >= 0; --i) {
             let sum = n1Array[i] + n2Array[i] + carry;
             res[i] = sum % 10; 
-            carry = Math.floor(sum / 10);
+            carry = ~~(sum / 10);
         }
         if (carry > 0) {
             return [carry].concat(res);
@@ -80,10 +80,10 @@ var multiplyImp = function(num1, num2) {
         let sumCarry = 0;
         for (let i1 = num1Array.length - 1; i1 >= 0; --i1) {
             let prod = digit * num1Array[i1] + prodCarry;
-            prodCarry = Math.floor(prod / 10);
+            prodCarry = ~~(prod / 10);
             let i = i2 + 1 + i1;
             let sum = resultArray[i] + prod % 10 + sumCarry;
-            sumCarry = Math.floor(sum / 10);
+            sumCarry = ~~(sum / 10);
             resultArray[i] = sum % 10;
         }
         resultArray[i2] = prodCarry + sumCarry;

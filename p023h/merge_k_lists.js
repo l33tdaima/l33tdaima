@@ -41,7 +41,7 @@ var mergeKLists = function(lists) {
     if (lists.length === 1) {
         return lists[0];
     }
-    let mid = Math.floor(lists.length/2);
+    let mid = ~~(lists.length/2); // integer quotient
     // console.log("k:", lists.length, ", mid:", mid);
     let left = mergeKLists(lists.slice(0, mid));
     let right = mergeKLists(lists.slice(mid));

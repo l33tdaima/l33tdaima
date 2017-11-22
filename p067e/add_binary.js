@@ -13,7 +13,7 @@ var addBinary = function(a, b) {
         let bitb = b.charAt(ib) === '1'? 1 : 0;
         let add = bita + bitb + carry;
         resultArray[ir] = add % 2;
-        carry = Math.floor(add / 2);
+        carry = ~~(add / 2);
     }
     if (carry > 0) {
         return "1" + resultArray.join('');

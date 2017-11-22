@@ -7,7 +7,7 @@ var plusOne = function(digits) {
     var carry = 1;
     for (let i = digits.length - 1; i >= 0; i--) {
         result[i] = (digits[i] + carry) % 10;
-        carry = Math.floor((digits[i] + carry) / 10);
+        carry = ~~((digits[i] + carry) / 10);
     }
     if (carry > 0) {
         return [1].concat(result);

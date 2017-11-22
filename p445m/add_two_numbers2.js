@@ -28,7 +28,7 @@ var addTwoNumbers = function(l1, l2) {
         let v2 = (s2.length > 0) ? s2.pop() : 0;
         let sum = v1 + v2 + carry; 
         let p = new List.ListNode(sum % 10);
-        carry = Math.floor(sum / 10);
+        carry = ~~(sum / 10);
         p.next = head;
         head = p;
     }

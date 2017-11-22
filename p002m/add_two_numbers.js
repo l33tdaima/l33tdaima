@@ -20,7 +20,7 @@ var addTwoNumbers = function(l1, l2) {
     let carry = 0;
     while (l1 !== null || l2 !== null) {
         let s = (l1?l1.val:0) + (l2?l2.val:0) + carry;
-        carry = Math.floor(s/10);
+        carry = ~~(s/10); // integer quotient
         p.next = new List.ListNode(s%10);
         p = p.next;
         if (l1 !== null) { l1 = l1.next; }

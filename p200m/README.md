@@ -18,5 +18,5 @@ Example 2:
 00011
 Answer: 3
 
-#Depth-first Search
+#Depth-first Search #Union Find
 #FB #GOOGL

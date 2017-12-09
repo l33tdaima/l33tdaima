@@ -31,16 +31,18 @@ var largestRectangleArea = function(heights) {
 };
 // TEST
 [
-    [2],
-    [2,5],
-    [4,3],
-    [1,4,3],
-    [2,1,2],
-    [1,5,4,3],
-    [2,0,3,2],
-    [2,1,5,6,2,3],
-    [2,1,5,6,2,3,6,7],
+    [[2], 2],
+    [[2,5], 5],
+    [[4,3], 6],
+    [[1,4,3], 6],
+    [[2,1,2], 3],
+    [[1,5,4,3], 9],
+    [[2,0,3,2], 4],
+    [[2,1,5,6,2,3], 10],
+    [[2,1,5,6,2,3,6,7], 12],
+    [[6,7,5,2,4,5,9,3], 16]
 ].forEach(function (test) {
-    console.log("Largest Rectangle Area ->",
-                largestRectangleArea(test));
+    let res = largestRectangleArea(test[0]);
+    console.log("Largest Rectangle Area ->", res,
+                "?", res === test[1]);
 });

@@ -19,7 +19,6 @@ const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
  */
 var ladderLength = function (beginWord, endWord, wordList) {
     console.assert(beginWord.length === endWord.length);
-    if (wordDistance(beginWord, endWord) === 1) { return 2; }
     let wlen = endWord.length;
     // step 1: Convert to a set
     let wordSet = new Set();
@@ -27,6 +26,7 @@ var ladderLength = function (beginWord, endWord, wordList) {
         wordSet.add(wordList[i]);
     }
     if (!wordSet.has(endWord)) { return 0; }
+    if (wordDistance(beginWord, endWord) === 1) { return 2; }
     // step 2: Build a tree in BFS fashion rooted by endWord
     wordSet.delete(endWord);
     let root = new LadderNode(endWord, 2);
@@ -41,7 +41,7 @@ var ladderLength = function (beginWord, endWord, wordList) {
                 let t = w.slice(0, i) + ALPHABET.charAt(j) + w.slice(i + 1);
                 if (wordSet.has(t)) {
                     // check if we found the word only 1 char distance from beginWord
-                    if (wordDistance(beginWord, t) === 1) {
+                    if (wordDistance(beginWord, t) <= 1) {
                         return wnode.depth + 1;
                     }
                     wordSet.delete(t);
@@ -54,28 +54,48 @@ var ladderLength = function (beginWord, endWord, wordList) {
     return 0;
 };
 // TEST
-[{
+[ {
+    expected: 0,
+    begin: "m",
+    end: "n",
+    wordList: ["a", "b", "c"]
+}, {
+    expected: 2,
+    begin: "a",
+    end: "c",
+    wordList: ["a", "b", "c"]
+}, {
+    expected: 5,
     begin: "hit",
     end: "cog",
     wordList: ["hot", "dot", "dog", "lot", "log", "cog"]
 }, {
+    expected: 3,
     begin: "lag",
     end: "cog",
     wordList: ["hot", "dot", "dog", "lot", "log", "cog"]
 }, {
+    expected: 0,
     begin: "dog",
     end: "bag",
     wordList: ["hot", "dot", "dog", "lot", "log", "cog"]
 }, {
+    expected: 0,
     begin: "dog",
     end: "hit",
     wordList: ["hot", "dot", "dog", "lot", "log", "cog"]
 }, {
-    begin: "dog",
-    end: "log",
+    expected: 3,
+    begin: "hot",
+    end: "dog",
     wordList: ["hot", "dot", "dog", "lot", "log", "cog"]
-} 
-].forEach(function (test) {
-    console.log(test.begin, "->", test.end, "=",
-                ladderLength(test.begin, test.end, test.wordList));
+}, {
+    expected: 4,
+    begin: "hit",
+    end: "dog",
+    wordList: ["hot", "dot", "dog", "lot", "log", "cog"]
+} ].forEach(function (test) {
+    let output = ladderLength(test.begin, test.end, test.wordList);
+    console.log(test.begin, "->", test.end, "=", 
+                output, output === test.expected);
 });

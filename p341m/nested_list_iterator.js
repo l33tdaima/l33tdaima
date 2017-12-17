@@ -3,32 +3,8 @@
  * // This is the interface that allows for creating nested lists.
  * // You should not implement it, or speculate about its implementation
  */
-function NestedInteger(val) {
-    this.val = val;
-    /**
-     * Return true if this NestedInteger holds a single integer, rather than a nested list.
-     * @return {boolean}
-     */
-    this.isInteger = function() {
-        return (typeof this.val) === 'number';
-    };
-    /**
-     * Return the single integer that this NestedInteger holds, if it holds a single integer
-     * Return null if this NestedInteger holds a nested list
-     * @return {integer}
-     */
-    this.getInteger = function() {
-        return this.isInteger() ? this.val : null;
-    };
-    /**
-     * Return the nested list that this NestedInteger holds, if it holds a nested list
-     * Return null if this NestedInteger holds a single integer
-     * @return {NestedInteger[]}
-     */
-    this.getList = function() {
-        return this.isInteger() ? null : Array.from(this.val, (v) => new NestedInteger(v));
-    };
-};
+const Nested = require('nested_integer');
+
 // PART: SOLUTION
 /**
  * @constructor
@@ -89,7 +65,7 @@ NestedIterator.prototype.next = function() {
     [1,[4,[[5],6]]],
     [[[3],4],[5],6],
 ].forEach(function (test) {
-    let nestedList = Array.from(test, (v) => new NestedInteger(v));
+    let nestedList = Array.from(test, (v) => new Nested.NestedInteger(v));
     var i = new NestedIterator(nestedList), a = [];
     while (i.hasNext()) {
         a.push(i.next());

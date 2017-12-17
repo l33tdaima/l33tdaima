@@ -15,7 +15,7 @@ Given the list [1,[4,[6]]],
 By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
 
 ## Solution
-No empty list otherwise break the assumption "Each element is either an integer, or a list -- whose elements may also be integers or other lists."
+Move iterator state when calling hasNext() instead of next(), it is better for reusing code of pushing and poping stack.
 
 #Stack #Design
 #FB #GOOGL #TWTR

@@ -15,7 +15,7 @@ Let dp[i+1][j+1] be the side length of the maximum square whose bottom right cor
 dp[i+1][j+1] = min(dp[i+1][j],dp[i][j+1],dp[i][j]) + 1, when matrix[i][j] == 1
 
   1 0 1 0 0        
-  1 0 1 1 1   => 
+  1 0 1 1 1   =>
   1 1 1 1 1   =>
   1 0 0 1 0
 

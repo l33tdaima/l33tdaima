@@ -15,5 +15,8 @@ Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 Note:
 The input string length won't exceed 1000.
 
+## Solution
+Use center expansion approach to achieve a O(N^2) performance. There also exists an non-trivial O(N) algorithm called Manacher's Algorithm). Also see similar problemm #p005m longest palindromic substring 
+
 #FB #LNKD
-#Dynamic Programming
+#String

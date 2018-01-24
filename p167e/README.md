@@ -9,5 +9,5 @@ You may assume that each input would have exactly one solution and you may not u
 Input: numbers={2, 7, 11, 15}, target=9
 Output: index1=1, index2=2
 
-#Array #Two Pointer
+#Array #Two Pointers
 #AMZN

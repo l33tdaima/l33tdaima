@@ -5,13 +5,15 @@
 var mySqrt = function(x) {
     var r = x;
     while (r*r > x) {
-        r = ((r + x/r) / 2) | 0;
+        // r = ((r + x/r) / 2) | 0;
+        r = ~~((r + x/r) / 2);
     }
     return r;
 };
 
 for (let t = 0; t < 10000000/*Number.MAX_SAFE_INTEGER*/; ++t) {
     let r = mySqrt(t);
+    // console.log("Sqrt(",t,") ->", r);
     if (r < 0 || r*r > t || (r+1)*(r+1) <= t) {
         console.log("Failed case:", t, r);
     }

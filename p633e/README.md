@@ -11,5 +11,8 @@ Example 2:
 Input: 3
 Output: False
 
+## Solution
+O(sqrt(c)log(c))
+
 #LNKD
-#Math #Two Pointers
+#Math #Binary Search

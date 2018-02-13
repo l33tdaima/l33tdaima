@@ -8,3 +8,4 @@ Credits:
 Special thanks to @mithmatt for adding this problem and creating all test cases.
 
 #AMZN #MSFT
+#Math

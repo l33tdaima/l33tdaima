@@ -18,6 +18,5 @@ S will consist of lowercase letters ('a' to 'z') only.
 Another version used in Amazon assessment:
 Given a list of movie shots represented by a letter a - z, group them in such a way that no one shot should show up in more than one subsequence.
 
-
 #AMZN
 #Two Pointers #Greedy

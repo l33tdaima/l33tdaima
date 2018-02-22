@@ -10,7 +10,7 @@ var partitionLabels = function(S) {
     for (let i = 0; i < len; ++i) {
         dupMap[S.charCodeAt(i) - 97].push(i);
     }
-    dupMap.forEach((v, i) => console.log(String.fromCharCode(i + 97), v));
+    //dupMap.forEach((v, i) => console.log(String.fromCharCode(i + 97), v));
 
     let cutStart = -1, cutEnd = -1;
     for (let i = 0; i < len; ++i) {
@@ -34,14 +34,12 @@ var partitionLabels = function(S) {
 };
 // TEST
 [
-    "qiejxqfnqceocmy",
-    /*
     "abc",
     "abca",
     "zzcbzchfihi",
     "abcdaefghijek",
     "ababcbacadefegdehijhklij",
-    */
+    "qiejxqfnqceocmy",
 ].forEach((test) => {
     console.log("Partition labels of", test, "->",
                 partitionLabels(test));

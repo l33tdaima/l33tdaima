@@ -2,7 +2,7 @@
  * @param {string} S
  * @return {number[]}
  */
-var partitionLabels = function(S) {
+var partitionLabelsV1 = function(S) {
     let result = [];
     // occurence indices of each letter
     let dupMap = Array.from({length: 26}, (v) => []); 
@@ -32,6 +32,24 @@ var partitionLabels = function(S) {
     result.push(cutEnd - cutStart + 1);
     return result;
 };
+var partitionLabelsV2 = function(S) {
+    let result = [];
+    let len = S.length;
+    // the index of last occurrence of each letter
+    let lastOccurs = Array.from({length: 26}, (v) => -1);
+    for (let i = 0; i < len; ++i) {
+        lastOccurs[S.charCodeAt(i) - 97] = i;
+    }
+    let start = 0, last = -1;
+    for (let i = 0; i < len; ++i) {
+        last = Math.max(last, lastOccurs[S.charCodeAt(i) - 97]);
+        if (i === last) {
+            result.push(last - start + 1);
+            start = i + 1;
+        }
+    }
+    return result;
+};
 // TEST
 [
     "abc",
@@ -42,5 +60,5 @@ var partitionLabels = function(S) {
     "qiejxqfnqceocmy",
 ].forEach((test) => {
     console.log("Partition labels of", test, "->",
-                partitionLabels(test));
+                partitionLabelsV2(test));
 });

@@ -53,14 +53,14 @@ var getSkylineV2 = function(buildings) {
 
     let skyline = [];
     // 2. Scan the critical points
-    let heap = new pq.PriorityQueue();
+    let heap = new pq.PriorityQueue(pq.max_first);
     heap.push(0);
     let prevh = 0;
     for (let i = 0, len = criticalPoints.length; i < len; ++i) {
         if (criticalPoints[i][1] < 0) {
             heap.push(-criticalPoints[i][1]);
         } else { // 'R'
-            heap.remove(criticalPoints[i][1]);
+            heap.pull(criticalPoints[i][1]);
         }
         let h = heap.top();
         if (h !== prevh) {

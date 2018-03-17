@@ -7,9 +7,8 @@
 var file = "123456789".split("");
 var p = 0;
 var read4 = function(buf) {
-    let buf4 = new Array(4);
     let i = 0;
-    while (p < file.length) {
+    while (p < file.length && i < 4) {
         buf[i++] = file[p++];
     }
     return i;

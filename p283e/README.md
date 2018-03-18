@@ -8,5 +8,9 @@ Note:
 You must do this in-place without making a copy of the array.
 Minimize the total number of operations.
 
-#FB
+## Solution
+Maintain a moving index of last non-zero and copy non-zero item into it. Then set the rest to zeroes.
+
+#FB #BBG
+
 #Array #Two Pointers

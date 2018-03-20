@@ -14,4 +14,5 @@ All root-to-leaf paths are:
 ["1->2->5", "1->3"]
 
 #GOOGL #FB #APPL
+
 #Tree #Depth-first Search

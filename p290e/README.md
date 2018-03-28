@@ -16,6 +16,6 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
 ## Solution
 Both directions of mapping need to be stored.
 
-#UBER #Dropbox
+#UBER #DBX
 
 #Hash Table

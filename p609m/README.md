@@ -49,6 +49,6 @@ Iterate the input list and establish the hash table map content (or SHA1 hash in
 5. How to make sure the duplicated files you find are not false positive?
     We will use several filters to compare: File size, Hash and byte by byte comparisons.
 
-#Dropbox
+#DBX
 
 #Hash Table #String

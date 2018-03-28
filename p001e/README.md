@@ -14,6 +14,6 @@ return [0, 1].
 Scan the array: 
 Adding pair<number, index> into a hash table and check if (target - number) already exists.
 
-#MSFT #FB #AMZN #BB #UBER #LNKD #APPL #AIRBNB #YELP #YHOO #ADBE #DROPBOX
+#MSFT #FB #AMZN #BB #UBER #LNKD #APPL #AIRBNB #YELP #YHOO #ADBE #DBX
 
 #Array #Hash Table

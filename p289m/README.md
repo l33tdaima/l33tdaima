@@ -26,5 +26,5 @@ To solve it in-place, we will need to store the new and old state of each cell b
 
 In order to represent infinite board, we will only store the coordinates of live cells in a set, the set will be refreshed each generation.
 
-#GOOGL #SNAP #Dropbox #2Sigma
+#GOOGL #SNAP #DBX #2Sigma
 #Array #Bit Manipulation

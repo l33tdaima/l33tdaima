@@ -24,3 +24,5 @@ When we iterate to compute the cumulative sum, we store (sum, # of occurence) in
 #GOOGL
 
 #Array #Hash Table
+
+#Similar question [#523](../p523m/README.md),

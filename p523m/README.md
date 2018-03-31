@@ -34,3 +34,4 @@ For example, [23,2,6,4,7], k = 6, the cumulative sum is [23,25,31,35,42] and the
 
 #Math #Hash Table
 
+#Similar question [#560](../p560m/README.md),

@@ -3,9 +3,8 @@
  * @return {number}
  */
 var findLengthOfLCIS = function(nums) {
-    if (nums.length === 0) { return 0; }
     let start = 0, end = 0;
-    let maxLen = Number.MIN_SAFE_INTEGER;
+    let maxLen = 0;
     let prev = Number.MIN_SAFE_INTEGER;
     for (let i = 0; i < nums.length; prev = nums[i++]) {
         if (nums[i] <= prev) {

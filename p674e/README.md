@@ -22,3 +22,5 @@ Note: Length of the array will not exceed 10,000.
 #FB
 
 #Array #Two Pointer
+
+#Similar question [#673m](../p673m/README.md) [#300m](../p300m/README.md)

@@ -7,7 +7,7 @@ var findNumberOfLIS = function(nums) {
     if (len === 0) { return 0; }
     let dpLIS = Array.from({length: len}, v => 1);
     let dpNLIS = Array.from({length: len}, v => 1);
-    let maxlen = 0;
+    let maxlen = 1;
     for (let i = 1; i < len; ++i) {
         for (let j = 0; j < i; ++j) {
             if (nums[i] <= nums[j]) { continue; }
@@ -35,6 +35,8 @@ var findNumberOfLIS = function(nums) {
 };
 // TEST
 [
+    [],
+    [1],
     [1,2,4,2,3],
     [1,3,5,4,7],
     [2,2,2,2,2],

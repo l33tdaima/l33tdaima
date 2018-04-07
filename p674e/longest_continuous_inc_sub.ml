@@ -1,3 +1,7 @@
+(* Build the program by
+  ocaml -I ml_modules ml_modules/print_list.cma p674e/longest_continuous_inc_sub.ml
+*)
+
 (**
  * @param {number[]} nums
  * @return {number}
@@ -38,7 +42,3 @@ let () =
     Print_list.print_list_of_int t;
     print_endline (" -> " ^ string_of_int @@ find_length_of_LCIS t)
   ) tests
-
-(* Build the program by
-  ocaml -I ml_modules ml_modules/print_list.cma p674e/longest_continuous_inc_sub.ml
-*)

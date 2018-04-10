@@ -5,36 +5,35 @@
  */
 var combinationSum = function(candidates, target) {
     candidates.sort((a,b) => a - b);
-
-    var recCombinationSum = function(candis, t) {
-        // console.log("Search", t, candis);
-        if(candis[0] > t) {
-            return [];    
-        }
-
-        let solutions = [];
-        for (let i = 0; i < candis.length; ++i) {
-            if (candis[i] === t) {
-                solutions.push([t]);
-                return solutions;
-            }
-            let subTarget = t- candis[i];
-            if (subTarget < 0) {
-                break;
-            }
-            let subSol = recCombinationSum(candis.slice(i), subTarget);
-            for (let j = 0; j < subSol.length; ++j) {
-                // insert parent node into each solution path
-                subSol[j].unshift(candis[i]);
-                solutions.push(subSol[j]);
+    let solutions = [];
+    /**
+     * Recursive Backtrack helper function
+     * closure {number[][]} solutions: output
+     * closure {number[]} candidates 
+     * @param {number[]} workPath:  temporary working path
+     * @param {number}   remTarget: ramaining target
+     * @param {number}   start: index in candidates to start search
+     */
+    let recBacktrack = function(workPath, remTarget, start) {
+        if (remTarget < 0) {
+            return;
+        } else if (remTarget === 0) {
+            solutions.push(Array.from(workPath));
+        } else {
+            for (let i = start, len = candidates.length; i < len; ++i) {
+                workPath.push(candidates[i]);
+                recBacktrack(workPath, remTarget - candidates[i], i);
+                workPath.pop();
             }
         }
-        return solutions;
-    }
-
-    return recCombinationSum(candidates, target);
+    };
+    recBacktrack(new Array(), target, 0);
+    return solutions;
 };
-
-var testCandidate = [3,4,5,6,7,8,9,11,12]; 
-var testTarget = 15; 
-console.log("Solutions:", combinationSum(testCandidate, testTarget));
+[
+    [[2, 3, 6, 7], 7],
+    [[3,4,5,6,7,8,9,11,12], 15],
+].forEach(t => {
+    console.log("Combinations in", t[0], "sum to", t[1], "->");
+    console.log(combinationSum(t[0], t[1]));
+});

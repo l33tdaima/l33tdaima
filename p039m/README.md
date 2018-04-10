@@ -14,4 +14,14 @@ A solution set is:
   [2, 2, 3]
 ]
 
-#Backtracking
+## Solution
+Classical backtracking problem.
+- Sort the candidates
+- Create a recursive backtracking helper function working on a subarray and reduced target
+  - target < 0: return
+  - target = 0: add to output
+  - target > 0: for each element in candidates, add to workingArray, recursion, remove it
+
+#UBER #SNAP
+
+#Array #Backtracking

@@ -20,7 +20,7 @@ Classical backtracking problem.
 - Create a recursive backtracking helper function working on a subarray and reduced target
   - target < 0: return
   - target = 0: add to output
-  - target > 0: for each element in candidates, add to workingArray, recursion, remove it
+  - target > 0: for each element in candidates, add to workingArray including itself, recursion, remove it
 
 #UBER #SNAP
 

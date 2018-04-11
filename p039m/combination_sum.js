@@ -32,7 +32,8 @@ var combinationSum = function(candidates, target) {
 };
 [
     [[2, 3, 6, 7], 7],
-    [[3,4,5,6,7,8,9,11,12], 15],
+    [[3, 4, 5, 6, 7, 8, 9, 11, 12], 15 ],
+    [[10, 1, 2, 7, 6, 1, 5], 8 ],
 ].forEach(t => {
     console.log("Combinations in", t[0], "sum to", t[1], "->");
     console.log(combinationSum(t[0], t[1]));

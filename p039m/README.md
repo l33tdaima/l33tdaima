@@ -25,3 +25,5 @@ Classical backtracking problem.
 #UBER #SNAP
 
 #Array #Backtracking
+
+#Similar question [#040m](../p040m/README.md) [#216m](../p216m/README.md)

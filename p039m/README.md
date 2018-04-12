@@ -26,4 +26,4 @@ Classical backtracking problem.
 
 #Array #Backtracking
 
-#Similar question [#040m](../p040m/README.md) [#216m](../p216m/README.md)
+#Similar question [#040m](../p040m/README.md) [#216m](../p216m/README.md) [#377m](../p377m/README.md)

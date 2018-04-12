@@ -21,4 +21,4 @@ The raw candidates are from array [1..9], start backtracking process like [#040m
 
 #Array #Backtracking
 
-#Similar question [#039m](../p039m/README.md) [#040m](../p040m/README.md)
+#Similar question [#039m](../p039m/README.md) [#040m](../p040m/README.md) [#377m](../p377m/README.md)

@@ -22,10 +22,15 @@ Solve the longest increasing subsequence problem like [#300m](../p300m/README.md
 
 ### Optimal Approach
 Since we only need to judge if we have increasing subsequence of 3, we can maintain two variables of min and 2nd min and look for the third one to return true, otherwise false.
-t1 := so far best candidate of end element of a one-cell subsequence to form a triplet subsequence
-t2 := so far best candidate of end element of a two-cell subsequence to form a triplet subsequence
+
+t1 := so far the best candidate of end element of a one-cell subsequence to form a triplet subsequence
+
+t2 := so far the best candidate of end element of a two-cell subsequence to form a triplet subsequence
+
 So t1 and t2 are the perfect summary of history.
 
 #FB
+
+#Array #Dynamic Programming
 
 #Similar question [#300m](../p300m/README.md) 

@@ -10,8 +10,8 @@ An excellent generalization of the whole series can be found in this [post](http
 In general, stock problem can be characterized by three factors, the ordinal of the day i, the maximum number of allowable transactions k and the number of stocks in our hand at the end of the day.
 
 This easy variant where k = Inf indicates maximum allowable transactions don't matter, k == k-1, the DP transitions are
-- dpClosed_new = max(dpClosed, dpOpen + prices[i])
-- dpOpen_new   = max(dpOpen, dpClosed - prices[i])
+- dpClosed[i] = max(dpClosed[i-1], dpOpen[i-1] + prices[i])
+- dpOpen[i] = max(dpOpen[i-1], dpClosed[i-1] - prices[i])
 
 which is equivalent to accumulate the local positive gain, note this doesn't break break the requirement of no multiple transactions at the same time, just calculate the gain. However this approach doesn't extend to the case where there is a fee [714m](../p714m/README.md).
 

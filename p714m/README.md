@@ -27,8 +27,11 @@ An excellent generalization of the whole series can be found in this [post](http
 In general, stock problem can be characterized by three factors, the ordinal of the day i, the maximum number of allowable transactions k and the number of stocks in our hand at the end of the day.
 
 Since we have inf transaction, k == k - 1, k is no longer a factor, we only need to maintain two moving DP variables, one with closed position, (0 stock at hand), one with open position (1 stock at hand). State transitions on each day are the following,
-- dpClosed_new = max(dpClosed_old, dpOpen_old + prices[i] - fee) // hold or sell
-- dpOpen_new   = max(dpOpen_old,   dpClosed_old - prices[i])     // hold or buy
+- dpClosed[i] = max(dpClosed[i-1], dpOpen[i-1] + prices[i] - fee) // hold or sell
+- dpOpen[i]   = max(dpOpen[i-1],   dpClosed[i-1] - prices[i])     // hold or buy
+or
+- dpClosed[i] = max(dpClosed[i-1], dpOpen[i-1] + prices[i])         // hold or sell
+- dpOpen[i]   = max(dpOpen[i-1],   dpClosed[i-1] - prices[i] - fee) // hold or buy
 
 #FB #BBG
 

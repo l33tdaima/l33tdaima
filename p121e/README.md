@@ -15,3 +15,16 @@ Input: [7, 6, 4, 3, 1]
 Output: 0
 
 In this case, no transaction is done, i.e. max profit = 0
+
+## Solution
+An excellent generalization of the whole series can be found in this [post](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems)
+
+In general, stock problem can be characterized by three factors, the ordinal of the day i, the maximum number of allowable transactions k and the number of stocks in our hand at the end of the day.
+
+This simple version k = 1, just needs intuitively seek minimum for open and higher for closed position.
+- dpClosed_new = max(dpClosed, prices[i] - dpOpen)
+- dpOpen_new  = min(dpOpen, prices[i])
+
+#FB #MSFT #AMZN #BBG #UBER
+
+#Array #Dynamic Programming

@@ -28,3 +28,6 @@ This simple version k = 1, just needs intuitively seek minimum for open and high
 #FB #MSFT #AMZN #BBG #UBER
 
 #Array #Dynamic Programming
+
+#Similar question
+[121e](../p121e/README.md) [122e](../p122e/README.md) [123h](../p123h/README.md) [188h](../p188h/README.md) [309m](../p309m/README.md) [714m](../p714m/README.md)

@@ -4,12 +4,12 @@
  * @return {number}
  */
 var maxProfit = function(prices, fee) {
-    let dpOpen = Number.MIN_SAFE_INTEGER;
     let dpClosed = 0;
+    let dpOpen = Number.MIN_SAFE_INTEGER;
     for (let price of prices) {
         let prevClosed = dpClosed;
         dpClosed = Math.max(dpClosed, dpOpen + price - fee); // hold or sell
-        dpOpen   = Math.max(dpOpen, prevClosed - price);     // hold or buy
+        dpOpen   = Math.max(dpOpen, prevClosed - price); // hold or buy
     }
     return dpClosed;
 };

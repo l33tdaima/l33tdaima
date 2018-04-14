@@ -6,19 +6,21 @@
  * @param {number[]} prices
  * @return {number}
  *)
- type dp = {
+type dp = {
   max_closed : int;
   max_open   : int;
 }
 let max_profit prices =
   let ans = List.fold_left (fun dp p ->
-      { max_closed = max dp.max_closed (p - dp.max_open);
-        max_open = min dp.max_open p; }
-    )
+    { 
+      max_closed = max dp.max_closed (p - dp.max_open);
+      max_open = min dp.max_open p;
+    } )
     { max_closed = 0; max_open = max_int; }
     prices in
   ans.max_closed
 
+(* TEST *)
 let () =
   let tests = [
     [1];

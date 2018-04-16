@@ -1,4 +1,4 @@
-# Design Messaging App like Facebook Messenger/WhatsApp/Wechat
+# How To Design Messaging App like Facebook Messenger/WhatsApp/Wechat
 
 ## Basic Infrastructure
 - Basically, one of the most common ways to build a messaging app is to have a chat server that acts as the core of the whole system.

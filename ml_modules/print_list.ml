@@ -1,4 +1,4 @@
-(* build the bytecode library
+(* Build the bytecode library
   ocamlc -a ml_modules/print_list.ml -o ml_modules/print_list.cma
 *)
 
@@ -11,4 +11,10 @@ let rec print_list lst print_func = match lst with
 let print_list_of_int lst =
   print_string "[ ";
   print_list lst print_int;
+  print_string " ]"
+
+(* val print_list_of_str: string list -> unit *)
+let print_list_of_string lst =
+  print_string "[ ";
+  print_list lst print_string;
   print_string " ]"

@@ -7,12 +7,8 @@ var multiply = function (A, B) {
     let rA = A.length,
         rB = B.length;
     let cB = B[0].length;
-    let AB = Array.from({
-            length: rA
-        }, (v) =>
-        Array.from({
-            length: cB
-        }, (v) => 0));
+    let AB = Array.from({ length: rA }, (v) =>
+                Array.from({ length: cB }, (v) => 0));
 
     for (let i = 0; i < rA; ++i) {
         for (let k = 0; k < rB; ++k) {

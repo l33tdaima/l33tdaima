@@ -15,11 +15,16 @@ The number of tasks is in the range [1, 10000].
 The integer n is in the range [0, 100].
 
 ## Solution
-1. Count for each task (A-Z) O(N);
-2. Sort by count O(26*log(26));
-3. Cut by cooling period (n + 1), compute the count of tasks beyond this cutoff as substitutes;
-4. Fill idles for all the tasks within the period, maxCount - 1 - count, count them, O(26);
-5. Sum of least intervals = overallCount + max(sum(idles) - sum(substitutes), 0), as if we have extra substitute tasks we don't have to fill by idles, that is why idles is compensated by substitutes.
+There are two basis cases, n > 25 and n <= 25, and the result is either length of tasks (don't need idle), or length of tasks plus some amount of idles.
+
+- Count for each task (A-Z) O(N), store them into an array of size 26;
+- Sort by count O(26*log(26)) in descending order, so that we know how many chucks in total which is `maxOccurs-1`, and the expected size of each chuck is `n+1`;
+- Accumulate from sorted task index 1 to `min(n, 25)`, calulate how many idles we need to fill the chunk, each contribution is `maxOccurs - 1 - count`;
+  - If n > 25, we need additional idles which A-Z can't offer, `(n-25) * (maxOccurs - 1)`;
+  - Now we have sumIdles.
+- From index (n + 1) to 25, we also have some amount of tasks beyond this cutoff as substitutes for idles;
+- Sum of least intervals = tasks.length + max(sumIdles - sumSubstitutes, 0), because if we have extra substitute tasks we don't have to fill by idles, that is why idles is compensated by substitutes.
 
 #FB
+
 #Array #Greedy #Queue

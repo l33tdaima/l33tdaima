@@ -16,9 +16,6 @@ var leastInterval = function(tasks, n) {
     let numIdle = 0, numSubs = 0;
     let maxOccurs = taskCountMap[0];
     let n1 = Math.min(n, 25);
-    for (let i = n1 + 1; i <= 25; ++i) {
-        numSubs += taskCountMap[i];
-    }
     for (let i = 1; i <= n1; ++i) {
         if (taskCountMap[i] < maxOccurs) {
             numIdle += maxOccurs - 1 - taskCountMap[i];
@@ -26,6 +23,9 @@ var leastInterval = function(tasks, n) {
     }
     if (n > 25) {
         numIdle += (n-25) * (maxOccurs - 1);
+    }
+    for (let i = n1 + 1; i <= 25; ++i) {
+        numSubs += taskCountMap[i];
     }
     return count + Math.max(numIdle - numSubs, 0);
 };

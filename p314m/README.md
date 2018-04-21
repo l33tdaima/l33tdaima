@@ -7,7 +7,7 @@ If two nodes are in the same row and column, the order should be from left to ri
 Examples:
 
 - Given binary tree [3,9,20,null,null,15,7],
-
+```
    3
   /\
  /  \
@@ -15,15 +15,18 @@ Examples:
     /\
    /  \
   15   7
+```
 return its vertical order traversal as:
+```
 [
   [9],
   [3,15],
   [20],
   [7]
 ]
-
+```
 - Given binary tree [3,9,8,4,0,1,7],
+```
      3
     /\
    /  \
@@ -31,7 +34,9 @@ return its vertical order traversal as:
   /\  /\
  /  \/  \
  4  01   7
+```
 return its vertical order traversal as:
+```
 [
   [4],
   [9],
@@ -39,19 +44,22 @@ return its vertical order traversal as:
   [8],
   [7]
 ]
-
+```
 - Given binary tree [3,9,8,4,0,1,7,null,null,null,2,5] (0's right child is 2 and 1's left child is 5),
+```
      3
-    /\
-   /  \
-   9   8
-  /\  /\
- /  \/  \
- 4  01   7
+    / \
+   /   \
+   9    8
+  /\   / \
+ /  \ /   \
+ 4  0 1    7
     /\
    /  \
    5   2
+```
 return its vertical order traversal as:
+```
 [
   [4],
   [9,5],
@@ -59,6 +67,7 @@ return its vertical order traversal as:
   [8,2],
   [7]
 ]
+```
 
 ## Solution
 - Traverse the tree via BFS (Require top to down, otherwise DFS is also fine), add the value to a map using key 0 for root, (key - 1) for left child, and (key + 1) for right child, the value for the map is a list of node value.

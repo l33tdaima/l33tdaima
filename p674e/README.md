@@ -19,8 +19,11 @@ Explanation: The longest continuous increasing subsequence is [2], its length is
 
 Note: Length of the array will not exceed 10,000.
 
+## Solution
+O(N) complexity of scanning the array, reset the two pointers if decreasing from prev item, otherwise computing the potential LCIS.
+
 #FB
 
 #Array #Two Pointer
 
-#Similar question [#673m](../p673m/README.md) [#300m](../p300m/README.md)
+#Similar question [#300m](../p300m/README.md) [#673m](../p673m/README.md) [#674e](../p674e/README.md) 

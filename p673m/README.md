@@ -42,4 +42,4 @@ and also dynamic programming transition for number of LIS,
 
 #Array #Dynamic Programming
 
-#Similar question [#674e](../p674e/README.md) [#300m](../p300m/README.md)
+#Similar question [#300m](../p300m/README.md) [#673m](../p673m/README.md) [#674e](../p674e/README.md) 

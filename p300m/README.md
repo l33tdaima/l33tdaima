@@ -32,10 +32,10 @@ dp: [0]
 dp: [0, 8]
 dp: [0, 4]
 dp: [0, 4, 12]
-dp: [0 , 2, 12] which is not the longest increasing subsequence, but length of dp array results in length of Longest Increasing Subsequence.
+dp: [0, 2, 12] which is not the longest increasing subsequence, but length of dp array results in length of Longest Increasing Subsequence.
 ```
 #MSFT
 
 #Depth-first Search #Dynamic Programming
 
-#Similar question [#674e](../p674e/README.md) [#673m](../p673m/README.md)
+#Similar question [#300m](../p300m/README.md) [#673m](../p673m/README.md) [#674e](../p674e/README.md) 

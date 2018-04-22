@@ -22,8 +22,8 @@ An excellent generalization of the whole series can be found in this [post](http
 In general, stock problem can be characterized by three factors, the ordinal of the day i, the maximum number of allowable transactions k and the number of stocks in our hand at the end of the day.
 
 This simple version k = 1, just needs intuitively seek minimum for open and higher for closed position.
-- dpClosed_new = max(dpClosed, prices[i] - dpOpen)
-- dpOpen_new  = min(dpOpen, prices[i])
+- dpClosed[i] = max(dpClosed[i-1], prices[i] - dpOpen[i-1])
+- dpOpen[i] = min(dpOpen[i-1], prices[i])
 
 #FB #MSFT #AMZN #BBG #UBER
 

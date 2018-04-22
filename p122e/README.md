@@ -13,7 +13,7 @@ This easy variant where k = Inf indicates maximum allowable transactions don't m
 - dpClosed[i] = max(dpClosed[i-1], dpOpen[i-1] + prices[i])
 - dpOpen[i] = max(dpOpen[i-1], dpClosed[i-1] - prices[i])
 
-which is equivalent to accumulate the local positive gain, note this doesn't break break the requirement of no multiple transactions at the same time, just calculate the gain. However this approach doesn't extend to the case where there is a fee [714m](../p714m/README.md).
+which is equivalent to accumulate the local positive gain, note this doesn't break the requirement of no multiple transactions at the same time, just calculate the gain. However this approach doesn't extend to the case where there is a fee [714m](../p714m/README.md).
 
 #BBG
 

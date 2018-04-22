@@ -29,6 +29,9 @@ var numDecodings = function(s) {
     "",
     "2",
     "12",
+    "102",
+    "1002",
+    "1302",
     "123",
     "132",
 ].forEach(function (test) {

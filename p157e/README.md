@@ -15,3 +15,5 @@ The key here is to understand buf and buf4 both are output to store the data rea
 #FB
 
 #String
+
+#Similar questions [#157e](../p157e/README.md) [#158h](../p158h/README.md)

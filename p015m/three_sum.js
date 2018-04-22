@@ -3,20 +3,13 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-    var sol = [];
-    // no solution
-    if (nums.length < 3) {
-        return sol;
-    }
+    let sol = [];
+    if (nums.length < 3) { return sol; }
+    nums.sort((a, b) => a - b);
 
-    nums.sort(function compareNumbers(a, b) {
-        return a - b;
-    });
-    // console.log("Sorted:", nums);
-
-    for (var i = 0; i < nums.length - 2; ++i) {
-        var lo = i + 1;
-        var hi = nums.length - 1;
+    for (let i = 0; i < nums.length - 2; ++i) {
+        let lo = i + 1;
+        let hi = nums.length - 1;
         while (lo < hi) {
             if (nums[i] + nums[lo] + nums[hi] === 0) {
                 sol.push([nums[i], nums[lo], nums[hi]]);
@@ -28,14 +21,13 @@ var threeSum = function (nums) {
                 while (lo < hi && nums[hi] === nums[hi - 1]) {
                     hi--;
                 }
-                lo++;
+                lo++; hi--;
             } else if (nums[i] + nums[lo] + nums[hi] < 0) {
                 lo++;
             } else {
                 hi--;
             }
         }
-
         // avoid duplicates on the first element
         while (i < nums.length - 2 && nums[i] === nums[i + 1]) {
             i++;
@@ -43,21 +35,17 @@ var threeSum = function (nums) {
     }
     return sol;
 };
-
-var tests = [
+// TEST
+[
     [0],
     [0, 0, 0],
     [0, 1, -1, -1, 0, 1, 2, -1, -4],
     [-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6]
-];
-// [-4, -1, -1, -1, 0, 0, 1, 1, 2]
-tests.forEach(function (test) {
-    console.log("Solutions of 3 sum:", test);
-
+].forEach((test) => {
+    console.log("Solutions of 3 sum for", test, "->");
     var sol = threeSum(test);
     sol.forEach(function (val, index) {
         console.log("  ", index, ": ", val);
     }, this);
-
-    console.log("End\n-------\n");
+    console.log("-------\n");
 }, this);

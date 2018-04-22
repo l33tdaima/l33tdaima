@@ -25,8 +25,8 @@ var merge = function(intervals) {
         (a.end - b.end) : (a.start - b.start)
     );
 
-    var merged = [];
-    var curr = intervals[0];
+    let merged = [];
+    let curr = intervals[0];
     for (let i = 1; i < intervals.length; ++i) {
         // with overlapping
         if (intervals[i].start <= curr.end) {

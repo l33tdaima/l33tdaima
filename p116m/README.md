@@ -35,7 +35,11 @@ After calling your function, the tree should look like:
 ```
 
 ## Solution
-The intuitive way is to do BFS and set up the links, but for this particular case with perfect binary tree, we can do that level by level by moving the level linked list head with `pHead = pHead.left`.
+The intuitive way is to do BFS and set up the links, but for this particular case with perfect binary tree, we can do 
+- Move level by level down by moving the linked list head for current level with `pHead = pHead.left`;
+- When iterating linked list in each level, which is linked during the upper level iteration,
+  - Point left to right;
+  - Point right to next left, if there is any.
 
 #MSFT
 

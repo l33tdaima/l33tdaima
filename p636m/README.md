@@ -44,6 +44,8 @@ We will also need to confirm the assumption that the first log also start from t
 
 We also need to point out, the start time per statment is a beginning of clock time, using second as unit of timestamp, start time is like 09:00:01.000, while end time is like 09:00:02.99999999 which hides another second.
 
+We also confirm that the input must be valid, such as end entry won't follow an start entry with different function id.
+
 ### Algorithm
 Iterate each log and maintain the previous timestamp and stack of function id, the goal is to compute the duration for each function id at the moment of discrete event timestamp,
 - if sees "start" tag
@@ -53,7 +55,6 @@ Iterate each log and maintain the previous timestamp and stack of function id, t
 - else sees "end" tag
     - pop stack, assign the duration between current end and prev timestamp to the function id just popped + 1
     - prev = end_time + 1
-
 
 #FB #UBER
 

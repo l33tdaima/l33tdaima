@@ -19,10 +19,11 @@ var exclusiveTime = function(n, logs) {
             prevTime = currTime;
         } else { // "end":
             console.assert(rec[1] === "end");
-            ans[rec[0]] += currTime - prevTime + 1;
+            ans[funcIdStack.pop()] += currTime - prevTime + 1;
             prevTime = currTime + 1;
-            funcIdStack.pop();
         }
+        // console.log(l, prevTime, funcIdStack);
+        // console.log(ans);
     }
     return ans;
 };
@@ -30,11 +31,12 @@ var exclusiveTime = function(n, logs) {
 [
     {
         n: 2,
-        logs:
-        ["0:start:0",
-        "1:start:2",
-        "1:end:5",
-        "0:end:6"]
+        logs: [
+            "0:start:0",
+            "1:start:2",
+            "1:end:5",
+            "0:end:6"
+        ]
     },
 ].forEach(t => {
     console.log("Exclusive time for", t.n, "functions",

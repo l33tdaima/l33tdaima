@@ -16,4 +16,5 @@ The remaining job is to check if k indeed does not know any other persons and al
 To this point, I actually realize that we can further shrink the calling of knows method. For example, we don't need to check if k knows k+1 to n-1 in the second loop, because the first loop has already done that.
 
 #LNKD #FB
+
 #Array

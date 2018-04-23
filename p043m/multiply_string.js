@@ -68,31 +68,26 @@ var multiply = function(num1, num2) {
  * @return {string}
  */
 var multiplyImp = function(num1, num2) {
-    let num1Array = Array.from(num1, (v) => parseInt(v));
-    let num2Array = Array.from(num2, (v) => parseInt(v));
+    // String can be converted to array using Array.from
+    // let num1Array = Array.from(num1, (v) => parseInt(v));
+    // let num2Array = Array.from(num2, (v) => parseInt(v));
 
     // accumulated result
     let resultArray = Array.from(
-        {length: num1Array.length + num2Array.length}, (v) => 0); 
-    for (let i2 = num2Array.length - 1; i2 >= 0; --i2) {
-        let digit = num2Array[i2];
-        let prodCarry = 0;
-        let sumCarry = 0;
-        for (let i1 = num1Array.length - 1; i1 >= 0; --i1) {
-            let prod = digit * num1Array[i1] + prodCarry;
-            prodCarry = ~~(prod / 10);
-            let i = i2 + 1 + i1;
-            let sum = resultArray[i] + prod % 10 + sumCarry;
-            sumCarry = ~~(sum / 10);
-            resultArray[i] = sum % 10;
+        {length: num1.length + num2.length}, (v) => 0); 
+    for (let i = num1.length - 1; i >= 0; --i) {
+        for (let j = num2.length - 1; j >= 0; --j) {
+            let prod = (num1[i] - '0') * (num2[j] - '0');
+            let lsb = i + j + 1, msb = i + j;
+            let sum = prod + resultArray[lsb];
+            resultArray[msb] += ~~(sum / 10);
+            resultArray[lsb] = sum % 10;
         }
-        resultArray[i2] = prodCarry + sumCarry;
     }
     // remove leading zeros
-    /*
     while(resultArray[0] === 0 && resultArray.length > 1) {
         resultArray.shift();
-    }*/
+    }
     return resultArray.join("");
 }
 

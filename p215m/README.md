@@ -8,8 +8,9 @@ Note:
 You may assume k is always valid, 1 ≤ k ≤ array's length.
 
 ## Solution:
-A short heap based solution in C++ O(K logN).
-A quick sort pivot based solution in JS.
+- A short heap based solution in C++ O(K logN).
+- A quick sort pivot based solution in JS.
+
+#FB #MSFT #MSFT
 
 #Divide and Conquer #Heap
-#FB #MSFT #MSFT

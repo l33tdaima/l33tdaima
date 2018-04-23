@@ -11,7 +11,7 @@ var findKthLargest = function (nums, k) {
     };
     var partition = function (begin, end) {
         let pivot = nums[begin];
-        let l = begin + 1, r = end;;
+        let l = begin + 1, r = end;
         while (l <= r) {
             if (nums[l] < pivot && nums[r] > pivot) {
                 swap(l++, r--);

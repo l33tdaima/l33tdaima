@@ -11,28 +11,58 @@ const Tree = require('binary_tree');
  * @param {TreeNode} p
  * @return {TreeNode}
  */
-var inorderSuccessor = function(root, p) {
+var inorderSuccessorRec = function(root, p) {
     if (root == null || p == null) {
         return null;
     }
     if (p.val < root.val) {
-        let s = inorderSuccessor(root.left, p);
+        let s = inorderSuccessorRec(root.left, p);
         return (s === null)? root : s;
     } else { // p.val >= root.val
-        return inorderSuccessor(root.right, p);
+        return inorderSuccessorRec(root.right, p);
     }
 };
-var inorderPredecessor = function(root, p) {
+var inorderSuccessorIter = function(root, p) {
+    if (root == null || p == null) {
+        return null;
+    }
+    let succ = null;
+    while (root !== null) {
+        if (p.val < root.val) {
+            succ = root;
+            root = root.left;
+        } else {
+            root = root.right;
+        }
+    }
+    return succ;
+};
+var inorderPredecessorRec = function(root, p) {
     if (root == null || p == null) {
         return null;
     }
     if (p.val <= root.val) {
-        return inorderPredecessor(root.left, p);
+        return inorderPredecessorRec(root.left, p);
     } else {
-        let s = inorderPredecessor(root.right, p);
+        let s = inorderPredecessorRec(root.right, p);
         return (s === null)? root : s;
     }
 }
+var inorderPredecessorIter = function(root, p) {
+    if (root == null || p == null) {
+        return null;
+    }
+    let pre = null;
+    while (root !== null) {
+        if (p.val > root.val) {
+            pre = root;
+            root = root.right;
+        } else {
+            root = root.left;
+        }
+    }
+    return pre;
+};
 // TEST
 let find = function(root, v) {
     if (root == null) { return null; }
@@ -50,10 +80,15 @@ console.log("Testing tree", des);
     0,2,3,4,5,6,7,8,9,
 ].forEach(t => {
     let p = find(tree, t);
-    let ans = inorderSuccessor(tree, p);
-    console.log("Inorder successor of", p.val, "->",
-                (ans == null)? null : ans.val);
-    ans = inorderPredecessor(tree, p);
-    console.log("Preorder predecessor of", p.val, "->",
-                (ans == null)? null : ans.val);
+    let ansRec = inorderSuccessorRec(tree, p);
+    let ansIte = inorderSuccessorIter(tree, p);
+    console.log("  Inorder successor of", p.val, "->",
+                (ansRec == null)? null : ansRec.val, "&&",
+                (ansIte == null)? null : ansIte.val);
+    ansRec = inorderPredecessorRec(tree, p);
+    ansIte = inorderPredecessorIter(tree, p);
+    console.log("  Preorder predecessor of", p.val, "->",
+                (ansRec == null)? null : ansRec.val, "&&",
+                (ansIte == null)? null : ansIte.val);
+    console.log("  ---");
 });

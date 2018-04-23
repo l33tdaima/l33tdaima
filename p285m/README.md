@@ -6,10 +6,10 @@ Note: If the given node has no in-order successor in the tree, return null.
 
 ## Solution
            6
-         /    \
-        2      8
-       / \    / \
-      0   4  7   9
+         /   \
+        2     8
+       / \   / \
+      0   4 7   9
          / \
         3   5
 
@@ -22,6 +22,11 @@ Inorder sequence 0,2,3,4,5,6,7,8,9
 - A node's successor is
   - Its direct parent or null if it dosen't have right child
   - The smallest node when inorder traversal of its right child
+
+The iterative approach is
+- Walk left if target is less than root, and set root to be a potential successor candidate
+- Walk right if target is greater or equal to root
+- Return the candidate when reaching leaf
 
 In addition, a node's predecessor is
   - The largest node when inorder traversal of its left child

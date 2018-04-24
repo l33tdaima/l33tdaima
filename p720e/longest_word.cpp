@@ -1,3 +1,4 @@
+// Build program by
 // g++ -std=c++11 longest_word.cpp -o test && ./test && rm test
 #include <string>
 #include <vector>

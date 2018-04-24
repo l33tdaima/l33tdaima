@@ -1,3 +1,6 @@
+// Build program by
+// g++ -std=c++11 *.cpp -o test && ./test && rm test
+
 #include <vector>
 #include <unordered_map>
 

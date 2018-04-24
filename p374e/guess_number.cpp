@@ -1,3 +1,6 @@
+// Build program by
+// g++ -std=c++11 *.cpp -o test && ./test && rm test
+
 #include <cstdlib>
 #include <iostream>
 // Forward declaration of guess API.

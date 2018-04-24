@@ -1,3 +1,6 @@
+// Build program by
+// g++ -std=c++11 -c p283e/move_zeroes.cpp && rm move_zeroes.o
+
 #include <vector>
 using namespace std;
 class Solution {
@@ -14,4 +17,3 @@ public:
         }
     }
 };
-// g++ -std=c++11 -c p283e/move_zeroes.cpp && rm move_zeroes.o

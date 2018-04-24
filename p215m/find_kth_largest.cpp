@@ -1,3 +1,5 @@
+// g++ -std=c++11 find_kth_largest.cpp -o test && ./test && rm test
+
 #include <vector>
 #include <queue>
 #include <initializer_list>

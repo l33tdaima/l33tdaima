@@ -25,6 +25,16 @@ All the strings in the input will only contain lower-case letters.
 The size of the dictionary won't exceed 1,000.
 The length of all the strings in the input won't exceed 1,000.
 
+# Longest Chain
+![TwoSigma](TwoSigma.jpg)
 
+## Solution
+We will do bottom up DP approach using a hash table storing (word, chainLength)
+- Sort the words in dictionary by increasing length;
+- Scan the sorted the list, for each of the word;
+  - Try removing one letter, increasing the chainLength if the reduced substring in the hash set;
+  - Add this word into hash table with the new chainLength;
+
+Overall complexity is O(NlogN) + O(N)
 
 #Similar questions [#524m](../p524m/README.md) [#720e](../p720e/README.md)

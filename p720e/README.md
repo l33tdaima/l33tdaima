@@ -40,3 +40,5 @@ The word is built by appending not by inserting.
 #Pinterest #TwoSigma
 
 #Hash Table #Trie
+
+#Similar questions [#524m](../p524m/README.md) [#720e](../p720e/README.md)

@@ -19,11 +19,17 @@ s = "abpcplea", d = ["a","b","c"]
 Output: 
 "a"
 ```
-
 Note:
 All the strings in the input will only contain lower-case letters.
 The size of the dictionary won't exceed 1,000.
 The length of all the strings in the input won't exceed 1,000.
+
+## Solution
+- Sort the dictionary in length decreasing and alphabetical order 
+  - Note: This step might not bring performance benefits
+- For each word in dictionary
+  - Walk through S, keeping track of the position `i` of the word that indicates that word[i:] still can be matched to S. Increasing word[i] matches c in S, or skip unmatched c in S. After looping S, i should be the length of word.
+  - Update the longest if the current word is longer and alphabetically smaller
 
 #GOOGL
 

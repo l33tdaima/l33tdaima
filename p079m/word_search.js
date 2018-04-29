@@ -10,7 +10,6 @@ var exist = function(board, word) {
     // board, word are accessed under closure
     var recExist = function(ib, jb, iw) {
         // console.log("# Travel on [", ib, jb, "], word to match:", word.substr(0, iw + 1));
-
         if (ib < 0 || jb < 0 || ib >= board.length || jb >= board[ib].length) {
             return false;
         }
@@ -22,7 +21,7 @@ var exist = function(board, word) {
         if (iw === word.length - 1) { return true; }
 
         used[ib][jb] = true;
-        // DFS search for the next char
+        // DFS search for the next char with backtracking
         var found = recExist(ib - 1, jb, iw + 1) || // up
                     recExist(ib, jb - 1, iw + 1) || // left
                     recExist(ib + 1, jb, iw + 1) || // down
@@ -42,7 +41,7 @@ var exist = function(board, word) {
     }
     return found;
 };
-
+// TEST
 var board = [
     ['A','B','C','E'],
     ['S','F','C','S'],
@@ -54,8 +53,7 @@ var words = [
     "DECFD",
     "ASFBA",
     "ABCCEDFSA"
-]
-
+];
 words.forEach( function (word) {
-    console.log("Does", word, "exist?", exist(board, word));
+    console.log("Does \"" + word + "\" exist? ->", exist(board, word));
 });

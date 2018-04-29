@@ -3,7 +3,7 @@
  * @return {number}
  */
 var romanToInt = function(s) {
-    var valueMap = {
+    const valueMap = {
         'I': 1,
         'V': 5,
         'X': 10,
@@ -12,25 +12,32 @@ var romanToInt = function(s) {
         'D': 500,
         'M': 1000
     };
-
-    var result = 0;
-    for(var i = 0; i < s.length; ++i) {
-        if(i + 1 < s.length && valueMap[s.charAt(i+1)] > valueMap[s.charAt(i)]) {
-                result += valueMap[s.charAt(i+1)] - valueMap[s.charAt(i)];
-                ++i;
+    let result = 0, i = 0;
+    while (i < s.length) {
+        let curr = valueMap[s[i]];
+        let next = (i + 1 < s.length) ? valueMap[s[i + 1]] : 0;
+        if (curr < next) {
+            result += next - curr;
+            i += 2;
         }
         else {
-            result += valueMap[s.charAt(i)];
+            result += curr;
+            i += 1;
         }
     }
     return result;
 };
-
-console.log("Roman I = " + romanToInt("I"));
-console.log("Roman II = " + romanToInt("II"));
-console.log("Roman VII = " + romanToInt("VII"));
-console.log("Roman XXV = " + romanToInt("XXV"));
-console.log("Roman LXXXVIII = " + romanToInt("LXXXVIII"));
-console.log("Roman XCIX = " + romanToInt("XCIX"));
-console.log("Roman DCCCXC = " + romanToInt("DCCCXC"));
-console.log("Roman MDCCC = " + romanToInt("MDCCC"));
+// TESTS
+[
+    ["III", 3],
+    ["IV", 4],
+    ["VII", 7],
+    ["IX", 9],
+    ["LVIII", 58],
+    ["XCIX", 99],
+    ["DCCCXC", 890],
+    ["MCMXCIV", 1994],
+].forEach(t => {
+    console.log("Roman", t[0], "to int ->",
+                romanToInt(t[0]), romanToInt(t[0]) === t[1]);
+});

@@ -4,10 +4,10 @@
  */
 var maximumSwap = function(num) {
     // Convert to array
-    let nums = []; 
-    while (num !== 0) {
-        nums.unshift(num % 10);
-        num = ~~(num/10);
+    let nums = [], n = num;
+    while (n !== 0) {
+        nums.unshift(n % 10);
+        n = ~~(n/10);
     }
     // Index the occurrence of each digit
     let ht = Array.from({length: 10}, v => -1);
@@ -28,7 +28,7 @@ var maximumSwap = function(num) {
             return nums.reduce((p, c) => p * 10 + c, 0);
         }
     }
-    return nums.reduce((p, c) => p * 10 + c, 0);
+    return num;
 };
 // TEST
 [

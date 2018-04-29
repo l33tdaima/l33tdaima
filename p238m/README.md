@@ -10,6 +10,12 @@ Follow up:
 Could you solve it with constant space complexity? (Note: The output array does not count as extra space for the purpose of space complexity analysis.)
 
 ## Solution
-Fold left in the first round, Fold right in the second round.
+### O(n) Space Approach
+The idea is to store the product left to the current element into an array, then the product right to the current element into another array. Finally the product of these two arrays.
+
+### O(1) Space Approach
+The idea is the same, after folding left for the product to the left of each element, we can combine the fold right and multiplying it to left product, into the same array. Hence drop the space complexity to O(1).
+
+#FB #MSFT #AMZN #LNKD #APPL
 
 #Array

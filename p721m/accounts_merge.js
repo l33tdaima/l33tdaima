@@ -20,7 +20,6 @@ var accountsMerge = function(accounts) {
     } // console.log(emailIdMap);
     
     // 2. Use DFS to merge accounts
-    let merged = []; // name * Set of emails
     let visited = Array.from({length: len}, v => false);
     // Given an acccount id, fill in all the emails linked using the emailIdMap
     let recDFS = function(i, emails) {
@@ -35,6 +34,7 @@ var accountsMerge = function(accounts) {
             }
         }
     };
+    let merged = []; // name * Set of emails
     for (let i = 0; i < len; ++i) {
         let emails = new Set(); 
         recDFS(i, emails);

@@ -7,10 +7,16 @@ Now, we would like to merge these accounts. Two accounts definitely belong to th
 After merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails in sorted order. The accounts themselves can be returned in any order.
 
 ## Example 1:
-- Input: 
-accounts = [["John", "johnsmith@mail.com", "john00@mail.com"], ["John", "johnnybravo@mail.com"], ["John", "johnsmith@mail.com", "john_newyork@mail.com"], ["Mary", "mary@mail.com"]]
-- Output: [["John", 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com'],  ["John", "johnnybravo@mail.com"], ["Mary", "mary@mail.com"]]
-
+```
+Input: 
+accounts = [["John", "johnsmith@mail.com", "john00@mail.com"], 
+            ["John", "johnnybravo@mail.com"],
+            ["John", "johnsmith@mail.com", "john_newyork@mail.com"],
+            ["Mary", "mary@mail.com"]]
+Output: [["John", 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com'], 
+         ["John", "johnnybravo@mail.com"],
+         ["Mary", "mary@mail.com"]]
+```
 Explanation: 
 The first and third John's are the same person as they have the common email "johnsmith@mail.com".
 The second John and Mary are different people as none of their email addresses are used by other accounts.

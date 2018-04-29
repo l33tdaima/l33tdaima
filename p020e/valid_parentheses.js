@@ -20,7 +20,14 @@ var isValid = function(s) {
         }
     }
     return (stack.length === 0);
-}
-
-var test = "s.forEach(function(ch){)}";
-console.log("String: '" + test + "' is valid? " + isValid(test));
+};
+// TEST
+[
+    "{}",
+    "()[]{}",
+    "(]",
+    "([)]",
+    "{[]}",
+].forEach(t => {
+    console.log("Parenthese: '" + t + "' is valid? ->", isValid(t));
+});

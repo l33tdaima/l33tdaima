@@ -20,3 +20,5 @@ We will focus the design of fundamental feature of 1-on-1 chat.
 ## Scalability
 - How to reduce the cost of HTTP or other protocol's connection resouce?  HTTP persistent connection.
 - How to handle massive amount of users globally. Sharding multiple chat servers.
+
+[Reference](http://blog.gainlo.co/index.php/2016/04/19/design-facebook-chat-function/)

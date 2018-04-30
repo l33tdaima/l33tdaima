@@ -24,3 +24,5 @@ Refer to one of the [implementation](../p146h/README.md).
 ## Scalability
 - Distributed cache to mulitiple machines.
 - The general strategy is to keep a hash table that maps each resource to a machine. then direct the request to that machine. At machine it works similar to local cache.
+
+[Reference](http://blog.gainlo.co/index.php/2016/05/17/design-a-cache-system/)

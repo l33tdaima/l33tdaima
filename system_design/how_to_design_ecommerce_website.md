@@ -33,3 +33,6 @@ ECommerce website requires high availability by having hundreds or thousands of 
 - Strong consistency by placing lock on competing resources is usually costly and blocking system.
 - Weak consistency by providing minimum guarantee of consistency.
 - Eventual consistency: the system only guarantees that every replica will have the same value eventually. Basically, it’s possible that each replica holds different versions of the data at a particular time. So when the client read the data, it may get multiple versions. At this point, the client (instead of the database) is responsible to resolve all the conflicts and update them back to the server.
+
+[Reference](http://blog.gainlo.co/index.php/2016/08/22/design-ecommerce-website-part/)
+[Reference](http://blog.gainlo.co/index.php/2016/08/28/design-ecommerce-website-part-ii/)

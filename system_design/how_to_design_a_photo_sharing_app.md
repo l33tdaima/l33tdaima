@@ -31,3 +31,5 @@ To check a user’s feed, we can fetch all pictures from people he follows.
   - Offline pipeline to precalcuate.
 - Architecture with well designed components which easily get horizontally sharded.
 - Database partitioning (vertical) and sharding (horizontal).
+
+[Reference](http://blog.gainlo.co/index.php/2016/03/01/system-design-interview-question-create-a-photo-sharing-app/)

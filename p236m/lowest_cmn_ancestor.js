@@ -12,22 +12,31 @@ const Tree = require('binary_tree');
  * @param {TreeNode} q
  * @return {TreeNode}
  */
-var lowestCommonAncestor = function(root, p, q) {
+var lowestCommonAncestorGrace = function(root, p, q) {
+    if (root == null || root === p || root === q) {
+        return root;
+    }
+    let left = lowestCommonAncestor(root.left, p, q);
+    let right = lowestCommonAncestor(root.right, p, q);
+    if (left !== null && right !== null) {
+        return root;
+    } else {
+        return (left !== null) ? left : right;
+    }
+};
+var lowestCommonAncestorSpeedup = function(root, p, q) {
     let lca = null;
     /**
-     * @param {TreeNode} current node
-     * find target of q and p, final result are closure
+     * Find target of q and p, final result are closure
      * @return count of node found
      */
-    var recFindNode = function(curr) {
-        if (curr === null) {
-            return 0;
-        }
-        let foundInLeft = recFindNode(curr.left);
+    var recFindNode = function(curr, p, q) {
+        if (curr === null) { return 0; }
+        let foundInLeft = recFindNode(curr.left, p, q);
         if (foundInLeft === 2) { // already found in the left child
             return 2;
         }
-        let foundInRight = recFindNode(curr.right);
+        let foundInRight = recFindNode(curr.right, p, q);
         if (foundInRight === 2) { // already found in the right child
             return 2;
         }
@@ -44,11 +53,9 @@ var lowestCommonAncestor = function(root, p, q) {
         }
         return foundTotal; // nothing is found
     }
-    let found = recFindNode(root);
-    // console.log("Found", found, "nodes");
+    let found = recFindNode(root, p, q);
     return lca;
 };
-
 // TEST
 var buildTestCase = function(data, pNum, qNum) {
     let buffer = data.split(',');
@@ -66,7 +73,6 @@ var buildTestCase = function(data, pNum, qNum) {
         if (parseInt(elem) === qNum) {
             qNode = node;
         }
-
         node.left  = recDeserialize(buffer);
         node.right = recDeserialize(buffer);
         return node;
@@ -76,7 +82,7 @@ var buildTestCase = function(data, pNum, qNum) {
              p: pNode,
              q: qNode };
 };
-
+let lowestCommonAncestor = lowestCommonAncestorSpeedup;
 var testData = "3,5,6,#,#,2,7,#,#,4,#,#,1,0,#,#,8,#,#";
 [
     [7, 4],
@@ -88,10 +94,10 @@ var testData = "3,5,6,#,#,2,7,#,#,4,#,#,1,0,#,#,8,#,#";
 ].forEach(function(pqPair) {
     let testObj = buildTestCase(testData, pqPair[0], pqPair[1]);
     console.log("------");
-    console.log("LCA of", pqPair[0], pqPair[1], "->\n", 
+    console.log("LCA of", pqPair[0], pqPair[1], "->", 
                 lowestCommonAncestor(testObj.root,
                                      testObj.p,
-                                     testObj.q));
+                                     testObj.q).val);
 });
 testData = "#";
 let tree = Tree.deserialize(testData);

@@ -1,6 +1,9 @@
-# How To Design eCommerce Website
+# How To Design eCommerce Website like Amazon
 
-## Basic Data Model
+## Scope
+Although an eCommerce website has many advanced features like order tracking, product search and recommendation, product reviews, payment, customer service etc. We will focus on fundamental product ordering features and high level design.
+
+## System: Basic Data Model
 In the simplest scenario, we need three major objects: Product, User and Order.
   - Product defines the basic model for a product in the shopping cart
     - Columns are price, inventory, name, description, category;
@@ -9,11 +12,11 @@ In the simplest scenario, we need three major objects: Product, User and Order.
   - Orders stores information about orders made by users
     - Contains UserID, ProductID, amount, timestamp, payment, status, etc.
 
-## NoSQL Data Model
+## System: NoSQL Data Model
 - Instead of having a separate Order table, we can store all the items a user has bought in the same row of User table. As a result, when fetching a user, not only will we get all the personal information, but also his purchase history.
 - Product table now don't have to a long list of columns for different type of products, such as books or computers.
 
-## Concurrency
+## Solution for Concurrency
 One example issue is two customers are ordering the same product which has only one left. How do you achieve concurrency in eCommerce websites?
 - Pessimistic concurrency control: such as resource lock might not be practical and user friendly.
 - Optimistic concurrency control: each process/thread accesses data freely, however, before committing changes, each transaction should check if the data has the same state as it did when you last read it.
@@ -21,7 +24,8 @@ One example issue is two customers are ordering the same product which has only 
   - Otherwise, roll back and try again until there’s no conflict.
   - Good for eCommerce systems that are unlikely to have conflicts.
 
-## CAP (Consistency, Availability, Partition-tolerance)
+## Scalability: 
+CAP (Consistency, Availability, Partition-tolerance)
 ### Availability
 ECommerce website requires high availability by having hundreds or thousands of replicas, but it will be harder to guarantee high consistency.
 

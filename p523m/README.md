@@ -18,10 +18,7 @@ You may assume the sum of all the numbers is in the range of a signed 32-bit int
 
 ## Solution
 ### Intuitive Approach
-Iterate each possible subarray, `a[0], a[0..1], a[0..2], a[0..n-1]; a[1], a[1..n-1]; ... ; a[n-2], a[n-2..n-1]; a[n-1].` (O(N^2)), check their sum if match m*k, where is m = 1,2,3,... until `m * k > sum`. This ends up a O(N^3 * M) worst complexity.
-
-### Improved Approach
-We can iterate backward to combine summing and iteration, which will reduce to O(N^2 * M) at worst.
+Iterate each possible subarray, `a[0], a[0..1], a[0..2], a[0..n-1]; a[1], a[1..n-1]; ... ; a[n-2], a[n-2..n-1]; a[n-1].` (O(N^2)), check their sum if the `sum % k == 0`. 
 
 ### Optimal Approach O(N)
 Like we did in [#560](../p560m/README.md), scan to compute the cumulative sum, and check if we have seen (sum - k) before. This variant is to look up sum[j] in the past such that `sum[i] - sum[j] = m*k`. 

@@ -4,23 +4,27 @@
  */
 var groupAnagrams = function(strs) {
     // sort each string for signature
-    var sigMap = {};
+    var sigMap = new Map();
     for (let i = 0; i < strs.length; ++i) {
         let sig = [...strs[i]].sort().join('');
-        if (sigMap[sig] === undefined) {
-            sigMap[sig] = [strs[i]];
-        }
-        else {
-            sigMap[sig].push(strs[i]);
+        let v = sigMap.get(sig);
+        if (v === undefined) {
+            sigMap.set(sig, [strs[i]]);
+        } else {
+            v.push(strs[i]);
+            sigMap.set(sig, v);
         }
     }
     // grouping
     var grouping = [];
-    for (var val in sigMap) {
-        grouping.push(sigMap[val]);
-    }
+    sigMap.forEach( v => {
+        grouping.push(v);
+    });
     return grouping;
 };
 
-var test = ["eat", "tea", "tan", "ate", "nat", "bat", "a", "a", "", ""];
-console.log("Grouping results: \n", groupAnagrams(test));
+[
+    ["eat", "tea", "tan", "ate", "nat", "bat", "a", "a", "", ""]
+].forEach(t => {
+    console.log("Grouping results ->\n", groupAnagrams(t));
+});

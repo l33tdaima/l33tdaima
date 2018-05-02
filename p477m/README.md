@@ -17,6 +17,13 @@ Elements of the given array are in the range of 0 to 10^9
 Length of the array will not exceed 10^4.
 
 ## Solution
-For any given bit, if there a k number out of input n integers has it set, and the rest (n-k) unset, then any combination in k has no contribution to the total hamming distance, as well as (n-k). Only the numbers between n and (n-k) have bit different and contribute the total hamming distance.
+```
+ 4: 0100
+14: 1110
+ 2: 0010
+```
+For any given bit, if there a k number out of input n integers has it set, and the rest (n-k) unset, then any combination in k has no contribution to the total hamming distance, as well as (n-k). Only the numbers between n and (n-k) have bit different and contribute the total hamming distance by their set size combination, k*(n-k).
 
-#Bit Manipulation #FB
+#FB
+
+#Bit Manipulation 

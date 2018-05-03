@@ -29,8 +29,7 @@ var levelOrder = function(root) {
         // update result array
         if (result[p.level] === undefined) {
             result.push([p.node.val]);
-        }
-        else {
+        } else {
             result[p.level].push(p.node.val);
         }
     }

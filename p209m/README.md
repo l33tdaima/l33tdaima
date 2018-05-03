@@ -9,7 +9,7 @@ the subarray [4,3] has the minimal length under the problem constraint.
 Maintain a sliding window, 
 - Adding more items from tail will have a chance making sum >= target, hence
   ```
-  while (sum < target) tail++; 
+  while (sum < target) tail ++;
   ```
 - Then we need to removing items from head to make sure the length is miminal, hence 
   ```
@@ -18,4 +18,7 @@ Maintain a sliding window,
 - Repeat these two steps until the end
 
 #FB
+
 #Array #Two Pointers #Binary Search
+
+#Similar question [#209m](../p209m/README.md) [#325m](../p325m/README.md)

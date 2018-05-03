@@ -3,7 +3,7 @@
  * @param {number[]} nums
  * @return {number}
  */
-var minSubArrayLen = function(s, nums) {
+var minSubArrayLenN = function(s, nums) {
     let len = nums.length;
     let min = Number.MAX_SAFE_INTEGER;
     let sum = 0, head = 0, tail = 0;
@@ -54,6 +54,6 @@ var minSubArrayLenNlogN = function(s, nums) {
 ].forEach((t) => {
     console.log("Minimal length of a subarray of", t[1],
                 "where the sum >=", t[0], "->",
-                minSubArrayLen(t[0], t[1]),
+                minSubArrayLenN(t[0], t[1]),
                 minSubArrayLenNlogN(t[0], t[1]));
 });

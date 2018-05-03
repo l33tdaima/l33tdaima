@@ -12,21 +12,23 @@ The output is a list of "key points" (red dots in Figure B) in the format of [ [
 For instance, the skyline in Figure B should be represented as:[ [2 10], [3 15], [7 12], [12 0], [15 10], [20 8], [24, 0] ].
 
 Notes:
-The number of buildings in any input list is guaranteed to be in the range [0, 10000].
-The input list is already sorted in ascending order by the left x position Li.
-The output list must be sorted by the x position.
-There must be no consecutive horizontal lines of equal height in the output skyline. For instance, [...[2 3], [4 5], [7 5], [11 5], [12 7]...] is not acceptable; the three lines of height 5 should be merged into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
+- The number of buildings in any input list is guaranteed to be in the range [0, 10000].
+- The input list is already sorted in ascending order by the left x position Li.
+- The output list must be sorted by the x position.
+- There must be no consecutive horizontal lines of equal height in the output skyline. For instance, [...[2 3], [4 5], [7 5], [11 5], [12 7]...] is not acceptable; the three lines of height 5 should be merged into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
 
 ## Solution 1
-The brutal force way is to construct a 1-dimensional heightmap, but it is O(N^2) complexity with TLE
+The brutal force way is to construct a histogram like 1-dimensional array h of which each element is the bar height of size 1 width.
 ```
-for each rectangle r:
-    for each heightmap cell c starting at r.left and ending at r.right:
-        c gets the max of r.height and the previous value of c
+forEach rectangle r from input:
+    forEach heightmap bar h[i] starting from r.left and ending at r.right:
+        h[i] = max(r.height, h[i])
+Iterate h to generate output 
 ```
+Apparently it is O(N^k) complexity, k depends on how many overlap we have.
 
 ## Solution 2
-1. Extract and sort the critial points. 
+1. Extract and sort the critial points, including both left corner and right corner.
 2. Scan across the critical points from left to right. 
     1. When we encounter the left edge of a rectangle, we add that rectangle to the heap with its height as the key. 
     2. When we encounter the right edge of a rectangle, we remove that rectangle from the heap. 
@@ -38,4 +40,5 @@ for each critical point c
 O(NlogN), where heapifying takes O(logN).
 
 #GOOGL #FB #MSFT #TWTR #YELP
+
 #Divide and Conquer #Heap #Binary Indexed Tree #Segment Tree

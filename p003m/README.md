@@ -10,7 +10,8 @@ Given "bbbbb", the answer is "b", with the length of 1.
 
 Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-Solution also inspired by p076h template
+## Solution
+Inspired by p076h template
 ``` cpp
 int lengthOfLongestSubstring(string s) {
     vector<int> map(128,0);
@@ -25,4 +26,7 @@ int lengthOfLongestSubstring(string s) {
 ```
 
 #AMZN #BBG #ADBE #YELP
+
 #Hash Table #Two Pointer #String
+
+#Similar question [#003m](../p003m/README.md) [#076h](../p076h/README.md) [#159h](../p159h/README.md)

@@ -26,5 +26,5 @@ var tests = [
     "abba"
 ];
 tests.forEach(function(s) {
-    console.log(s + ": ", lengthOfLongestSubstring(s));
+    console.log(s, "->", lengthOfLongestSubstring(s));
 }, this);

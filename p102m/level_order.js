@@ -12,9 +12,7 @@ const Tree = require('binary_tree');
  */
 var levelOrder = function(root) {
     let result = [];
-    if (root === null) {
-        return result;
-    }
+    if (root == null) { return result; }
     let queue = [{node:  root,
                   level: 0}];
     while (queue.length > 0) {

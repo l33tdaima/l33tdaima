@@ -36,9 +36,13 @@ var minWindow = function(s, t) {
     }
     return (minLen > s.length) ? "" : s.slice(minStart, minStart + minLen);
 };
-
-var testS = "ADOBECODEBANC";
-var testT = "ADE";
-
-console.log("Minimal window containing the target", testT, "is:",
-            minWindow(testS, testT));
+// TEST
+[
+    ["ADOBECODEBANC", "ADE"],
+    ["ADOBECODEBANC", "AA"],
+    ["ADOBECODEBANC", "bB"],
+    ["AABCDE", "ABC"],
+].forEach(t => {
+    console.log("Minimal window in '" + t[0] + "' containing the target '"
+                + t[1] + "' ->", minWindow(t[0], t[1]));
+});

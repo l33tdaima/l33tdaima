@@ -12,7 +12,6 @@ var lengthOfLongestSubstringTwoDistinct = function(s) {
         if (map[s.charCodeAt(end)]++ === 0) {
             counter ++;
         }
-
         // until the counter exceeding 2, then we move start to drop the counter
         while (counter > 2) {
             if (map[s.charCodeAt(start)]-- === 1) {
@@ -20,24 +19,23 @@ var lengthOfLongestSubstringTwoDistinct = function(s) {
             }
             start ++;
         }
-
         // update the max
         if (end - start + 1 > maxLen) {
             maxLen = end - start + 1;
             maxStart = start;
         }        
     }
-    console.log("[DEBUG] Longest Substring:", s.slice(maxStart, maxStart + maxLen));
+    console.log("  [DEBUG] Longest Substring:", s.slice(maxStart, maxStart + maxLen));
     return maxLen;
 };
-
-var tests = [
+// TEST
+[
     "eceba",
+    "ccaabbb",
     "CCCCC",
     "abcde",
     "CODEaaaabbbbcde",
-
-];
-tests.forEach(function(s) {
-    console.log(s + ": ", lengthOfLongestSubstringTwoDistinct(s));
+].forEach(t => {
+    console.log("Longest substring length in '" + t + "' with at most two distincts ->", 
+                lengthOfLongestSubstringTwoDistinct(t));
 });

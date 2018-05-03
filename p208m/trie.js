@@ -3,7 +3,7 @@
  */
 var Trie = function() {
     this.isEnd = false;
-    this.links = Array.from({length: 26}, (v) => null);
+    this.links = new Array(26); // empty slots
 };
 
 /**
@@ -15,7 +15,7 @@ Trie.prototype.insert = function(word) {
     let curr = this;
     for (let i = 0, len = word.length; i < len; ++i) {
         let j = word.charCodeAt(i) - 97;
-        if (curr.links[j] === null) {
+        if (curr.links[j] == null) {
             curr.links[j] = new Trie();
         }
         curr = curr.links[j];
@@ -32,10 +32,9 @@ Trie.prototype.search = function(word) {
     let curr = this;
     for (let i = 0, len = word.length; i < len; ++i) {
         let j = word.charCodeAt(i) - 97;
-        if (curr.links[j] === null) {
+        if (curr.links[j] == null) {
             return false;
-        }
-        else {
+        } else {
             curr = curr.links[j];
         }
     }
@@ -51,10 +50,9 @@ Trie.prototype.startsWith = function(prefix) {
     let curr = this;
     for (let i = 0, len = prefix.length; i < len; ++i) {
         let j = prefix.charCodeAt(i) - 97;
-        if (curr.links[j] === null) {
+        if (curr.links[j] == null) {
             return false;
-        }
-        else {
+        } else {
             curr = curr.links[j];
         }
     }
@@ -73,6 +71,6 @@ var trie = new Trie();
 var word = "app";
 trie.insert(word);
 trie.insert("apps");
-console.log("Is '" + word + "'in the trie?:", trie.search(word));
-var prefix = "cod";
-console.log("Is there word in the trie start with", prefix + "?:", trie.startsWith(prefix));
+console.log("Is '" + word + "' in the trie?:", trie.search(word));
+console.log("Is there word in the trie start with 'cod'? ->", trie.startsWith("cod"));
+console.log("Is there word in the trie start with 'ap'? -> ", trie.startsWith("ap"));

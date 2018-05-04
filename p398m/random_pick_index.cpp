@@ -15,11 +15,12 @@ public:
     }
     
     int pick(int target) {
+        // The reservoir sampling algorithm doesn't rely on size explicitly
         int n = 0, ans = -1;
         for (int i = 0 ; i < d_nums.size(); i++) {
             if (d_nums[i] != target) continue;
             n++;
-            if (rand() % n == 0) {
+            if (rand() % n == 0) { // random between 0 and n-1
                 ans = i;
             } // with prob 1/(n+1) to replace the previous index
         }
@@ -43,4 +44,3 @@ int main(int argc, char* argv[])
     cout << endl;
     return 0;
 }
-// g++ -std=c++11 -o p398m/random_pick p398m/random_pick_index.cpp

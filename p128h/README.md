@@ -2,14 +2,25 @@
 
 Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
 
-For example,
-Given [100, 4, 200, 1, 3, 2],
-The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
-
 Your algorithm should run in O(n) complexity.
 
-## Solution
-Create a set of nums, then walk through the numbers again, but only start counting when the number is the lowest. Checking a number existing is O(1) assuming Set lookup, depending on its implementation, it might not be that case.
+### Example:
+```
+Input: [100, 4, 200, 1, 3, 2]
+Output: 4
+Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+```
 
-#Array #Union Find
+## Solution
+### Intuitive Approach
+- Sort the array by O(NlogN);
+- Walk through the array and count the longest.
+
+### Optimal Approach
+- Create a set of nums by walking through once;
+- Then walk through the numbers again, but only start counting when the number is the lowest, no number smaller found in set
+  - Checking a number existance in Set is O(1)
+
 #GOOGL #FB
+
+#Array #Union Find #Hash Table

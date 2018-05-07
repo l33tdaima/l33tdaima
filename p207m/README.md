@@ -32,7 +32,8 @@ You may assume that there are no duplicate edges in the input prerequisites.
 - Topological sort could also be done via BFS.
 
 ## Solution
-- Besides the visited array/map to keep visited record;
+- Convert to a graph representation of an array of linked nodes for each node;
+- Create the visited bool array/map to keep visited record, initialize to all false;
 - We need another onPath array to keep visited record for the current DFS path, 
   - Reset onPath[vertex] before returning recursive cycle check.
   - If onPath[vertex] true, we found a cycle

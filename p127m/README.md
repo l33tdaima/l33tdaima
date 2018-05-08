@@ -2,39 +2,62 @@
 
 Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
 
-Only one letter can be changed at a time.
-Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
-For example,
+1. Only one letter can be changed at a time.
+2. Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
 
-Given:
+### Note:
+- Return 0 if there is no such transformation sequence.
+- All words have the same length.
+- All words contain only lowercase alphabetic characters.
+- You may assume no duplicates in the word list.
+- You may assume beginWord and endWord are non-empty and are not the same.
+
+### Example 1:
+```
+Input:
+beginWord = "hit",
+endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+Output: 5
+
+Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+return its length 5.
+```
+### Example 2:
+```
+Input:
 beginWord = "hit"
 endWord = "cog"
-wordList = ["hot","dot","dog","lot","log","cog"]
-As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
-return its length 5.
+wordList = ["hot","dot","dog","lot","log"]
 
-Note:
-Return 0 if there is no such transformation sequence.
-All words have the same length.
-All words contain only lowercase alphabetic characters.
-You may assume no duplicates in the word list.
-You may assume beginWord and endWord are non-empty and are not the same.
+Output: 0
 
+Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+```
 # Solution
-Imagine the following search tree, do breadth-first search for the word with 1 char difference.
-                    cog            2
+- Store the wordList into a Set which serves as a visited record in tree.
+- Do BFS from endWord which must be in the Set, otherwise return 0.
+  - For each position of word, change one letter at a time
+    - If it is in the Set, push a new created tree node into queue for further processing
+    - If the beginWord has 1 char diff from the current node, return depth + 1.
+- See examples below.
+```
+                    cog <- endWord 2
                    /   \  
-                  dog  log <- lag  3
-                 /     /
-                dot   lot          4
+                  dog  log         3
+                 /       \
+                dot      lot       4
                /        
     hit(5) -> hot                  5
-
-                    dog            2
+```
+```
+      endWord ->    dog            2
                  /   |   \  
                cog  log  dot       3
                      |    \ 
                     lot   hot<-hit 4
+```
+#FB #AMZN #LNKD #SNAP #YELP
 
 #Breadth-first Search
-#FB #AMZN #LNKD #SNAP #YELP

@@ -1,12 +1,12 @@
-var LadderNode = function (word, depth) {
+function LadderNode (word, depth) {
     this.val = word;
     this.depth = depth;
-};
+}
 // Function to compute the distance of two words
 var wordDistance = function (word1, word2) {
     let dist = 0;
     for (let i = 0, len = word1.length; i < len; ++i) {
-        if (word1.charAt(i) !== word2.charAt(i)) { dist ++; }
+        if (word1[i] !== word2[i]) { dist ++; }
     }
     return dist;
 }
@@ -21,27 +21,30 @@ var ladderLength = function (beginWord, endWord, wordList) {
     console.assert(beginWord.length === endWord.length);
     let wlen = endWord.length;
     // step 1: Convert to a set
-    let wordSet = new Set();
-    for (let i = 0, len = wordList.length; i < len; ++i) {
-        wordSet.add(wordList[i]);
+    const wordSet = new Set();
+    for (let w of wordList) {
+        wordSet.add(w);
     }
+    
+    // Corner cases
     if (!wordSet.has(endWord)) { return 0; }
     if (wordDistance(beginWord, endWord) === 1) { return 2; }
+    
     // step 2: Build a tree in BFS fashion rooted by endWord
     wordSet.delete(endWord);
-    let root = new LadderNode(endWord, 2);
+    let root = new LadderNode(endWord, 2); // 2 is minimum if beginWord is 1 char diff from endWord
     let queue = [root];
     while (queue.length > 0) {
         let wnode = queue.shift();
         let w = wnode.val;
         for (let i = 0; i < wlen; ++i) {
             for (let j = 0; j < 25; ++j) {
-                if (ALPHABET.charAt(j) === w.charAt(i)) { continue; }
+                if (ALPHABET[j] === w[i]) { continue; }
                 // generate a possible tranformed word
-                let t = w.slice(0, i) + ALPHABET.charAt(j) + w.slice(i + 1);
+                let t = w.slice(0, i) + ALPHABET[j] + w.slice(i + 1);
                 if (wordSet.has(t)) {
                     // check if we found the word only 1 char distance from beginWord
-                    if (wordDistance(beginWord, t) <= 1) {
+                    if (wordDistance(beginWord, t) == 1) {
                         return wnode.depth + 1;
                     }
                     wordSet.delete(t);
@@ -96,6 +99,6 @@ var ladderLength = function (beginWord, endWord, wordList) {
     wordList: ["hot", "dot", "dog", "lot", "log", "cog"]
 } ].forEach(function (test) {
     let output = ladderLength(test.begin, test.end, test.wordList);
-    console.log(test.begin, "->", test.end, "=", 
+    console.log("Shortest sequence from '" + test.begin + "' to '" + test.end + "' ->", 
                 output, output === test.expected);
 });

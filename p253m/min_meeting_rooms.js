@@ -10,7 +10,7 @@ const pq = require('priority_queue');
  * @param {Interval[]} intervals
  * @return {number}
  */
-var minMeetingRooms = function(intervals) {
+var minMeetingRoomsHeap = function(intervals) {
     if (intervals.length === 0) { return 0; }
     intervals.sort((a, b) => a.start - b.start);
     // console.log("sorted:", intervals);
@@ -24,6 +24,31 @@ var minMeetingRooms = function(intervals) {
             endHeap.shift();
         }
         endHeap.push(intervals[i].end);
+    }
+    return rooms;
+};
+var minMeetingRoomsCounter = function(intervals) {
+    if (intervals.length === 0) { return 0; }
+    let tuples = [];
+    for (let interval of intervals) {
+        tuples.push([interval.start, 0]);
+        tuples.push([interval.end, 1]);
+    }
+    tuples.sort((a, b) => {
+        if (a[0] === b[0]) {
+            return b[1] - a[1];
+        } else {
+            return a[0] - b[0]
+        }
+    }); // console.log(tuples);
+    let rooms = 0, count = 0;
+    for (let tuple of tuples) {
+        if (tuple[1] === 0) { // start
+            count ++;
+        } else {
+            count --;
+        }
+        rooms = Math.max(rooms, count);
     }
     return rooms;
 };
@@ -41,5 +66,5 @@ var minMeetingRooms = function(intervals) {
 ].forEach(t => {
     let iv = t.data.map(v => new Interval(v[0], v[1]));
     console.log("Minimal meeting rooms needed for", t.data, "-> test",
-                minMeetingRooms(iv) === t.exp);
+                minMeetingRoomsCounter(iv) === t.exp);
 });

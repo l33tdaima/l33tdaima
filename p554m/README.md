@@ -36,11 +36,23 @@ Scan each potential cut which is 1 unit increment, and compute the size of each 
 
 ### Optimal Approach
 A O(N) optimal approach can be achieved by exchanging a hash table for speed. Observed that minimal brick crossing must be reached at a particular edge of a particular row, and the total edges over all the rows must be maximum. Hence the algorithm,
-- The hash table is key by position of possible cut, from 0 as left wall edge, value is count of edges at this position
+- The hash table is key by the position of possible cut, starting from 0 as left wall edge, value is count of edges at this position.
 - Scan the bricks row by row:
     - If this edge is already in hash table, increment the count, otherwise set 1.
     - Keep track the max count
-- Return `(rows - max)` as number of crossed bricks.
+- Return `(walls.length - maxCount)` as number of crossed bricks.
+
+For the given example,
+| Row # | Hash Table Changes | max = 0 |
+| ----- | ------------------ | ------- |
+| Row 0 | (1,1) (3,1) (5,1)  | max = 1 |
+| Row 1 | (3,2) (4,1)        | max = 2 |
+| Row 2 | (1,2) (4,2)        | max = 2 |
+| Row 3 | (2,1)              | max = 2 |
+| Row 4 | (3,3) (4,3)        | max = 3 |
+| Row 5 | (1,3) (4,4) (5,2)  | max = 4 |
+Return `6 - 4 = 2`
+
 
 #FB
 

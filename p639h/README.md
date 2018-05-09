@@ -13,20 +13,25 @@ Given the encoded message containing digits and the character '*', return the to
 Also, since the answer may be very large, you should return the output mod 10^9 + 7.
 
 ### Example 1:
+```
 Input: "*"
 Output: 9
 Explanation: The encoded message can be decoded to the string: "A", "B", "C", "D", "E", "F", "G", "H", "I".
-
+```
 ### Example 2:
+```
 Input: "1*"
 Output: 9 + 9 = 18
-
+```
 ### Note:
 The length of the input string will fit in range [1, 10^5].
 The input string will only contain the character '*' and digits '0' - '9'.
 
 ##Solution
 ```
+Denote the number of decoding way for s[0..i] by dp[i], i = 0..n-1
+To calculate dp[i], we need to consider one or two digits before it as below,
+
         For dp[i-1]:
 
                   /           \

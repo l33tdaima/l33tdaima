@@ -27,12 +27,12 @@ var countSubstringsDP = function(s) {
 var countSubstrings = function(s) {
     let count = 0;
     let slen = s.length;
-    let checkPalindrome = function(i, j) {
-        while (i >= 0 && j < slen && s.charAt(i) === s.charAt(j)) {
-            count++; i--; j++;
+    let checkPalindrome = function(l, r) {
+        while (l >= 0 && r < slen && s.charAt(l) === s.charAt(r)) {
+            count++; l--; r++;
         }
     };
-    for (let i = 0, len = s.length; i < len; ++i) {
+    for (let i = 0; i < slen; ++i) {
         checkPalindrome(i, i); // check odd len palindrome
         checkPalindrome(i, i + 1); // check odd len palindrome
     }

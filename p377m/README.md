@@ -1,9 +1,9 @@
 # 377. Combination Sum IV (Medium)
 
-Given an integer array with all positive numbers and no duplicates, find the number of possible combinations that add up to a positive integer target.
+Given an integer array with all positive numbers and *no duplicates*, find the number of possible combinations that add up to a positive integer target.
 
 ### Example:
-
+```
 nums = [1, 2, 3]
 target = 4
 
@@ -19,6 +19,7 @@ The possible combination ways are:
 Note that different sequences are counted as different combinations.
 
 Therefore the output is 7.
+```
 
 Follow up:
 What if negative numbers are allowed in the given array?
@@ -36,8 +37,10 @@ Denote the number of ways if target is t by dp[t], which is derived by
 - Scanning the candidates list and asking if I pick this candidate i, how many ways to come up with `target - candidate[i]`
 - Sum up the intermediate results from above
 
+Notice that top-down is faster than bottom-up because bottom-up does a lot of unnecessary computation of intermediate target which might never get used.
+
 #GOOGL #FB #SNAP
 
 #Dynamic Programming
 
-#Similar question [#039m](../p039m/README.md) [#040m](../p040m/README.md) [#216m](../p216m/README.md)
+#Similar question [#039m](../p039m/README.md) [#040m](../p040m/README.md) [#216m](../p216m/README.md) [#377m](../p377m/README.md)

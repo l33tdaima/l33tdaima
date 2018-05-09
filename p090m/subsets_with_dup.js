@@ -7,7 +7,6 @@ var subsetsWithDup = function(nums) {
     var solutions = [];
     var backtrack = function(solution, start) {
         solutions.push(Array.from(solution));
-        // console.log(start, "*", solution, "*", solutions);
         for (let i = start; i < nums.length; ++i) {
             if(i > start && nums[i] === nums[i-1]) {
                 continue;
@@ -21,7 +20,13 @@ var subsetsWithDup = function(nums) {
     backtrack([], 0);
     return solutions;
 };
-
-var testArray = [2, 1, 2, 2];
-console.log("Backtracking:")
-console.log(subsetsWithDup(testArray));
+// TEST
+[
+    [],
+    [1],
+    [1, 2],
+    [1, 2, 2],
+    [2, 1, 2, 2],
+].forEach(t => {
+    console.log("All subsets of", t, "->\n", subsetsWithDup(t));
+});

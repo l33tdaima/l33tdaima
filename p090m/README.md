@@ -4,9 +4,10 @@ Given a collection of integers that might contain duplicates, nums, return all p
 
 Note: The solution set must not contain duplicate subsets.
 
-For example,
-If nums = [1,2,2], a solution is:
-
+### Example:
+```
+Input: [1,2,2]
+Output:
 [
   [2],
   [1],
@@ -15,5 +16,13 @@ If nums = [1,2,2], a solution is:
   [1,2],
   []
 ]
+```
+## Solution
+- Sort first
+- Backtracking with skipping duplicate elements.
 
-#Backtracking
+#FB
+
+#Array #Backtracking
+
+#Similar questions [#078m](../p078m/README.md) [#090m](../p090m/README.md)

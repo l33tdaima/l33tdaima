@@ -27,10 +27,17 @@ var subsetsByBit = function(nums) {
         }
     }
     return solutions;
-}
-
-var testArray = [1, 2, 3];
-console.log("Backtracking:")
-console.log(subsets(testArray));
-console.log("\nBit Manipulation:")
-console.log(subsetsByBit(testArray));
+};
+// TEST
+[
+    [],
+    [1],
+    [1, 2],
+    [1, 2, 3]
+].forEach(t => {
+    console.log("-----");
+    console.log("Backtracking solution of", t, "->\n",
+                subsets(t));
+    console.log("Bit Manipulation solution of", t, "->\n",
+                subsetsByBit(t));
+});

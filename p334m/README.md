@@ -9,12 +9,14 @@ such that arr[i] < arr[j] < arr[k] given 0 ≤ i < j < k ≤ n-1 else return fal
 
 Your algorithm should run in O(n) time complexity and O(1) space complexity.
 
-Examples:
+### Examples:
+```
 Given [1, 2, 3, 4, 5],
 return true.
 
 Given [5, 4, 3, 2, 1],
 return false.
+```
 
 ## Solution
 ### Intuitive Approach

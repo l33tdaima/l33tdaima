@@ -34,11 +34,13 @@ for (int i = 0; i < len; i++) {
 }
 ```
 ## Solution
-- Maintain an index `ni` to the end of dedup array, initalized to 0;
+- Maintain an index `k` which is the end of dedup array, initalized to 0;
 - When iterating array from 1 to end
-  - Move `ni` only when nums[ni] != nums[i], and copy nums[i] to nums[ni]
+  - Copy and move `k` only when nums[k-1] < nums[i]
   - i is always moving forward
 
 #FB #MSFT #BBG
 
 #Array
+
+#Similar questions [#026e](../p026e/README.md) [#080m](../p080m/README.md)

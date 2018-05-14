@@ -18,14 +18,15 @@ var hIndexByCount = function(citations) {
     for (let c of citations) {
         citCount[Math.min(c, N)] ++;
     }
-    let sum = 0;
-    for (let cv = N; cv > sum; --cv) {
-        sum += citCount[cv];
+    let sum = citCount[N], cv = N;
+    while (cv > sum) {
+        sum += citCount[--cv];
     }
-    return sum;
+    return cv;
 };
 // TEST
 [
+    [[1,1], 1],
     [[6,6,4,8,4,3,3,10], 4],
     [[3,0,6,1,5], 3],
     [[9,10,9,8,13,20,9], 7],

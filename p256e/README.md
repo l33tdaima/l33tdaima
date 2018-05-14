@@ -8,4 +8,24 @@ Note:
 All costs are positive integers.
 
 #LNKD
+
+### Example:
+```
+Input: [[17,2,17],[16,16,5],[14,3,19]]
+Output: 10
+Explanation: Paint house 0 into blue, paint house 1 into green, paint house 2 into blue. 
+             Minimum cost: 2 + 5 + 3 = 10.
+```
+
+## Solution
+Compute the minCost of each house if painted with red `r`, blue `b`, green `g`,
+```
+    r = costs[i][0] + Math.min(prev_b, prev_g);
+    b = costs[i][1] + Math.min(prev_r, prev_g);
+    g = costs[i][2] + Math.min(prev_r, prev_b);
+```
+The final answer lies in the min of r, b, g.
+
 #Dynamic Programming
+
+#Similar questions [#256e](../p256e/README.md) [#265h](../p265h/README.md)

@@ -5,4 +5,11 @@ TinyURL is a URL shortening service where you enter a URL such as https://leetco
 
 Design the encode and decode methods for the TinyURL service. There is no restriction on how your encode/decode algorithm should work. You just need to ensure that a URL can be encoded to a tiny URL and the tiny URL can be decoded to the original URL.
 
-#Hash Table #Math #FB #GOOGL #AMZN #UBER
+## Solution
+- Create a global map for short to long store
+- Encode is to get 7 random char from 62 chars from [A-Za-z0-9] and make sure it is not picked before.
+- Decode is just look up from map.
+
+#FB #GOOGL #AMZN #UBER
+
+#Hash Table #Math

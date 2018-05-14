@@ -1,6 +1,6 @@
 const charmap = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-var short2long = {};
+var short2long = new Map();
 
 /**
  * Encodes a URL to a shortened URL.
@@ -19,8 +19,8 @@ var encode = function(longUrl) {
     let shortUrl = null;
     do {
         shortUrl = genShortUrl();
-    } while (short2long[shortUrl] !== undefined);
-    short2long[shortUrl] = longUrl;
+    } while (short2long.get(shortUrl) !== undefined);
+    short2long.set(shortUrl, longUrl);
     return shortUrl;
 };
 
@@ -31,7 +31,7 @@ var encode = function(longUrl) {
  * @return {string}
  */
 var decode = function(shortUrl) {
-    return short2long[shortUrl];
+    return short2long.get(shortUrl);
 };
 
 /**

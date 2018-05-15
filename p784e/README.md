@@ -20,7 +20,7 @@ Output: ["12345"]
 ## Solution
 We can do either straightfoward backtracking or bit manipulation which is a little bit tricky on mapping the bit to the location of characters in string, as we have mixture of letter and digits.
 
-#FB #YELP
+#FB #YELP #MSFT
 
 #Backtracking #Bit Manipulation
 

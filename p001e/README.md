@@ -17,3 +17,5 @@ Adding pair<number, index> into a hash table and check if (target - number) alre
 #MSFT #FB #AMZN #BB #UBER #LNKD #APPL #AIRBNB #YELP #YHOO #ADBE #DBX
 
 #Array #Hash Table
+
+#Similar questions [#001e](../p001e/README.md) [#167e](../p167e/README.md) [#170e](../p170e/README.md) [p653e](../p653e/README.md)

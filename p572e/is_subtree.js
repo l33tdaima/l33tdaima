@@ -34,7 +34,7 @@ var isSubtree = function(s, t) {
     if (s === null) { // t !== null here
         return false;
     }
-    if (s.val === t.val && isEqual(s, t)) {
+    if (isEqual(s, t)) {
         return true;
     } else {
         return isSubtree(s.left, t) || isSubtree(s.right, t);

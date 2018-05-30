@@ -23,7 +23,7 @@ public:
         };
         typedef priority_queue< WordFreqType, vector<WordFreqType>, decltype(comp) > Heap;
         Heap minHeap(comp);
-        for (const auto w: wordFreq) {
+        for (const auto& w: wordFreq) {
             minHeap.push(w);
             if (minHeap.size() > k) {
                 minHeap.pop();

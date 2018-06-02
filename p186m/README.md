@@ -26,3 +26,5 @@ Reverse the whole string char by char by swap, then each word
 #MSFT #AMZN #UBER
 
 #String
+
+#Similar questions [#151m](../p151m/README.md) [#186m](../p186m/README.md)

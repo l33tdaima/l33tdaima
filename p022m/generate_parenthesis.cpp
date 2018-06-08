@@ -17,11 +17,11 @@ public:
                 ans.push_back(ps);
                 return;
             }
-            if (close > 0) {
-                recBtHelper(ps + ")", open, close - 1);
-            }
             if (open > 0) {
                 recBtHelper(ps + "(", open - 1, close + 1);
+            }
+            if (close > 0) {
+                recBtHelper(ps + ")", open, close - 1);
             }
         };
         recBtHelper("", n, 0);

@@ -14,6 +14,6 @@ We also need to clarify if we need exactly one edit or at most one edit. Exact o
 - Swap the S and T, making sure S.length >= T.length so that we only need to worry about delete one from S, no insert case
 - Scan S and T simultaneously, set flag if found one diff, forward one extra (delete) if S.length > T.length
 
-#FB(Sample) #Uber #TWTR #SNAP
+#FB(Sample) #UBER #TWTR #SNAP
 
 #String

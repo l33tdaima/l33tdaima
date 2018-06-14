@@ -22,7 +22,8 @@ Brutally try all the subarray, O(N^2) i = [0..N], j = [i..N]
 ### Optimal O(N) Approach
 A very elegant solution from programming pearls:
 
-calculating local min and local max, then swap them because multiplying by a negative makes big number smaller, small number bigger so we redefine the extremums by swapping them.
+- Calculating local min and local max of between each element and min/max
+- Swap them because multiplying by a negative makes big number smaller, small number bigger so we redefine the extremums by swapping them.
 
 #LNKD #GOOGL
 

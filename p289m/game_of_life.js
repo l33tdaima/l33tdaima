@@ -14,7 +14,7 @@ var gameOfLife = function(board) {
         let count = 0;
         for (let i = row - 1; i <= row + 1; ++i) {
             for (let j = col - 1; j <= col + 1; ++j) {
-                if (i >= 0 && i < rows && j >= 0 && j <= cols) {
+                if (i >= 0 && i < rows && j >= 0 && j < cols) {
                     count += board[i][j] & 1;
                 }
             }

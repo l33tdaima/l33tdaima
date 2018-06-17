@@ -29,8 +29,8 @@ Output:
 ```
 
 Follow up: 
-Could you solve it in-place? Remember that the board needs to be updated at the same time: You cannot update some cells first and then use their updated values to update other cells.
-In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?
+- Could you solve it in-place? Remember that the board needs to be updated at the same time: You cannot update some cells first and then use their updated values to update other cells.
+- In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?
 
 ## Solution
 To solve it in-place, we will need to store the new and old state of each cell by bits, let LSB be the old and the bit to the left to be the new state, i.e.
@@ -43,6 +43,14 @@ To solve it in-place, we will need to store the new and old state of each cell b
 2. Loop again and decode each cell by v >> 1.
 
 In order to represent infinite board, we will only store the coordinates of live cells in a set, the set will be refreshed each generation.
+
+### Follow up
+Infinite board can be represented by live coordinate set of type `unordered_set<Coordinate>`.
+- Iterate each live coordinate in the set, calculate the neighbors count object `unordered_map<Coordinate, Count>` it will contribute.
+- Iterator each live count element in the map above, generate the new live set under the evolution rules.
+  - count == 3 regardless original state is live or dead
+  - count == 2, original live set contains this coordinate
+- return the new live set.
 
 #GOOGL #SNAP #DBX #TwoSigma
 

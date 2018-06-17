@@ -26,3 +26,5 @@ cache.get(4);       // returns 4
 #GOOGL #FB #MSFT #AMZN #BBG #UBER #TWTR #SNAP #Zenefits #YHOO #Palantir
 
 #Design
+
+#Similar questions [#146h](../p146h/README.md) [#460h](../p460h/README.md)

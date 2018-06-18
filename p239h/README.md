@@ -30,4 +30,5 @@ We scan the array from 0 to n-1, at each i, we keep “promising” elements, wh
 The max of each sliding window will then be the head in deque.
 
 #AMZN #GOOGL #Zenefits
+
 #Heap #Deque

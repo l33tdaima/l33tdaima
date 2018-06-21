@@ -22,9 +22,6 @@ public:
         return ans;
     }
 };
-// -2, -2, -2
-// 0, 0, -2
-// -1, 2, 0
 // TEST
 int main(int argc, char const *argv[])
 {

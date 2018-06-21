@@ -22,5 +22,6 @@ Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefor
   - Checking a number existance in Set is O(1)
 
 #GOOGL #FB
+#GOOGL.MJ
 
 #Array #Union Find #Hash Table

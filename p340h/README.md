@@ -12,10 +12,11 @@ How large is the search space? N + (N-1) + ... + 2 + 1 different substring. For 
 
 ### Optimal Approach O(N)
 - We approach by trying to solve the maxLen for substring ending with `s[i], i=0..N-1`.
-- We need to remember the count of each char, when a count changes from 0 to 1, distinct ++, distinct --, vice versa.
+- We need to remember the count of each char, when a count changes from 0 to 1, distinct ++, otherwise, distinct --
 - Whenever we find distinct > k, we need to move forward the substrStart index in order to satisfy the restriction
 - `maxLen = max(maxLen, i - substrStart + 1)`
 
 #GOOGL #AppDynamics #Coupang
+#GOOGL.MJ
 
 #Hash Table #String

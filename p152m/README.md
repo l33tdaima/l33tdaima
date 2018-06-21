@@ -22,11 +22,10 @@ Brutally try all the subarray, O(N^2) i = [0..N], j = [i..N]
 ### Optimal O(N) Approach
 A very elegant solution from programming pearls:
 
-- Calculating local min and local max of between each element and min/max
+- Calculating the new localmin and localmax of between each new element i and previous localmin/localmax
 - Swap them because multiplying by a negative makes big number smaller, small number bigger so we redefine the extremums by swapping them.
 
 #LNKD #GOOGL
+#GOOGL.MJ
 
 #Array #Dynamic Programming
-
-#MJ.GOOGL

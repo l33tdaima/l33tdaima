@@ -35,5 +35,6 @@ Store the threshold which is the last timestamp + 10
 - Else update the threshold using new timestamp
 
 #GOOGL
+#GOOGL.MJ
 
 #Hash Table #Design

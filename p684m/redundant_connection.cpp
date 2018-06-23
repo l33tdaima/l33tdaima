@@ -7,23 +7,23 @@ using namespace std;
 
 class Solution {
 private:
-        int parent[2001] = {0};
-
-        int root(int i) {
-            while (i != parent[i]) {
-                parent[i] = parent[parent[i]];
-                i = parent[i];
-            }
-            return i;
-        };   
-        bool find(int p, int q) {
-            return root(p) == root(q);
-        };
-        void unite(int p, int q) {
-            int rp = root(p);
-            int rq = root(q);
-            parent[rp] = rq;
-        };
+    int parent[2001] = {0};
+    
+    int root(int i) {
+        while (i != parent[i]) {
+            parent[i] = parent[parent[i]];
+            i = parent[i];
+        }
+        return i;
+    };   
+    bool find(int p, int q) {
+        return root(p) == root(q);
+    };
+    void unite(int p, int q) {
+        int rp = root(p);
+        int rq = root(q);
+        parent[rp] = rq;
+    };
 
 public:
     vector<int> findRedundantConnection(vector<vector<int>>& edges) {
@@ -35,10 +35,9 @@ public:
             if (find(e[0], e[1])) { return e; }
             unite(e[0], e[1]);
         }
-        throw runtime_error("Not found");        
+        throw runtime_error("Not found");
     }
 };
-
 
 class SolutionLambda {
 public:

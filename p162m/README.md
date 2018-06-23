@@ -19,6 +19,7 @@ Solution code looks simple but it needs to be explained well. The invariant to m
     * if num[m] = num[l] > num[m+1] = num[r], the next r = m, l still = m, then loop exits.
 5. For both case, after loop exits, the answer is always l. Done!
 
-
 #GOOGL #MSFT
+#GOOGL.MJ
+
 #Array #Binary Search

@@ -11,6 +11,7 @@ class NumMatrix {
     static int lowbit(int x) { return x & (-x); }
     
     int query(int ir, int ic) {
+        if (d_matrix.size() == 0 || d_matrix[0].size() == 0) { return 0; }
         int sum = 0;
         for (int i = ir; i > 0; i -= lowbit(i)) {
             for (int j = ic; j > 0; j -= lowbit(j)) {
@@ -20,9 +21,10 @@ class NumMatrix {
         return sum;
     }
 public:
-    NumMatrix(vector<vector<int>> matrix)
-    :d_matrix(matrix.size(), vector<int>(matrix[0].size(), 0)),
-     d_bitree(matrix.size() + 1, vector<int>(matrix[0].size() + 1, 0)) {
+    NumMatrix(vector<vector<int>> matrix) {
+        if (matrix.size() == 0 || matrix[0].size() == 0) { return; }
+        d_matrix = vector<vector<int>>(matrix.size(), vector<int>(matrix[0].size(), 0));
+        d_bitree = vector<vector<int>>(matrix.size() + 1, vector<int>(matrix[0].size() + 1, 0));
         for (int i = 0; i < matrix.size(); ++i) {
             for (int j = 0; j < matrix[0].size(); ++j) {
                 update(i, j, matrix[i][j]);
@@ -31,6 +33,7 @@ public:
     }
     
     void update(int row, int col, int val) {
+        if (d_matrix.size() == 0 || d_matrix[0].size() == 0) { return; }
         int delta = val - d_matrix[row][col];
         d_matrix[row][col] = val;
         for (int i = row + 1; i < d_bitree.size(); i += lowbit(i)) {
@@ -41,6 +44,7 @@ public:
     }
 
     int sumRegion(int row1, int col1, int row2, int col2) {
+        if (d_matrix.size() == 0 || d_matrix[0].size() == 0) { return 0; }
         return (query(row2 + 1, col2 + 1)
                 - query(row2 + 1, col1)
                 - query(row1, col2 + 1)

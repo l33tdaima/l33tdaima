@@ -24,6 +24,7 @@ return 2.
 This approach doesn't need a heap, but the list to be sorted doubled. It doesn't run faster in OJ.
 
 #GOOGL #FB #SNAP
+#GOOGL.MJ
 
 #Heap #Greedy #Sort
 

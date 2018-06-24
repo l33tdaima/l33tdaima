@@ -18,6 +18,6 @@ sumRange(0, 2) -> 8
 - You may assume the number of calls to update and sumRange function is distributed evenly.
 
 ## Solution
-Classic application of Binary Indexed Tree/Fenwick Tree.
+Classic application of Binary Indexed Tree/Fenwick Tree. Note that binary indexed tree works on 1-based index instead of 0-based.
 
 #Binary Indexed Tree #Segment Tree

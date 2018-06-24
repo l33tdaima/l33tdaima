@@ -19,10 +19,11 @@ Output:
 ```
 
 ## Solution
-- We need a helper function to generate the signature of each string, it could be shifting the first char to 'a'.
+- We need a helper function to generate the signature of each string, it could be shifting the first char to 'a', or distance between every two characters.
 - For each string, add them into a hash table key by the signature.
 - Dump the hash table into output list.
 
 #GOOGL #UBER
+#GOOGL.MJ
 
 #Hash Table #String

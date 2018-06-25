@@ -37,6 +37,13 @@ Time complexity O(e + q*e), Space complexity O(e).
   - x doesn't exist
   - y doesn't exist
   - Both exist, union them
+```
+Dump parents: {
+  b: (b, 1)
+  c: (b, 0.333333)
+  a: (b, 2)
+}
+```
 - Derive the results with the following cases
   - One of them doesn't exist: -1.0
   - They are the same: 1.0

@@ -54,8 +54,6 @@ public:
     vector<double> calcEquationUF(vector<pair<string, string>> equations,
                                   vector<double>& values,
                                   vector<pair<string, string>> queries) {
-        // parents["a"] = {"b", a/b = 2.0}
-        // parents["b"] = {"c", b/c = 3.0}
         unordered_map<string, pair<string, double>> parents; // dividend -> divisor, divisor is parent
         for (int i = 0; i < equations.size(); ++i) {
             const string& x = equations[i].first;
@@ -68,11 +66,12 @@ public:
             } else if (!parents.count(y)) {
                 parents[y] = {x, 1.0 / values[i]};
             } else { // union
-                auto& rx = find(x, parents);
-                auto& ry = find(y, parents);      
+                auto& rx = root(x, parents);
+                auto& ry = root(y, parents);
                 parents[rx.first] = {ry.first, values[i] / rx.second * ry.second};
             }
         }
+        //dumpParents(parents);
         vector<double> ans;
         for (const auto& pair : queries) {
             const string& x = pair.first;
@@ -81,24 +80,34 @@ public:
                 ans.push_back(-1.0);
                 continue;
             }
-            auto& rx = find(x, parents); // {rx, x / rx}
-            auto& ry = find(y, parents); // {ry, y / ry}
+            auto& rx = root(x, parents); // {rx, x / rx}
+            auto& ry = root(y, parents); // {ry, y / ry}
             if (rx.first != ry.first) {
                 ans.push_back(-1.0);
             } else { // X / Y = (X / rX / (Y / rY))
                 ans.push_back(rx.second / ry.second);
             }
         }
+        //dumpParents(parents);
         return ans;
     }
 private:
-    pair<string, double>& find(const string& v, unordered_map<string, pair<string, double>>& parents) {
+    pair<string, double>& rootRec(const string& v, unordered_map<string, pair<string, double>>& parents) {
         if (v != parents[v].first) {
-            const auto& p = find(parents[v].first, parents);
-            parents[v].first = p.first;
+            const auto& p = root(parents[v].first, parents);
+            parents[v].first = p.first; // path compression to root, iterative path compression not working here
             parents[v].second *= p.second;
         }
         return parents[v];
+    }
+    void dumpParents(const unordered_map<string, pair<string, double>>& parents) {
+        cout << "Dump parents: {" << endl;
+        for (const auto& p: parents) {
+            cout << "  " << p.first << ": (" 
+                 << p.second.first << ", " 
+                 << p.second.second << ")" << endl;
+        }
+        cout << "}" << endl;
     }
 };
 // TEST
@@ -119,7 +128,7 @@ struct Test {
         }
         cout << "\n---" << endl;
     }
-        void runUF() {
+    void runUF() {
         Solution sol;
         vector<double> actual = sol.calcEquationUF(equations, values, queries);
         assert(actual.size() == expected.size());
@@ -141,6 +150,12 @@ int main(int argc, char const *argv[])
             {2.0, 3.0},
             {{"x","x"}, {"b","a"}, {"a","c"}, {"b","c"}, {"b","b"}, {"b","a"}, {"c","b"}},
             {-1.0, 0.5, 6.0, 3.0, 1.0, 0.5, 0.33333}
+        },
+        {
+            {{"a","b"}, {"b","c"}, {"d","e"}, {"a","d"}},
+            {2.0, 3.0, 4.0, 5.0},
+            {{"b","a"}, {"a","c"}, {"b","c"}, {"a","e"}},
+            {0.5, 6.0, 3.0, 20.0}
         },
     };
     for (auto& t: tests) {

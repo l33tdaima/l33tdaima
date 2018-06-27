@@ -34,5 +34,6 @@ The problem is now how to find a shortest path travelling all the `k^n` vertics 
 Start from any vertex, DFS through every possible edge with minimal length as the end condition.
 
 #GOOGL
+#GOOGL.MJ
 
 #Math #Depth-first Search #Backtracking

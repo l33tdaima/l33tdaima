@@ -40,7 +40,7 @@ struct Test {
         vector<int> actual = sol.nextGreaterElement(findNums, nums);
         for (int i = 0; i < actual.size(); ++i) {
             cout << actual[i] << ", ";
-            // assert(actual[i] == expected[i]);
+            assert(actual[i] == expected[i]);
         }
         cout << "]" << endl;
     }

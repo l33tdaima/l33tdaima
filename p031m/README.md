@@ -16,8 +16,9 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 4,3,5,2,1 -> 4,5,1,2,3
 The max permutation is all the numbers are in descending order, i.e. 4,3,2,1, once getting to this, the next permutation is going back to the minimal one, 1,2,3,4
 1. Iterate backward till the index i where a[i-1] < a[i];
-2. Iterate forward till j, where a[j] > a[i-1], then swap them;
+2. Iterate backward till another index j, where a[j] > a[i-1], then swap them;
 3. Reverse the number from a[i] to end in ascending order.
 
 #GOOGL
+
 #Array

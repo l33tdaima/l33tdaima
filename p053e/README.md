@@ -11,5 +11,11 @@ If you have figured out the O(n) solution, try coding another solution using the
 ## Solution
 Divide and Conquer is really an overkill and suboptimal solution, the best O(n) idea is scan the array and add each element into a local sum, update the global sum if a larger one is found. And if the sum drops below zero, we need to reset the local sum to zero, which means all the elements before the point has negative contribution, we should not consider them in the future subarray. 
 
-#MSFT #BBG #LNKD
+The DP way of understanding,
+```
+maxSubArray(i) = maxSubArray(i-1) > 0 ? maxSubArray(i-1) + nums[i] : 0 + nums[i]
+```
+
+#MSFT #BBG #LNKD #AMZN
+
 #Array #Dynamic Programming

@@ -42,8 +42,9 @@ counter.getHits(301);
 
 ### Algorithm
 A queue to maintain the elements within 300 seconds, each element is an int of timestamp.
-- Add new timestamp in hit(), and pop stale ones having t - now > 300.
+- Add new timestamp in hit(), and pop stale ones having now - t > 300.
 - Return the size of queue for getHits() call.
 
 #GOOGL #DBX
+
 #Design

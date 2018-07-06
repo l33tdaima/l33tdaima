@@ -11,10 +11,11 @@ let reconstruct_queue people =
   ) people in
   List.fold_left (fun queue (h,k) ->
     (* insert into the position using k value *)
-    let rec insert_by_k (h,k) n = function
+    let rec insert_by_k (h,k) n queue = match queue with
       | [] -> [(h,k)]
       | hd :: tl as l -> if n = 0 then (h, k) :: l
-                         else hd :: insert_by_k (h,k) (n-1) tl in
+                         else hd :: insert_by_k (h,k) (n-1) tl
+    in
     insert_by_k (h,k) k queue
   ) [] sorted
 

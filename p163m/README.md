@@ -16,3 +16,5 @@ Use a `next` variable to record a moving start point, keep pushing the segment `
 #GOOGL
 
 #Array
+
+#Similar questions [#163m](../p163m/README.md) [#228m](../p228m/README.md)

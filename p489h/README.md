@@ -51,6 +51,11 @@ From the top left corner, its position is one row below and three columns right.
 4. All accessible cells are connected, which means the all cells marked as 1 will be accessible by the robot.
 5. Assume all four edges of the grid are all surrounded by wall.
 
+## Solution
+- Use given APIs to generate four different moves with head always pointed up
+- Use DFS with backtracking
 
 #GOOGL
 #GOOGL.MJ
+
+#Depth-first Search #Backtracking

@@ -10,7 +10,7 @@ var WordDistance = function(words) {
             this.map.set(words[i], [i]);
         }
     }
-    console.log(this.map);
+    //console.log(this.map);
 };
 /** 
  * @param {string} word1 
@@ -23,10 +23,15 @@ WordDistance.prototype.shortest = function(word1, word2) {
     let iWord1 = this.map.get(word1);
     let iWord2 = this.map.get(word2);
     let shortestDis = Number.MAX_SAFE_INTEGER;
-    for (let i = 0, len1 = iWord1.length; i < len1; ++i) {
-        for (let j = 0, len2 = iWord2.length; j < len2; ++j) {
-            shortestDis = Math.min(shortestDis, 
-                                   Math.abs(iWord1[i] - iWord2[j]));
+    for (let i = 0, j = 0, len1 = iWord1.length, len2 = iWord2.length;
+         i < len1 && j < len2;) {
+        let index1 = iWord1[i], index2 = iWord2[j];
+        if (index1 < index2) {
+            shortestDis = Math.min(shortestDis, index2 - index1);
+            i++;
+        } else {
+            shortestDis = Math.min(shortestDis, index1 - index2);
+            j++;
         }
     }
     return shortestDis;

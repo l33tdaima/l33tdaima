@@ -14,3 +14,5 @@ Maintain a moving index of last non-zero and copy non-zero item into it. Then se
 #FB #BBG
 
 #Array #Two Pointers
+
+#Similar questions [#027e](../p027e/README.md) [#283e](../p283e/README.md)

@@ -24,4 +24,4 @@ Output: false
 
 #Hash Table #Math
 
-#Similar questions 
+#Similar questions [#246e](../p246e/README.md) [#247m](../p247m/README.md) [#248h](../p248h/README.md)

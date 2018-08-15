@@ -13,6 +13,16 @@ A solution set is:
   [-1, -1, 2]
 ]
 ```
+## Solution
+- Sort the array
+- For each fixed element, `[0, len-2)`
+  - Iterate from both end at the same time in inner loop
+  - `lo++, hi--` if matches target
+  - `lo++` if less than target
+  - `hi--` if greater than target
+
 #FB #MSFT #AMZN #BBG #ADBE
 
 #Array #Two Pointers
+
+#Similar questions [#015m](../p015m/README.md) [#259m](../p259m/README.md)

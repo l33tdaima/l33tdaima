@@ -25,7 +25,7 @@ Output: true
 What are the letters in the string? Any
 
 ### Intuitive Approach
-For n letters, there is n!0! ways and check each possibility.
+For n letters, there is n! ways and check each possibility.
 
 ### Optimal Approach
 To know if a string can form a palindrome, we just need to count to have one letter with odd occurence and the rest with even occurence.
@@ -35,3 +35,5 @@ Even better we can just use bitset, flip it when seeing a letter. Then check the
 #GOOGL #BBG #UBER
 
 #Hash Table
+
+#Similar Questions [p266e](../p266e/README.md) [p267m](../p267m/README.me)

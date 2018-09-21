@@ -1,6 +1,10 @@
 .DS_*
 *.swp
 
+# CMake
+build
+build/*
+
 # Bucklescript 
 *.exe
 *.obj

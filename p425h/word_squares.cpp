@@ -5,70 +5,66 @@
 #include <iostream>
 
 using namespace std;
-
-class LinkedListTrie {
+class Trie {
     enum { MAXC = 26 };
-    bool m_charMap[MAXC] = { false };
-    unique_ptr<LinkedListTrie> m_next = nullptr;
+    unique_ptr<Trie> next[MAXC] = { nullptr };
+    vector<string> wordsPrefix; // words prefixed from this path
 public:
-    LinkedListTrie() {}
     void insert(const string& word) {
-        LinkedListTrie* p = this;
+        Trie* p = this;
         for (auto c: word) {
-            p->m_charMap[c - 'a'] = true;
-            if (p->m_next == nullptr) {
-                p->m_next = unique_ptr<LinkedListTrie>(new LinkedListTrie());
+            size_t i = c - 'a';
+            if (p->next[i] == nullptr) {
+                p->next[i] = unique_ptr<Trie>(new Trie());
             }
-            p = p->m_next.get();
+            p = p->next[i].get();
+            p->wordsPrefix.push_back(word);
         }
     }
-    bool hasPrefixOf(const string& word) {
-        for (char c: word) {
-            if (m_charMap[c - 'a'] == false) return false;
+    vector<string> search(const string& prefix) {
+        Trie* p = this;
+        for (char c: prefix) {
+            size_t i = c - 'a';
+            if (p->next[i] == nullptr) return vector<string>();
+            p = p->next[i].get();
         }
-        return true;
-    }
-    const unique_ptr<LinkedListTrie>& next() {
-        return m_next;
+        return p->wordsPrefix;
     }
 };
-
-
 class Solution {
     void recHelper(vector<vector<string>>& output,
                    vector<string>& wip,
-                   const unique_ptr<LinkedListTrie>& trie,
-                   const vector<string>& words,
+                   const unique_ptr<Trie>& trie,
                    const int wlen) {
         if (wip.size() == wlen) {
             output.push_back(wip);
             return;
         }
-        for (auto& w: words) {
-            // The new word must match the existing wip
-            bool valid = true;
-            int j = wip.size();
-            for (int i = 0; i < wip.size(); ++i) {
-                if (wip[i][j] != w[i]) valid = false;
-            }
+        string prefix;
+        for (int i = 0; i < wip.size(); ++i) {
+            prefix += wip[i][wip.size()];
+        }
+        for (auto& w: trie->search(prefix)) {
             // cross reference trie if this word can contribute to word square
-            if (valid && trie->hasPrefixOf(w)) {
-                wip.push_back(w);
-                recHelper(output, wip, trie->next(), words, wlen);
-                wip.pop_back();
-            }
+            wip.push_back(w);
+            recHelper(output, wip, trie, wlen);
+            wip.pop_back();
         }
     }
 public:
     vector<vector<string>> wordSquares(vector<string> &words) {
         int wlen = words[0].length();
         // build a trie
-        unique_ptr<LinkedListTrie> root = unique_ptr<LinkedListTrie>(new LinkedListTrie()); 
+        unique_ptr<Trie> root = unique_ptr<Trie>(new Trie()); 
         for (auto& w: words) { root->insert(w); }
         // Use recursive helper to backtrack
         vector<vector<string>> ans;
         vector<string> wip;
-        recHelper(ans, wip, root, words, wlen);
+        for (auto& w: words) {
+            wip.push_back(w);
+            recHelper(ans, wip, root, wlen);
+            wip.pop_back();
+        }
         return ans;
     }
 };

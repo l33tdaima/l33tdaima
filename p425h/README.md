@@ -65,8 +65,14 @@ The output consists of two word squares. The order of output does not matter (ju
 ```
 
 ## Solution
-### Intuitive Approach
-Iterate each permutation of words, size of word length, use [#422e](../p422e/README.md) to check if valid.
+### Brutal Force Backtracking
+In the recursive backtracking helper, try a word from words,
+- If it will break the square invariant `wip[i][wip.size()] == w[i], i = [0..wip.size())`, skip it
+- Otherwise add it into wip and call recursion
+
+### Optimal Apporach
+If we can build a trie which stores the words with the same prefix in this level, we can reduce the search space dramatically.
+In each call stack, we only need to search the candidate words with the prefix of `wip[i][wip.size()], i = [0..wip.size())`.
 
 #GOOGL #ORACLE
 

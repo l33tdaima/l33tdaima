@@ -15,7 +15,7 @@ Then we think about a greedy strategy, given an subarray already sorted, when ad
 - The previous subarray is odd length and new item too small
 - The previous subarray is even length and new item too large
 
-where we will simply swap the last of previous subarray and the new element introduced. Time complexity of O(N) and O(1) time complexity.
+where we will simply swap the last of previous subarray and the new element introduced. Time complexity of O(N) and O(1) space complexity.
 
 #MSFT #GOOGL #FB #Akuna Capital
 

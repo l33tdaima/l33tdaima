@@ -4,7 +4,7 @@ Given two sentences words1, words2 (each represented as an array of strings), an
 
 For example, "great acting skills" and "fine drama talent" are similar, if the similar word pairs are `pairs = [["great", "fine"], ["acting","drama"], ["skills","talent"]]`.
 
-Note that the similarity relation is not transitive. For example, if "great" and "fine" are similar, and "fine" and "good" are similar, "great" and "good" are not necessarily similar.
+Note that the similarity relation *is not transitive*. For example, if "great" and "fine" are similar, and "fine" and "good" are similar, "great" and "good" are not necessarily similar.
 
 However, similarity is symmetric. For example, "great" and "fine" being similar is the same as "fine" and "great" being similar.
 
@@ -18,8 +18,11 @@ Finally, sentences can only be similar if they have the same number of words. So
 - The length of each pairs[i] will be 2.
 - The length of each words[i] and pairs[i][j] will be in the range [1, 20].
 
+## Solution
+Instead of using map of similarity set, we can just form an entry of `pairs[i].first + "-" + pairs[i].second`, and store them in one set. Then search two different combinations. Space complexity of O(P) and time complexity of O(P + N).
+
 #GOOGL
 
 #Hash Table
 
-#Similar questions [#734e](../p734e/README.md) [#737m](../p737m/README.md)
+#Similar questions [#734e](../p734e/README.md) [#737m](../ption737m/README.md)

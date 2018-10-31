@@ -18,8 +18,11 @@ Finally, sentences can only be similar if they have the same number of words. So
 - The length of each pairs[i] will be 2.
 - The length of each words[i] and pairs[i][j] will be in the range [1, 20].
 
+## Solution
+Instead of using map of similarity set, we can just form an entry of `pairs[i].first + "-" + pairs[i].second`, and store them in one set. Then search two different combinations. Space complexity of O(P) and time complexity of O(P + N).
+
 #GOOGL
 
 #Hash Table
 
-#Similar questions [#734e](../p734e/README.md) [#737m](../p737m/README.md)
+#Similar questions [#734e](../p734e/README.md) [#737m](../ption737m/README.md)

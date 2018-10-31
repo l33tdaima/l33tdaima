@@ -2,7 +2,7 @@
 
 Given two sentences words1, words2 (each represented as an array of strings), and a list of similar word pairs pairs, determine if two sentences are similar.
 
-For example, words1 = ["great", "acting", "skills"] and words2 = ["fine", "drama", "talent"] are similar, if the similar word pairs are `pairs = [["great", "good"], ["fine", "good"], ["acting","drama"], ["skills","talent"]]`.
+For example, `words1 = ["great", "acting", "skills"]` and `words2 = ["fine", "drama", "talent"]` are similar, if the similar word pairs are `pairs = [["great", "good"], ["fine", "good"], ["acting","drama"], ["skills","talent"]]`.
 
 Note that the similarity relation *is transitive*. For example, if "great" and "good" are similar, and "fine" and "good" are similar, then "great" and "fine" are similar.
 
@@ -19,7 +19,7 @@ Finally, sentences can only be similar if they have the same number of words. So
 - The length of each words[i] and pairs[i][j] will be in the range [1, 20].
 
 ## Solution
-Compared to the non-transitive version [#734e](../p734e/README.md), in preprocess stage we need to prepare a union-find tree, each pair is actually an edge needs to be unioned. When iterating sentences, just find if two words are connected.
+Compared to the non-transitive version [#734e](../p734e/README.md), in preprocess stage we need to prepare a union-find data structure, each pair triggers a union operation. When iterating two target sentences, just do find to check if two words are connected.
 
 The union-find algorithm is weighted quick-union with path compression.
 

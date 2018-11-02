@@ -3,9 +3,11 @@
  * @return {number}
  */
 var maxDistance = function(arrays) {
-  let res = 0;
-  let minVal = Number.MAX_SAFE_INTEGER;
-  let maxVal = Number.MIN_SAFE_INTEGER;
+  let [res, minVal, maxVal] = [
+    0,
+    Number.MAX_SAFE_INTEGER,
+    Number.MIN_SAFE_INTEGER
+  ];
   for (let a of arrays) {
     res = Math.max(res, a[a.length - 1] - minVal, maxVal - a[0]);
     minVal = Math.min(minVal, a[0]);

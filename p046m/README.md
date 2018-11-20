@@ -2,7 +2,8 @@
 
 Given a collection of distinct numbers, return all possible permutations.
 
-For example,
+### Example:
+```
 [1,2,3] have the following permutations:
 [
   [1,2,3],
@@ -12,5 +13,8 @@ For example,
   [3,1,2],
   [3,2,1]
 ]
+```
 
 #Backtracking
+
+#FB #GOOGL #LNKD #YHOO #AMZN #MSFT #BBG #ORCL

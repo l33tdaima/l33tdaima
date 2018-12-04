@@ -17,9 +17,11 @@ public:
         istringstream iss(p);
         string w;
         pair<string, int> res ("", 0);
-        while (iss >> w)
-            if (ban.find(w) == ban.end() && ++count[w] > res.second)
+        while (iss >> w) {
+            if (ban.find(w) == ban.end() && ++count[w] > res.second) {
                 res = make_pair(w, count[w]);
+            }
+        }
         return res.first;
     }
 };

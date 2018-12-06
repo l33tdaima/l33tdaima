@@ -26,6 +26,7 @@ var findWords = function(words) {
   }
   return ans;
 };
+
 var findWordsV2 = function(words) {
   return words.filter(
     word =>
@@ -34,6 +35,7 @@ var findWordsV2 = function(words) {
       /\b[zxcvbnm]+\b/i.test(word)
   );
 };
+
 // TESTS
 [["Hello", "Alaska", "Dad", "Peace"]].forEach(t => {
   console.log("Words can be typed on one row ->", findWords(t));

@@ -16,3 +16,5 @@ Output: "amanaP :lanac a ,nalp a ,nam A"
 #Two Pointers #String
 
 #MSFT #APPL #AMZN #FB #ADBE #BBG
+
+#Similar questions [#344](../p344e/README.md) [#541](../p541e/README.md) [#557](../p577e/README.md)

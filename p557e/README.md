@@ -10,6 +10,9 @@ Output: "s'teL ekat edoCteeL tsetnoc"
 
 Note: In the string, each word is separated by single space and there will not be any extra space in the string.
 
+## Solution
+Reverse word by word which is delimited by space, don't forget the last word which doesn't have space delimiter.
+
 #MSFT #APPL
 
 #String

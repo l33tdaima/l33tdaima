@@ -26,3 +26,5 @@ Output: false
 Start with a one-dimentional case, how to check [x1, x2] overlaps [y1, y2]? Then it is natual to figure out the two-dimentional case in this problem.
 
 #MSFT #GOOGL #AMZN #ADBE #NVDA
+
+# Math

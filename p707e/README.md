@@ -24,3 +24,7 @@ linkedList.get(1);            // returns 3
 - All values will be in the range of [1, 1000].
 - The number of operations will be in the range of [1, 1000].
 - Please do not use the built-in LinkedList library.
+
+#GOOGL
+
+#Linked List #Design

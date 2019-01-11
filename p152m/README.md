@@ -25,7 +25,10 @@ A very elegant solution from programming pearls:
 - Calculating the new localmin and localmax of between each new element i and previous localmin/localmax
 - Swap them because multiplying by a negative makes big number smaller, small number bigger so we redefine the extremums by swapping them.
 
-#LNKD #GOOGL
+#LNKD #GOOGL #AMZN #MSFT
+
 #GOOGL.MJ
 
 #Array #Dynamic Programming
+
+#Similar questions [#628](../p628e/README.md) [#152](../p152m/README.md)

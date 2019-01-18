@@ -54,6 +54,7 @@ struct Test {
         Solution sol;
         int actual = sol.networkDelayTime(times, N, K);
         cout << "Network delay time from node " << K << " -> " << actual << endl;
+        assert(actual == expected);
     }
 };
 
@@ -65,7 +66,7 @@ int main(int argc, char const *argv[])
             4, 2, 2
         },
         {
-            { {1, 2, 4}, {1, 3, 9}, {2, 3, 3} },
+            { {1,2,4}, {1,3,9}, {2,3,3} },
             3, 1, 7
         }
     };

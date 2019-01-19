@@ -34,3 +34,5 @@ Extract from the least significent digit (`0-25`) by `(n-1) mod 26` to most sign
 #FB #MSFT
 
 #Math
+
+#Similar questions [#168](../p168e/README.md) [#171](../p171e/README.md)

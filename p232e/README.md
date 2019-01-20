@@ -30,3 +30,5 @@ We will have one input stack, onto which we push the incoming elements, and one 
 #MSFT #GOOGL
 
 #Stack #Design
+
+#Similar questions [#225](../p225e/README.md) [#232](../p232e/README.md)

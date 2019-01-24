@@ -21,3 +21,5 @@ Necessary optimization, time complexity of `O(sqrt(N))`
 #Fallible
 
 #Math
+
+#Similar questions [#507](../p507e/README.md) [#728](../p728e/README.md)

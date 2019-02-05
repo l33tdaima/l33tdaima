@@ -18,6 +18,9 @@ Only two moves are needed (remember each move increments or decrements one eleme
 [1,2,3]  =>  [2,2,3]  =>  [2,2,2]
 ```
 
+## Solution
+Sort the array, the moves is minimized when all elements are moved to the median `m`. To compute the sum of moves, we can iterate from two ends towards the median element, `sum += nums[r] - k + k - nums[l]`.
+
 #Math
 
 #Similar questions [#453](../p453e/README.md) [#462m](../p462m/README.md)

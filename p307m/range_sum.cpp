@@ -7,11 +7,11 @@ using namespace std;
 class NumArray {
 private:
     vector<int> d_nums;
-    vector<int> d_sums;
+    vector<int> d_bitree;
     static inline int lowbit(int x) { return x & (-x); }
 public:
     NumArray(vector<int> nums)
-    :d_nums(nums.size(), 0), d_sums(nums.size() + 1, 0) {
+    :d_nums(nums.size(), 0), d_bitree(nums.size() + 1, 0) {
         for (int i = 0; i < nums.size(); ++i) {
             update(i, nums[i]);
         }
@@ -21,8 +21,8 @@ public:
         int delta = val - d_nums[i];
         d_nums[i] = val;
         i++;
-        while (i < d_sums.size()) {
-            d_sums[i] += delta;
+        while (i < d_bitree.size()) {
+            d_bitree[i] += delta;
             i += lowbit(i);
         }
     }
@@ -35,7 +35,7 @@ public:
         i++;
         int sum = 0;
         while (i > 0) {
-            sum += d_sums[i];
+            sum += d_bitree[i];
             i -= lowbit(i);
         }
         return sum;

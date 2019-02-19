@@ -20,4 +20,8 @@ sumRange(0, 2) -> 8
 ## Solution
 Classic application of Binary Indexed Tree/Fenwick Tree. Note that binary indexed tree works on 1-based index instead of 0-based.
 
+https://www.topcoder.com/community/competitive-programming/tutorials/binary-indexed-trees/
+
+#GOOGL
+
 #Binary Indexed Tree #Segment Tree

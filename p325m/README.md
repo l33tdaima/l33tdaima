@@ -18,7 +18,7 @@ Can you do it in O(n) time?
 
 ## Solution
 ### Intuitive Approach
-The brutal force O(N^2) approach is to scan the nums subarray with length n, 0..(n-1), 1..(n-1), 2..(n-1), then length n-1, ..., to see if accumulated sum matches k.
+The brutal force O(N^2) approach is to scan all possible subarray to see if accumulated sum matches k.
 
 ### Optimal Approach O(N)
 Let denote the sum from 0 to i by s[i], and cache them in cache by (sum, index) pair. Since the sum of subarray j+1 to i is s[i]-s[j], by the time we loop to index j we can check against s[i], and s[j]-k in the cache in const time to avoid looping from 0 to i.

@@ -25,3 +25,5 @@ https://www.topcoder.com/community/competitive-programming/tutorials/binary-inde
 #GOOGL
 
 #Binary Indexed Tree #Segment Tree
+
+#Similar questions [#303](../p303e/README.md) [#304](../p304m/README.md) [#307](../p307m/README.md) [#308h](../p308h/README.md) [#325](../p325m/README.md)

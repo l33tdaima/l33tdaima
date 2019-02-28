@@ -52,3 +52,5 @@ Explanation: The output [11, 0, 11, 11] would also be accepted.
 #AMZN
 
 #String #Backtracking #Greedy
+
+#Similar questions [#509](../p509e/README.md) [#842](../p842m/README.md) [#873](../p873m/README.md)

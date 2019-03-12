@@ -2,23 +2,18 @@
 // g++ -std=c++11 *.cpp -o test && ./test && rm test
 
 #include <string>
-#include <initializer_list>
+#include <vector>
 #include <iostream>
 
 using namespace std;
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-        if (needle.length() == 0) { return 0; }
-        if (haystack.length() < needle.length()) { return -1; }
-        for (int i = 0; i <= (haystack.length() - needle.length()); ++i) {
-            if (haystack[i] != needle[0]) { continue; }
-            int j = 1;
-            for (; j < needle.length(); ++j) {
-                if (haystack[i+j] != needle[j]) { break; }
-            }
-            if (j == needle.length()) {
-                return i;
+        for (int i = 0;; ++i) {
+            for (int j = 0;; ++j) {
+                if (j == needle.length()) return i; // found
+                if (i + j == haystack.length()) return -1;
+                if (haystack[i + j] != needle[j]) break;
             }
         }
         return -1;
@@ -36,16 +31,14 @@ struct Test {
     }
 };
 int main(int argc, char* argv[]) {
-    initializer_list<Test> tests = {
+    vector<Test> tests = {
         {"", "a"},
         {"abc", ""},
         {"hello", "ll"},
         {"aaaaa", "bba"},
         {"bac", "a"},
-        {"abcdef", "bde"},
+        {"abcdef", "bde"}
     };
-    for (const Test&t : tests) {
-        t.run();
-    }
+    for (const Test&t : tests) t.run();
     return 0;
 }

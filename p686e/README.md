@@ -10,8 +10,14 @@ Return 3, because by repeating A three times (“abcdabcdabcd”), B is a substr
 The length of A and B will be between 1 and 10000.
 
 ## Solution
-A naive approach of O(N*M) or a KMP O(N+M).
+### Intuitive Approach
+Keep concatenating A and check if it contains B. O(N*(M+N))
+
+### Optimal Approach
+KMP O(N+M).
 
 #GOOGL
 
 #Two Pointer
+
+#Similar questions [#028](../p028e/README.md) [#459](../p459e/README.md) [#686](../p686e/README.md)

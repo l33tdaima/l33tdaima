@@ -2,8 +2,9 @@
 
 Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
 
-Note:
-You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.
+### Note:
+- The number of elements initialized in nums1 and nums2 are m and n respectively.
+- You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.
 
 ### Example:
 ```
@@ -14,6 +15,8 @@ nums2 = [2,5,6],       n = 3
 Output: [1,2,2,3,5,6]
 ```
 
-#FB #MSFT #BBG
+#FB #MSFT #BBG #ADBE #CSCO #Expedia #AMZN
 
 #Array #Two Pointers
+
+#Similar questions [#88](../p088e/README.md) [#360](../p360m/README.md) [#977](../p977e/README.md)

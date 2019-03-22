@@ -1,6 +1,4 @@
-// Build program by
 // g++ -std=c++11 *.cpp -o test && ./test && rm test
-
 #include <string>
 #include <bitset>
 #include <vector>
@@ -12,9 +10,7 @@ class Solution {
 public:
     bool canPermutePalindrome(string s) {
         int letterCount[256] = {0};
-        for (char c: s) {
-            letterCount[c] ++;
-        }
+        for (char c: s) letterCount[c] ++;
         int odds = 0;
         for (int i = 0; i < 256; ++i) {
             if (letterCount[i] & 1) {
@@ -27,7 +23,7 @@ public:
         bitset<256> b;
         for (char c : s)
             b.flip(c);
-        return b.count() < 2;
+        return b.count() <= 1;
     }
 };
 int main() {

@@ -32,8 +32,8 @@ To know if a string can form a palindrome, we just need to count to have one let
 
 Even better we can just use bitset, flip it when seeing a letter. Then check the count afterward.
 
-#GOOGL #BBG #UBER
+#FB #GOOGL #AMZN #MSFT
 
 #Hash Table
 
-#Similar Questions [p266e](../p266e/README.md) [p267m](../p267m/README.me)
+#Similar Questions [p266e](../p266e/README.md) [p267m](../p267m/README.me) [#409](../p409e/README.md)

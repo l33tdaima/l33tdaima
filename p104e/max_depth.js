@@ -5,14 +5,14 @@
  *   this.left = this.right = null;
  * }
  */
-const Tree = require('binary_tree');
+const Tree = require("binary_tree");
 /**
  * @param {TreeNode} root
  * @return {number}
  */
 var maxDepth = function(root) {
-    if (root === null) { return 0; }
-    return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+  if (root == null) return 0;
+  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 };
 
 var testData = "1,2,#,#,3,4,#,5,#,#";

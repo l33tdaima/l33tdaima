@@ -5,32 +5,33 @@
  *    this.left = this.right = null;
  * }
  */
-const Tree = require('binary_tree');
+const Tree = require("binary_tree");
 /**
  * @param {TreeNode} root
  * @return {boolean}
  */
 var isBalanced = function(root) {
-    var recIsBalanced= function(r) {
-        if (r === null) {
-            return { maxDepth: 0,
-                     isBalanced: true };
-        }
-        let leftRes  = recIsBalanced(r.left);
-        let rightRes = recIsBalanced(r.right);
-        return {
-            maxDepth: Math.max(leftRes.maxDepth, rightRes.maxDepth) + 1,
-            isBalanced: leftRes.isBalanced && 
-                        rightRes.isBalanced && 
-                        Math.abs(leftRes.maxDepth - rightRes.maxDepth) <= 1
-        };
+  const recIsBalanced = function(r) {
+    if (r == null) return { maxDepth: 0, isBalanced: true };
+    let leftRes = recIsBalanced(r.left);
+    let rightRes = recIsBalanced(r.right);
+    return {
+      maxDepth: Math.max(leftRes.maxDepth, rightRes.maxDepth) + 1,
+      isBalanced:
+        leftRes.isBalanced &&
+        rightRes.isBalanced &&
+        Math.abs(leftRes.maxDepth - rightRes.maxDepth) <= 1
     };
-    return recIsBalanced(root).isBalanced;
+  };
+  return recIsBalanced(root).isBalanced;
 };
 
-var testData = "1,#,2,#,3,#,#";
-var tree = Tree.deserialize(testData);
-console.log("isBalanced? ->", isBalanced(tree));
-testData = "1,2,#,#,3,#,#";
-tree = Tree.deserialize(testData);
-console.log("isBalanced? ->", isBalanced(tree));
+[
+  "1,#,2,#,3,#,#",
+  "1,2,#,#,3,#,#",
+  "3,9,#,#,20,15,#,#,7,#,#",
+  "1,2,3,4,#,#,4,#,#,3,#,#,2,#,#"
+].forEach(t => {
+  const tree = Tree.deserialize(t);
+  console.log("Is", t, "balanced? ->", isBalanced(tree));
+});

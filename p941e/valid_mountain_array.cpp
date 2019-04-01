@@ -49,10 +49,9 @@ int main(int argc, char* argv[]) {
         {
             {}, false
         },
-        /*
         {
             {1}, false
-        }, */
+        },
         {
             {2,1}, false
         },

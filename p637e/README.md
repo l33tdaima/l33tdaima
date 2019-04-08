@@ -23,6 +23,10 @@ The range of node's value is in the range of 32-bit signed integer.
   - Notice that the length of queue includes all the nodes at each level
   - Pop the queue and push children in a for loop instead of continuously, so that we can compute the average.
 
-#FB
+- Depth first search
+
+#FB #AMZN
 
 #Tree
+
+#Similar questions [#102](../p102m/README.md) [#107](../p107e/README.md) [#637](../p637e/README.md)

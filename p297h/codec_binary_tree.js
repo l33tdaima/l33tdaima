@@ -2,8 +2,8 @@
  * Definition for a binary tree node.
  */
 function TreeNode(val) {
-    this.val = val;
-    this.left = this.right = null;
+  this.val = val;
+  this.left = this.right = null;
 }
 
 /**
@@ -13,19 +13,19 @@ function TreeNode(val) {
  * @return {string}
  */
 var serialize = function(root) {
-    var buffer = [];
-    var recSerialize = function(root) {
-        if (root === null) {
-            buffer.push("#");
-            return;
-        }
-        buffer.push(root.val);
-        recSerialize(root.left);
-        recSerialize(root.right);
-    };
+  let buffer = [];
+  const recSerialize = function(root) {
+    if (root === null) {
+      buffer.push('#');
+      return;
+    }
+    buffer.push(root.val);
+    recSerialize(root.left);
+    recSerialize(root.right);
+  };
 
-    recSerialize(root);
-    return buffer.toString();
+  recSerialize(root);
+  return buffer.toString();
 };
 
 /**
@@ -35,33 +35,26 @@ var serialize = function(root) {
  * @return {TreeNode}
  */
 var deserialize = function(data) {
-    var buffer = data.split(',');
-    var recDeserialize = function(buffer) {
-        let elem = buffer.shift();
-        if (elem === undefined || elem === '#' || elem === '') {
-            return null;
-        }
-        let node = new TreeNode(parseInt(elem));
-        node.left  = recDeserialize(buffer);
-        node.right = recDeserialize(buffer);
-        return node;
-    };
-    return recDeserialize(buffer);
+  let buffer = data.split(',');
+  const recDeserialize = function(buffer) {
+    let elem = buffer.shift();
+    if (elem === undefined || elem === '#' || elem === '') return null;
+    let node = new TreeNode(parseInt(elem));
+    node.left = recDeserialize(buffer);
+    node.right = recDeserialize(buffer);
+    return node;
+  };
+  return recDeserialize(buffer);
 };
-
-exports.TreeNode    = TreeNode;
-exports.serialize   = serialize;
-exports.deserialize = deserialize;
-
 /**
  * Your functions will be called as such:
  * deserialize(serialize(root));
  */
 
 var test = function() {
-    var node = new TreeNode(1);
-    console.log(serialize(node));
-    var test = "1,2,#,#,3,4,5,#,#,#,#";
-    console.log(serialize(deserialize(test)));
-    console.assert(test === serialize(deserialize(test)));
+  let node = new TreeNode(1);
+  console.log(serialize(node));
+  let test = '1,2,#,#,3,4,5,#,#,#,#';
+  console.log(serialize(deserialize(test)));
+  console.assert(test === serialize(deserialize(test)));
 };

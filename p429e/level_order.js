@@ -5,6 +5,7 @@
  *    this.children = children;
  * };
  */
+const NaryTree = require('n_ary_tree');
 /**
  * @param {Node} root
  * @return {number[][]}
@@ -21,3 +22,15 @@ var levelOrder = function(root) {
   recPreorder(root, 0);
   return ans;
 };
+// TESTS
+[
+  '',
+  '1 0',
+  '1 1 2 0',
+  '1 2 2 0 3 0',
+  '1 3 2 0 3 0 4 0',
+  '1 3 3 2 5 0 6 0 2 0 4 0'
+].forEach(t => {
+  const tree = NaryTree.deserialize(t);
+  console.log('Level order traversal of', t, '->', levelOrder(tree));
+});

@@ -23,3 +23,5 @@ Output: ["c","o"]
 #Array #Hash Table
 
 #TripAdvisor
+
+#Similiar questions [#349](../p349pe/README.md) [#350](../p350m/README.md) [#1002](../pk1002e/README.md)

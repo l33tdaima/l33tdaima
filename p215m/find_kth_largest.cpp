@@ -3,45 +3,62 @@
 
 #include <vector>
 #include <queue>
-#include <initializer_list>
+#include <algorithm>
 #include <iostream>
 
 using namespace std;
 
 class Solution {
 public:
-    int findKthLargest(vector<int>& nums, int k) {
-        priority_queue<int> pq(nums.begin(), nums.end());
-        for (auto i = 0; i < k - 1; ++i) {
-            pq.pop();
+    int findKthLargestV1(vector<int>& nums, int k) {
+        nth_element(nums.begin(), nums.begin() + k - 1, nums.end(), greater<int>());
+        // partial_sort(nums.begin(), nums.begin() + k, nums.end(), greater<int>());
+        return nums[k - 1];
+    };
+
+    int findKthLargestV2(vector<int>& nums, int k) {
+        priority_queue<int> maxheap(nums.begin(), nums.end()); // maxheap
+        for (int i = 0; i < k - 1; ++i) {
+            maxheap.pop();
         }
-        return pq.top();
+        return maxheap.top();
     }
+    
+    int findKthLargestV3(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, greater<int>> minheap;
+        for (int n: nums) {
+            minheap.push(n);
+            if (minheap.size() > k) minheap.pop();
+        }
+        return minheap.top();
+    }
+
 };
 // TESTS
 struct Test {
-    initializer_list<int> ilist;
+    vector<int> nums;
     int k;
     int expected;
 
-    void run() const {
+    void run() {
         Solution sol;
-        vector<int> nums(ilist);
-        auto res = sol.findKthLargest(nums, k);
+        int actual = sol.findKthLargestV3(nums, k);
         cout << "Find #" << k << " largest from [ ";
         bool first = true;
-        for (auto i: ilist) {
+        for (int i: nums) {
             if (!first) cout << ",";
             cout << i;
             first = false;
         }
-        cout << " ] -> " << res << ", "
-             << std::boolalpha << (res == expected) << endl;
+        cout << " ] -> " << actual << endl;
+        assert(expected == actual);
+        assert(expected == sol.findKthLargestV1(nums, k));
+        assert(expected == sol.findKthLargestV2(nums, k));
     }
 };
 
 int main(int argc, char* argv[]) {
-    initializer_list<Test> tests = {
+    vector<Test> tests = {
         {{3,2,1,5,6,4}, 1, 6},
         {{3,2,1,5,6,4}, 2, 5},
         {{3,2,1,5,6,4}, 3, 4},
@@ -49,8 +66,6 @@ int main(int argc, char* argv[]) {
         {{3,2,1,5,6,4}, 5, 2},
         {{3,2,1,5,6,4}, 6, 1},
     };
-    for (const Test& t: tests) {
-        t.run();
-    }
+    for (auto& t: tests) t.run();
     return 0;
 }

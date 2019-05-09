@@ -8,9 +8,16 @@ Note:
 You may assume k is always valid, 1 ≤ k ≤ array's length.
 
 ## Solution:
-- A short heap based solution in C++ O(K logN).
+### Intuitive Approach
+Sort the array then pick the first K, O(N logN) + K
+
+### Heap
+A short heap based solution O(K logN), or even keep the heap size to K, reduce to O(K logK).
+
 - A quick sort pivot based solution in JS.
 
 #FB #MSFT #MSFT
 
 #Divide and Conquer #Heap
+
+#Similar questions [#215](../p215m/README.md) [#414](../p414e/README.md)

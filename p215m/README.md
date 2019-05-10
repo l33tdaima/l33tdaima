@@ -14,7 +14,8 @@ Sort the array then pick the first K, O(N logN) + K
 ### Heap
 A short heap based solution O(K logN), or even keep the heap size to K, reduce to O(K logK).
 
-- A quick sort pivot based solution in JS.
+### Quick select
+A quick sort pivot based solution in JS.
 
 #FB #MSFT #MSFT
 

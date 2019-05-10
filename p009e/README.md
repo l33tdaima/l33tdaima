@@ -1,20 +1,29 @@
-# 9. Determine whether an integer is a palindrome. Do this without extra space. (Easy)
-A palindromic number or numeral palindrome is a number that remains the same when its digits are reversed. Like 16461, for example, it is "symmetrical".
+# 9. Palindrome Number (Easy)
 
-## Questions the candidate should ask
-You can expect following questions:
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
 
-What is Palindrome => A number is palindrome if it is same forwards and back.
-Should I handle negative numbers => No.
-Should I handle fractional numbers => No.
-Can I use itoa => No.
-Should I care about zeros, single digit, big integers => Yes. we should handle any "unsigned integer".
+### Example 1:
+```
+Input: 121
+Output: true
+```
 
-## Sample inputs - Expected outputs
-Input Return Value
-12345 false
-12321 true
-11111 true
-1221 true
-6 true
-0 true
+### Example 2:
+```
+Input: -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+```
+### Example 3:
+```
+Input: 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+```
+
+### Follow up:
+- Coud you solve it without converting the integer to a string?
+
+#AMZN #ADBE #FB #GOOGL #MSFT #BBG and more
+
+#Math

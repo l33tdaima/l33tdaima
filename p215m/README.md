@@ -12,7 +12,7 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 Sort the array then pick the first K, O(N logN) + K
 
 ### Heap
-A short heap based solution O(K logN), or even keep the heap size to K, reduce to O(K logK).
+A max heap based solution O(N + KlogN), or a max heap of size K, O(K + (N-K)logK).
 
 ### Quick select
 A quick sort pivot based solution in JS.

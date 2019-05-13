@@ -1,14 +1,19 @@
 # 125. Valid Palindrome (Easy)
 Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
 
-For example,
-"A man, a plan, a canal: Panama" is a palindrome.
-"race a car" is not a palindrome.
-### Note:
-Have you consider that the string might be empty? This is a good question to ask during an interview.
+*Note*: For the purpose of this problem, we define empty string as valid palindrome.
 
-For the purpose of this problem, we define empty string as valid palindrome.
+### Example 1:
+```
+Input: "A man, a plan, a canal: Panama"
+Output: true
+```
+### Example 2:
+```
+Input: "race a car"
+Output: false
+```
 
-#FB #MSFT #UBER #Zenefits
+#FB #AMZN #GOOGL #MSFT #APPL #Airbnb
 
 #String #Two Pointers

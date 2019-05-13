@@ -22,49 +22,19 @@ type Test struct {
 
 func main() {
 	tests := []Test{
-		{
-			input:    -3489,
-			expected: false,
-		},
-		{
-			input:    12345,
-			expected: false,
-		},
-		{
-			input:    12321,
-			expected: true,
-		},
-		{
-			input:    7887,
-			expected: true,
-		},
-		{
-			input:    55555,
-			expected: true,
-		},
-		{
-			input:    12210,
-			expected: false,
-		},
-		{
-			input:    200,
-			expected: false,
-		},
-		{
-			input:    10,
-			expected: false,
-		},
-		{
-			input:    6,
-			expected: true,
-		},
-		{
-			input:    0,
-			expected: true,
-		},
+		{-3489, false},
+		{12345, false},
+		{12321, true},
+		{7887, true},
+		{55555, true},
+		{12210, false},
+		{200, false},
+		{10, false},
+		{6, true},
+		{0, true},
 	}
 	for _, t := range tests {
 		act := isPalindrome(t.input)
-		fmt.Printf("Is %v a palindrome -> %v, %v\n", t.input, act, t.expected == act)
+		fmt.Printf("%v is a palindrome -> %v, %v\n", t.input, act, t.expected == act)
 	}
 }

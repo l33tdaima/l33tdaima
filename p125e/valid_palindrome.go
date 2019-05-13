@@ -2,17 +2,15 @@ package main
 
 import (
 	"fmt"
-	"regexp"
 	"strings"
 )
 
 func isPalindrome(s string) bool {
 	s = strings.ToLower(s)
-	re := regexp.MustCompile("[[:alnum:]]")
 	for lo, hi := 0, len(s)-1; lo < hi; {
-		if !re.MatchString(string(s[lo])) {
+		if (s[lo] < 'a' || s[lo] > 'z') && (s[lo] < '0' || s[lo] > '9') {
 			lo++
-		} else if !re.MatchString(string(s[hi])) {
+		} else if (s[hi] < 'a' || s[hi] > 'z') && (s[hi] < '0' || s[hi] > '9') {
 			hi--
 		} else {
 			if s[lo] != s[hi] {

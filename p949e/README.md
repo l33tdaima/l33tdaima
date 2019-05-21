@@ -24,6 +24,10 @@ Output: ""
 ## Solution
 There are too many corner cases, so it's easier to just brute-force all 24 combinations and find the maximum over valid ones.
 
+Python itertools package has permutations function handy, but we need to know how to implement our own.
+
 #LiveRamp
 
 #Math
+
+#Similar questions [#046](../p046m/README.md) [#949e](../p949e/README.md)

@@ -10,7 +10,7 @@ var permuteV1 = function(nums) {
   for (let i = 0; i < nums.length; ++i) {
     let subnums = Array.from(nums);
     subnums.splice(i, 1);
-    let subperm = permute(subnums);
+    let subperm = permuteV1(subnums);
     for (let j = 0; j < subperm.length; ++j) {
       subperm[j].unshift(nums[i]);
     }
@@ -20,7 +20,9 @@ var permuteV1 = function(nums) {
 };
 
 var permuteV2 = function(nums) {
-  const backtrack = function(ans, wip, visited) {
+  let ans = new Array();
+  let visited = Array.from(nums, v => false);
+  const backtrack = function(wip) {
     if (wip.length === nums.length) {
       ans.push(Array.from(wip));
       return;
@@ -29,14 +31,12 @@ var permuteV2 = function(nums) {
       if (visited[i]) continue;
       visited[i] = true;
       wip.push(nums[i]);
-      backtrack(ans, wip, visited);
+      backtrack(wip);
       wip.pop();
       visited[i] = false;
     }
   };
-  let ans = new Array();
-  let visited = Array.from(nums, v => false);
-  backtrack(ans, [], visited);
+  backtrack([]);
   return ans;
 };
 // TESTS

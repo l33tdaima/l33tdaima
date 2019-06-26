@@ -25,3 +25,5 @@ Output: true
 #AMZN
 
 #Array #Hash Table
+
+#Similar questions [#217](../p217e/README.md) [#219](../p219e/README.md) [#220](../p220m/README.md)

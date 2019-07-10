@@ -55,3 +55,5 @@ Notice each digit has it's own entry in the array.
 #MSFT #GS #BBG
 
 #String
+
+#Similar questions [#443](../p443e/README.md) [#604](../p604e/README.md)

@@ -11,40 +11,33 @@ const Tree = require('binary_tree');
  * @return {number[]}
  */
 var inorderTraversal = function(root) {
-    let result = new Array();
-    let stack = new Array();
-    if (root === null) {
-        return result;
+  let ans = [];
+  let stack = [];
+  let node = root;
+  while (node != null || stack.length > 0) {
+    while (node) {
+      stack.push(node);
+      node = node.left;
     }
-    let p = root;
-    stack.push(p);
-    while (stack.length > 0) {
-        if (p.left !== null) {
-            p = p.left;
-            stack.push(p);
-            continue;
-        }
-        do {
-            p = stack.pop();
-            result.push(p.val);
-        } while (p.right === null && stack.length > 0);
-        if (p.right !== null) {
-            p = p.right;
-            stack.push(p);
-        }
-    }
-    return result;
+    node = stack.pop();
+    ans.push(node.val);
+    node = node.right;
+  }
+  return ans;
 };
 
-var testData = [
-    "1",
-    "1,2,#,#,3,#,#",
-    "1,2,3,4,#,#,#,#,#",
-    "1,#,2,#,3,#,4,#,#",
-    "1,#,2,3,4,#,#,#,#",
-    "1,2,4,#,#,5,#,7,#,#,3,6,#,8,#,#,#"
-];
-testData.forEach(function(data) {
-    let tree = Tree.deserialize(data);
-    console.log("In-order traversal ->", inorderTraversal(tree));
+[
+  ['#', []],
+  ['1,#,#', [1]],
+  ['1,2,#,#,3,#,#', [2, 1, 3]],
+  ['1,2,3,4,#,#,#,#,#', [4, 3, 2, 1]],
+  ['1,#,2,#,3,#,4,#,#', [1, 2, 3, 4]],
+  ['1,#,2,3,4,#,#,#,#', [1, 4, 3, 2]],
+  ['1,2,4,#,#,5,#,7,#,#,3,6,#,8,#,#,#', [4, 2, 5, 7, 1, 6, 8, 3]]
+].forEach(t => {
+  let tree = Tree.deserialize(t[0]);
+  const actual = inorderTraversal(tree);
+  console.log('Inorder traversal of', t[0], '->', actual);
+  console.assert(actual.length === t[1].length);
+  for (let i = 0; i < actual.length; ++i) console.assert(actual[i] === t[1][i]);
 });

@@ -5,6 +5,9 @@
 build
 build/*
 
+# Python
+__pycache__
+
 # Bucklescript 
 *.exe
 *.obj

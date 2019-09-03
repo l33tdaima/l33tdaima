@@ -2,13 +2,27 @@
 
 Given a string, find the length of the longest substring without repeating characters.
 
-Examples:
+### Example 1:
+```
+Input: "abcabcbb"
+Output: 3 
+Explanation: The answer is "abc", with the length of 3. 
+```
 
-Given "abcabcbb", the answer is "abc", which the length is 3.
+### Example 2:
+```
+Input: "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+```
 
-Given "bbbbb", the answer is "b", with the length of 1.
-
-Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+### Example 3:
+```
+Input: "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3. 
+             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+```
 
 ## Solution
 Inspired by p076h template
@@ -25,8 +39,10 @@ int lengthOfLongestSubstring(string s) {
 }
 ```
 
-#AMZN #BBG #ADBE #YELP
+#AMZN #CSCO #GOOGL #MSFT #FB #BBG #ADBE #YELP
 
-#Hash Table #Two Pointer #String
+#Hash Table #Two Pointer #String #Slideing Window
 
 #Similar question [#003m](../p003m/README.md) [#076h](../p076h/README.md) [#159h](../p159h/README.md)
+
+#Explore Facebook

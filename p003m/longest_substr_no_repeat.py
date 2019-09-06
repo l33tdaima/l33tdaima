@@ -9,18 +9,20 @@ class Solution:
             char_map[code] = i
             ans = max(ans, i - start)
         return ans
+
+
 # TEST
 tests = [
-    ['', 0],
-    ['abcabcbb', 3],
-    ['bbbbb', 1],
-    ['pwwkew', 3],
-    ['c', 1],
-    ['abba', 2]
+    ["", 0],
+    ["abcabcbb", 3],
+    ["bbbbb", 1],
+    ["pwwkew", 3],
+    ["c", 1],
+    ["abba", 2],
 ]
 for t in tests:
     sol = Solution()
     actual = sol.lengthOfLongestSubstring(t[0])
-    print('Length of longest substring of', t[0], '->', actual);
-    assert(actual == t[1])
-    
+    print("Length of longest substring of", t[0], "->", actual)
+    assert actual == t[1]
+

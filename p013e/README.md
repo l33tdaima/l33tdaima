@@ -53,6 +53,8 @@ When iterating the input string, the point is check if
 - the mapped number of the current char less than the next one, we encounter IV, IX, etc. do minus and advance i by 2 chars;
 - otherwise do plus and advance i by 1 char.
 
-#FB #MSFT #BBG #UBER #YHOO
+#AMZN #FB #MSFT
 
 #Math #String
+
+#Explore Facebook

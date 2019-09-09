@@ -4,10 +4,11 @@ Given an array S of n integers, are there elements a, b, c in S such that a + b 
 
 Note: The solution set must not contain duplicate triplets.
 
-For example, given array S = [-1, 0, 1, 2, -1, -4],
+### Example
+```
+Given array S = [-1, 0, 1, 2, -1, -4],
 
 A solution set is:
-```
 [
   [-1, 0, 1],
   [-1, -1, 2]
@@ -21,8 +22,10 @@ A solution set is:
   - `lo++` if less than target
   - `hi--` if greater than target
 
-#FB #MSFT #AMZN #BBG #ADBE
+#FB #MSFT #AMZN #GOOGL #BBG #ADBE
 
 #Array #Two Pointers
 
 #Similar questions [#015m](../p015m/README.md) [#259m](../p259m/README.md)
+
+#Explore Facebook

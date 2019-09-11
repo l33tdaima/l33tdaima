@@ -5,11 +5,11 @@
 var removeDuplicates = function(nums) {
   let k = 0; // index of last element TO BE copied
   for (let i = 0; i < nums.length; ++i) {
-    if (nums[k] < nums[i]) {
-      nums[++k] = nums[i];
+    if (k < 1 || nums[k - 1] < nums[i]) {
+      nums[k++] = nums[i];
     }
   }
-  return nums.length > 0 ? k + 1 : 0;
+  return k;
 };
 // TEST
 [

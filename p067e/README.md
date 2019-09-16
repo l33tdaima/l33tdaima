@@ -20,6 +20,8 @@ Output: "10101"
   - convert the carry number to '1' or '0'
   - prefix the new carry character
 
-#FB
+#FB #AMZN #ADBE
 
 #Math #String
+
+#Explore Facebook

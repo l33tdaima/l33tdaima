@@ -15,8 +15,10 @@ nums2 = [2,5,6],       n = 3
 Output: [1,2,2,3,5,6]
 ```
 
-#FB #MSFT #BBG #ADBE #CSCO #Expedia #AMZN
+#FB #MSFT #AMZN #APPL #LNKD #GOOGL
 
 #Array #Two Pointers
+
+#Explore Facebook
 
 #Similar questions [#88](../p088e/README.md) [#360](../p360m/README.md) [#977](../p977e/README.md)

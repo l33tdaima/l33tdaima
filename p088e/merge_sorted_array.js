@@ -24,8 +24,8 @@ var merge = function(nums1, m, nums2, n) {
   { nums1: [2, 0], m: 1, nums2: [1], n: 1 },
   { nums1: [1, 3, 5, 0, 0, 0], m: 3, nums2: [2, 4, 6], n: 3 },
   { nums1: [4, 5, 6, 0, 0, 0], m: 3, nums2: [2, 2, 2], n: 3 }
-].forEach(function(test) {
-  console.log("---\n  Merge", test.nums1, "with", test.nums2);
-  merge(test.nums1, test.m, test.nums2, test.n);
-  console.log("  ->", test.nums1);
+].forEach(t => {
+  console.log('Merge', t.nums1, 'with', t.nums2);
+  merge(t.nums1, t.m, t.nums2, t.n);
+  console.log('  ->', t.nums1);
 });

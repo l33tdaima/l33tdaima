@@ -4,7 +4,7 @@
 #         self.val = x
 #         self.next = None
 
-from local_py_packages.list import ListNode
+from mypy_packages.list import ListNode
 
 
 class Solution:

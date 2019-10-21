@@ -4,34 +4,31 @@
  * @return {boolean}
  */
 var isOneEditDistance = function(s, t) {
-    if (s.length < t.length) {
-        let tmp = s;
-        s = t;
-        t = tmp;
-    }
-    if (s.length - t.length > 1) { return false; }
-    let editedOnce = false;
-    for (let i = 0, j = 0; j < t.length; ++i, ++j) {
-        if (s[i] === t[j]) { continue; }
-        if (editedOnce) { return false; }
-        editedOnce = true;
-        if (s.length > t.length) {
-            j--;
-        }
-    }
-    return editedOnce || s.length > t.length;
+  if (s.length < t.length) [s, t] = [t, s];
+  if (s.length - t.length > 1) return false;
+  let editedOnce = false;
+  for (let i = 0, j = 0; j < t.length; ++i, ++j) {
+    if (s[i] === t[j]) continue;
+    if (editedOnce) return false;
+    editedOnce = true;
+    if (s.length > t.length) j--;
+  }
+  return editedOnce || s.length > t.length;
 };
 // TEST
 [
-    ["ab", "acd"],
-    ["cab", "ad"],
-    ["cat", "cut"],
-    ["cat", "cast"],
-    ["cat", "cats"],
-    ["cat", "at"],
-    ["cat", "dog"],
-    ["cat", "act"],
+  ['ab', 'acdd', false],
+  ['ab', 'acd', false],
+  ['cab', 'ad', false],
+  ['cat', 'cut', true],
+  ['cat', 'cast', true],
+  ['cat', 'cats', true],
+  ['cat', 'at', true],
+  ['cat', 'dog', false],
+  ['cat', 'act', false],
+  ['cat', 'cats', true]
 ].forEach(t => {
-    console.log("One edit distance between", t[0], "and", t[1], "->",
-                isOneEditDistance(t[0], t[1]));
+  const actual = isOneEditDistance(t[0], t[1]);
+  console.log('Is', t[0], t[1], 'one edit distance? ->', actual);
+  console.assert(actual === t[2]);
 });

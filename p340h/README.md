@@ -2,9 +2,19 @@
 
 Given a string, find the length of the longest substring T that contains at most k distinct characters.
 
-For example, Given s = “eceba” and k = 2,
+### Example 1:
+```
+Input: s = "eceba", k = 2
+Output: 3
+Explanation: T is "ece" which its length is 3.
+```
 
-T is "ece" which its length is 3.
+### Example 2:
+```
+Input: s = "aa", k = 1
+Output: 2
+Explanation: T is "aa" which its length is 2.
+```
 
 ## Solution
 ### Intuitive Approach
@@ -16,7 +26,9 @@ How large is the search space? N + (N-1) + ... + 2 + 1 different substring. For 
 - Whenever we find distinct > k, we need to move forward the substrStart index in order to satisfy the restriction
 - `maxLen = max(maxLen, i - substrStart + 1)`
 
-#GOOGL #AppDynamics #Coupang
+#FB #AMZN #UBER #GOOGL #BBG #MSFT
 #GOOGL.MJ
 
 #Hash Table #String
+
+#Explore Facebook

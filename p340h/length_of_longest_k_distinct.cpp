@@ -22,12 +22,6 @@ public:
                 substrStart ++;
             }
             maxLen = max(maxLen, i - substrStart + 1);
-            /*
-            cout << "map[" << s[i] << "]=" << map[s[i]] 
-                 << ", distinct=" << distinct << ", substrStart="
-                 << substrStart << ", maxLen=" << maxLen
-                 << endl;
-            */
         }
         return maxLen; 
     }

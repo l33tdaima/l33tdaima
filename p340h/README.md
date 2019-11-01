@@ -32,3 +32,5 @@ How large is the search space? N + (N-1) + ... + 2 + 1 different substring. For 
 #Hash Table #String
 
 #Explore Facebook
+
+#Similar question [#159h](../p159h/README.md) [#340h](../p340h/README.md)

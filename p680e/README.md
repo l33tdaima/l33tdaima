@@ -26,3 +26,7 @@ An intersting generic extension by at most removing K chars is also provided, by
 #FB
 
 #String
+
+#Similar questions [#125e](../p125e/README.md) [#680e](../p680e/README.md)
+
+#Explore Facebook

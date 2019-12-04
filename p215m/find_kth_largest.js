@@ -3,9 +3,13 @@
  * @param {number} k
  * @return {number}
  */
-var findKthLargestV1 = function(nums, k) {
+var findKthLargestV1a = function(nums, k) {
   nums.sort((a, b) => b - a);
   return nums[k - 1];
+};
+var findKthLargestV1b = function(nums, k) {
+  nums.sort((a, b) => a - b);
+  return nums[nums.length - k];
 };
 
 var findKthLargestV2 = function(nums, k) {

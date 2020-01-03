@@ -3,7 +3,7 @@
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
-from mypy_packages.list import ListNode
+from local_packages.list import ListNode
 
 
 class Solution:

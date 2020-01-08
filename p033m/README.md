@@ -24,11 +24,11 @@ Output: -1
 ## Solution
 Need to revise the standard binary search. 
 
-Between the part before mid and after mid, there must be one side is sorted, the other side is rotated,
-- nums[lo] <= nums[mid]: [lo .. mid] is sorted, [mid .. hi] is rotated
+Between the part before mid and after mid point, there must be one side is sorted, the other side is rotated,
+- if nums[lo] < nums[mid]: [lo .. mid) is sorted, (mid .. hi] is rotated
   - target falls into [lo .. mid]: hi = mid - 1
   - otherwise: lo = mid + 1
-- else: [lo .. mid] is rotated, [mid .. hi] is sorted
+- if nums[mid] < nums[hi]: [lo .. mid) is rotated, (mid .. hi] is sorted
   - target falls into [mid .. hi]: lo = mid + 1
   - otherwise: hi = mid - 1
 

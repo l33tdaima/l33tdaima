@@ -8,15 +8,13 @@ using namespace std;
 class Solution {
 public:
     int divide(int dividend, int divisor) {
-        if (!divisor || (dividend == INT_MIN && divisor == -1)) {
+        if (dividend == INT_MIN && divisor == -1) {
             return INT_MAX;
         }
         bool negative = (dividend < 0) ^ (divisor < 0);
-        long long n = labs(dividend);
-        long long d = labs(divisor);
-        int ans = 0;
+        long n = abs(dividend), d = abs(divisor), ans = 0;
         while (n >= d) {
-            long long md = d, mul = 1;
+            long md = d, mul = 1;
             while (n >= (md << 1)) {
                 md <<= 1;
                 mul <<= 1;

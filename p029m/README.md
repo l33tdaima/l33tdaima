@@ -22,8 +22,12 @@ Output: -2
 - Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 2^31 − 1 when the division result overflows.
 
 ## Solution
-Essentially we will keep substracting divisor from dividend, which is suboptimal if divisor is significantly smaller than dividend. We will need to accelarate this substraction by left shift (multiply by 2) divisor each iteation.
+Essentially we will keep substracting divisor from dividend, which is suboptimal if divisor is significantly smaller than dividend, will cause Time Limit Exceeded violation.
+
+We will need to accelarate this substraction by left shift (multiply by 2) divisor each iteation.
 
 #FB #AMZN #GOOGL
 
 #Math #Binary Search
+
+#Explore Facebook

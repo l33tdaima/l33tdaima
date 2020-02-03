@@ -27,3 +27,5 @@ Output: [4,9]
 #Hash Table #Two Pointers #Binary Search #Sort
 
 #Similiar questions [#349](../p349e/README.md) [#350](../p350e/README.md) [#1002](../pk1002e/README.md)
+
+#Explor Facebook

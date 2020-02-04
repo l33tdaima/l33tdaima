@@ -2,25 +2,8 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var permuteV1 = function(nums) {
-  if (nums.length <= 1) {
-    return [nums];
-  }
-  let permutations = [];
-  for (let i = 0; i < nums.length; ++i) {
-    let subnums = Array.from(nums);
-    subnums.splice(i, 1);
-    let subperm = permuteV1(subnums);
-    for (let j = 0; j < subperm.length; ++j) {
-      subperm[j].unshift(nums[i]);
-    }
-    permutations = permutations.concat(subperm);
-  }
-  return permutations;
-};
-
-var permuteV2 = function(nums) {
-  let ans = new Array();
+var permute = function(nums) {
+  let ans = [];
   let visited = Array.from(nums, v => false);
   const backtrack = function(wip) {
     if (wip.length === nums.length) {
@@ -40,6 +23,10 @@ var permuteV2 = function(nums) {
   return ans;
 };
 // TESTS
-[[1, 2], [1, 2, 3], [1, 2, 3, 4]].forEach(t => {
-  console.log(permuteV2(t));
+[
+  [1, 2],
+  [1, 2, 3],
+  [1, 2, 3, 4]
+].forEach(t => {
+  console.log(permute(t));
 });

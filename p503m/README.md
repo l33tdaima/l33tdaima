@@ -22,4 +22,4 @@ Similar to [#496e](../p496e/README.md).
 
 #Stack
 
-#Simlar questions [#496e](../p496e/README.md) [#503m](../p503m/README.md)
+#Similar questions [#496e](../p496e/README.md) [#503m](../p503m/README.md)

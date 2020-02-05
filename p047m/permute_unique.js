@@ -3,36 +3,34 @@
  * @return {number[][]}
  */
 var permuteUnique = function(nums) {
-    if (nums.length <= 1) {
-        return [nums];
+  nums.sort();
+  const ans = [];
+  const visited = Array.from(nums, v => false);
+
+  const backtrack = function(wip) {
+    if (wip.length === nums.length) {
+      ans.push(Array.from(wip));
+      return;
     }
-    nums.sort();
+    for (let i = 0; i < nums.length; ++i) {
+      if (visited[i]) continue;
+      if (i > 0 && nums[i] === nums[i - 1] && !visited[i - 1]) continue;
+      visited[i] = true;
+      wip.push(nums[i]);
+      backtrack(wip);
+      wip.pop();
+      visited[i] = false;
+    }
+  };
 
-    var recPermuteUnique = function(nums) {
-        if (nums.length <= 1) {
-            return [nums];
-        }
-        let permutations = [];
-        for (let i = 0; i < nums.length; ++i) {
-            if (i > 0 && nums[i] === nums[i-1]) {
-                continue;
-            }
-            // Extract nums[i] as pivot point
-            let subnums = Array.from(nums);
-            subnums.splice(i, 1);
-            // Go deeper to solve the set of the rest elements
-            let subperm = permuteUnique(subnums);
-            for (let j = 0; j < subperm.length; ++j) {
-                // insert nums[i] at the beginning
-                subperm[j].unshift(nums[i]);
-            }
-            permutations = permutations.concat(subperm);
-        }
-        return permutations;
-    };
-
-    return recPermuteUnique(nums);
+  backtrack([]);
+  return ans;
 };
 
-var testSets = [1, 2, 1];
-console.log(permuteUnique(testSets));
+[
+  [3, 3],
+  [1, 2, 1],
+  [2, 2, 1]
+].forEach(t => {
+  console.log(permuteUnique(t));
+});

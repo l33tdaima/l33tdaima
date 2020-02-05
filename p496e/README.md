@@ -41,4 +41,4 @@ Can we precalculate the next greater number for each value in nums2 in O(N2), so
 
 #Stack #Hash Table
 
-#Simlar questions [#496e](../p496e/README.md) [#503m](../p503m/README.md)
+#Similar questions [#496e](../p496e/README.md) [#503m](../p503m/README.md)

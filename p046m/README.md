@@ -19,4 +19,6 @@ Given a collection of distinct numbers, return all possible permutations.
 
 #FB #GOOGL #LNKD #YHOO #AMZN #MSFT #BBG #ORCL
 
+#Similar questions [#046m](../p046m/README.md) [#047m](../p047m/README.md)
+
 #Explore Facebook

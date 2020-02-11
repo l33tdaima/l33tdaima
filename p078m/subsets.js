@@ -3,41 +3,31 @@
  * @return {number[][]}
  */
 var subsets = function(nums) {
-    var solutions = [];
-    var backtrack = function(solution, start) {
-        solutions.push(Array.from(solution));
-        for (let i = start; i < nums.length; ++i) {
-            solution.push(nums[i]);
-            backtrack(solution, i + 1);
-            solution.pop();
-        }
-    };
-
-    backtrack([], 0);
-    return solutions;
+  const solutions = [];
+  const backtrack = function(wip, start) {
+    solutions.push(Array.from(wip));
+    for (let i = start; i < nums.length; ++i) {
+      wip.push(nums[i]);
+      backtrack(wip, i + 1);
+      wip.pop();
+    }
+  };
+  backtrack([], 0);
+  return solutions;
 };
 
 var subsetsByBit = function(nums) {
-    var solutions = Array.from({length:2**nums.length}, (v) => []);
-    for (let i = 0; i < solutions.length; ++i) {
-        for (let b = 0; b < nums.length; ++b) {
-            if((i>>b) & 1) {
-                solutions[i].push(nums[b]);
-            }
-        }
+  const solutions = Array.from({ length: 2 ** nums.length }, v => []);
+  for (let i = 0; i < solutions.length; ++i) {
+    for (let b = 0; b < nums.length; ++b) {
+      if ((i >> b) & 1) solutions[i].push(nums[b]);
     }
-    return solutions;
+  }
+  return solutions;
 };
 // TEST
-[
-    [],
-    [1],
-    [1, 2],
-    [1, 2, 3]
-].forEach(t => {
-    console.log("-----");
-    console.log("Backtracking solution of", t, "->\n",
-                subsets(t));
-    console.log("Bit Manipulation solution of", t, "->\n",
-                subsetsByBit(t));
+[[], [1], [1, 2], [1, 2, 3]].forEach(t => {
+  console.log('-----');
+  console.log('Backtracking solution of', t, '->\n', subsets(t));
+  console.log('Bit Manipulation solution of', t, '->\n', subsetsByBit(t));
 });

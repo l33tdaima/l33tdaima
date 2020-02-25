@@ -4,26 +4,35 @@
  * @return {number[][]}
  */
 var combine = function(n, k) {
-    // Recusive DFS helper
-    var recCombineHelper = function(sol, currCombi, base) {
-        // console.log("# s =", sol, ", combi =", currCombi);
-        if (currCombi.length === k) {
-            sol.push(Array.from(currCombi));
-            // console.log("+ sol:", sol);
-            return;
-        }
-        for (let i = base; i <= n; ++i) {
-            currCombi.push(i);
-            recCombineHelper(sol, currCombi, i + 1);
-            currCombi.pop(i);
-        }
-    };
+  const ans = [];
+  const backtrack = function(path, start) {
+    if (path.length === k) {
+      ans.push(Array.from(path));
+      return;
+    }
+    for (let i = start; i <= n; ++i) {
+      path.push(i);
+      backtrack(path, i + 1);
+      path.pop();
+    }
+  };
 
-    var solutions = new Array();
-    recCombineHelper(solutions, [], 1);
-    return solutions;
+  backtrack([], 1);
+  return ans;
 };
 
-var n = (process.argv[2] === undefined) ? 1 : parseInt(process.argv[2]);
-var k = (process.argv[3] === undefined) ? 1 : parseInt(process.argv[3]);
-console.log("C(", n, ",", k, ") =", combine(n, k));
+[
+  [1, 1],
+  [2, 1],
+  [2, 2],
+  [3, 1],
+  [3, 2],
+  [3, 3],
+  [4, 1],
+  [4, 2],
+  [4, 3],
+  [4, 4],
+  [5, 2]
+].forEach(t => {
+  console.log('Combination (', t[0], ',', t[1], ') ->', combine(t[0], t[1]));
+});

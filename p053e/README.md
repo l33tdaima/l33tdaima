@@ -13,12 +13,14 @@ More practice:
 If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 
 ## Solution
-Divide and Conquer is really an overkill and suboptimal solution, the best O(n) idea is scan the array and add each element into a local sum, update the global sum if a larger one is found. And if the sum drops below zero, we need to reset the local sum to zero, which means all the elements before the point has negative contribution, we should not consider them in the future subarray. 
+The DP state `maxSubArray[i]` is defined as the max sum of all the subarray ending at `i`, the new state is the greater of the previous state plus the element `i` and just element `i`,
+```
+maxSubArray(i) = maxSubArray(i-1) > 0 ? maxSubArray(i-1) + nums[i] : nums[i]
+or
+maxSubArray(i) = max(maxSubArray(i-1), 0) + nums[i]
+```
 
-The DP way of understanding,
-```
-maxSubArray(i) = maxSubArray(i-1) > 0 ? maxSubArray(i-1) + nums[i] : 0 + nums[i]
-```
+Another way to understand the algorithm is scan the array and add each element into a local sum, update the global sum if a larger one is found. And if the sum drops below zero, we need to reset the local sum to zero, which means all the elements before the point has negative contribution, we should not consider them in the future subarray. 
 
 #MSFT #BBG #LNKD #AMZN
 

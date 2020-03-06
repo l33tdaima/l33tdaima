@@ -22,3 +22,5 @@ Boyer-Moore Voting Algorithm is used to solve the problem of find the the candid
 This problem is the variant of this algorithm. There will be no more than 2 elements in the outcome. A variant of Boyer-Moore Algorithm which we must check candidate 1 (m1) and candidate 2 (m2) first, not zero first as we did in p169e, otherwise we could have m1 and m2 the same in some test cases.
 
 #Array
+
+#Similar questions [#169](../p169e/README.md) [#229](../p229m/README.md)

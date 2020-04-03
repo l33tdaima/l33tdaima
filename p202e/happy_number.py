@@ -20,3 +20,4 @@ for t in tests:
     sol = Solution()
     actual = sol.isHappy(t[0])
     print("Is", t[0], "a happy number? ->", actual)
+    assert actual == t[1]

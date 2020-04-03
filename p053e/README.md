@@ -1,6 +1,6 @@
 # 53. Maximum Subarray (Easy)
 
-Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+Given an integer array `nums`, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
 ### Example:
 ```
@@ -13,10 +13,12 @@ More practice:
 If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 
 ## Solution
-The DP state `maxSubArray[i]` is defined as the max sum of all the subarray ending at `i`, the new state is the greater of the previous state plus the element `i` and just element `i`,
+The DP state `maxSubArray[i]` is defined as the max sum of all the subarray ending at `i`, the new state is the previous state plus the element `i` or just element `i`, whichever is greater,
 ```
 maxSubArray(i) = maxSubArray(i-1) > 0 ? maxSubArray(i-1) + nums[i] : nums[i]
+```
 or
+```
 maxSubArray(i) = max(maxSubArray(i-1), 0) + nums[i]
 ```
 

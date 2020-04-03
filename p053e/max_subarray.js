@@ -12,12 +12,13 @@ var maxSubArray = function(nums) {
 };
 // TEST
 [
-  [],
-  [-1],
-  [-2, 1, -3],
-  [-2, -1, -3],
-  [-2, 1, -3, 4],
-  [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+  [[-1], -1],
+  [[-2, 1, -3], 1],
+  [[-2, -1, -3], -1],
+  [[-2, 1, -3, 4], 4],
+  [[-2, 1, -3, 4, -1, 2, 1, -5, 4], 6]
 ].forEach(t => {
-  console.log('Largest sum of subarray in', t, '->', maxSubArray(t));
+  const actual = maxSubArray(t[0]);
+  console.log('Largest sum of subarray in', t[0], '->', actual);
+  console.assert(actual === t[1]);
 });

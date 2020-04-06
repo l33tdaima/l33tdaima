@@ -2,27 +2,25 @@
  * @param {string[]} strs
  * @return {string[][]}
  */
-var groupAnagrams = function(strs) {
+var groupAnagrams = function (strs) {
   // sort each string for signature
   const sigMap = new Map();
-  for (let i = 0; i < strs.length; ++i) {
-    let sig = [...strs[i]].sort().join('');
+  for (let s of strs) {
+    let sig = [...s].sort().join('');
     let v = sigMap.get(sig);
     if (v === undefined) {
-      sigMap.set(sig, [strs[i]]);
+      sigMap.set(sig, [s]);
     } else {
-      v.push(strs[i]);
+      v.push(s);
       sigMap.set(sig, v);
     }
   }
   // grouping
-  var grouping = [];
-  sigMap.forEach(v => {
-    grouping.push(v);
-  });
-  return grouping;
+  const ans = [];
+  sigMap.forEach((v) => ans.push(v));
+  return ans;
 };
 
-[['eat', 'tea', 'tan', 'ate', 'nat', 'bat', 'a', 'a', '', '']].forEach(t => {
+[['eat', 'tea', 'tan', 'ate', 'nat', 'bat', 'a', 'a', '', '']].forEach((t) => {
   console.log('Grouping results ->\n', groupAnagrams(t));
 });

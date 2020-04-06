@@ -3,7 +3,7 @@ from collections import defaultdict
 
 
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    def groupAnagramsCount(self, strs: List[str]) -> List[List[str]]:
         ans = defaultdict(list)
         for s in strs:
             sig = [0] * 26
@@ -12,8 +12,15 @@ class Solution:
             ans[tuple(sig)].append(s)
         return ans.values()
 
+    def groupAnagramsSorted(self, strs: List[str]) -> List[List[str]]:
+        ans = defaultdict(list)
+        for s in strs:
+            key = tuple(sorted(s))
+            ans[key].append(s)
+        return ans.values()
+
 
 # TEST
 t = ["eat", "tea", "tan", "ate", "nat", "bat", "a", "a", "", ""]
 sol = Solution()
-print("Group anagrams ->\n", sol.groupAnagrams(t))
+print("Group anagrams ->\n", sol.groupAnagramsSorted(t))

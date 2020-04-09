@@ -5,14 +5,13 @@
  *     this.next = null;
  * }
  */
-const LinkedList = require("list");
+const LinkedList = require('list');
 /**
  * @param {ListNode} head
  * @return {ListNode}
  */
-var middleNode = function(head) {
-  let slow = head;
-  let fast = head;
+var middleNode = function (head) {
+  let [slow, fast] = [head, head];
   while (fast && fast.next) {
     slow = slow.next;
     fast = fast.next.next;
@@ -20,7 +19,14 @@ var middleNode = function(head) {
   return slow;
 };
 // TESTS
-[[1], [1, 2], [1, 2, 3], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5, 6]].forEach(t => {
-  let list = LinkedList.fromArray(t);
-  console.log("Middle node of", t, "->", middleNode(list).val);
+[
+  [[1], 1],
+  [[1, 2], 2],
+  [[1, 2, 3], 2],
+  [[1, 2, 3, 4, 5], 3],
+  [[1, 2, 3, 4, 5, 6], 4],
+].forEach((t) => {
+  const actual = middleNode(LinkedList.fromArray(t));
+  console.log('Middle node of', t, '->', actual.val);
+  console.assert(actual.val === t[1]);
 });

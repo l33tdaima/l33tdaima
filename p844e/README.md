@@ -1,4 +1,4 @@
-# 844. Backspace String Compare (Easy)
+# 844. Backspace String Compare (Easy) (Medium)
 
 Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.
 
@@ -41,9 +41,7 @@ Can you solve it in O(N) time and O(1) space?
 ## Solution
 Use a stack to simulate each S and T by pushing an alphabet and popping a #,  then compare the resulting strings. O(N) of time and O(N) of space.
 
-To achieve O(1) space, we can just use two pointers on the input string to mimic stack operations.
-
-The optimal solution should iterate backward.
+To achieve O(1) space without maintaining a stack, it is impossible to iterate forward without changing the input string because you don't know if a char will be deleted by the following '#', the idea will be iterate backward, when seeing a '#' we know it will skip a valid char before it.
 
 #GOOGL #FB
 

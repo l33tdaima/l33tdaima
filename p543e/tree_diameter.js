@@ -22,13 +22,15 @@ var diameterOfBinaryTree = function (root) {
 };
 // TEST
 [
-  '#',
-  '1,#,#',
-  '1,2,#,#,#',
-  '1,2,#,#,3,#,#',
-  '1,2,4,#,#,5,#,#,3,#,#',
-  '1,2,4,6,7,#,#,#,#,5,#,8,#,9,#,#,3,#,#',
-].forEach(function (test) {
-  let tree = Tree.deserialize(test);
-  console.log('Diagmeter of', test, '->', diameterOfBinaryTree(tree));
+  ['#', 0],
+  ['1,#,#', 0],
+  ['1,2,#,#,#', 1],
+  ['1,2,#,#,3,#,#', 2],
+  ['1,2,4,#,#,5,#,#,3,#,#', 3],
+  ['1,2,4,6,7,#,#,#,#,5,#,8,#,9,#,#,3,#,#', 6],
+].forEach((t) => {
+  const tree = Tree.deserialize(t[0]);
+  const actual = diameterOfBinaryTree(tree);
+  console.log('Diagmeter of', t[0], '->', actual);
+  console.assert(actual === t[1]);
 });

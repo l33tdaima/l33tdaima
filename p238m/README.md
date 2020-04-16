@@ -8,6 +8,8 @@ Input:  [1,2,3,4]
 Output: [24,12,8,6]
 ```
 
+*Constraint*: It's guaranteed that the product of the elements of any prefix or suffix of the array (including the whole array) fits in a 32 bit integer.
+
 Note: Solve it *without division* and in O(n).
 
 Follow up:

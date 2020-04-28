@@ -37,12 +37,14 @@ Explanation: There is no such common subsequence, so the result is 0.
 Three type of questions are what DP is suitable for, *est problem like longest, smallest, largest; number of all possible solutions; and whether.
 
 ### Dynamic Programming Approach
-Use a 2-D array `len(text1) + 1 X len(text2) + 1`, dp[i][j] represent the answer the length fo LCS for text1[1..i] and text2[1..j], imaging text is indexed from 1. 
+Use a 2-D array `(len(text1) + 1) X (len(text2) + 1)`, dp[i][j] represent the answer the length fo LCS for text1[1..i] and text2[1..j], imaging text is indexed from 1. 
 
 The base case is 0 since as long as one string is empty, the answer is 0.
 
 The state transition is
 - if text1[i] == text2[j], this character must be in the LCS, `dp[i][j] = dp[i-1][j-1] + 1`
 - otherwise dp[i][j] is the max of dp[i-1][j], dp[i][j-1], and dp[i-1][j-1], where we can drop dp[i-1][j-1] which can never be greater than the other cases.
+
+We can optimize further by only use 1-D array as we don't need the previous row after processing it.
 
 #Dynamic Programming

@@ -30,12 +30,13 @@ Output: 42 = 20 + 15 + 7
 Path can't have branch, has to be a single route from node to node, otherwise it is much harder.
 
 ## Solution
-* Root >= 0, Left >= 0, Right >= 0: newMax = max(prevMax, sum(All)), return Root + max(Left, Right);
-* Root >= 0, Left < 0, Right < 0: newMax = max(prevMax, sum(Root)), return Root;
-* Root >= 0, one >= 0, the other < 0: newMax = max(prevMax, sum(PositiveBranch)), return Root + max(Left, Right);
-* Root < 0, Left >= 0, Right >= 0: newMax = max(prevMax, sum(All)), return Root + max(Left, Right);
-* Root < 0, Left < 0, Right < 0: newMax = max(prevMax, Root), return Root;
-* Root < 0, one >= 0, the other < 0: newMax = max(prevMax, sum(PostiveBranch)), return Root + max(Left, Right).
+Need a recursive helper function h returning max root to leaf path
+* root >= 0, h left >= 0, h right >= 0: newMax = max(prevMax, sum(all)), return root + max(h left, h right);
+* root >= 0, h left < 0, h right < 0: newMax = max(prevMax, sum(root)), return root;
+* root >= 0, h one >= 0, h other < 0: newMax = max(prevMax, sum(positive one)), return root + max(h left, h right);
+* root < 0, h left >= 0, h right >= 0: newMax = max(prevMax, sum(all)), return root + max(h left, h right);
+* root < 0, h left < 0, h right < 0: newMax = max(prevMax, root), return root;
+* root < 0, h one >= 0, h other < 0: newMax = max(prevMax, srm(postive one)), return root + max(h left, h right).
 
 #Tree #Depth-first Search
 

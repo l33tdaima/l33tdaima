@@ -3,24 +3,19 @@
  * @param {string} S
  * @return {number}
  */
-var numJewelsInStones = function(J, S) {
-    let jewels = Array.from({length: 122 - 65}, (v) => false);
-    for (let i = J.length - 1; i >=0; --i) {
-        jewels[J.charCodeAt(i) - 65] = true;
-    }
-    let count = 0;
-    for (let i = S.length - 1; i >=0; --i) {
-        if (jewels[S.charCodeAt(i) - 65]) {
-            count ++;
-        }
-    }
-    return count;
+var numJewelsInStones = function (J, S) {
+  const jset = new Set(J);
+  return S.split('').reduce((x, s) => {
+    if (jset.has(s)) return x + 1;
+    else return x;
+  }, 0);
 };
 // TEST
 [
-    ["z", "ZZ"],
-    ["aA", "aAAbbbb"],
-].forEach(function (test) {
-    console.log("# of jewels", test[0], " in stones", test[1], "->",
-                numJewelsInStones(test[0], test[1]));
+  ['z', 'ZZ', 0],
+  ['aA', 'aAAbbbb', 3],
+].forEach((t) => {
+  const actual = numJewelsInStones(t[0], t[1]);
+  console.log('# of jewels', t[0], ' in stones', t[1], '->', actual);
+  console.assert(actual === t[2]);
 });

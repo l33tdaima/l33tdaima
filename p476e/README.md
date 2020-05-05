@@ -21,4 +21,4 @@ Explanation: The binary representation of 1 is 1 (no leading zero bits), and its
 2. You could assume no leading zero bit in the integer’s binary representation.
 3. This question is the same as 1009: https://leetcode.com/problems/complement-of-base-10-integer/
 
-#Similar questions [#1009](../pr1009e/README.md)
+#Similar questions [#476](../p476e/README.md) [#1009](../pr1009e/README.md)

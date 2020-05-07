@@ -50,7 +50,7 @@ Output: false
 
 ## Solution
 ### DFS
-Traverse the tree and store the (value, depth) and (value, parent) into two maps, and then return true if depth are the same and parent are different.
+Traverse the tree and store the [parentValue, depth] for x and y when encountered, and then return true if depth are the same and parent are different.
 
 ### BFS
 Use breadth-first search where queue stores the node and the value of parent, scan the nodes on the same level which are the candidates for cousin. The answer is true if and only if

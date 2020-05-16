@@ -31,4 +31,4 @@ A very elegant solution from programming pearls:
 
 #Array #Dynamic Programming
 
-#Similar questions [#628](../p628e/README.md) [#152](../p152m/README.md)
+#Similar Questions [#53](../p053e/README.md) [#152](../p152m/README.md) [#628](../p628e/README.md)

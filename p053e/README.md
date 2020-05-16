@@ -27,3 +27,5 @@ Another way to understand the algorithm is scan the array and add each element i
 #MSFT #BBG #LNKD #AMZN
 
 #Array #Dynamic Programming
+
+#Similar Questions [#53](../p053e/README.md) [#152](../p152m/README.md) [#918](../p918m/README.md)

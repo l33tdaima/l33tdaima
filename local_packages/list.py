@@ -14,8 +14,8 @@ class ListNode:
 
     @staticmethod
     def to_array(head):
-        xs = []
-        while head:
-            xs.append(head.val)
-            head = head.next
+        xs, p = [], head
+        while p:
+            xs.append(p.val)
+            p = p.next
         return xs

@@ -32,8 +32,15 @@ The substring with start index = 1 is "ba", which is an anagram of "ab".
 The substring with start index = 2 is "ab", which is an anagram of "ab".
 ```
 
-#Solution
+## Solution
 Create target p's signature which is a letter-to-occurence lookup array. We are now trying to cancel the occurence from the lookup when sliding the window.
+
+## Template
+There is [template](https://leetcode.com/problems/minimum-window-substring/discuss/26808/here-is-a-10-line-template-that-can-solve-most-substring-problems) for a few similar substring problem:
+
+1. Use two pointers: start and end to represent a window.
+2. Move end to find a valid window.
+3. When a valid window is found, move start to find a smaller window.
 
 #Hash Table
 

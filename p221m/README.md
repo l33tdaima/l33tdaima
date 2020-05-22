@@ -32,4 +32,4 @@ Let `dp[i+1][j+1]` be the side length of the maximum square whose bottom right c
 
 #Dynamic Programming
 
-#Similar questions [#084h](../p084h/README.md) [#085h](../p085h/README.md) [#221m](../p221m/README.md)
+#Similar questions [#084h](../p084h/README.md) [#085h](../p085h/README.md) [#221m](../p221m/README.md) [#1277m](../pr1277m/README.md)

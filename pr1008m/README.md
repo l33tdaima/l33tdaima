@@ -15,9 +15,10 @@ Output: [8,5,10,1,7,null,12]
       1    7    12
 ```
 
-### Note:
-1. 1 <= preorder.length <= 100
-2. The values of preorder are distinct.
+### Constraints:
+- 1 <= preorder.length <= 100
+- 1 <= preorder[i] <= 10^8
+- The values of preorder are distinct.
 
 ## Solution
 For each root, in order to find out the position in the preorder list after root which splits the left and right sub tree, we can do a simple linear search, which ends up O(N^2) complexity. Or we use binary search to improve to O(NlogN).

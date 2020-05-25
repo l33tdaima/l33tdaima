@@ -48,3 +48,5 @@ The state transition is
 We can optimize further by only use 1-D array as we don't need the previous row after processing it.
 
 #Dynamic Programming
+
+#Similar question [#1035](../pr1035m/README.md) [#1143](../pr1143m/README.md)

@@ -27,6 +27,15 @@ Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.
 1. 1 <= N <= 1000
 
 ## Solution
+### Math Induction
+- N = 1: Alice loses
+- N = 2: Alice chooses 1 and wins
+- N = 3: Alice can only choose 1 then N = 2 for Bob, she loses
+- N = 4: Alice should chooses 1 and leave N = 3 for Bob, she wins
+
+Note factors of odds must be odds, factors of evens can be odds and evens. When N is even, Alice can find any odd factor and leave a odd number to Bob, Bob can only choose an odd factor and return an even number back to Alice, eventually Alice gets 2 and win. 
+
+### Another way to think
 If Alice will lose for N, then Alice will must win for N+1, by choosing 1 and leave N to Bob.
 
 #Visa

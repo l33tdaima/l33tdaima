@@ -29,11 +29,11 @@ Since we only have `0` and `1` in the array, instead of counting them in two var
   - If count not found in the map, add (count, index) into map
 ```
 [0, 1, 0, 0, 1]
-Index 0: count = -1, map = [(-1, 0)]
-Index 1: count = 0, map = [(-1, 0), (0, 1)]
-Index 2: count = -1, map = [(-1, 0), (0, 1)], maxLen = 2 - 0 = 2
-Index 3: count = -2, map = [(-1, 0), (0, 1), (-2, 3)]
-Index 4: count = -1, map = [(-1, 0), (0, 1), (-2, 3)], maxLen = 4 - 0 = 4
+Index 0: count = -1, map = [(0, -1), (-1, 0)]
+Index 1: count = 0, map = [(0, -1), (-1, 0), (0, 1)]
+Index 2: count = -1, map = [(0, -1), (-1, 0), (0, 1)], maxLen = 2 - 0 = 2
+Index 3: count = -2, map = [(0, -1), (-1, 0), (0, 1), (-2, 3)]
+Index 4: count = -1, map = [(0, -1), (-1, 0), (0, 1), (-2, 3)], maxLen = 4 - 0 = 4
 ```
 
 #FB

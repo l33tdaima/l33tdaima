@@ -40,3 +40,5 @@ Consider the graph on N people formed by the given "dislike" edges. We want to c
 Color any node red, then all of it's neighbors blue, then all of those neighbors red, and so on. If we ever color a red node blue (or a blue node red), then we've reached a conflict.
 
 #Depth-first Search
+
+#Similar questions [#785](../p785m/README.md) [#886](../p886m/README.md)

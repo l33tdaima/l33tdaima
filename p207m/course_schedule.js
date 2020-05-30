@@ -3,59 +3,63 @@
  * @param {number[][]} prerequisites
  * @return {boolean}
  */
-var canFinish = function(numCourses, prerequisites) {
-    // Convert the input edges into a graph
-    const graph = (function makeGraph() {
-        let graph = Array.from({length: numCourses}, v => []);
-        for (let e of prerequisites) {
-            graph[e[0]].push(e[1]);
-        }
-        return graph;
-    })();
-    // console.log(graph);
-    let recHasCycleDFS = function(v, visited, onPath) {
-        if (visited[v]) { return false; }
-        visited[v] = true; onPath[v] = true;
-        for (let j of graph[v]) {
-            if (onPath[j] || recHasCycleDFS(j, visited, onPath)) {
-                return true;
-            }
-        }
-        onPath[v] = false;
-        return false;
-    };
-    let visited = Array.from({length: numCourses}, v => false);
-    let onPath = Array.from(visited);
-    for (let i = 0; i < numCourses; ++i) {
-        if (!visited[i] && recHasCycleDFS(i, visited, onPath)) {
-            return false;
-        }
+var canFinish = function (numCourses, prerequisites) {
+  // Convert the input edges into an adjacency list of x depends on y
+  const graph = Array.from({ length: numCourses }, (v) => []);
+  for (let e of prerequisites) graph[e[0]].push(e[1]);
+
+  // 0: not visited, 1: visited, -1: being visited, if found -1 again on dfs path, it is a ring
+  const visit = Array.from({ length: numCourses }, (v) => 0);
+  // DFS helper function
+  let recHasCycleDFS = function (v) {
+    if (visit[v] === -1) return true;
+    if (visit[v] === 1) return false;
+    visit[v] = -1;
+    for (let j of graph[v]) {
+      if (recHasCycleDFS(j)) return true;
     }
-    return true;
+    visit[v] = 1; // output v for topological sort
+    return false;
+  };
+
+  for (let i = 0; i < numCourses; ++i) {
+    if (recHasCycleDFS(i)) return false;
+  }
+  return true;
 };
 // TEST
 [
-    {
-        numCourses: 1,
-        prerequisites: []
-    },
-    {
-        numCourses: 2,
-        prerequisites: [[0,1]]
-    },
-    {
-        numCourses: 2,
-        prerequisites: [[0,1],[1,0]]
-    },
-    {
-        numCourses: 4,
-        prerequisites: [[0,1],[1,2],[3,1]]
-    },
-    {
-        numCourses: 4,
-        prerequisites: [[0,1],[1,2],[2,0],[3,1]]
-    },
-].forEach(t => {
-    console.log("Can finish", t.numCourses, "courses depicted by", t.prerequisites,
-                "->", canFinish(t.numCourses, t.prerequisites));
+  [1, [], true],
+  [2, [[0, 1]], true],
+  [
+    2,
+    [
+      [0, 1],
+      [1, 0],
+    ],
+    false,
+  ],
+  [
+    4,
+    [
+      [0, 1],
+      [1, 2],
+      [3, 1],
+    ],
+    true,
+  ],
+  [
+    4,
+    [
+      [0, 1],
+      [1, 2],
+      [2, 0],
+      [3, 1],
+    ],
+    false,
+  ],
+].forEach((t) => {
+  actual = canFinish(t[0], t[1]);
+  console.log('Can finish', t[0], 'courses depicted by', t[1], '->', actual);
+  console.assert(actual === t[2]);
 });

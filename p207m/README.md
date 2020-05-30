@@ -32,11 +32,19 @@ You may assume that there are no duplicate edges in the input prerequisites.
 - Topological sort could also be done via BFS.
 
 ## Solution
-- Convert to a graph representation of an array of linked nodes for each node;
+### DFS
+- Convert to a graph representation to adjencency list: node -> all its prerequisites/dependencies
 - Create the visited bool array/map to keep visited record, initialize to all false;
 - We need another onPath array to keep visited record for the current DFS path, 
   - Reset onPath[vertex] before returning recursive cycle check.
   - If onPath[vertex] true, we found a cycle
+
+### BFS (Kahn Algorithm)
+- Build a adjencency list and indegree array
+- Add all vertices of indegree 0 to queue
+- Remove a vertex from queue and remove it from graph,
+  - all dependency vertices indegree minus one
+  - add to the queue when indegree reaches to zero
 
 #UBER #APPL #Zenefits #YELP
 

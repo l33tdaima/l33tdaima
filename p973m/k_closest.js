@@ -3,11 +3,11 @@
  * @param {number} K
  * @return {number[][]}
  */
-let compare = (p1, p2) =>
+const compare = (p1, p2) =>
   p1[0] * p1[0] + p1[1] * p1[1] - p2[0] * p2[0] - p2[1] * p2[1];
 
-let helper = (points, l, r) => {
-  let pivot = Array.from(points[l]);
+const helper = (points, l, r) => {
+  const pivot = Array.from(points[l]);
   while (l < r) {
     while (l < r && compare(points[r], pivot) >= 0) r--;
     points[l] = points[r];
@@ -18,7 +18,7 @@ let helper = (points, l, r) => {
   return l;
 };
 
-var kClosest = function(points, K) {
+var kClosest = function (points, K) {
   let [l, r] = [0, points.length - 1];
   while (l < r) {
     let mid = helper(points, l, r);
@@ -31,13 +31,20 @@ var kClosest = function(points, K) {
 // TESTS
 [
   {
-    points: [[1, 3], [-2, 2]],
-    K: 1
+    points: [
+      [1, 3],
+      [-2, 2],
+    ],
+    K: 1,
   },
   {
-    points: [[3, 3], [5, -1], [-2, 4]],
-    K: 2
-  }
-].forEach(t => {
-  console.log("K closet point in", t.points, "->", kClosest(t.points, t.K));
+    points: [
+      [3, 3],
+      [5, -1],
+      [-2, 4],
+    ],
+    K: 2,
+  },
+].forEach((t) => {
+  console.log('K closet points in', t.points, '->', kClosest(t.points, t.K));
 });

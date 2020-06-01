@@ -11,33 +11,29 @@ const Tree = require('binary_tree');
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-var invertTree = function(root) {
-    if (root === null) {
-        return null;
-    }
-    let left = invertTree(root.left);
-    let right = invertTree(root.right);
-    root.left = right;
-    root.right = left;
-    return root;
+var invertTree = function (root) {
+  if (root == null) return null;
+  let left = invertTree(root.left);
+  let right = invertTree(root.right);
+  root.left = right;
+  root.right = left;
+  return root;
 };
 
-var testData = [
-    "#",
-    "1",
-    "1,2,#,#,#",
-    "1,#,2,#,#",
-    "1,2,#,#,3,#,#",
-    "1,2,3,#,#,#,#",
-    "1,#,2,#,3,#,#",
-    "1,2,3,4,#,#,#,#,#",
-    "1,#,2,#,3,#,4,#,#",
-    "1,#,2,3,4,#,#,#,#",
-    "1,#,2,3,#,#,4,#,#",
-    "4,2,1,#,#,3,#,#,7,6,#,#,9,#,#"
-];
-
-testData.forEach(function(test) {
-    let tree = Tree.deserialize(test);
-    console.log("Invert", test, "->", Tree.serialize(invertTree(tree)));
+[
+  ['#', '#'],
+  ['1', '1,#,#'],
+  ['1,2,#,#,#', '1,#,2,#,#'],
+  ['1,#,2,#,#', '1,2,#,#,#'],
+  ['1,2,#,#,3,#,#', '1,3,#,#,2,#,#'],
+  ['1,2,3,#,#,#,#', '1,#,2,#,3,#,#'],
+  ['1,#,2,#,3,#,#', '1,2,3,#,#,#,#'],
+  ['1,2,3,4,#,#,#,#,#', '1,#,2,#,3,#,4,#,#'],
+  ['1,#,2,#,3,#,4,#,#', '1,2,3,4,#,#,#,#,#'],
+  ['1,#,2,3,4,#,#,#,#', '1,2,#,3,#,4,#,#,#'],
+  ['1,#,2,3,#,#,4,#,#', '1,2,4,#,#,3,#,#,#'],
+].forEach((t) => {
+  const actual = Tree.serialize(invertTree(Tree.deserialize(t[0])));
+  console.log('Invert tree', t[0], '->', actual);
+  console.assert(t[1] === actual);
 });

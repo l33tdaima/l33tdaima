@@ -27,9 +27,9 @@ Explanation: You are given the third node with value 1, the linked list
 - Do not return anything from your function.
 
 ## Solution
-This is a very obscure problem statement which is supposed to given the head and the to-be-deleted node, see similar question [#203e](../p203e/README.md).
+Normally we need the node before the to-be-deleted node, see similar question [#203e](../p203e/README.md).
 
-It probably just wants you to do copy and delete next when you can't delete the current node.
+In this problem we need to swap the content of to-be-deleted node with the one after it, then delete the one after it since you can't delete the current node.
 
 #APPL #MSFT #ADBE #AMZN
 

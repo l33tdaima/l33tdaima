@@ -1,63 +1,53 @@
 /**
  * Initialize your data structure here.
  */
-var RandomizedSet = function() {
-    this.size = 0; // size of the set
-    this.vlist = new Array(); // value in array
-    this.vtable = new Map(); // val -> index of list
+var RandomizedSet = function () {
+  this.vlist = new Array(); // value in array
+  this.vtable = new Map(); // val -> index of list
 };
 
 /**
- * Inserts a value to the set. Returns true if the set did not already contain the specified element. 
+ * Inserts a value to the set. Returns true if the set did not already contain the specified element.
  * @param {number} val
  * @return {boolean}
  */
-RandomizedSet.prototype.insert = function(val) {
-    if (this.vtable.has(val)) {
-        return false;
-    } else {
-        if (this.size === this.vlist.length) {
-            this.vlist.push(val);
-        } else { // reuse existing space
-            this.vlist[this.size] = val;
-        }
-        this.size ++;
-        this.vtable.set(val, this.size - 1);
-        return true;
-    }
-};
-
-/**
- * Removes a value from the set. Returns true if the set contained the specified element. 
- * @param {number} val
- * @return {boolean}
- */
-RandomizedSet.prototype.remove = function(val) {
-    if (!this.vtable.has(val)) {
-        return false;
-    }
-    let i = this.vtable.get(val);
-    // move the last element into the deleted slot
-    if (i < (this.size - 1)) {
-        let last = this.vlist[this.size - 1];
-        this.vlist[i] = last;
-        this.vtable.set(last, i);
-    }
-    this.size --;
-    this.vtable.delete(val);
+RandomizedSet.prototype.insert = function (val) {
+  if (this.vtable.has(val)) {
+    return false;
+  } else {
+    const len = this.vlist.push(val);
+    this.vtable.set(val, len - 1);
     return true;
+  }
+};
+
+/**
+ * Removes a value from the set. Returns true if the set contained the specified element.
+ * @param {number} val
+ * @return {boolean}
+ */
+RandomizedSet.prototype.remove = function (val) {
+  if (!this.vtable.has(val)) return false;
+  const len = this.vlist.length;
+  // swap to-be-deleted with the last element
+  let i = this.vtable.get(val);
+  this.vlist[i] = this.vlist[len - 1];
+  this.vtable.set(this.vlist[len - 1], i);
+  this.vtable.delete(val);
+  this.vlist.pop();
+  return true;
 };
 
 /**
  * Get a random element from the set.
  * @return {number}
  */
-RandomizedSet.prototype.getRandom = function() {
-    let irandom = ~~(Math.random() * this.size);
-    return this.vlist[irandom];
+RandomizedSet.prototype.getRandom = function () {
+  let irandom = ~~(Math.random() * this.vlist.length);
+  return this.vlist[irandom];
 };
 
-/** 
+/**
  * Your RandomizedSet object will be instantiated and called as such:
  * var obj = Object.create(RandomizedSet).createNew()
  * var param_1 = obj.insert(val)
@@ -65,32 +55,20 @@ RandomizedSet.prototype.getRandom = function() {
  * var param_3 = obj.getRandom()
  */
 // Init an empty set.
-let randomSet = new RandomizedSet();
+const randomSet = new RandomizedSet();
 
-// Inserts 0 to the set. Returns true as 1 was inserted successfully.
-console.assert(randomSet.insert(0) === true);
-
+// Inserts 1 to the set. Returns true as 1 was inserted successfully.
+console.assert(randomSet.insert(1) === true);
 // Returns false as 2 does not exist in the set.
 console.assert(randomSet.remove(2) === false);
-
-// Inserts 1 to the set, returns true. Set now contains [0,1].
-console.assert(randomSet.insert(1) === true);
-
-// getRandom should return either 1 or 2 randomly.
-for (let i = 0; i < 10; ++i) {
-    console.log("getRandom() should be random ->", randomSet.getRandom());
-}
-
-// Removes 0 from the set, returns true. Set now contains [1].
-console.assert(randomSet.remove(0) === true);
-
-// Insert a new element 2, so return true.
+// Inserts 2 to the set, returns true. Set now contains [1,2].
 console.assert(randomSet.insert(2) === true);
-
-// Removes 1 from the set, returns true. Set now contains [2].
+// getRandom should return either 1 or 2 randomly.
+r1 = randomSet.getRandom();
+console.assert(r1 >= 1 && r1 <= 2);
+// Removes 1 from the set, returns true. Set now contains [1].
 console.assert(randomSet.remove(1) === true);
-
+// 2 was already in the set, so return false.
+console.assert(randomSet.insert(2) === false);
 // Since 2 is the only number in the set, getRandom always return 2.
-for (let i = 0; i < 10; ++i) {
-    console.assert(randomSet.getRandom() === 2);
-}
+console.assert(randomSet.getRandom() === 2);

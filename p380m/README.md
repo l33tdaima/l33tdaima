@@ -37,10 +37,6 @@ randomSet.getRandom();
 - We need a map of item value to index of array to support O(1) insert and delete.
 - When deleting,
   - Swap the index of to-be-deleted with the last one.
-  - Delete the item from map and mark size - 1, the item in array is marked delete but not really erased.
-- When inserting,
-  - Push new item to array if map.size == array.size.
-  - Overwrite the marked delete space in array.
 
 #GOOGL #FB #AMZN #UBER #TWTR #YELP
 

@@ -15,9 +15,9 @@ Follow up: Could you improve it to O(n log n) time complexity?
 Over all the combinations of elements of array, each element could contribute the longest increasing subsequence, like 0-1 Knapsack problem, we need to search 2^N space.
 
 ### Dynamic Programming O(N^2)
-We can do bottom-up by dynamic programming. Denote the LIS length up to n-th element by dp[i]. In order to know whether the new element num[i] contributing to the LIS length, we need to scan all the previous `dp[j], j = 0..i-1`, find the max(dp[j]) for those `nums[i] > nums[j]`.
+We can do bottom-up by dynamic programming. Denote `LIS'(A[0..n-1])` as the longest length of increasing subsequence ends with A[n-1] and *must include A[n-1]*. To compute new LIS', we need to scan all the previous `LIS'[i], i = 0..n-1`, find the max(dp[j]) for those `nums[i] > nums[j]`.
 ```
-    LIS'(A[0..n-1]) := length of LIS ends with A[n-1]
+    LIS'(A[0..n-1]) := length of LIS ends with A[n-1] and must include A[n-1]
     LIS'(A[0..n-1]) = max(LIS'(A[0..i])) + 1, 0 <= i < n-1, if A[n-1] > A[i]
     LIS(A[0..n-1]) = max(LIS'(A[0..i])), 0 <= i <= n-1
 ```

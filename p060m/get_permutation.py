@@ -30,18 +30,15 @@ class Solution:
         return "".join(kth)
 
     def getPermutationV2(self, n: int, k: int) -> str:
-        if n == 1 and k == 1:
-            return "1"
         nums = [i for i in range(1, n + 1)]
         fact = reduce(lambda a, b: a * b, nums)
-        ans = []
-        k = k - 1
+        ans, k = "", k - 1
         for f in range(n, 0, -1):
             fact = fact // f
             i = k // fact
-            ans.append(str(nums.pop(i)))
+            ans += str(nums.pop(i))
             k = k - fact * i
-        return "".join(ans)
+        return ans
 
 
 # TESTS

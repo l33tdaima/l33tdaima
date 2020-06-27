@@ -2,21 +2,30 @@
  * @param {number} n
  * @return {number}
  */
-var numSquares = function(n) {
-    let numSq = [0];
-    for (let m = 1; m <= n; ++m) {
-        let least = Number.MAX_SAFE_INTEGER;
-        for (let i = 1; i * i <= m; ++i) {
-            least = Math.min(least, numSq[m - i*i] + 1);
-        }
-        numSq.push(least);
-    }
-    return numSq[n];
+var numSquares = function (n) {
+  const numSq = [0];
+  for (let i = 1; i <= n; ++i) {
+    let least = Number.MAX_SAFE_INTEGER;
+    for (let k = 1; k * k <= i; ++k)
+      least = Math.min(least, numSq[i - k * k] + 1);
+    numSq.push(least);
+  }
+  return numSq[n];
 };
-// TEST
+// TESTS
 [
-    0,1,12,16,194,431,
-].forEach((test) => {
-    console.log("The least # of squares sum to", test, "->",
-                numSquares(test));
+  [1, 1],
+  [2, 2],
+  [3, 3],
+  [4, 1],
+  [5, 2],
+  [6, 3],
+  [7, 4],
+  [8, 2],
+  [12, 3],
+  [13, 2],
+].forEach((t) => {
+  const actual = numSquares(t[0]);
+  console.log('The least # of squares sum to', t[0], '->', actual);
+  console.assert(actual === t[1]);
 });

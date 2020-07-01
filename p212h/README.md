@@ -1,25 +1,29 @@
-# 212. Word Search II
+# 212. Word Search II (Hard)
 
 Given a 2D board and a list of words from the dictionary, find all words in the board.
 
 Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
 
-For example,
-Given words = ["oath","pea","eat","rain"] and board =
-
-[
+### Example
+```
+Input:
+board = [
   ['o','a','a','n'],
   ['e','t','a','e'],
   ['i','h','k','r'],
   ['i','f','l','v']
 ]
-Return ["eat","oath"].
+words = ["oath","pea","eat","rain"]
 
-## Note:
-You may assume that all inputs are consist of lowercase letters a-z.
+Output: ["eat","oath"]
+```
 
-## Hint:
+### Note:
+1. All inputs are consist of lowercase letters a-z.
+2. The values of words are distinct.
 
-You would need to optimize your backtracking to pass the larger test. Could you stop backtracking earlier?
+### Hint:
+1. You would need to optimize your backtracking to pass the larger test. Could you stop backtracking earlier?
+2. If the current candidate does not exist in all words' prefix, you could stop backtracking immediately. What kind of data structure could answer such query efficiently? Does a hash table work? Why or why not? How about a Trie? If you would like to learn how to implement a basic trie, please work on this problem: Implement Trie (Prefix Tree) first.
 
-If the current candidate does not exist in all words' prefix, you could stop backtracking immediately. What kind of data structure could answer such query efficiently? Does a hash table work? Why or why not? How about a Trie? If you would like to learn how to implement a basic trie, please work on this problem: Implement Trie (Prefix Tree) first.
+#Backtracking #Trie

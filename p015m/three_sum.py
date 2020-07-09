@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        sol = []
+        ans = []
         nums.sort()
         for i in range(len(nums) - 2):
             if i > 0 and nums[i] == nums[i - 1]:
@@ -11,7 +11,7 @@ class Solution:
             lo, hi = i + 1, len(nums) - 1
             while lo < hi:
                 if nums[i] + nums[lo] + nums[hi] == 0:
-                    sol.append([nums[i], nums[lo], nums[hi]])
+                    ans.append([nums[i], nums[lo], nums[hi]])
                     while lo < hi and nums[lo] == nums[lo + 1]:
                         lo += 1
                     while lo < hi and nums[hi] == nums[hi - 1]:
@@ -21,7 +21,7 @@ class Solution:
                     lo += 1
                 else:
                     hi -= 1
-        return sol
+        return ans
 
 
 # TEST

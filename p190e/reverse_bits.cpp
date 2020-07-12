@@ -33,12 +33,13 @@ struct Test {
     void run() {
         Solution sol;
         uint32_t act = sol.reverseBits(n);
-        cout << n << "(" << bitset<32>(n) << ") reverse bit ->\n" 
-             << act << "(" << bitset<32>(act) << ")" << endl;
+        cout << "Reverse bits " << bitset<32>(n) << " -> " 
+             << bitset<32>(act) << endl;
         assert(act == exp);
         assert(act == sol.reverseBitsV2(n));
     }
 };
+
 int main(int argc, char const *argv[])
 {
     vector<Test> tests = {

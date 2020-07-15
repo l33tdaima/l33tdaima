@@ -1,3 +1,4 @@
+// g++ -std=c++11 *.cpp -o test && ./test && rm -f test
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -7,7 +8,7 @@ using namespace std;
 
 class Solution {
 public:
-    void reverseWords(string &s) {
+    string reverseWords(string s) {
         int ri = 0;
         for (int i = 0, l = 0; i < s.size();) {
             // move to the begin of a valid word
@@ -21,25 +22,29 @@ public:
         }
         s.resize(ri);
         std::reverse(s.begin(), s.end());
+        return s;
     }
 };
 // TEST
 struct Test {
     string s;
+    string expected;
     void run() {
-        cout << "Reverse '" << s;
-        cout << "' -> '";
+        cout << "Reverse '" << s << "' -> '";
         Solution sol;
-        sol.reverseWords(s);
-        cout << s << "'" << endl;
+        string actual = sol.reverseWords(s);
+        cout << actual << "'" << endl;
+        assert(actual == expected);
     }
 };
 int main() {
     vector<Test> tests = {
-        {""},
-        {"thesky"},
-        {" t  e a "},
-        {"the sky is blue"}
+        {"", ""},
+        {"thesky", "thesky"},
+        {" t  e a ", "a e t"},
+        {"the sky is blue", "blue is sky the"},
+        {"  hello world!  ", "world! hello"},
+        {"a good   example", "example good a"}
     };
     for (auto& t: tests) {
         t.run();

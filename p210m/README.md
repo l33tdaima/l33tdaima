@@ -33,7 +33,7 @@ You may assume that there are no duplicate edges in the input prerequisites.
 - Topological sort could also be done via BFS.
 
 ## Solution
-- Convert to a graph representation of an array of linked nodes for each node;
+- Convert to a graph representation of adjacency list;
 - Create the visited bool array/map to keep visited record, initialize to all false;
 - We need another onPath array to keep visited record for the current DFS path:
   - Reset onPath[vertex] before returning recursive cycle check, and push the node to sorted output;

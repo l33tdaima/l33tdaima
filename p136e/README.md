@@ -18,3 +18,5 @@ Output: 4
 ```
 
 #Bit Manipulation #Hash Table
+
+#Similar questions [#136](../p136e/README.md) [#137](../p137m/README.md) [#260](../p260m/README.md)

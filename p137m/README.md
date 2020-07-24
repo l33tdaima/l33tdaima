@@ -22,7 +22,7 @@ Not like p136 where we only need one bit to record the states, we now need two b
 
 - First time number appear -> save it in "lsb", 
 - Second time -> clear "lsb" but save it in "msb"
-- Third time -> try to save in "ones" but value saved in "twos" clear it.
+- Third time -> clear "msb"
 
 The true value table for state transition is like,
 ```
@@ -40,3 +40,5 @@ L = (L ^ C) & ~M
 ```
 
 #Bit Manipulation
+
+#Similar questions [#136](../p136e/README.md) [#137](../p137m/README.md) [#260](../p260m/README.md)

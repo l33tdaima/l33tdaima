@@ -48,7 +48,7 @@ A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> i
 - The final answer is len(tasks) + idles
 
 
-### Approach 2:
+### Approach 2
 - Count the frequency of each task and find out the most frequent task `most_freq` as well as the count of `most_freq`
 - The pattern is `(n+1)*(most_freq-1)+most_freq_count`
 ```

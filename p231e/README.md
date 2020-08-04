@@ -25,3 +25,5 @@ Output: false
 #GOOGL
 
 #Math #Bit Manipulation
+
+#Similar question [#231](../p231e/README.md) [#342](../p342e/README.md)

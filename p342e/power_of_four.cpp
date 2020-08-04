@@ -18,7 +18,7 @@ public:
     bool isPowerOfFourV2(int num) {
         return num > 0                     // positive
                && (num & (num - 1)) == 0   // power of 2
-               && (num & 0x55555555) != 0; // no 1 on odd bit, mask by for each word 0101
+               && (num & 0x55555555) != 0; // 1 on odd bit, mask by for each word 0101
     }
 };
 // TEST

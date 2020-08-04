@@ -2,11 +2,22 @@
 
 Given an integer (signed 32 bits), write a function to check whether it is a power of 4.
 
-### Example:
-Given num = 16, return true. Given num = 5, return false.
+### Example 1:
+```
+Input: 16
+Output: true
+```
+
+### Example 2:
+```
+Input: 5
+Output: false
+```
 
 Follow up: Could you solve it without loops/recursion?
 
 #TwoSigma
 
 #Bit Manipulation
+
+#Similar question [#231](../p231e/README.md) [#342](../p342e/README.md)

@@ -16,3 +16,7 @@ Output: 10
  
 Note: Your solution should run in O(log n) time and O(1) space.
 
+## Solution
+The non-sorted version of this problem is [#136](../p136e/README.md) can be solved in O(n). 
+
+#Similar questions Find single [#136](../p136e/README.md) Find dup [#287](../p287m/README.md) Find non-dup [#540m](../p540m/README.md)

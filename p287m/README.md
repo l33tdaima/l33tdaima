@@ -31,3 +31,7 @@ First of all, this is a search problem. Extra space like a hashtable is not allo
 The optimal O(N) solution is Floyd's Tortoise and Hare (Cycle Detection) Algorithm
 
 #Array #Two Pointers #Binary Search
+
+#Similar questions [#287](../p287m/README.md) [#442](../p442m/README.md)
+
+Find single number [#136](../p136e/README.md) Find non-dup [#540m](../p540m/README.md)

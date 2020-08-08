@@ -73,4 +73,4 @@ Output:
 
 #Tree #Hash Table
 
-#Similar questions [#102](../p102m/README.md) [#314](../p314m/README.md)
+#Similar questions [#102](../p102m/README.md) [#314](../p314m/README.md) [#987](../p987m/README.md)

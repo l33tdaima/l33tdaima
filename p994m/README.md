@@ -1,4 +1,4 @@
-# 994. Rotting Oranges (Easy/Medium)
+# 994. Rotting Oranges (Medium)
 
 In a given grid, each cell can have one of three values:
 

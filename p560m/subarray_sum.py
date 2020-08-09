@@ -9,8 +9,7 @@ class Solution:
         s, ans = 0, 0
         for n in nums:
             s += n
-            if s - k in sum_count:
-                ans += sum_count[s - k]
+            ans += sum_count[s - k]
             sum_count[s] += 1
         return ans
 

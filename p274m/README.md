@@ -18,7 +18,7 @@ Note: If there are several possible values for h, the maximum one is taken as th
 ## Solution
 h-index ranges from 0 to N. High index indicates a good researcher, h-index 0 indicates a terrible/unknown researcher.
 
-### Approach using Comparison Sort O(logN)
+### Approach using Comparison Sort O(NlogN)
 - Sort the citations low to high, like 
 ```
 [0,1,3,5,6]

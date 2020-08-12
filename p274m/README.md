@@ -32,7 +32,7 @@ h-index ranges from 0 to N. High index indicates a good researcher, h-index 0 in
 To improve performance of comparison based sort, we think of counting sort which has limitation that values should not dramatically greater than size N. Since h-index is upper bound to N, all the citations greater than N are counted into N.
 - Count each citation value's occurence as we do in counting sort, citation values ranges from 0 to N.
 
-- Iterate from right to left, cv = N .. 0, accumulate a sum at each value, which tells us how many papers have citations greater than cv
+- Iterate from right to left, h = N .. 0, accumulate a sum at each value, which tells us how many papers have citations greater than h
 
 For example: citations = [1,3,2,3,100]
 citations | 0 | 1 | 2 | 3 | 4 | 5
@@ -40,7 +40,7 @@ citations | 0 | 1 | 2 | 3 | 4 | 5
 count | 0 | 1 | 1 | 2 | 0 | 1
 sum | 5 | 5 | 4 | 3 | 1 | 1
 
-- From right to left, sum is increasing while citation amount is decreasing. When they cross, we have h-index found when sum >= cv.
+- From right to left, sum is increasing while citation amount is decreasing. When they cross, we have h-index found when sum >= h.
 
 #GOOGL #FB #BBG
 

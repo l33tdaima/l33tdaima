@@ -1,12 +1,18 @@
 # 119. Pascal's Triangle II (Easy)
 
-Given an index k, return the kth row of the Pascal's triangle.
+Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal's triangle.
 
-For example, given k = 3,
-Return [1,3,3,1].
+Note that the row index starts from 0.
 
-Note:
+### For example
+```
+Input: 3
+Output: [1,3,3,1]
+```
+
+Follow up:
 Could you optimize your algorithm to use only O(k) extra space?
 
 #AMZN
+
 #Array

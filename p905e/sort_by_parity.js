@@ -3,18 +3,17 @@
  * @return {number[]}
  */
 
-var sortArrayByParityOutPlace = function(A) {
+var sortArrayByParityOutPlace = function (A) {
   let ans = new Array(A.length);
-  let le = 0,
-    ro = A.length - 1;
+  let [le, ro] = [0, A.length - 1];
   for (let a of A) {
-    if (a % 2 === 0) ans[le++] = a;
+    if ((a & 1) === 0) ans[le++] = a;
     else ans[ro--] = a;
   }
   return ans;
 };
 
-var sortArrayByParityFunctional = function(A) {
+var sortArrayByParityFunctional = function (A) {
   return A.reduce((ans, a) => {
     if (a % 2 === 0) ans.unshift(a);
     else ans.push(a);
@@ -22,9 +21,8 @@ var sortArrayByParityFunctional = function(A) {
   }, []);
 };
 
-var sortArrayByParityInPlace = function(A) {
-  let le = 0,
-    ro = A.length - 1;
+var sortArrayByParityInPlace = function (A) {
+  let [le, ro] = [0, A.length - 1];
   while (le < ro) {
     if (A[le] % 2 === 0) le++;
     else if (A[ro] % 2 !== 0) ro--;
@@ -42,13 +40,13 @@ var sortArrayByParityInPlace = function(A) {
   [2, 4],
   [3, 1, 2, 4],
   [1, 2, 3, 4, 5],
-  [1, 2, 3, 4, 5, 6, 7, 8]
-].forEach(t => {
+  [1, 2, 3, 4, 5, 6, 7, 8],
+].forEach((t) => {
   let orig = Array.from(t);
   console.log(
-    "Sort",
+    'Sort',
     orig,
-    "by parity ->",
+    'by parity ->',
     sortArrayByParityFunctional(t),
     sortArrayByParityOutPlace(t),
     sortArrayByParityInPlace(t)

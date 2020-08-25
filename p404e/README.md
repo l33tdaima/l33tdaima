@@ -12,10 +12,6 @@ Find the sum of all left leaves in a given binary tree.
 ```
 There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
 
-## Solution
-### Clarification
-Does single node count as a left leave? No.
-
 #FB
 
 #Tree

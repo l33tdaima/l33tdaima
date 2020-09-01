@@ -40,11 +40,14 @@ Another valid answer is [5,2,6,null,4,null,7].
 ```
 
 ## Solution
-- Recursively call the function by `root.left = deleteNode(root.left, key)` or `root.right = deleteNode(root.right, key)`, until key is matched,
-  - Root doesn't have left or right - return null;
+- Recursively call the function by `root.left = deleteNode(root.left, key)` or `root.right = deleteNode(root.right, key)`. In this way we can maintain the link between parent and children.
+- When we found the matching key is the root to be deleted
+  - Root doesn't have left or right - return null (elete the leave);
   - Root only has left subtree - return the left subtree;
   - Root only has right subtree - return the right subtree;
-  - Root has both left and right - find the minimum value in the right, set that value to the currently found node, then recursively delete the minimum value in the right subtree. (Another way is to to find the max value in the left.)
+  - Root has both left and right
+    - After we delete the root, if use direct left or right as replacement, we need to so some merge which is nontrivial. The only way avoiding this is use the minimum value in the right (or the max in the left).
+    - Swap node is also not trivial in recursion, but we can only swap the value and delete the minimum value in the right subtree by continue recursion.
 
 #UBER
 

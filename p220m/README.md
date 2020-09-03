@@ -34,9 +34,10 @@ To speed up the linear search O(2k) for each element, we can sort the sliding wi
 - return false
 
 ### Optimal Approach
-The idea is like the bucket sort algorithm. Suppose we have consecutive buckets covering the range of nums with each bucket a width of (t+1). If there are two item with difference <= t, one of the two will happen:
-- the two in the same bucket
-- the two in neighbor buckets
+The idea is like the bucket sort algorithm. Suppose we have consecutive buckets covering the range of nums with each bucket a width of (t+1).
+If there are two items with difference <= t, one of the two cases will happen:
+- the two are in the same bucket
+- the two are in neighbor buckets
 
 #Sort #Ordered Map
 

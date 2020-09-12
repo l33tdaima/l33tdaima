@@ -19,7 +19,12 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 ### Intuitive Approach
 Brutally try all the subarray, O(N^2) i = [0..N], j = [i..N]
 
-### Optimal O(N) Approach
+### Two-pass O(N) Approach
+It's really about odd negative numbers or even negative numbers, if it's odd, either the left end one or the right end one should be counted, so it will be revealed by scanning from left and from right in 2 passes, or one pass computing prefix and suffix product, one pass to find out max within these products.
+
+0 is a kind of delimiter, product accumulation will be reset to 1.
+
+### One-pass O(N) Approach
 A very elegant solution from programming pearls:
 
 - Calculating the new localmin and localmax of between each new element i and previous localmin/localmax

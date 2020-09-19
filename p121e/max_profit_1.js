@@ -2,7 +2,7 @@
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit_Functional = function(prices) {
+var maxProfit_Functional = function (prices) {
   // dp[0] is max profit for closed position
   // dp[1] is max profit for open position
   let ans = prices.reduce(
@@ -11,7 +11,7 @@ var maxProfit_Functional = function(prices) {
   );
   return ans[0];
 };
-var maxProfit = function(prices) {
+var maxProfit = function (prices) {
   let [maxClosed, maxOpen] = [0, Number.MAX_SAFE_INTEGER];
   for (let p of prices) {
     maxClosed = Math.max(maxClosed, p - maxOpen);
@@ -20,7 +20,13 @@ var maxProfit = function(prices) {
   return maxClosed;
 };
 // TEST
-[[1], [7, 1, 5, 3, 6, 4], [7, 6, 4, 3, 1]].forEach(t => {
-  console.log('Max profit by one transaction in', t, '->', maxProfit(t));
-  console.assert(maxProfit_Functional(t) === maxProfit(t));
+[
+  [[1], 0],
+  [[7, 1, 5, 3, 6, 4], 5],
+  [[7, 6, 4, 3, 1], 0],
+].forEach(([prices, expected]) => {
+  const actual = maxProfit(prices);
+  console.log('Max profit by one transaction in', prices, '->', actual);
+  console.assert(actual === expected);
+  console.assert(maxProfit_Functional(prices) === expected);
 });

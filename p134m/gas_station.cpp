@@ -2,14 +2,13 @@
 #include <vector>
 #include <limits>
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
 class Solution {
 public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
-        assert(gas.size() == cost.size());
-        if (gas.size() == 0) { return -1; }
         int sum = 0, max = numeric_limits<int>::min(), maxIndex = gas.size() - 1;
         for (int i = gas.size() - 1; i >= 0; --i) {
             sum += gas[i] - cost[i];

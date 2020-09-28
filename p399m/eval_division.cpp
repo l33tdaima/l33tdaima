@@ -5,21 +5,22 @@
 #include <unordered_set>
 #include <functional>
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
 class Solution {
 public:
     // DFS solution
-    vector<double> calcEquation(vector<pair<string, string>> equations,
+    vector<double> calcEquation(vector<vector<string>> equations,
                                 vector<double>& values,
-                                vector<pair<string, string>> queries) {
+                                vector<vector<string>> queries) {
         // adjacency list of map variable to map of (variable, quotient)
         unordered_map<string, unordered_map<string, double>> graph;
         int i = 0;
         for (auto& eq: equations) {
-            graph[eq.first].emplace(eq.second, values[i]);
-            graph[eq.second].emplace(eq.first, 1.0/values[i]);
+            graph[eq[0]].emplace(eq[1], values[i]);
+            graph[eq[1]].emplace(eq[0], 1.0/values[i]);
             i++;
         }
         function<double(unordered_set<string>&, const string&, const string&, double)> recDfsCalc =
@@ -38,26 +39,26 @@ public:
         };
         vector<double> ans;
         for (auto& q: queries) {
-            if (graph.find(q.first) == graph.end()) {
+            if (graph.find(q[0]) == graph.end()) {
                 ans.push_back(-1.0);
-            } else if (q.first == q.second) {
+            } else if (q[0]== q[1]) {
                 ans.push_back(1.0);
             } else {
                 unordered_set<string> visited;
-                ans.push_back(recDfsCalc(visited, q.first, q.second, 1.0));
+                ans.push_back(recDfsCalc(visited, q[0], q[1], 1.0));
             }
         }
         return ans;
     }
 
     // Union-Find solution
-    vector<double> calcEquationUF(vector<pair<string, string>> equations,
+    vector<double> calcEquationUF(vector<vector<string>> equations,
                                   vector<double>& values,
-                                  vector<pair<string, string>> queries) {
+                                  vector<vector<string>> queries) {
         unordered_map<string, pair<string, double>> parents; // dividend -> divisor, divisor is parent
         for (int i = 0; i < equations.size(); ++i) {
-            const string& x = equations[i].first;
-            const string& y = equations[i].second;
+            const string& x = equations[i][0];
+            const string& y = equations[i][1];
             if (!parents.count(x) && !parents.count(y)) {
                 parents[x] = {y, values[i]};
                 parents[y] = {y, 1.0};
@@ -74,8 +75,8 @@ public:
         //dumpParents(parents);
         vector<double> ans;
         for (const auto& pair : queries) {
-            const string& x = pair.first;
-            const string& y = pair.second;
+            const string& x = pair[0];
+            const string& y = pair[1];
             if (!parents.count(x) || !parents.count(y)) {
                 ans.push_back(-1.0);
                 continue;
@@ -92,7 +93,7 @@ public:
         return ans;
     }
 private:
-    pair<string, double>& rootRec(const string& v, unordered_map<string, pair<string, double>>& parents) {
+    pair<string, double>& root(const string& v, unordered_map<string, pair<string, double>>& parents) {
         if (v != parents[v].first) {
             const auto& p = root(parents[v].first, parents);
             parents[v].first = p.first; // path compression to root, iterative path compression not working here
@@ -112,9 +113,9 @@ private:
 };
 // TEST
 struct Test {
-    vector<pair<string, string>> equations;
+    vector<vector<string>> equations;
     vector<double> values;
-    vector<pair<string, string>> queries;
+    vector<vector<string>> queries;
     vector<double> expected;
     void run() {
         Solution sol;
@@ -122,7 +123,7 @@ struct Test {
         assert(actual.size() == expected.size());
         cout << "Queries by DFS:" << endl;
         for (int i = 0; i < actual.size(); ++i) {
-            cout << queries[i].first << "/" << queries[i].second << "="
+            cout << queries[i][0] << "/" << queries[i][1] << "="
                  << actual[i] << ", ";
             assert(abs(actual[i] - expected[i]) < 0.0001);
         }
@@ -134,7 +135,7 @@ struct Test {
         assert(actual.size() == expected.size());
         cout << "Queries by Union-Find:" << endl;
         for (int i = 0; i < actual.size(); ++i) {
-            cout << queries[i].first << "/" << queries[i].second << "="
+            cout << queries[i][0] << "/" << queries[i][1] << "="
                  << actual[i] << ", ";
             assert(abs(actual[i] - expected[i]) < 0.0001);
         }

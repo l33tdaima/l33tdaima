@@ -4,17 +4,14 @@
  * @return {boolean}
  */
 var wordBreak = function (s, wordDict) {
-  // build a wordDict map
-  let wordSet = new Set(wordDict);
-  // DP: truth value of substring up to i are word segmented
+  let wordSet = new Set(wordDict); // build a wordDict set
+  // DP: truth value of substring of length l are word segmented
   const slen = s.length;
-  const dp = new Array(slen + 1);
-  dp[0] = true; // empty string is segmented
-  for (let i = 1; i <= slen; ++i) {
-    dp[i] = false;
-    for (let j = 0; j < i; ++j) {
-      if (dp[j] && wordSet.has(s.substring(j, i))) {
-        dp[i] = true;
+  const dp = [true].concat(Array.from({ length: s.length }, (v) => false));
+  for (let l = 1; l <= s.length; ++l) {
+    for (let i = 0; i < l; ++i) {
+      if (dp[i] && wordSet.has(s.substring(i, l))) {
+        dp[l] = true;
         break;
       }
     }
@@ -32,8 +29,8 @@ var wordBreak = function (s, wordDict) {
     wordDict: ['cats', 'dog', 'sand', 'and', 'cat'],
     expected: false,
   },
-].forEach((t) => {
-  const actual = wordBreak(t.s, t.wordDict);
-  console.log('Break', t.s, 'by wordDict', t.wordDict, '->', actual);
-  console.assert(actual === t.expected);
+].forEach(({ s, wordDict, expected }) => {
+  const actual = wordBreak(s, wordDict);
+  console.log('Break', s, 'by wordDict', wordDict, '->', actual);
+  console.assert(actual === expected);
 });

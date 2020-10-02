@@ -1,6 +1,7 @@
 // g++ -std=c++11 *.cpp -o test && ./test && rm -f test
 #include <queue>
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -8,8 +9,7 @@ class RecentCounter {
     queue<int> calls;
 public:
     RecentCounter():
-    calls() {
-    }
+    calls() { }
     
     int ping(int t) {
         calls.push(t);

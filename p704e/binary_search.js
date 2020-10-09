@@ -3,7 +3,7 @@
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) {
+var search = function (nums, target) {
   let [l, r] = [0, nums.length - 1];
   while (l <= r) {
     let m = ~~((l + r) / 2);
@@ -18,35 +18,35 @@ var search = function(nums, target) {
   {
     nums: [],
     target: 9,
-    expected: -1
+    expected: -1,
   },
   {
     nums: [1],
     target: 2,
-    expected: -1
+    expected: -1,
   },
   {
     nums: [1],
     target: 1,
-    expected: 0
+    expected: 0,
   },
   {
     nums: [1, 2],
     target: 2,
-    expected: 1
+    expected: 1,
   },
   {
     nums: [-1, 0, 3, 5, 9, 12],
     target: 9,
-    expected: 4
+    expected: 4,
   },
   {
     nums: [-1, 0, 3, 5, 9, 12],
     target: 2,
-    expected: -1
-  }
-].forEach(t => {
-  let actual = search(t.nums, t.target);
-  console.log("Binary search target", t.target, "in", t.nums, "->", actual);
-  console.assert(t.expected === actual);
+    expected: -1,
+  },
+].forEach(({ nums, target, expected }) => {
+  let actual = search(nums, target);
+  console.log('Binary search target', target, 'in', nums, '->', actual);
+  console.assert(expected === actual);
 });

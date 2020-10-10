@@ -2,30 +2,30 @@ from typing import List
 
 # Definition for a binary tree node.
 class TreeNode:
-    def __init__(
-        self, val: int = 0, left: "TreeNode" = None, right: "TreeNode" = None
-    ):
+    def __init__(self, val: int = 0, left: "TreeNode" = None, right: "TreeNode" = None):
         self.val = val
         self.left = left
         self.right = right
 
     @classmethod
     def serialize(cls, root: "TreeNode") -> str:
+        """Encodes a tree to a single string."""
         buffer = []
 
         def _serialize(root: "TreeNode"):
             if root is None:
                 buffer.append("#")
                 return
-            buffer.append(root.val)
+            buffer.append(str(root.val))
             _serialize(root.left)
             _serialize(root.right)
 
         _serialize(root)
-        return ",".join(str(x) for x in buffer)
+        return ",".join(buffer)
 
     @classmethod
     def deserialize(cls, data: str) -> "TreeNode":
+        """Decodes your encoded data to tree."""
         buffer = data.split(",")
 
         def _deserialize(buffer: List[str]):

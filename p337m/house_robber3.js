@@ -10,51 +10,28 @@ const Tree = require('binary_tree');
  * @param {TreeNode} root
  * @return {number}
  */
-var rob = function(root) {
-    // For the given tree node, 
-    // return if the root is selected in order to maximize
-    // and the local max ammount
-    var recMaxRob = function(node) {
-        if (node == null) {
-            return { robbed: false,
-                     thisAmt: 0,
-                     leftAmt: 0,
-                     rightAmt: 0 };
-        }
-        let lt = recMaxRob(node.left);
-        let rt = recMaxRob(node.right);
-        if (!lt.robbed && !rt.robbed) {
-            return { robbed: true,
-                     thisAmt: node.val + lt.thisAmt + rt.thisAmt,
-                     leftAmt: lt.thisAmt,
-                     rightAmt: rt.thisAmt};
-        } else { // child node is robbed
-            let amtRob = node.val + lt.leftAmt + lt.rightAmt +
-                         rt.leftAmt + rt.rightAmt;
-            let notRob = lt.thisAmt + rt.thisAmt;
-            if (amtRob > notRob) {
-                return { robbed: true,
-                         thisAmt: amtRob,
-                         leftAmt: lt.thisAmt,
-                         rightAmt: rt.thisAmt};
-            } else {
-                return { robbed: false,
-                         thisAmt: notRob,
-                         leftAmt: lt.thisAmt,
-                         rightAmt: rt.thisAmt};
-            }
-        } 
-    };
-    let result = recMaxRob(root);
-    return result.thisAmt;
+var rob = function (root) {
+  // For the given tree node,
+  // return the local max for the node is not robbed and robbed
+  const recMaxRob = function (node) {
+    if (node == null) return [0, 0];
+    let lt = recMaxRob(node.left);
+    let rt = recMaxRob(node.right);
+    let notRobbed = Math.max(...lt) + Math.max(...rt);
+    let robbed = node.val + lt[0] + rt[0];
+    return [notRobbed, robbed];
+  };
+  return Math.max(...recMaxRob(root));
 };
 
 [
-    "1",
-    "4,1,2,3,#,#,#,#,#",
-    "3,2,#,3,#,#,3,#,1,#,#",
-    "3,4,1,#,#,3,#,#,5,#,1,#,#"
-].forEach(function (test){
-    let tree = Tree.deserialize(test);
-    console.log("Max amount of robbery ->", rob(tree));
+  ['', 0],
+  ['1', 1],
+  ['4,1,2,3,#,#,#,#,#', 7],
+  ['3,2,#,3,#,#,3,#,1,#,#', 7],
+  ['3,4,1,#,#,3,#,#,5,#,1,#,#', 9],
+].forEach(([tree, expected]) => {
+  const actual = rob(Tree.deserialize(tree));
+  console.log('Max amount of robbery from', tree, '->', actual);
+  console.assert(actual === expected);
 });

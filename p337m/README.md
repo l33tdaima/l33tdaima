@@ -4,19 +4,33 @@ The thief has found himself a new place for his thievery again. There is only on
 
 Determine the maximum amount of money the thief can rob tonight without alerting the police.
 
-Example 1:
+### Example 1:
+
+```
+Input: [3,2,3,null,3,null,1]
      3
     / \
    2   3
-    \   \ 
+    \   \
      3   1
-Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
-Example 2:
+Output: 7
+Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
+```
+
+### Example 2:
+
+```
+Input: [3,4,5,1,3,null,1]
      3
     / \
    4   5
-  / \   \ 
+  / \   \
  1   3   1
+Output: 9
+Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.
 Maximum amount of money the thief can rob = 4 + 5 = 9.
+```
 
 #Tree #Depth-first Search
+
+#Similar question [#198](../p198e/README.md) [#213](../p213m/README.md) [#337](../p337m/README.md)

@@ -10,12 +10,12 @@ const Tree = require('binary_tree');
  * @param {TreeNode} root
  * @return {number}
  */
-var minDepth = function(root) {
+var minDepth = function (root) {
   if (root == null) return 0;
   let ldepth = minDepth(root.left);
   let rdepth = minDepth(root.right);
-  if (ldepth > 0 && rdepth > 0) return Math.min(ldepth, rdepth) + 1;
-  else return Math.max(ldepth, rdepth) + 1;
+  if (ldepth > 0 && rdepth > 0) return 1 + Math.min(ldepth, rdepth);
+  else return 1 + ldepth + rdepth;
 };
 // TESTS
 [
@@ -26,10 +26,9 @@ var minDepth = function(root) {
   ['1,#,2,#,3,#,4,#,#', 4],
   ['1,#,2,3,4,#,#,#,#', 4],
   ['1,#,2,3,#,#,4,#,#', 3],
-  ['3,9,#,#,20,15,#,#,7,#,#', 2]
-].forEach(t => {
-  const tree = Tree.deserialize(t[0]);
-  const actual = minDepth(tree);
-  console.log('Max depth of', t[0], '->', actual);
-  console.assert(actual === t[1]);
+  ['3,9,#,#,20,15,#,#,7,#,#', 2],
+].forEach(([tree, expected]) => {
+  const actual = minDepth(Tree.deserialize(tree));
+  console.log('Max depth of', tree, '->', actual);
+  console.assert(actual === expected);
 });

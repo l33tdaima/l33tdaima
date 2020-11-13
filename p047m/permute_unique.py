@@ -27,7 +27,12 @@ class Solution:
 
 
 # TESTS
-tests = [[3, 3], [1, 2, 1], [2, 2, 1]]
-for t in tests:
+for nums, expected in [
+    ([3, 3], [[3, 3]]),
+    ([1, 2, 1], [[1, 1, 2], [1, 2, 1], [2, 1, 1]]),
+    ([1, 2, 3], [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]),
+]:
     sol = Solution()
-    print("Unique permutation of", t, "->", sol.permuteUnique(t), "\n")
+    actual = sol.permuteUnique(nums)
+    print("Unique permutation of", nums, "->", actual)
+    assert actual == expected

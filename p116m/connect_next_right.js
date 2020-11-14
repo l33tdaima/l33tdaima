@@ -15,7 +15,7 @@ var connect = function (root) {
   let pHead = root;
   while (pHead.left !== null) {
     let p = pHead;
-    while (p !== null) {
+    while (p) {
       p.left.next = p.right;
       if (p.next !== null) p.right.next = p.next.left;
       p = p.next;

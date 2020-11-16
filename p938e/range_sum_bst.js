@@ -12,14 +12,14 @@ const Tree = require('binary_tree');
  * @param {number} R
  * @return {number}
  */
-var rangeSumBST = function(root, L, R) {
+var rangeSumBST = function (root, low, high) {
   let sum = 0;
   // Helper with closure of L, R, and sum
-  const recHelper = node => {
+  const recHelper = (node) => {
     if (node == null) return;
-    if (node.val >= L && node.val <= R) sum += node.val;
-    if (node.val > L) recHelper(node.left);
-    if (node.val < R) recHelper(node.right);
+    if (node.val >= low && node.val <= high) sum += node.val;
+    if (node.val > low) recHelper(node.left);
+    if (node.val < high) recHelper(node.right);
   };
   recHelper(root);
   return sum;
@@ -28,18 +28,18 @@ var rangeSumBST = function(root, L, R) {
 [
   {
     tree: '10,5,3,#,#,7,#,#,15,#,18,#,#',
-    L: 7,
-    R: 15,
-    expected: 32
+    low: 7,
+    high: 15,
+    expected: 32,
   },
   {
     tree: '10,5,3,1,#,#,#,7,6,#,#,#,15,13,#,#,18,#,#',
-    L: 6,
-    R: 10,
-    expected: 23
-  }
-].forEach(t => {
-  const root = Tree.deserialize(t.tree);
-  const actual = rangeSumBST(root, t.L, t.R);
-  console.log('Range sum of', t.tree, t.L, t.R, '->', actual);
+    low: 6,
+    high: 10,
+    expected: 23,
+  },
+].forEach(({ tree, low, high, expected }) => {
+  const actual = rangeSumBST(Tree.deserialize(tree), low, high);
+  console.log('Range sum of', tree, low, high, '->', actual);
+  console.assert(actual === expected);
 });

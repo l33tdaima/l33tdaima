@@ -3,24 +3,23 @@ from typing import List
 
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort(key=lambda x: x[0])
         merged = []
-        for i in intervals:
+        for i in sorted(intervals, key=lambda x: x[0]):
             if not merged or merged[-1][1] < i[0]:
-                merged.append(i)
+                merged.append(list(i))
+                # merged.append(i) faster but mutate the input
             else:
                 merged[-1][1] = max(merged[-1][1], i[1])
         return merged
 
 
 # TESTS
-tests = [
+for intervals, expected in [
     ([[1, 4], [5, 8]], [[1, 4], [5, 8]]),
     ([[1, 4], [4, 5]], [[1, 5]]),
     ([[1, 3], [2, 6], [8, 10], [15, 18]], [[1, 6], [8, 10], [15, 18]]),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.merge(t[0])
-    print("Merge", t[0], "->", actual)
-    assert t[1] == actual
+    actual = sol.merge(intervals)
+    print("Merge", intervals, "->", actual)
+    assert actual == expected

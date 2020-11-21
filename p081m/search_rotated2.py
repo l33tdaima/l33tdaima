@@ -25,16 +25,15 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums, target, expected in [
     [[0, 5, 6, 0, 0, 0], 5, True],
     [[0, 5, 6, 0, 0, 0], 6, True],
     [[2, 5, 6, 0, 0, 1, 2], 0, True],
     [[2, 5, 6, 0, 0, 1, 2], 3, False],
     [[0, 5, 6, 0, 0, 0, 0], 6, True],
     [[0, 0, 0, 0, 0, 0, 0], 5, False],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.search(t[0], t[1])
-    print("Search", t[0], "for target", t[1], "->", actual)
-    assert actual == t[2]
+    actual = sol.search(nums, target)
+    print("Search", nums, "for target", target, "->", actual)
+    assert actual == expected

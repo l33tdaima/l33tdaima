@@ -47,5 +47,8 @@ Take N = 2563, D = {"1", "2", "6"} as an example,
 
 - The first loop handles the count of x, xx, xxx which x belongs to digits. the sum is 3^1 + 3^2 + 3^3.
 - The second loop handles full digits case xxxx
+  - count of 1xxx is 3^3
+  - count of 21xx is 3^2
+  - count of 22xx is 3^2
 
 #Math #Dynamic Programming

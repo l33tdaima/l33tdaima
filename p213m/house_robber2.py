@@ -15,7 +15,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums, expected in [
     ([2, 3, 2], 3),
     ([1, 2, 3, 1], 4),
     ([0], 0),
@@ -23,8 +23,7 @@ tests = [
     ([1, 2], 2),
     ([1, 5, 3], 5),
     ([5, 2, 2, 1], 7),
-]
-for nums, expected in tests:
+]:
     sol = Solution()
     actual = sol.rob(nums)
     print("The maximum amount of money you can rob from", nums, "->", actual)

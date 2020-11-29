@@ -3,31 +3,32 @@
  * @param {number} k
  * @return {number[]}
  */
-var maxSlidingWindow = function(nums, k) {
-    let res = [];
-    let len = nums.length;
-    let deque = []; // store the indices of candidates
-    for (let i = 0; i < len; ++i) {
-        if (deque.length > 0 && deque[0] < i - (k - 1)) {
-            deque.shift();
-        }
-        while (nums[deque[deque.length - 1]] < nums[i]) {
-            deque.pop();
-        }
-        deque.push(i);
-        if (i >= k - 1) {
-            res.push(nums[deque[0]]);
-        }
+var maxSlidingWindow = function (nums, k) {
+  const deque = []; // store the indices of candidates
+  const ans = [];
+  for (let i = 0; i < nums.length; ++i) {
+    while (deque && nums[deque[deque.length - 1]] < nums[i]) {
+      deque.pop();
     }
-    return res;
+    if (deque && deque[0] === i - k) {
+      deque.shift();
+    }
+    deque.push(i);
+    if (i >= k - 1) ans.push(nums[deque[0]]);
+  }
+  return ans;
 };
 //TEST
 [
-    [[], 1],
-    [[0], 1],
-    [[1,3,-1,-3,5,3,6,7], 3],
-].forEach((test) => {
-    console.log("Maximums of sliding window of", test[1],
-                "in", test[0], "->",
-                maxSlidingWindow(test[0], test[1]));
+  [[], 1, []],
+  [[0], 1, [0]],
+  [[1, 3, -1, -3, 5, 3, 6, 7], 3, [3, 3, 5, 5, 6, 7]],
+  [[1], 1, [1]],
+  [[1, -1], 1, [1, -1]],
+  [[9, 11], 2, [11]],
+  [[4, -2], 2, [4]],
+].forEach(([nums, k, expected]) => {
+  const actual = maxSlidingWindow(nums, k);
+  console.log('Max of sliding window of k =', k, 'in', nums, '->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

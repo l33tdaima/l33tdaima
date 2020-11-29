@@ -1,10 +1,15 @@
 # 239. Sliding Window Maximum (Hard)
 
-Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
 
-For example,
-Given nums = [1,3,-1,-3,5,3,6,7], and k = 3.
+Return the max sliding window.
 
+### Example 1:
+
+```
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation:
 Window position                Max
 ---------------               -----
 [1  3  -1] -3  5  3  6  7       3
@@ -13,21 +18,48 @@ Window position                Max
  1  3  -1 [-3  5  3] 6  7       5
  1  3  -1  -3 [5  3  6] 7       6
  1  3  -1  -3  5 [3  6  7]      7
-Therefore, return the max sliding window as [3,3,5,5,6,7].
+```
 
-Note: 
-You may assume k is always valid, ie: 1 ≤ k ≤ input array's size for non-empty array.
+### Example 2:
 
-Follow up:
-Could you solve it in linear time?
+```
+Input: nums = [1], k = 1
+Output: [1]
+```
+
+### Example 3:
+
+```
+Input: nums = [1,-1], k = 1
+Output: [1,-1]
+```
+
+### Example 4:
+
+```
+Input: nums = [9,11], k = 2
+Output: [11]
+```
+
+### Example 5:
+
+```
+Input: nums = [4,-2], k = 2
+Output: [4]
+```
+
+### Constraints:
+
+- 1 <= nums.length <= 10^5
+- -10^4 <= nums[i] <= 10^4
+- 1 <= k <= nums.length
 
 ## Solution
-We scan the array from 0 to n-1, at each i, we keep “promising” elements, which are potentially max number in window [i-(k-1),i] or any subsequent window, in a deque. This implies the following cases,
+
+Iterate `nums`, at each i, we maintain a deque of index which the values are monotonically decreasing, the max is hence the head of the deque. The question is how to maintain this deque so that we can extract max out of it.
 
 1. If an element in the deque and it is out of i-(k-1), we discard them.
 2. We also need to discard elements smaller than the new number added at i to the back of deque. Those numbers have no chance to be the max going forward.
-
-The max of each sliding window will then be the head in deque.
 
 #AMZN #GOOGL #Zenefits
 

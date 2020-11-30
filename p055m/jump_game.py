@@ -24,16 +24,15 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums, expected in [
     ([1], True),
     ([1, 2], True),
     ([1, 0, 1], False),
     ([2, 3, 1, 1, 4], True),
     ([3, 2, 1, 0, 4], False),
     ([3, 2, 2, 0, 4], True),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.canJumpON(t[0])
-    print("Can jump in", t[0], "->", actual)
-    assert actual == t[1]
+    actual = sol.canJumpON(nums)
+    print("Can jump in", nums, "->", actual)
+    assert actual == expected

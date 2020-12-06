@@ -3,29 +3,29 @@
  * @param {number} n
  * @return {boolean}
  */
-var canPlaceFlowers = function(flowerbed, n) {
-    console.assert(n <= flowerbed.length);
-    if ((n === 0) || (flowerbed.length === 1 && flowerbed[0] === 0)) { return true; }
-    let pc = 0;
-    for (let i = 0, len = flowerbed.length; i < len; ++i) {
-        if (flowerbed[i] === 1) { continue; }
-        if ((i === 0 && flowerbed[i + 1] === 0) ||
-            (i === len - 1 && flowerbed[i - 1] === 0) ||
-            (flowerbed[i + 1] === 0 && flowerbed[i - 1] === 0)) {
-            flowerbed[i] = 1;
-            if (++pc >= n) { return true };
-        }
+var canPlaceFlowers = function (flowerbed, n) {
+  flowerbed = [0].concat(flowerbed).concat([0]);
+  for (let i = 0; i < flowerbed.length - 1; ++i) {
+    if (
+      flowerbed[i - 1] === 0 &&
+      flowerbed[i] === 0 &&
+      flowerbed[i + 1] === 0
+    ) {
+      flowerbed[i] = 1;
+      if (--n == 0) return true;
     }
-    return false;
+  }
+  return n <= 0;
 };
 // TEST
 [
-    [[0], 1],
-    [[0, 0], 1],
-    [[1,0,1], 1],
-    [[1,0,0,0,1], 1],
-    [[1,0,0,0,1], 2],
-].forEach(function (test) {
-    console.log("Can place", test[1], "flowers in", test[0], "?");
-    console.log("->", canPlaceFlowers(test[0], test[1]), test[0]);
+  [[0], 1, true],
+  [[0, 0], 1, true],
+  [[1, 0, 1], 1, false],
+  [[1, 0, 0, 0, 1], 1, true],
+  [[1, 0, 0, 0, 1], 2, false],
+].forEach(([flowerbed, n, expected]) => {
+  const actual = canPlaceFlowers(flowerbed, n);
+  console.log('Can place', n, 'flowers in', flowerbed, '->', actual);
+  console.assert(actual === expected);
 });

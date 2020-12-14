@@ -2,36 +2,33 @@
  * @param {number[]} nums
  * @return {number}
  */
-var maxCoins = function(nums) {
-    let balloons = new Array(nums.length + 2);
-    let n = 1;
-    nums.forEach(v => {
-        if (v > 0) { balloons[n++] = v; }
-    });
-    balloons[0] = balloons[n++] = 1;
-    // console.log(balloons);
-    // coins[l][r] is maxCoins from balloon l to r, not including l, r
-    let coins = Array.from({length: n}, v =>
-                            Array.from({length: n}, k => 0)
-                          );
-    // console.log(coins);
-    for (let range = 2; range < n; ++range) {
-        // console.log("range =", range);
-        for (let left = 0; left < n - range; ++left) {
-            let right = left + range;
-            for (let k = left + 1; k < right; ++k) {
-                let c = coins[left][k] + coins[k][right]
-                      + balloons[left] * balloons[k] * balloons[right];
-                coins[left][right] = Math.max(coins[left][right], c);
-            }
-        }
-        //console.log(coins);
+var maxCoins = function (nums) {
+  const balloons = Array.from(nums);
+  balloons.push(1);
+  balloons.unshift(1);
+  const n = balloons.length;
+  // coins[l][r] is maxCoins from balloon l to r, not including l, r
+  let coins = Array.from({ length: n }, (v) =>
+    Array.from({ length: n }, (k) => 0)
+  );
+  for (let range = 2; range < n; ++range) {
+    for (let l = 0; l < n - range; ++l) {
+      let r = l + range;
+      for (let k = l + 1; k < r; ++k) {
+        let c =
+          coins[l][k] + coins[k][r] + balloons[l] * balloons[k] * balloons[r];
+        coins[l][r] = Math.max(coins[l][r], c);
+      }
     }
-    return coins[0][n-1];
+  }
+  return coins[0][n - 1];
 };
 // TEST
 [
-    [3,1,5,8],
-].forEach(t => {
-    console.log("Max coins to burst", t, "->", maxCoins(t));
+  [[3, 1, 5, 8], 167],
+  [[3, 0, 1, 5, 0, 8], 167],
+].forEach(([nums, expected]) => {
+  const actual = maxCoins(nums);
+  console.log('Max coins to burst in', nums, '->', actual);
+  console.assert(actual === expected);
 });

@@ -2,28 +2,38 @@
 
 Given a linked list, swap every two adjacent nodes and return its head.
 
-### Example:
-Given 1->2->3->4, you should return the list as 2->1->4->3.
+You may not modify the values in the list's nodes. Only nodes itself may be changed.
 
-### Note:
-- Your algorithm should use only constant extra space.
-- You may not modify the values in the list's nodes, only nodes itself may be changed.
+### Example 1:
+
+```
+Input: head = [1,2,3,4]
+Output: [2,1,4,3]
+```
+
+### Example 2:
+
+```
+Input: head = []
+Output: []
+```
+
+### Example 3:
+
+```
+Input: head = [1]
+Output: [1]
+```
+
+### Constraints:
+
+- The number of nodes in the list is in the range [0, 100].
+- 0 <= Node.val <= 100
 
 ## Solution
-### Intuitive Approach
-Swap the nodes pair by pair, the trick is how to take care of the first two and returned header.
-```
-1->2->3->4
-^
-p
----
-1->3->4
-2->
----
-2->1->3->4
-```
 
-### Optimal Apporach
+### C++ Apporach
+
 Use pointer of pointer, to store the head in the first iteration and then the memory address of .next member since then.
 
 #MSFT #BBG #UBER

@@ -2,24 +2,59 @@
 
 A message containing letters from A-Z is being encoded to numbers using the following mapping:
 
+```
 'A' -> 1
 'B' -> 2
 ...
 'Z' -> 26
-Given an encoded message containing digits, determine the total number of ways to decode it.
+```
 
-For example,
-Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
+Given a _non-empty_ message containing digits, determine the total number of ways to decode it.
 
-The number of ways decoding "12" is 2.
+The answer is guaranteed to fit in a 32-bit integer.
+
+### Example 1:
+
+```
+Input: s = "12"
+Output: 2
+Explanation: It could be decoded as "AB" (1 2) or "L" (12).
+```
+
+### Example 2:
+
+```
+Input: s = "226"
+Output: 3
+Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+```
+
+### Example 3:
+
+```
+Input: s = "0"
+Output: 0
+Explanation: There is no character that is mapped to a number starting with '0'. We cannot ignore a zero when we face it while decoding. So, each '0' should be part of "10" --> 'J' or "20" --> 'T'.
+```
+
+### Example 4:
+
+```
+Input: s = "1"
+Output: 1
+```
+
+### Constraints:
+
+- 1 <= s.length <= 100
+- s contains only digits and may contain leading zero(s).
 
 ## Solution
+
 We can either conduct DP left to right or right to left, the idea is the same, when adding a new character into consideration,
+
 - If this new char is valid, [1-9], carry dp[i-1] to the current dp[i] to be solved;
 - If the last two char is also valid, from 1 to 26, add dp[i-2] to current dp[i];
-- If this new char is 0,
-  - One digit check is invalid,
-  - Two digit check is also invalid if not 10 or 20, dp[i] will be zero, eventually indicates 0 going forward.
 
 To save more space, we can only keep the two numbers for current and previous states.
 

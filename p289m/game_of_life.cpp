@@ -1,30 +1,30 @@
 // g++ -std=c++11 *.cpp -o test && ./test && rm test
 
-#include <vector>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Solution {
 public:
-    void gameOfLife(vector<vector<int>>& board) {
+    void gameOfLife(vector<vector<int>>& board)
+    {
         int rows = board.size();
-        if (rows == 0) { return; }
+        if (rows == 0)
+            return;
         int cols = board[0].size();
         // Count the live neighbors of a given cell
         // closure/capture: board, rows, cols
         auto countLiveNeighbors = [=](int r, int c) -> int {
             int count = 0;
-            for (int i = r-1; i <= r+1; ++i) {
-                for (int j = c-1; j <= c+1; ++j) {
+            for (int i = r - 1; i <= r + 1; ++i) {
+                for (int j = c - 1; j <= c + 1; ++j) {
                     if (i >= 0 && i < rows && j >= 0 && j < cols) {
                         count += board[i][j] & 1;
                     }
                 }
             }
-            count -= board[r][c] & 1;
-            // cout << r << ", " << c << ": count =" << count << endl;
-            return count;
+            return count - (board[r][c] & 1);
         };
         // calcualate the new state
         for (int i = 0; i < rows; ++i) {
@@ -48,16 +48,18 @@ public:
 // TEST
 struct Test {
     vector<vector<int>> board;
-    void print() {
-        for (auto& r: board) {
+    void print()
+    {
+        for (auto& r : board) {
             cout << "{";
-            for (int c: r) {
+            for (int c : r) {
                 cout << c << ", ";
             }
             cout << "}" << endl;
         }
     }
-    void run() {
+    void run()
+    {
         cout << "Before:" << endl;
         print();
         Solution sol;
@@ -66,15 +68,14 @@ struct Test {
         print();
     }
 };
-int main(int argc, char const *argv[])
+int main(int argc, char const* argv[])
 {
     vector<Test> tests = {
-        {{{}}},
-        {{{1,0}, {0,1}}},
-        {{{1,0,0},{0,1,1},{1,0,1}}},
-        {{{0,1,0},{0,0,1},{1,1,1},{0,0,0}}}
+        { { { 1, 0 }, { 0, 1 } } },
+        { { { 1, 0, 0 }, { 0, 1, 1 }, { 1, 0, 1 } } },
+        { { { 0, 1, 0 }, { 0, 0, 1 }, { 1, 1, 1 }, { 0, 0, 0 } } }
     };
-    for (auto& t: tests) {
+    for (auto& t : tests) {
         t.run();
         cout << "------" << endl;
     }

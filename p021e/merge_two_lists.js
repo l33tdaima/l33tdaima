@@ -11,7 +11,7 @@ const List = require('list');
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var mergeTwoLists = function(l1, l2) {
+var mergeTwoLists = function (l1, l2) {
   let sentinel = new List.ListNode(0);
   let p = sentinel;
   while (l1 && l2) {
@@ -29,15 +29,28 @@ var mergeTwoLists = function(l1, l2) {
 };
 // TEST
 [
-  [[], []],
-  [[1], [2]],
-  [[], [1]],
-  [[1, 1, 1], [1, 1, 2]],
-  [[1, 2, 4], [1, 3, 4]],
-  [[1, 3, 9], [2, 4, 6, 8, 10]]
-].forEach(t => {
-  let l1 = List.fromArray(t[0]);
-  let l2 = List.fromArray(t[1]);
-  let lst = mergeTwoLists(l1, l2);
-  console.log('Merge', t[0], 'and', t[1], '->', List.toArray(lst));
+  [[], [], []],
+  [[1], [2], [1, 2]],
+  [[], [0], [0]],
+  [
+    [1, 1, 1],
+    [1, 1, 2],
+    [1, 1, 1, 1, 1, 2],
+  ],
+  [
+    [1, 2, 4],
+    [1, 3, 4],
+    [1, 1, 2, 3, 4, 4],
+  ],
+  [
+    [1, 3, 9],
+    [2, 4, 6, 8, 10],
+    [1, 2, 3, 4, 6, 8, 9, 10],
+  ],
+].forEach(([l1, l2, expected]) => {
+  const actual = List.toArray(
+    mergeTwoLists(List.fromArray(l1), List.fromArray(l2))
+  );
+  console.log('Merge', l1, 'and', l2, '->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

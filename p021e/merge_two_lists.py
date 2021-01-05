@@ -18,22 +18,22 @@ class Solution:
                 p.next = l2
                 l2 = l2.next
             p = p.next
-        p.next = l1 if l1 is not None else l2
+        p.next = l1 if l1 else l2
         return sentinel.next
 
 
 # TESTS
-tests = [
-    [[], []],
-    [[1], [2]],
-    [[], [1]],
-    [[1, 1, 1], [1, 1, 2]],
-    [[1, 2, 4], [1, 3, 4]],
-    [[1, 3, 9], [2, 4, 6, 8, 10]],
-]
-for t in tests:
+for l1, l2, expected in [
+    ([], [], []),
+    ([1], [2], [1, 2]),
+    ([], [0], [0]),
+    ([1, 1, 1], [1, 1, 2], [1, 1, 1, 1, 1, 2]),
+    ([1, 2, 4], [1, 3, 4], [1, 1, 2, 3, 4, 4]),
+    ([1, 3, 9], [2, 4, 6, 8, 10], [1, 2, 3, 4, 6, 8, 9, 10]),
+]:
     sol = Solution()
-    l1 = ListNode.from_array(t[0])
-    l2 = ListNode.from_array(t[1])
-    act = sol.mergeTwoLists(l1, l2)
-    print("Merge", t[0], "and", t[1], "->", ListNode.to_array(act))
+    actual = ListNode.to_array(
+        sol.mergeTwoLists(ListNode.from_array(l1), ListNode.from_array(l2))
+    )
+    print("Merge", l1, "and", l2, "->", actual)
+    assert actual == expected

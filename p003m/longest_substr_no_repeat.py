@@ -1,5 +1,5 @@
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def lengthOfLongestSubstringV1(self, s: str) -> int:
         char_map = [None] * 128
         start, ans = -1, 0
         for i, c in enumerate(s):
@@ -10,19 +10,27 @@ class Solution:
             ans = max(ans, i - start)
         return ans
 
+    def lengthOfLongestSubstringV2(self, s: str) -> int:
+        char_map, start, ans = {}, -1, 0
+        for i, c in enumerate(s):
+            if c in char_map:
+                start = max(start, char_map[c])
+            char_map[c] = i
+            ans = max(ans, i - start)
+        return ans
+
 
 # TEST
-tests = [
+for s, expected in [
     ["", 0],
     ["abcabcbb", 3],
     ["bbbbb", 1],
     ["pwwkew", 3],
     ["c", 1],
     ["abba", 2],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.lengthOfLongestSubstring(t[0])
-    print("Length of longest substring of", t[0], "->", actual)
-    assert actual == t[1]
+    actual = sol.lengthOfLongestSubstringV2(s)
+    print("Length of longest substring of", s, "->", actual)
+    assert actual == expected
 

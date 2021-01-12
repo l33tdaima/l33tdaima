@@ -20,27 +20,14 @@ class Solution:
 
 
 # TESTS
-tests = [
-    {"nums1": [], "m": 0, "nums2": [], "n": 0, "expected": []},
-    {"nums1": [2, 0], "m": 1, "nums2": [1], "n": 1, "expected": [1, 2]},
-    {
-        "nums1": [1, 3, 5, 0, 0, 0],
-        "m": 3,
-        "nums2": [2, 4, 6],
-        "n": 3,
-        "expected": [1, 2, 3, 4, 5, 6],
-    },
-    {
-        "nums1": [4, 5, 6, 0, 0, 0],
-        "m": 3,
-        "nums2": [2, 2, 2],
-        "n": 3,
-        "expected": [2, 2, 2, 4, 5, 6],
-    },
-]
-for t in tests:
+for nums1, m, nums2, n, expected in [
+    ([], 0, [], 0, []),
+    ([2, 0], 1, [1], 1, [1, 2]),
+    ([1, 3, 5, 0, 0, 0], 3, [2, 4, 6], 3, [1, 2, 3, 4, 5, 6],),
+    ([4, 5, 6, 0, 0, 0], 3, [2, 2, 2], 3, [2, 2, 2, 4, 5, 6],),
+]:
     sol = Solution()
-    print("Merge", t["nums1"], "with", t["nums2"])
-    sol.merge(t["nums1"], t["m"], t["nums2"], t["n"])
-    print("  ->", t["nums1"])
-    assert t["nums1"] == t["expected"]
+    print("Merge", nums1, "with", nums2)
+    sol.merge(nums1, m, nums2, n)
+    print(" ->", nums1)
+    assert nums1 == expected

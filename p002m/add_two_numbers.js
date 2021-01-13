@@ -11,8 +11,7 @@ const List = require('list');
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
-  if (l1 == null && l2 == null) return null;
+var addTwoNumbers = function (l1, l2) {
   let head = new List.ListNode(0); // dummy head
   let p = head;
   let carry = 0;
@@ -28,21 +27,34 @@ var addTwoNumbers = function(l1, l2) {
 };
 // TEST
 [
-  [[], []],
-  [[1], []],
-  [[3], [5]],
-  [[6], [9]],
-  [[6, 5], [9, 0, 2]],
-  [[6, 5], [8, 4, 9]],
-  [[2, 4, 3], [5, 6, 4]]
-].forEach(t => {
-  let l0 = List.fromArray(t[0]);
-  let l1 = List.fromArray(t[1]);
-  console.log(
-    t[0].toString(),
-    '+',
-    t[1].toString(),
-    '=',
-    List.toArray(addTwoNumbers(l0, l1)).toString()
+  [
+    [2, 4, 3],
+    [5, 6, 4],
+    [7, 0, 8],
+  ],
+  [[0], [0], [0]],
+  [
+    [9, 9, 9, 9, 9, 9, 9],
+    [9, 9, 9, 9],
+    [8, 9, 9, 9, 0, 0, 0, 1],
+  ],
+  [[1], [], [1]],
+  [[3], [5], [8]],
+  [[6], [9], [5, 1]],
+  [
+    [6, 5],
+    [9, 0, 2],
+    [5, 6, 2],
+  ],
+  [
+    [6, 5],
+    [8, 4, 9],
+    [4, 0, 0, 1],
+  ],
+].forEach(([a1, a2, expected]) => {
+  const actual = List.toArray(
+    addTwoNumbers(List.fromArray(a1), List.fromArray(a2))
   );
+  console.log(a1, '+', a2, '->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

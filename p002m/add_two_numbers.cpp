@@ -1,22 +1,27 @@
 /**
  * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
  */
 #include <cstdlib>
 #include <iostream>
+struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode(int x)
+        : val(x)
+        , next(NULL)
+    {
+    }
+};
 
 using namespace std;
 
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
+    {
         ListNode sentinel(0);
         ListNode* p = &sentinel;
-        div_t sum = {0, 0};
+        div_t sum = { 0, 0 };
         while (sum.quot > 0 || l1 || l2) {
             if (l1) {
                 sum.quot += l1->val;

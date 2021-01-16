@@ -3,16 +3,12 @@
  * @param {number} k
  * @return {number}
  */
-var findKthLargestV1a = function(nums, k) {
+var findKthLargestV1a = function (nums, k) {
   nums.sort((a, b) => b - a);
   return nums[k - 1];
 };
-var findKthLargestV1b = function(nums, k) {
-  nums.sort((a, b) => a - b);
-  return nums[nums.length - k];
-};
 
-var findKthLargestV2 = function(nums, k) {
+var findKthLargestV2 = function (nums, k) {
   const swap = (i, j) => {
     [nums[j], nums[i]] = [nums[i], nums[j]];
   };
@@ -35,26 +31,18 @@ var findKthLargestV2 = function(nums, k) {
     else begin = p + 1;
   }
 };
+
 // TESTS
 [
-  {
-    list: [99, 99, 99],
-    k: 1,
-    expected: 99
-  },
-  {
-    list: [3, 2, 1, 5, 6, 4],
-    k: 3,
-    expected: 4
-  },
-  {
-    list: [3, 2, 1, 5, 6, 4],
-    k: 1,
-    expected: 6
-  }
-].forEach(t => {
-  const list = [...t.list];
-  const res = findKthLargestV2(list, t.k);
-  console.log('Find #' + t.k, 'largest in', t.list, '->', res);
-  console.assert(res === t.expected);
+  [[99, 99, 99], 1, 99],
+  [[3, 2, 1, 5, 6, 4], 3, 4],
+  [[3, 2, 1, 5, 6, 4], 2, 5],
+  [[3, 2, 1, 5, 6, 4], 3, 4],
+  [[3, 2, 1, 5, 6, 4], 1, 6],
+  [[3, 2, 3, 1, 2, 4, 5, 5, 6], 4, 4],
+].forEach(([nums, k, expected]) => {
+  const list = [...nums];
+  const actual = findKthLargestV2(list, k);
+  console.log('Find #' + k, 'largest in', nums, '->', actual);
+  console.assert(actual === expected);
 });

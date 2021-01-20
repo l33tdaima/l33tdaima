@@ -2,8 +2,8 @@
  * @param {string} s
  * @return {string}
  */
-var longestPalindrome = function(s) {
-  let findPalindrome = function(l, r) {
+var longestPalindrome = function (s) {
+  let findPalindrome = function (l, r) {
     while (l >= 0 && r < s.length && s[l] === s[r]) {
       l--;
       r++;
@@ -20,6 +20,13 @@ var longestPalindrome = function(s) {
   return s.substr(maxstart, maxlen);
 };
 // TEST
-['babad', 'cbbd'].forEach(t => {
-  console.log('Longest palindrome of "' + t + '" ->', longestPalindrome(t));
+[
+  ['babad', 'bab'],
+  ['cbbd', 'bb'],
+  ['a', 'a'],
+  ['ac', 'a'],
+].forEach(([s, expected]) => {
+  const actual = longestPalindrome(s);
+  console.log('Longest palindrome of "' + s + '" ->', actual);
+  console.assert(actual === expected);
 });

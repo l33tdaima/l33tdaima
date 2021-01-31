@@ -22,16 +22,15 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums, expected in [
     ([1, 3, 2], [2, 1, 3]),
     ([1, 2, 3], [1, 3, 2]),
     ([9, 1, 1], [1, 1, 9]),
     ([2, 3, 4, 1], [2, 4, 1, 3]),
     ([5, 4, 3, 2, 1], [1, 2, 3, 4, 5]),
     ([1, 5, 8, 4, 7, 6, 5, 3, 2, 1], [1, 5, 8, 5, 1, 2, 3, 4, 6, 7]),
-]
-for t in tests:
+]:
     sol = Solution()
-    print("Next permutation of", t[0], "->", t[1])
-    sol.nextPermutation(t[0])
-    assert t[0] == t[1]
+    print("Next permutation of", nums, "->", expected)
+    sol.nextPermutation(nums)
+    assert nums == expected

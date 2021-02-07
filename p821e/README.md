@@ -1,16 +1,25 @@
 # 821. Shortest Distance to a Character (Easy)
 
-Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string.
+Given a string s and a character c that occurs in s, return an array of integers answer where answer.length == s.length and answer[i] is the shortest distance from s[i] to the character c in s.
 
 ### Example 1:
+
 ```
-Input: S = "loveleetcode", C = 'e'
-Output: [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]
+Input: s = "loveleetcode", c = "e"
+Output: [3,2,1,0,1,0,0,1,2,2,1,0]
 ```
 
-### Note:
-- S string length is in [1, 10000].
-- C is a single character, and guaranteed to be in string S.
-- All letters in S and C are lowercase.
+### Example 2:
+
+```
+Input: s = "aaab", c = "b"
+Output: [3,2,1,0]
+```
+
+### Constraints
+
+- 1 <= s.length <= 10^4
+- s[i] and c are lowercase English letters.
+- c occurs at least once in s.
 
 #Array

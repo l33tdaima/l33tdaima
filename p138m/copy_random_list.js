@@ -1,5 +1,5 @@
 /**
- * Definition for singly-linked list with a random pointer.
+ * // Definition for a Node.
  */
 function Node(val, next, random) {
   this.val = val;
@@ -11,11 +11,11 @@ function Node(val, next, random) {
  * @param {Node} head
  * @return {Node}
  */
-var copyRandomList = function(head) {
+var copyRandomList = function (head) {
   if (head == null) return null;
   // Round 1: copy the node and insert it right behind
   let it = head;
-  while (it !== null) {
+  while (it) {
     let next = it.next;
     let cp = new Node(it.val, next, null);
     it.next = cp;
@@ -23,7 +23,7 @@ var copyRandomList = function(head) {
   }
   // Round 2: copy the random link
   it = head;
-  while (it !== null) {
+  while (it) {
     if (it.random !== null) it.next.random = it.random.next;
     it = it.next.next;
   }
@@ -31,7 +31,7 @@ var copyRandomList = function(head) {
   it = head;
   let sentinel = new Node(0, null, null);
   let p = sentinel;
-  while (it !== null) {
+  while (it) {
     let next = it.next.next;
     // extract the copy
     let copy = it.next;
@@ -48,7 +48,7 @@ let dummyHead = new Node(0, null, null);
 let hashTable = {};
 let p = dummyHead;
 let test = ['a', 'b', 'c', 'd', 'e'];
-test.forEach(function(label) {
+test.forEach(function (label) {
   let node = new Node(label, null, null);
   hashTable[label] = node;
   p.next = node;

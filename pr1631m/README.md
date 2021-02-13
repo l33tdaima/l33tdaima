@@ -51,3 +51,5 @@ If you are given threshold k, check if it is possible to go from (0, 0) to (n-1,
 Binary search the k value.
 
 #Binary Search #Depth-first Search #Union Find #Graph
+
+#Similar questions [#1091](../pr1091m/README.md) [#1631](../pr1631m/README.md)

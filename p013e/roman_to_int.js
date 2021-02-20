@@ -2,26 +2,22 @@
  * @param {string} s
  * @return {number}
  */
-var romanToInt = function(s) {
-  const valueMap = {
-    I: 1,
-    V: 5,
-    X: 10,
-    L: 50,
-    C: 100,
-    D: 500,
-    M: 1000
-  };
+const VALUE_MAP = {
+  I: 1,
+  V: 5,
+  X: 10,
+  L: 50,
+  C: 100,
+  D: 500,
+  M: 1000,
+};
+
+var romanToInt = function (s) {
   let ans = 0;
   for (i = 0; i < s.length; ++i) {
-    let curr = valueMap[s[i]];
-    let next = i + 1 < s.length ? valueMap[s[i + 1]] : 0;
-    if (curr < next) {
-      ans += next - curr;
-      i++;
-    } else {
-      ans += curr;
-    }
+    let [curr, next] = [VALUE_MAP[s[i]], VALUE_MAP[s[i + 1]] || 0];
+    if (curr < next) ans -= curr;
+    else ans += curr;
   }
   return ans;
 };
@@ -34,9 +30,9 @@ var romanToInt = function(s) {
   ['LVIII', 58],
   ['XCIX', 99],
   ['DCCCXC', 890],
-  ['MCMXCIV', 1994]
-].forEach(t => {
-  let actual = romanToInt(t[0]);
-  console.log('Roman', t[0], 'to int ->', actual);
-  console.assert(actual === t[1]);
+  ['MCMXCIV', 1994],
+].forEach(([s, expected]) => {
+  const actual = romanToInt(s);
+  console.log('Roman', s, 'to int ->', actual);
+  console.assert(actual === expected);
 });

@@ -20,7 +20,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for s, expected in [
     ["III", 3],
     ["IV", 4],
     ["VII", 7],
@@ -29,9 +29,8 @@ tests = [
     ["XCIX", 99],
     ["DCCCXC", 890],
     ["MCMXCIV", 1994],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.romanToInt(t[0])
-    print("Roman", t[0], "to int ->", actual)
-    assert actual == t[1]
+    actual = sol.romanToInt(s)
+    print("Roman", s, "to int ->", actual)
+    assert actual == expected

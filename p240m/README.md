@@ -2,12 +2,13 @@
 
 Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
 
-Integers in each row are sorted in ascending from left to right.
-Integers in each column are sorted in ascending from top to bottom.
-For example,
+- Integers in each row are sorted in ascending from left to right.
+- Integers in each column are sorted in ascending from top to bottom.
 
-Consider the following matrix:
+### Example 1:
 
+```
+Input: matrix =
 [
   [1,   4,  7, 11, 15],
   [2,   5,  8, 12, 19],
@@ -15,9 +16,35 @@ Consider the following matrix:
   [10, 13, 14, 17, 24],
   [18, 21, 23, 26, 30]
 ]
-Given target = 5, return true.
+target = 5
+Output: true
+```
 
-Given target = 20, return false.
+### Example 2:
+
+```
+Input: matrix =
+[
+  [1,   4,  7, 11, 15],
+  [2,   5,  8, 12, 19],
+  [3,   6,  9, 16, 22],
+  [10, 13, 14, 17, 24],
+  [18, 21, 23, 26, 30]
+]
+target = 20
+Output: false
+```
+
+### Constraints:
+
+- m == matrix.length
+- n == matrix[i].length
+- 1 <= n, m <= 300
+- -10^9 <= matix[i][j] <= 10^9
+- All the integers in each row are sorted in ascending order.
+- All the integers in each column are sorted in ascending order.
+- -10^9 <= target <= 10^9
 
 #GOOGL #AMZN #APPL
+
 #Binary Search #Divide and Conquer

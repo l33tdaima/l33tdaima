@@ -11,16 +11,14 @@ const List = require('list');
  * @param {ListNode} headB
  * @return {ListNode}
  */
-var getIntersectionNode = function(headA, headB) {
-    if (headA === null || headB === null) {
-        return null;
-    }
-    let pa  = headA, pb = headB;
-    while (pa !== pb) {
-        pa = (pa !== null) ? pa.next : headB;
-        pb = (pb !== null) ? pb.next : headA;
-    }
-    return pa;
+var getIntersectionNode = function (headA, headB) {
+  if (headA === null || headB === null) return null;
+  let [pa, pb] = [headA, headB];
+  while (pa !== pb) {
+    pa = pa !== null ? pa.next : headB;
+    pb = pb !== null ? pb.next : headA;
+  }
+  return pa;
 };
 // TEST
 let a1 = new List.ListNode(1);
@@ -35,6 +33,6 @@ pa.next = c1;
 pb.next = c1;
 c1.next = new List.ListNode(8);
 c1.next.next = new List.ListNode(9);
-console.log("List A ->", List.toArray(a1));
-console.log("List B ->", List.toArray(b1));
-console.log("Intersection Node ->", getIntersectionNode(a1, b1));
+console.log('List A ->', List.toArray(a1));
+console.log('List B ->', List.toArray(b1));
+console.log('Intersection Node ->', getIntersectionNode(a1, b1));

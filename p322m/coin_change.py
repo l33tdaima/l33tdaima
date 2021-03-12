@@ -29,16 +29,16 @@ class Solution:
 
 
 # TESTS
-tests = [
+for coins, amount, expected in [
     ([1, 2, 3], 6, 2),
     ([1, 2, 5], 11, 3),
     ([2], 3, -1),
-]
-for t in tests:
+    ([1], 0, 0),
+    ([1], 1, 1),
+    ([1], 2, 2),
+]:
     sol = Solution()
-    actual = sol.coinChangeTD(t[0], t[1])
-    print(
-        "The fewest number of coins in", t[0], "to make up", t[1], "->", actual
-    )
-    assert actual == t[2]
-    assert t[2] == sol.coinChangeBU(t[0], t[1])
+    actual = sol.coinChangeTD(coins, amount)
+    print("The fewest number of coins in", coins, "to make up", amount, "->", actual)
+    assert actual == expected
+    assert expected == sol.coinChangeBU(coins, amount)

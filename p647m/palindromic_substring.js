@@ -1,52 +1,31 @@
-/** O(N^3) solution
+/**
  * @param {string} s
  * @return {number}
  */
-var countSubstringsDP = function(s) {
-    var isPalindrome = function (t) {
-        for (let i = 0, len = t.length; i < ~~(len/2); ++i) {
-            if (t.charAt(i) !== t.charAt(len - 1 - i)) return false;
-        }
-        return true;
-    };
-    let slen = s.length;
-    let dp = Array.from({length: slen + 1}, (v) => 0);
-    dp[1] = 1;
-    for (let i = 1; i < slen; ++i) {
-        dp[i + 1] = dp[i];
-        for (let j = 0; j <= i; ++j) {
-            if (isPalindrome(s.substring(j, i + 1))) dp[i + 1] ++;
-        }
+var countSubstrings = function (s) {
+  let [ans, slen] = [0, s.length];
+  const checkPalindrome = (l, r) => {
+    while (l >= 0 && r < slen && s[l] === s[r]) {
+      [l, r, ans] = [l - 1, r + 1, ans + 1];
     }
-    return dp[slen];
-};
-/** O(N^2) solution
- * @param {string} s
- * @return {number}
- */
-var countSubstrings = function(s) {
-    let count = 0;
-    let slen = s.length;
-    let checkPalindrome = function(l, r) {
-        while (l >= 0 && r < slen && s.charAt(l) === s.charAt(r)) {
-            count++; l--; r++;
-        }
-    };
-    for (let i = 0; i < slen; ++i) {
-        checkPalindrome(i, i); // check odd len palindrome
-        checkPalindrome(i, i + 1); // check odd len palindrome
-    }
-    return count;
+  };
+  for (let i = 0; i < slen; ++i) {
+    checkPalindrome(i, i); // check odd len palindrome
+    checkPalindrome(i, i + 1); // check odd len palindrome
+  }
+  return ans;
 };
 // TEST
+const f = (s, expected) => [s, expected];
 [
-    "aa", // 1 + 2
-    "ab", // 1 + 1
-    "aab", // 3 + 1
-    "aba", // 2 + 2
-    "aaa", // 3(aa) + 1(aaa) + 1(aa) + 1(a)
-    "aaaa", // 6(aaa) + 1(aaaa) + 1(aaa) + 1(aa) + 1(a)
-].forEach(function (test) {
-    console.log("'" + test + "' has palindromic substrings count ->",
-                countSubstrings(test));
+  f('aa', 3),
+  f('ab', 2),
+  f('aab', 4),
+  f('aba', 4),
+  f('aaa', 6),
+  f('aaaa', 10),
+].forEach(([s, expected]) => {
+  const actual = countSubstrings(s);
+  console.log('# of palindromic substrings in', s, '->', actual);
+  console.assert(actual === expected);
 });

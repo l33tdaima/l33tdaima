@@ -3,11 +3,10 @@
  * @return {number}
  */
 var lengthOfLIS = function (nums) {
-  const N = nums.length;
-  if (N === 0) return 0;
-  const dp = Array.from({ length: N }, (v) => 1);
+  if (nums.length === 0) return 0;
+  const dp = Array.from({ length: nums.length }, (v) => 1);
   let ans = 1;
-  for (let n = 1; n < N; ++n) {
+  for (let n = 1; n < nums.length; ++n) {
     let max = 0;
     for (let i = 0; i < n; ++i) {
       if (nums[n] > nums[i]) max = Math.max(max, dp[i]);
@@ -22,9 +21,11 @@ var lengthOfLIS = function (nums) {
   [[], 0],
   [[1], 1],
   [[10, 9, 2, 5, 3, 7, 101, 18], 4],
+  [[0, 1, 0, 3, 2, 3], 4],
+  [[7, 7, 7, 7, 7, 7, 7], 1],
   [[4, 5, 1, 2, 7], 3],
-].forEach((t) => {
-  actual = lengthOfLIS(t[0]);
-  console.log('Length of LIS in', t[0], '->', actual);
-  console.assert(actual === t[1]);
+].forEach(([nums, expected]) => {
+  const actual = lengthOfLIS(nums);
+  console.log('Length of LIS in', nums, '->', actual);
+  console.assert(actual === expected);
 });

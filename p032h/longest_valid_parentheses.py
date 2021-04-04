@@ -1,7 +1,6 @@
 class Solution:
-    def longestValidParenthesesV1(self, s: str) -> int:
-        stack = [-1]
-        ans = 0
+    def longestValidParenthesesSlow(self, s: str) -> int:
+        stack, ans = [-1], 0
         for i in range(len(s)):
             if s[i] == ")" and len(stack) > 1 and s[stack[-1]] == "(":
                 stack.pop()
@@ -10,7 +9,7 @@ class Solution:
                 stack.append(i)
         return ans
 
-    def longestValidParenthesesV2(self, s: str) -> int:
+    def longestValidParenthesesFast(self, s: str) -> int:
         left, right, ans = 0, 0, 0
         for c in s:
             if c == "(":
@@ -35,20 +34,20 @@ class Solution:
 
 
 # TESTS
-tests = [
-    ["(()", 2],
-    [")()())", 4],
-    ["()(()", 2],
-    ["()(())", 6],
-    ["((()()", 4],
-    ["((())", 4],
-    ["))(())", 4],
-    ["()(()()", 4],
-]
-for t in tests:
+for s, expected in [
+    ("(()", 2),
+    (")()())", 4),
+    ("", 0),
+    ("()(()", 2),
+    ("()(())", 6),
+    ("((()()", 4),
+    ("((())", 4),
+    ("))(())", 4),
+    ("()(()()", 4),
+]:
     sol = Solution()
-    actual1 = sol.longestValidParenthesesV1(t[0])
-    actual2 = sol.longestValidParenthesesV2(t[0])
-    print("Longest valid parentheses in", t[0], "->", actual1)
-    assert actual1 == t[1] and actual2 == t[1]
+    actual1 = sol.longestValidParenthesesSlow(s)
+    actual2 = sol.longestValidParenthesesFast(s)
+    print("Longest valid parentheses in", s, "->", actual1)
+    assert actual1 == expected and actual2 == expected
 

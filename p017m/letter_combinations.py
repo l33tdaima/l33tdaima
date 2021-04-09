@@ -19,8 +19,7 @@ class Solution:
         if len(digits) == 0 or digits == "1":
             return []
         ans = [""]
-        for i in range(len(digits)):
-            d = digits[i]
+        for i, d in enumerate(digits):
             while len(ans[0]) == i:
                 base = ans.pop(0)
                 for c in Solution.mapping[d]:
@@ -29,8 +28,54 @@ class Solution:
 
 
 ## TESTS
-tests = ["", "1", "3", "23", "357", "2468"]
-for t in tests:
+for digits, expected in [
+    ("", []),
+    ("1", []),
+    ("2", ["a", "b", "c"]),
+    ("23", ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]),
+    (
+        "357",
+        [
+            "djp",
+            "djq",
+            "djr",
+            "djs",
+            "dkp",
+            "dkq",
+            "dkr",
+            "dks",
+            "dlp",
+            "dlq",
+            "dlr",
+            "dls",
+            "ejp",
+            "ejq",
+            "ejr",
+            "ejs",
+            "ekp",
+            "ekq",
+            "ekr",
+            "eks",
+            "elp",
+            "elq",
+            "elr",
+            "els",
+            "fjp",
+            "fjq",
+            "fjr",
+            "fjs",
+            "fkp",
+            "fkq",
+            "fkr",
+            "fks",
+            "flp",
+            "flq",
+            "flr",
+            "fls",
+        ],
+    ),
+]:
     sol = Solution()
-    print(t, "->", ",".join(sol.letterCombinations(t)))
-
+    actual = sol.letterCombinations(digits)
+    print("Letter combinations of", digits, "->", actual)
+    assert actual == expected

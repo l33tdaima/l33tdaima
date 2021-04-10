@@ -1,28 +1,31 @@
 // ++ -std=c++11 *.cpp -o test && ./test && rm -f test
-#include <vector>
+#include <cassert>
+#include <iostream>
 #include <string>
 #include <unordered_map>
-
-#include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Solution {
 public:
-    bool isAlienSorted(vector<string>& words, string order) {
+    bool isAlienSorted(vector<string>& words, string order)
+    {
         unordered_map<char, int> ordermap;
-        for (int i = 0; i < order.length(); ++i) ordermap[order[i]] = i;
+        for (int i = 0; i < order.length(); ++i)
+            ordermap[order[i]] = i;
+
+        auto gt = [&ordermap](const string& w1, const string& w2) -> bool {
+            for (int i = 0; i < w1.length() && i < w2.length(); ++i) {
+                if (w1[i] != w2[i])
+                    return ordermap[w1[i]] > ordermap[w2[i]];
+            }
+            return w1.length() > w2.length();
+        };
 
         for (int i = 1; i < words.size(); ++i) {
-            bool sorted = false;
-            for (int j = 0; j < words[i-1].length() && j < words[i].length(); ++j) {
-                if (ordermap[words[i - 1][j]] > ordermap[words[i][j]]) return false;
-                if (ordermap[words[i - 1][j]] < ordermap[words[i][j]]) {
-                    sorted = true;
-                    break;
-                }
-            }
-            if (!sorted && words[i - 1].length() > words[i].length()) return false;
+            if (gt(words[i - 1], words[i]))
+                return false;
         }
         return true;
     }
@@ -32,38 +35,33 @@ struct Test {
     vector<string> words;
     string order;
     bool expected;
-    void run() {
+    void run()
+    {
         Solution sol;
         bool actual = sol.isAlienSorted(words, order);
-        cout << "Is words alien sorted in order \'" << order << "\' -> " 
+        cout << "Is words alien sorted in order \'" << order << "\' -> "
              << boolalpha << actual << endl;
         assert(actual == expected);
     }
 };
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
     vector<Test> tests = {
-        {
-            {"hello", "leetcode"},
+        { { "hello", "leetcode" },
             "hlabcdefgijkmnopqrstuvwxyz",
-            true
-        },
-        {
-            {"word","world","row"},
+            true },
+        { { "word", "world", "row" },
             "worldabcefghijkmnpqstuvxyz",
-            false    
-        },
-        {
-            {"apple","app"},
+            false },
+        { { "apple", "app" },
             "abcdefghijklmnopqrstuvwxyz",
-            false
-        },
-        {
-            {"kuvp","q"},
+            false },
+        { { "kuvp", "q" },
             "ngxlkthsjuoqcpavbfdermiywz",
-            true
-        }
+            true }
     };
-    for (auto& t: tests) t.run();
+    for (auto& t : tests)
+        t.run();
     return 0;
 }

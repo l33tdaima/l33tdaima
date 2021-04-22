@@ -1,25 +1,43 @@
 120. Triangle (Medium)
 
-Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+Given a `triangle` array, find the minimum path sum from top to bottom.
+For each step, you may move to an adjacent number of the row below. More formally, if you are on index i on the current row, you may move to either index i or index i + 1 on the next row.
 
-For example, given the following triangle
+### Example 1:
+
 ```
-[
+Input: triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
+Output: 11
+Explanation: The triangle looks like:
+
      [2],
     [3,4],
    [6,5,7],
   [4,1,8,3]
-]
-The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
+
+The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11 (underlined above).
 ```
 
-### Note:
-Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.
+### Example 2:
+
+```
+Input: triangle = [[-10]]
+Output: -10
+```
+
+### Constraints:
+
+- 1 <= triangle.length <= 200
+- triangle[0].length == 1
+- triangle[i].length == triangle[i - 1].length + 1
+- -10^4 <= triangle[i][j] <= 10^4
+
+_Follow up_: Could you do this using only O(n) extra space, where n is the total number of rows in the triangle?
 
 ## Solution
+
 Instead of top to bottom, we can also calculate bottom up, the total path sum are the same.
 
 The DP state `state[j]` is the minimal path sum up to element j on that row, the state array is updated row by row so that we only need O(n) extra space.
-`state_i+1[j] = min(state_i[j], state_i[j+1]) + triangle[i][j]`
 
 #Array #Dynamic Programming

@@ -3,6 +3,20 @@ from math import pow
 
 
 class Solution:
+    def powerfulIntegersV0(self, x: int, y: int, bound: int) -> List[int]:
+        ans, i = set(), 0
+        while x ** i < bound:
+            j = 0
+            while (s := x ** i + y ** j) <= bound:
+                ans.add(s)
+                if y == 1:
+                    break
+                j += 1
+            if x == 1:
+                break
+            i += 1
+        return list(ans)
+
     def powerfulIntegersV1(self, x: int, y: int, bound: int) -> List[int]:
         ans, i = set(), 1
         while i < bound:
@@ -27,37 +41,11 @@ class Solution:
 for x, y, bound, expected in [
     (2, 3, 10, [2, 3, 4, 5, 7, 9, 10]),
     (3, 5, 15, [2, 4, 6, 8, 10, 14]),
-    (2, 1, 10, [9, 2, 3, 5]),
-    (
-        81,
-        21,
-        900000,
-        [
-            540702,
-            531442,
-            2,
-            531462,
-            6582,
-            102,
-            194562,
-            522,
-            201042,
-            194482,
-            9262,
-            6562,
-            82,
-            15822,
-            22,
-            725922,
-            442,
-            7002,
-            9342,
-            531882,
-        ],
-    ),
+    (2, 1, 10, [2, 3, 5, 9]),
 ]:
     sol = Solution()
-    actual = sorted(sol.powerfulIntegersV1(x, y, bound))
+    actual = sorted(sol.powerfulIntegersV0(x, y, bound))
     print(f"Powerful integers({x}, {y}, {bound}) -> {actual}")
-    assert actual == sorted(expected)
-    assert sorted(expected) == sorted(sol.powerfulIntegersV2(x, y, bound))
+    assert actual == expected
+    assert expected == sorted(sol.powerfulIntegersV1(x, y, bound))
+    assert expected == sorted(sol.powerfulIntegersV2(x, y, bound))

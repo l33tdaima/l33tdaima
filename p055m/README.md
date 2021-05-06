@@ -37,4 +37,4 @@ From begin to end, we just need to keep updating the furthest point it can reach
 
 #Array #Greedy
 
-#Similar questions [055m](../p055m/README.md) [1306m](../pr1306m/README.md)
+#Similar questions [#45](../045m/README.md) [#55](../p055m/README.md) [#1306](../pr1306m/README.md)

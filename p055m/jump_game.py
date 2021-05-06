@@ -2,19 +2,7 @@ from typing import List
 
 
 class Solution:
-    def canJumpON2(self, nums: List[int]) -> bool:
-        N = len(nums)
-        reachable = [False] * N
-        reachable[0] = True
-        for i in range(N - 1):
-            if not reachable[i]:
-                continue
-            for j in range(1, nums[i] + 1):
-                if i + j < N:
-                    reachable[i + j] = True
-        return reachable[-1]
-
-    def canJumpON(self, nums: List[int]) -> bool:
+    def canJump(self, nums: List[int]) -> bool:
         canreach = 0
         for i, n in enumerate(nums):
             if i > canreach:
@@ -33,6 +21,6 @@ for nums, expected in [
     ([3, 2, 2, 0, 4], True),
 ]:
     sol = Solution()
-    actual = sol.canJumpON(nums)
+    actual = sol.canJump(nums)
     print("Can jump in", nums, "->", actual)
     assert actual == expected

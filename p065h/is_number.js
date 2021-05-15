@@ -2,73 +2,73 @@
  * @param {string} s
  * @return {boolean}
  */
-var isNumberRegex = function(s) {
-    return null !== s.match(
-        /^\s*[-+]?(([0-9]+(\.[0-9]*)?)|\.[0-9]+)(e[-+]?[0-9]+)?\s*$/);
+var isNumberRegex = function (s) {
+  return (
+    s.trim().match(/^[+-]?((\d+\.?\d*)|(\d*\.?\d+))([eE][-+]?\d+)?$/) !== null
+  );
 };
-var isNumber = function(s) {
-    if (s == null) return false;
-    s = s.trim();
-    if (s.length === 0) return false;
+var isNumber = function (s) {
+  s = s.trim();
+  if (s.length === 0) return false;
 
-    let seenNum = false, seenE = false, seenD = false;
-    
-    for (let i = 0, len = s.length; i < len; ++i) {
-        let c = s.charAt(i);
-        switch(c) {
-            case '.':
-                if (seenD || seenE) return false;
-                seenD = true;
-                break;
-            case 'e':
-                if (seenE || !seenNum) return false;
-                seenE = true;
-                seenNum = false;
-                break;
-            case '+':
-            case '-':
-                if (i !== 0 && s.charAt(i-1) !== 'e') return false;
-                seenNum = false;
-                break;
-            default:
-                let cc = s.charCodeAt(i);
-                if (cc - 48 < 0 || cc - 48 > 9) return false;
-                seenNum = true;
-        }
+  let [seenNum, seenE, seenD] = [false, false, false];
+
+  for (let i = 0; i < s.length; ++i) {
+    switch (s[i]) {
+      case '.':
+        if (seenD || seenE) return false;
+        seenD = true;
+        break;
+      case 'e':
+      case 'E':
+        if (seenE || !seenNum) return false;
+        [seenE, seenNum] = [true, false];
+        break;
+      case '+':
+      case '-':
+        if (i !== 0 && s[i - 1] !== 'e') return false;
+        seenNum = false;
+        break;
+      default:
+        if (s[i] < '0' || s[i] > '9') return false;
+        seenNum = true;
     }
-    return seenNum;
+  }
+  return seenNum;
 };
 // TEST
 [
-    ["123", true], 
-    [" 123 ", true],
-    [" 0 ", true],
-    [" 0123 ", true],
-    [" 00", true],
-    [" -10", true],
-    [" -0", true],
-    ["123.5", true],
-    ["123.0000", true],
-    ["-500.777", true],
-    ["0.0000001", true],
-    ["0.00000", true],
-    ["0.", true],  
-    ["00.5", true],
-    ["123e1", true],
-    ["1.23e10", true],
-    ["0.5e-10", true],
-    ["1.0e4.5", false],
-    ["0.5e04", true],
-    ["12 3", false],
-    ["1a3", false],
-    ["", false],
-    ["     ", false],
-    [".1", true],
-    [".", false],
-    ["2e0", true],
-    ["+.8", true],  
-    [" 005047e+6", true],
-].forEach(function (test) {
-    console.assert(isNumber(test[0]) === test[1]);
-    console.log("\"" + test[0] + "\" passed test"); 
+  ['e', false],
+  ['123', true],
+  [' 123 ', true],
+  [' 0 ', true],
+  [' 0123 ', true],
+  [' 00', true],
+  [' -10', true],
+  [' -0', true],
+  ['123.5', true],
+  ['123.0000', true],
+  ['-500.777', true],
+  ['0.0000001', true],
+  ['0.00000', true],
+  ['0.', true],
+  ['00.5', true],
+  ['123e1', true],
+  ['1.23e10', true],
+  ['0.5e-10', true],
+  ['1.0e4.5', false],
+  ['0.5e04', true],
+  ['12 3', false],
+  ['1a3', false],
+  ['', false],
+  ['     ', false],
+  ['.1', true],
+  ['.', false],
+  ['2e0', true],
+  ['+.8', true],
+  [' 005047e+6', true],
+].forEach(([s, expected]) => {
+  const actual = isNumber(s);
+  console.log(`${s} is a number -> ${actual}`);
+  console.assert(actual === expected && isNumberRegex(s) === expected);
 });

@@ -10,51 +10,35 @@ const Tree = require('binary_tree');
  * @param {TreeNode} root
  * @return {void} Do not return anything, modify root in-place instead.
  */
-var flatten = function(root) {
-    // Use .right method of tree as .next method of the linklist
-    // @param {TreeNode} current node
-    // @return {TreeNode} the tail after flattened the child
-    var recFlatten = function(p) {
-        // return null if recursion from left from parent, but the leaf if recursion from right of parent
-        if (p === null || (p.left === null && p.right === null)) {
-            return p;
-        }
-        let next = p.right;
-        let ltail = recFlatten(p.left);
-        // insert left child between parent and right child if there is any
-        if (ltail !== null) {
-            p.right = p.left;
-            ltail.right = next;
-            p.left = null;
-        }
-        // keep flattening right if there is any right child
-        if (next !== null) {
-            return recFlatten(next);
-        }
-        else {
-            return ltail;
-        }
-    };
-    recFlatten(root);
+var flatten = function (root) {
+  let pre = null;
+  // @param {TreeNode} current node
+  // @return {TreeNode} the tail after flattened the child
+  const helper = (p) => {
+    if (p == null) return p;
+    helper(p.right);
+    helper(p.left);
+    [p.left, p.right] = [null, pre];
+    pre = p;
+  };
+
+  helper(root);
 };
 
-var testData = [
-    "",
-    "1",
-    "1,2,#,#,#",
-    "1,#,2,#,#",
-    "1,2,#,#,3,#,#",
-    "1,2,3,#,#,#,#",
-    "1,#,2,#,3,#,#",
-    "1,2,3,4,#,#,#,#,#",
-    "1,#,2,#,3,#,4,#,#",
-    "1,#,2,3,4,#,#,#,#",
-    "1,#,2,3,#,#,4,#,#",
-    "1,2,4,#,#,5,#,7,#,#,3,6,#,8,#,#,#",
-    "3,9,#,#,20,15,#,#,7,#,#"
-];
-testData.forEach(function(test) {
-    let tree = Tree.deserialize(test);
-    flatten(tree);
-    console.log("After flatten ->", Tree.serialize(tree));
+const f = (a, b) => [a, b];
+[
+  f('#', '#'),
+  f('0,#,#', '0,#,#'),
+  f('1,2,#,#,#', '1,#,2,#,#'),
+  f('1,#,2,#,#', '1,#,2,#,#'),
+  f('1,2,#,#,3,#,#', '1,#,2,#,3,#,#'),
+  f('1,2,3,#,#,#,#', '1,#,2,#,3,#,#'),
+  f('1,#,2,#,3,#,#', '1,#,2,#,3,#,#'),
+  f('1,2,3,#,#,4,#,#,5,#,6,#,#', '1,#,2,#,3,#,4,#,5,#,6,#,#'),
+].forEach(([tree, expected]) => {
+  let root = Tree.deserialize(tree);
+  flatten(root);
+  let actual = Tree.serialize(root);
+  console.log('Flatten', tree, '->', actual);
+  console.assert(actual === expected);
 });

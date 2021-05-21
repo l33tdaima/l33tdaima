@@ -10,7 +10,7 @@ const Tree = require('binary_tree');
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var levelOrderBFS = function(root) {
+var levelOrderBFS = function (root) {
   let ans = [];
   if (root == null) return ans;
   const queue = [[root, 0]];
@@ -25,9 +25,9 @@ var levelOrderBFS = function(root) {
   }
   return ans;
 };
-var levelOrderDFS = function(root) {
+var levelOrderDFS = function (root) {
   let ans = [];
-  const recPreorder = function(node, level) {
+  const recPreorder = function (node, level) {
     if (node == null) return;
     if (ans[level]) ans[level].push(node.val);
     else ans.push([node.val]);
@@ -38,15 +38,20 @@ var levelOrderDFS = function(root) {
   return ans;
 };
 [
-  '1',
-  '1,2,#,#,3,#,#',
-  '1,2,3,4,#,#,#,#,#',
-  '1,#,2,#,3,#,4,#,#',
-  '1,#,2,3,4,#,#,#,#',
-  '1,#,2,3,#,#,4,#,#',
-  '1,2,4,#,#,5,#,7,#,#,3,6,#,8,#,#,#',
-  '3,9,#,#,20,15,#,#,7,#,#'
-].forEach(t => {
-  const tree = Tree.deserialize(t);
-  console.log('Level order traversal ->', levelOrderDFS(tree));
+  ['#', []],
+  ['1', [[1]]],
+  ['1,2,#,#,3,#,#', [[1], [2, 3]]],
+  ['1,2,3,4,#,#,#,#,#', [[1], [2], [3], [4]]],
+  ['1,#,2,#,3,#,4,#,#', [[1], [2], [3], [4]]],
+  ['1,#,2,3,4,#,#,#,#', [[1], [2], [3], [4]]],
+  ['1,#,2,3,#,#,4,#,#', [[1], [2], [3, 4]]],
+  ['1,2,4,#,#,5,#,7,#,#,3,6,#,8,#,#,#', [[1], [2, 3], [4, 5, 6], [7, 8]]],
+  ['3,9,#,#,20,15,#,#,7,#,#', [[3], [9, 20], [15, 7]]],
+].forEach(([tree, expected]) => {
+  const actual = levelOrderDFS(Tree.deserialize(tree));
+  console.log('Level order traversal of', tree, '->', actual);
+  console.assert(actual.toString() === expected.toString());
+  console.assert(
+    levelOrderBFS(Tree.deserialize(tree)).toString() === expected.toString()
+  );
 });

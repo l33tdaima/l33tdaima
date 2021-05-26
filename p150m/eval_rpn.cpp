@@ -1,34 +1,43 @@
 // g++ -std=c++11 *.cpp -o test && ./test && rm test
-#include <vector>
+#include <functional>
+#include <iostream>
+#include <sstream>
 #include <stack>
 #include <string>
-#include <functional>
-#include <sstream>
-#include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Token {
-  public:
-    virtual ~Token() {}
+public:
+    virtual ~Token() { }
     virtual void process(stack<int>& stack) = 0;
 };
-class Operand: public Token {
+class Operand : public Token {
     int val;
-  public:
+
+public:
     Operand() = delete;
-    Operand(int v):val(v) {}
-    virtual void process(stack<int>& stack) {
+    Operand(int v)
+        : val(v)
+    {
+    }
+    virtual void process(stack<int>& stack)
+    {
         stack.push(val);
     }
 };
-class BinaryOperator: public Token {
-    function<int(int,int)> opfun;
-  public:
-    BinaryOperator(function<int(int,int)> lambda)
-    :opfun(lambda) {}
+class BinaryOperator : public Token {
+    function<int(int, int)> opfun;
 
-    virtual void process(stack<int>& stack) {
+public:
+    BinaryOperator(function<int(int, int)> lambda)
+        : opfun(lambda)
+    {
+    }
+
+    virtual void process(stack<int>& stack)
+    {
         int rhs = stack.top();
         stack.pop();
         int lhs = stack.top();
@@ -37,8 +46,9 @@ class BinaryOperator: public Token {
     }
 };
 class TokenFactory {
-  public:
-    static Token* createToken(const string& s) {
+public:
+    static Token* createToken(const string& s)
+    {
         if (s == "+") {
             return new BinaryOperator([](int a, int b) { return a + b; });
         } else if (s == "-") {
@@ -59,9 +69,10 @@ class TokenFactory {
 // Solution = RPNCalculator
 class Solution {
 public:
-    int evalRPN(vector<string>& tokens) {
+    int evalRPN(vector<string>& tokens)
+    {
         stack<int> stack;
-        for (auto& s: tokens) {
+        for (auto& s : tokens) {
             Token* token = TokenFactory::createToken(s);
             token->process(stack);
             delete token;
@@ -70,16 +81,16 @@ public:
     }
 };
 // TEST
-int main(int argc, char const *argv[])
+int main(int argc, char const* argv[])
 {
     vector<vector<string>> tests = {
-        {"2", "1", "+"},
-        {"2", "1", "+", "3", "*"},
-        {"4", "13", "5", "/", "+"},
-        {"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"},
+        { "2", "1", "+" },
+        { "2", "1", "+", "3", "*" },
+        { "4", "13", "5", "/", "+" },
+        { "10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+" },
     };
     Solution sol;
-    for (auto& t: tests) {
+    for (auto& t : tests) {
         cout << "Eval RPN -> " << sol.evalRPN(t) << endl;
     }
     return 0;

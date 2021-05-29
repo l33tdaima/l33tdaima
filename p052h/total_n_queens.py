@@ -2,8 +2,8 @@ from typing import List
 
 
 class Solution:
-    def solveNQueens(self, n: int) -> List[List[str]]:
-        ans = []
+    def totalNQueens(self, n: int) -> int:
+        ans = 0
 
         def dfs(queens: List[int], xydiff: List[int], xysum: List[int]) -> None:
             """
@@ -11,20 +11,21 @@ class Solution:
             xydiff: coordinate diffs have been occupied
             xysum:  coordinate sums have been occupied
             """
+            nonlocal ans
             r = len(queens)
             if r == n:
-                ans.append(queens)
+                ans += 1
                 return
             for c in range(n):
                 if c not in queens and c - r not in xydiff and r + c not in xysum:
                     dfs(queens + [c], xydiff + [c - r], xysum + [r + c])
 
         dfs([], [], [])
-        return [["." * i + "Q" + "." * (n - i - 1) for i in sol] for sol in ans]
+        return ans
 
 
 # TESTS
-for n in range(1, 6):
+for n in range(1, 10):
     sol = Solution()
-    actual = sol.solveNQueens(n)
-    print(f"All solutions to {n}-queens puzzle ->", actual)
+    actual = sol.totalNQueens(n)
+    print(f"# of distinct solutions to {n}-queens problem -> {actual}")

@@ -64,3 +64,5 @@ Iterate `nums`, at each i, we maintain a deque of index which the values are mon
 #AMZN #GOOGL #Zenefits
 
 #Heap #Deque
+
+#Similar questions [#239](../p239h/README.md) [#1696](../pr1696m/README.md)

@@ -1,22 +1,41 @@
 # 336. Palindrome Pairs (Hard)
 
-Given a list of unique words, find all pairs of distinct indices (i, j) in the given list, so that the concatenation of the two words, i.e. words[i] + words[j] is a palindrome.
+Given a list of unique words, find all pairs of distinct indices (i, j) in the given list, so that the concatenation of the two words `words[i] + words[j]` is a palindrome.
 
-Example 1:
-Given words = ["bat", "tab", "cat"]
-Return [[0, 1], [1, 0]]
-The palindromes are ["battab", "tabbat"]
+### Example 1:
 
-Example 2:
-Given words = ["abcd", "dcba", "lls", "s", "sssll"]
-Return [[0, 1], [1, 0], [3, 2], [2, 4]]
-The palindromes are ["dcbaabcd", "abcddcba", "slls", "llssssll"]
+```
+Input: words = ["abcd","dcba","lls","s","sssll"]
+Output: [[0,1],[1,0],[3,2],[2,4]]
+Explanation: The palindromes are ["dcbaabcd","abcddcba","slls","llssssll"]
+```
+
+### Example 2:
+
+```
+Input: words = ["bat","tab","cat"]
+Output: [[0,1],[1,0]]
+Explanation: The palindromes are ["battab","tabbat"]
+```
+
+### Example 3:
+
+```
+Input: words = ["a",""]
+Output: [[0,1],[1,0]]
+```
+
+### Constraints:
+
+- 1 <= words.length <= 5000
+- 0 <= words[i].length <= 300
+- words[i] consists of lower-case English letters.
 
 ## Solution
-A valid assumption that words are case insenstive, we can just assume they are all lower case,
+
 1. Build a reverse trie from words read from backward, i.e. "abcd" is stored as "dcba", and its original index
 2. For each orginal word in the list, search for the following possible candidate which potentially becomes a palindrome pair,
-   - Word s[0..k], where the substring s[k+1..] after k is a palindrome itself not including empty case, e.g. 
+   - Word s[0..k], where the substring s[k+1..] after k is a palindrome itself not including empty case, e.g.
      "abcd" pairs with "abc", cut into "abc" + "d"
      "sssll" pairs with "sss", cut into "sss" + "ll"
      "abceffe" pairs with "abc", cut into "abc" + "effe"
@@ -24,4 +43,5 @@ A valid assumption that words are case insenstive, we can just assume they are a
      "s" pairs with "lls" and "abas"
 
 #GOOGL #Airbnb
+
 #String #Hash Table #Trie

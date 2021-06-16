@@ -12,7 +12,10 @@ Note:
 0 < nums[i] < 10000.
 
 ## Solution
+
 Assume sum is the sum of nums[]. The backtracing process is to find a subset of nums[] whose sum is equal to sum/k. sum % k !== 0 can have a partition for sure. A flag array need to store whether an element has contributed to sum or not.
 
 #LNKD
 #Backtracking
+
+#Similar questions [#473](../p473m/README.md) [#698](../p698m/README.md)

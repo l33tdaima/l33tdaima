@@ -8,13 +8,14 @@ class Solution:
                 ans.append(c)
         return "".join(ans)
 
+
 # TESTS
-tests = [
+for s, expected in [
     ("abcd", "abcd"),
-    ("abbaca", "ca")
-]
-for t in tests:
+    ("abbaca", "ca"),
+    ("azxxzy", "ay"),
+]:
     sol = Solution()
-    actual = sol.removeDuplicates(t[0])
-    print("Remove duplicates in", t[0], "->", actual);
-    assert(actual == t[1])
+    actual = sol.removeDuplicates(s)
+    print("Remove duplicates in", s, "->", actual)
+    assert actual == expected

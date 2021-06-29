@@ -1,17 +1,19 @@
 // g++ -std=c++11 *.cpp -o test && ./test && rm -f test
-#include <string>
 #include <stack>
+#include <string>
 
-#include <vector>
+#include <cassert>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Solution {
 public:
-    string removeDuplicatesStack(string S) {
+    string removeDuplicatesStack(string S)
+    {
         stack<char> stack;
-        for (char c: S) {
+        for (char c : S) {
             if (stack.empty() || stack.top() != c) {
                 stack.push(c);
             } else {
@@ -25,9 +27,10 @@ public:
         }
         return ans;
     }
-    string removeDuplicates(string S) {
+    string removeDuplicates(string S)
+    {
         string ans = "";
-        for (char c: S) {
+        for (char c : S) {
             if (ans.size() == 0 || ans.back() != c) {
                 ans.push_back(c);
             } else {
@@ -39,13 +42,14 @@ public:
 };
 
 // TESTS
-int main(int argc, char* argv[]) {
-    vector<vector<string> > tests = {
-        {"abcd", "abcd"},
-        {"abbaca", "ca"}
+int main(int argc, char* argv[])
+{
+    vector<vector<string>> tests = {
+        { "abcd", "abcd" },
+        { "abbaca", "ca" }
     };
     Solution sol;
-    for (auto& t: tests) {
+    for (auto& t : tests) {
         string actual = sol.removeDuplicates(t[0]);
         cout << "Remove duplicates in " << t[0] << " -> " << actual << endl;
         assert(actual == t[1]);

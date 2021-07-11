@@ -2,57 +2,57 @@
  * @param {string} s
  * @return {number}
  */
-var numDecodings = function(s) {
-    let len = s.length;
-    if (len === 0) { return 0; }
-    // DP array of number way to decode
-    let numDec = Array.from({length: len + 1}, (v) => 0);
-    numDec[0] = 1;
-    if (s[0] === '*') {
-        numDec[1] = 9;
-    } else if (s[0] === '0') {
-        numDec[1] = 0;
-    } else {
-        numDec[1] = 1;
+var numDecodings = function (s) {
+  let len = s.length;
+  // DP array of number way to decode
+  let dp = Array.from({ length: len + 1 }, (v) => 0);
+
+  dp[0] = 1;
+  if (s[0] === '*') dp[1] = 9;
+  else if (s[0] === '0') dp[1] = 0;
+  else dp[1] = 1;
+
+  for (let i = 2; i <= len; ++i) {
+    // 1. Case for one char ahead
+    let [c1, c2] = [s[i - 1], s[i - 2]];
+    if (c1 === '*') {
+      dp[i] += dp[i - 1] * 9;
+    } else if (c1 >= '1') {
+      dp[i] += dp[i - 1];
+    } // ignore '0'
+    // 2. Case for two chars ahead
+    c = [s[i - 2], s[i - 1]];
+    if (c2 === '1' && c1 === '*') {
+      dp[i] += dp[i - 2] * 9;
+    } else if (c2 === '2' && c1 === '*') {
+      dp[i] += dp[i - 2] * 6;
+    } else if (c2 === '*' && c1 === '*') {
+      dp[i] += dp[i - 2] * 15;
+    } else if (c2 === '*' && c1 !== '*' && c1 >= '7') {
+      dp[i] += dp[i - 2];
+    } else if (c2 === '*' && c1 !== '*' && c1 <= '6') {
+      dp[i] += dp[i - 2] * 2;
+    } else if (c2 === '1' || (c2 === '2' && c1 <= '6')) {
+      // && parseInt(c) <= 26) {
+      dp[i] += dp[i - 2];
     }
-    for (let i = 2; i <= len; ++i) {
-        // 1. Case for one char ahead
-        let c = s[i-1];
-        if (c === '*') {
-            numDec[i] += numDec[i-1] * 9;
-        } else if (c >= '1') {
-            numDec[i] += numDec[i-1];
-        } // ignore '0'
-        // 2. Case for two chars ahead
-        c = [s[i-2], s[i-1]];
-        if (c[0] === '1' && c[1] === '*') {
-            numDec[i] += numDec[i-2] * 9;
-        } else if (c[0] === '2' && c[1] === '*') {
-            numDec[i] += numDec[i-2] * 6;
-        } else if (c[0] === '*' && c[1] === '*') {
-            numDec[i] += numDec[i-2] * 15;
-        } else if (c[0] === '*' && c[1] !== '*' && c[1] >= '7') {
-            numDec[i] += numDec[i-2];
-        } else if (c[0] === '*' && c[1] !== '*' && c[1] <= '6') {
-            numDec[i] += numDec[i-2] * 2;
-        } else if (c[0] === '1' || (c[0] === '2' && c[1] <= '6')) { // && parseInt(c) <= 26) {
-            numDec[i] += numDec[i-2];
-        }
-        numDec[i] %= 1000000007;
-    }
-    return numDec[len];
+    dp[i] %= 1000000007;
+  }
+  return dp[len];
 };
 // TEST
 [
-    "",
-    "2",
-    "*",
-    "12",
-    "1*",
-    "*9",
-    "123",
-    "132",
-    "19*798112"
-].forEach(function (test) {
-    console.log("# of Decoding '" + test + "' ->", numDecodings(test));
+  ['*', 9],
+  ['1*', 18],
+  ['2*', 15],
+  ['2', 1],
+  ['12', 2],
+  ['*9', 10],
+  ['123', 3],
+  ['132', 2],
+  ['19*798112', 60],
+].forEach(([s, expected]) => {
+  const actual = numDecodings(s);
+  console.log('# of ways to decoding', s, '->', actual);
+  console.assert(actual === expected);
 });

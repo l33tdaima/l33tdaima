@@ -1,58 +1,90 @@
 # 639. Decode Ways II (Hard)
 
-A message containing letters from A-Z is being encoded to numbers using the following mapping way:
+A message containing letters from A-Z can be _encoded_ into numbers using the following mapping:
 
+```
 'A' -> 1
 'B' -> 2
 ...
 'Z' -> 26
-Beyond that, now the encoded string can also contain the character '*', which can be treated as one of the numbers from 1 to 9.
+```
 
-Given the encoded message containing digits and the character '*', return the total number of ways to decode it.
+To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, "11106" can be mapped into:
 
-Also, since the answer may be very large, you should return the output mod 10^9 + 7.
+- "AAJF" with the grouping (1 1 10 6)
+- "KJF" with the grouping (11 10 6)
+
+Note that the grouping (1 11 06) is invalid because "06" cannot be mapped into 'F' since "6" is different from "06".
+
+In addition to the mapping above, an encoded message may contain the '_' character, which can represent any digit from '1' to '9' ('0' is excluded). For example, the encoded message "1_" may represent any of the encoded messages "11", "12", "13", "14", "15", "16", "17", "18", or "19". Decoding "1\*" is equivalent to decoding any of the encoded messages it can represent.
+
+Given a string `s` containing digits and the `'*'` character, return the number of ways to decode it.
+
+Since the answer may be very large, return it modulo `10^9 + 7`.
 
 ### Example 1:
+
 ```
-Input: "*"
+Input: s = "*"
 Output: 9
-Explanation: The encoded message can be decoded to the string: "A", "B", "C", "D", "E", "F", "G", "H", "I".
+Explanation: The encoded message can represent any of the encoded messages "1", "2", "3", "4", "5", "6", "7", "8", or "9".
+Each of these can be decoded to the strings "A", "B", "C", "D", "E", "F", "G", "H", and "I" respectively.
+Hence, there are a total of 9 ways to decode "*".
 ```
+
 ### Example 2:
+
 ```
-Input: "1*"
-Output: 9 + 9 = 18
+Input: s = "1*"
+Output: 18
+Explanation: The encoded message can represent any of the encoded messages "11", "12", "13", "14", "15", "16", "17", "18", or "19".
+Each of these encoded messages have 2 ways to be decoded (e.g. "11" can be decoded to "AA" or "K").
+Hence, there are a total of 9 * 2 = 18 ways to decode "1*".
 ```
-### Note:
-The length of the input string will fit in range [1, 10^5].
-The input string will only contain the character '*' and digits '0' - '9'.
+
+### Example 3:
+
+```
+Input: s = "2*"
+Output: 15
+Explanation: The encoded message can represent any of the encoded messages "21", "22", "23", "24", "25", "26", "27", "28", or "29".
+"21", "22", "23", "24", "25", and "26" have 2 ways of being decoded, but "27", "28", and "29" only have 1 way.
+Hence, there are a total of (6 * 2) + (3 * 1) = 12 + 3 = 15 ways to decode "2*".
+```
+
+### Constraints:
+
+- 1 <= s.length <= 10^5
+- s[i] is a digit or '\*'
 
 ##Solution
+
 ```
-Denote the number of decoding way for s[0..i] by dp[i], i = 0..n-1
+Denote the number of decoding way for s[0..i - 1] by dp[i], i = 0..n
 To calculate dp[i], we need to consider one or two digits before it as below,
 
         For dp[i-1]:
 
                   /           \
                  /             \
-            s[i-1]='*'    s[i-1]>0     
+            s[i-1]='*'    s[i-1]>0
                 |               |
           + 9*dp[i-1]        + dp[i-1]
 
-             
+
         For dp[i-2]:
 
                    /                                  \
-                  /                                    \  
+                  /                                    \
               s[n-2]='1'||'2'                         s[n-2]='*'
-              /            \                       /             \     
+              /            \                       /             \
         s[n-1]='*'         s[n-1]!='*'          s[n-1]='*'       s[n-1]!='*'
          /       \               |                  |              /         \
   s[n-2]='1'  s[n-2]='2'   num(i-2,i-1)<=26         |         s[n-1]<=6    s[n-1]>6
       |            |             |                  |              |            |
  + 9*dp[i-2]   + 6*dp[i-2]     + dp[i-2]       + 15*dp[i-2]    + 2*dp[i-2]   + dp[i-2]
 ```
+
 #FB
 
 #Dynamic Programming

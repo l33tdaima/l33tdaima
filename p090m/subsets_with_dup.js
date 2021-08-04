@@ -2,31 +2,32 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var subsetsWithDup = function(nums) {
-    nums.sort();
-    var solutions = [];
-    var backtrack = function(solution, start) {
-        solutions.push(Array.from(solution));
-        for (let i = start; i < nums.length; ++i) {
-            if(i > start && nums[i] === nums[i-1]) {
-                continue;
-            }
-            solution.push(nums[i]);
-            backtrack(solution, i + 1);
-            solution.pop();
-        }
-    };
+var subsetsWithDup = function (nums) {
+  const ans = [];
+  nums.sort();
 
-    backtrack([], 0);
-    return solutions;
+  const backtrack = (wip, start) => {
+    ans.push(Array.from(wip));
+    for (let i = start; i < nums.length; ++i) {
+      if (i > start && nums[i] === nums[i - 1]) continue;
+      wip.push(nums[i]);
+      backtrack(wip, i + 1);
+      wip.pop();
+    }
+  };
+
+  backtrack([], 0);
+  return ans;
 };
 // TEST
 [
-    [],
-    [1],
-    [1, 2],
+  [
     [1, 2, 2],
-    [2, 1, 2, 2],
-].forEach(t => {
-    console.log("All subsets of", t, "->\n", subsetsWithDup(t));
+    [[], [1], [1, 2], [1, 2, 2], [2], [2, 2]],
+  ],
+  [[0], [[], [0]]],
+].forEach(([nums, expected]) => {
+  const actual = subsetsWithDup(nums);
+  console.log('Subsets with dups of', nums, '->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

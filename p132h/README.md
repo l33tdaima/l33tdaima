@@ -1,15 +1,41 @@
 # 132. Palindrome Partitioning II (Hard)
-Given a string s, partition s such that every substring of the partition is a palindrome.
 
-Return the minimum cuts needed for a palindrome partitioning of s.
+Given a string `s`, partition `s` such that every substring of the partition is a palindrome.
 
-For example, given s = "aab",
-Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
+Return the minimum cuts needed for a palindrome partitioning of `s`.
 
-##Solution (from tqlong, idea is too great to miss)
+### Example 1:
+
+```
+Input: s = "aab"
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+```
+
+### Example 2:
+
+```
+Input: s = "a"
+Output: 0
+```
+
+### Example 3:
+
+```
+Input: s = "ab"
+Output: 1
+```
+
+### Constraints:
+
+- 1 <= s.length <= 2000
+- s consists of lower-case English letters only.
+
+## Solution (from tqlong, idea is too great to miss)
+
 This DP algorithm utilizes the symmetry property of palindrome.
 
-Say that it started at s[i] = 'b', and s[i-1,i+1] is a palindrome "aba":
+Say that it started at s[i] = 'b', and s[i-1,i+1] is a palindrome "aba" (odd length palindrome case):
 .......aba...
 |<-X->| ^
 |<---Y-->|

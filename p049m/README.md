@@ -1,23 +1,38 @@
 # 49. Group Anagram
 
-Given an array of strings, group anagrams together.
+Given an array of strings `strs`, group the anagrams together. You can return the answer in any order.
 
-### Example
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+### Example 1:
+
 ```
-Input: ["eat", "tea", "tan", "ate", "nat", "bat"], 
-Output:
-[
-  ["ate", "eat","tea"],
-  ["nat","tan"],
-  ["bat"]
-]
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 ```
 
-### Note:
-- All inputs will be in lower-case.
-- The order of your output does not matter.
+### Example 2:
+
+```
+Input: strs = [""]
+Output: [[""]]
+```
+
+### Example 3:
+
+```
+Input: strs = ["a"]
+Output: [["a"]]
+```
+
+### Constraints:
+
+- 1 <= strs.length <= 10^4
+- 0 <= strs[i].length <= 100
+- strs[i] consists of lower-case English letters.
 
 ## Solution
+
 Store into hash table key by signature. Signature function can be a sorted string or a character count sequence.
 
 #FB #AMZN #BBG #UBER #YELP #ALL

@@ -8,11 +8,11 @@ var groupAnagrams = function (strs) {
   for (let s of strs) {
     let sig = [...s].sort().join('');
     let v = sigMap.get(sig);
-    if (v === undefined) {
-      sigMap.set(sig, [s]);
-    } else {
+    if (v) {
       v.push(s);
       sigMap.set(sig, v);
+    } else {
+      sigMap.set(sig, [s]);
     }
   }
   // grouping
@@ -21,6 +21,15 @@ var groupAnagrams = function (strs) {
   return ans;
 };
 
-[['eat', 'tea', 'tan', 'ate', 'nat', 'bat', 'a', 'a', '', '']].forEach((t) => {
-  console.log('Grouping results ->\n', groupAnagrams(t));
+[
+  [
+    ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'],
+    [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']],
+  ],
+  [[''], [['']]],
+  [['a'], [['a']]],
+].forEach(([strs, expected]) => {
+  const actual = groupAnagrams(strs);
+  console.log('Group anagrams ->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

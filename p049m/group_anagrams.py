@@ -10,17 +10,26 @@ class Solution:
             for c in s:
                 sig[ord(c) - ord("a")] += 1
             ans[tuple(sig)].append(s)
-        return ans.values()
+        return list(ans.values())
 
     def groupAnagramsSorted(self, strs: List[str]) -> List[List[str]]:
         ans = defaultdict(list)
         for s in strs:
             key = tuple(sorted(s))
             ans[key].append(s)
-        return ans.values()
+        return list(ans.values())
 
 
-# TEST
-t = ["eat", "tea", "tan", "ate", "nat", "bat", "a", "a", "", ""]
-sol = Solution()
-print("Group anagrams ->\n", sol.groupAnagramsSorted(t))
+# TESTS
+for strs, expected in [
+    (
+        ["eat", "tea", "tan", "ate", "nat", "bat"],
+        [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]],
+    ),
+    ([""], [[""]]),
+    (["a"], [["a"]]),
+]:
+    sol = Solution()
+    actual = sol.groupAnagramsCount(strs)
+    print("Group anagrams ->", actual)
+    assert actual == expected

@@ -21,21 +21,14 @@ class Solution:
 
 
 # TEST
-tests = [
+for s, t, expected in [
+    ["ADOBECODEBANC", "ABC", "BANC"],
     ["ADOBECODEBANC", "ADE", "DEBA"],
     ["ADOBECODEBANC", "AA", "ADOBECODEBA"],
     ["ADOBECODEBANC", "bB", ""],
     ["AABCDE", "ABC", "ABC"],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.minWindow(t[0], t[1])
-    print(
-        "Minimal window in '"
-        + t[0]
-        + "' containing the target '"
-        + t[1]
-        + "' ->",
-        actual,
-    )
-    assert actual == t[2]
+    actual = sol.minWindow(s, t)
+    print("Minimal window in '" + s + "' containing the target '" + s + "' ->", actual)
+    assert actual == expected

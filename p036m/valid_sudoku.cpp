@@ -1,77 +1,74 @@
 // Build program by
 // g++ -std=c++11 *.cpp -o test && ./test && rm test
 
-#include <vector>
-#include <initializer_list>
+#include <cassert>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Solution {
 public:
-    bool isValidSudoku(vector<vector<char>>& board) {
-        bool existedByRow[9][9] = { false }; // Does number 1-9 exist in row 0-8
-        bool existedByCol[9][9] = { false }; // Does number 1-9 exist in col 0-8
-        bool existedByBox[9][9] = { false }; // Does number 1-9 exist in box 0-8
+    bool isValidSudoku(vector<vector<char>>& board)
+    {
+        bool rowd[9][9] = { false }; // Does number 1-9 exist in row 0-8
+        bool cold[9][9] = { false }; // Does number 1-9 exist in col 0-8
+        bool boxd[9][9] = { false }; // Does number 1-9 exist in box 0-8
 
         for (int i = 0; i < 9; ++i) {
             for (int j = 0; j < 9; ++j) {
-                if (board[i][j] == '.') continue;
+                if (board[i][j] == '.')
+                    continue;
                 int digit = board[i][j] - '1';
-                // validate row
-                if (existedByRow[i][digit]) { return false; }
-                existedByRow[i][digit] = true;
-                // validate col
-                if (existedByCol[j][digit]) { return false; }
-                existedByCol[j][digit] = true;
-                // validate box
-                int box = (i/3) * 3 + (j/3); // map to box index 0-8
-                if (existedByBox[box][digit]) { return false; }
-                existedByBox[box][digit] = true;
-           }
+                int k = (i / 3) * 3 + (j / 3); // map to box index 0-8
+                if (rowd[i][digit] || cold[i][digit] || boxd[k][digit]) {
+                    return false;
+                }
+                rowd[i][digit] = true;
+                cold[j][digit] = true;
+                boxd[k][digit] = true;
+            }
         }
         return true;
     }
 };
 struct Test {
-    initializer_list< initializer_list<char> > ilBoard;
-    void run() {
-        vector<vector<char>> board;
-        for (const auto& ril: ilBoard) {
-            vector<char> row(ril);
-            board.push_back(row);
-        }
+    vector<vector<char>> board;
+    bool expected;
+    void run()
+    {
         Solution sol;
-        cout << "Is valid sudoku? -> " << boolalpha 
+        cout << "Is valid sudoku? -> " << boolalpha
              << sol.isValidSudoku(board) << endl;
     }
 };
 // TEST
-int main() {
-    initializer_list<Test> tests = {
-        {{
-          {'5','3','.','.','7','.','.','.','.'},
-          {'6','.','.','1','9','5','.','.','.'},
-          {'.','9','8','.','.','.','.','6','.'},
-          {'8','.','.','.','6','.','.','.','3'},
-          {'4','.','.','8','.','3','.','.','1'},
-          {'7','.','.','.','2','.','.','.','6'},
-          {'.','6','.','.','.','.','2','8','.'},
-          {'.','.','.','4','1','9','.','.','5'},
-          {'.','.','.','.','8','.','.','7','9'}
-        }},
-        {{
-          {'8','3','.','.','7','.','.','.','.'},
-          {'6','.','.','1','9','5','.','.','.'},
-          {'.','9','8','.','.','.','.','6','.'},
-          {'8','.','.','.','6','.','.','.','3'},
-          {'4','.','.','8','.','3','.','.','1'},
-          {'7','.','.','.','2','.','.','.','6'},
-          {'.','6','.','.','.','.','2','8','.'},
-          {'.','.','.','4','1','9','.','.','5'},
-          {'.','.','.','.','8','.','.','7','9'}
-        }}
+int main()
+{
+    vector<Test> tests = {
+        { { { '5', '3', '.', '.', '7', '.', '.', '.', '.' },
+              { '6', '.', '.', '1', '9', '5', '.', '.', '.' },
+              { '.', '9', '8', '.', '.', '.', '.', '6', '.' },
+              { '8', '.', '.', '.', '6', '.', '.', '.', '3' },
+              { '4', '.', '.', '8', '.', '3', '.', '.', '1' },
+              { '7', '.', '.', '.', '2', '.', '.', '.', '6' },
+              { '.', '6', '.', '.', '.', '.', '2', '8', '.' },
+              { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
+              { '.', '.', '.', '.', '8', '.', '.', '7', '9' } },
+            true },
+        { { { '8', '3', '.', '.', '7', '.', '.', '.', '.' },
+              { '6', '.', '.', '1', '9', '5', '.', '.', '.' },
+              { '.', '9', '8', '.', '.', '.', '.', '6', '.' },
+              { '8', '.', '.', '.', '6', '.', '.', '.', '3' },
+              { '4', '.', '.', '8', '.', '3', '.', '.', '1' },
+              { '7', '.', '.', '.', '2', '.', '.', '.', '6' },
+              { '.', '6', '.', '.', '.', '.', '2', '8', '.' },
+              { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
+              { '.', '.', '.', '.', '8', '.', '.', '7', '9' } },
+            false },
     };
-    for (auto t: tests) { t.run(); }
+    for (auto t : tests) {
+        t.run();
+    }
     return 0;
 }

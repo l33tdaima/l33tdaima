@@ -1,13 +1,20 @@
 # 36. Valid Sudoku (Medium)
 
-Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
-1. Each row must contain the digits 1-9 without repetition.
-2. Each column must contain the digits 1-9 without repetition.
-3. Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+Determine if a `9x9` Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
 
-The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
+1. Each row must contain the digits `1-9` without repetition.
+2. Each column must contain the digits `1-9` without repetition.
+3. Each of the nine `3x3` sub-boxes of the grid must contain the digits `1-9` without repetition.
+
+### Note:
+
+- A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+- Only the filled cells need to be validated according to the mentioned rules.
 
 ### Example 1:
+
+![example1](example1.png)
+
 ```
 Input:
 [
@@ -25,6 +32,7 @@ Output: true
 ```
 
 ### Example 2:
+
 ```
 Input:
 [
@@ -39,16 +47,17 @@ Input:
   [".",".",".",".","8",".",".","7","9"]
 ]
 Output: false
-Explanation: Same as Example 1, except with the 5 in the top left corner being 
-    modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
+Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
 ```
-### Note:
-- A Sudoku board (partially filled) could be valid but is not necessarily solvable.
-- Only the filled cells need to be validated according to the mentioned rules.
-- The given board contain only digits 1-9 and the character '.'.
-- The given board size is always 9x9.
+
+### Constraints:
+
+- `board.length == 9`
+- `board[i].length == 9`
+- `board[i][j] is a digit or '.'`.
 
 ## Solution
+
 Maintain three hash tables, answering the questions:
 
 Does digit 1-9 exist for row 0-8, col 0-8, and box 0-8, where box 0-8 is mapped from board index by `i/3 * 3 + j/3`.

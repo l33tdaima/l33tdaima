@@ -3,14 +3,10 @@ from typing import Tuple
 
 class Solution:
     def complexNumberMultiply(self, num1: str, num2: str) -> str:
-        def parse(num: str) -> Tuple[int, int]:
-            real, image = num.split("+", 1)
-            return int(real), int(image[:-1])
-
+        parse = lambda num: map(int, num[:-1].split("+", 1))
         r1, i1 = parse(num1)
         r2, i2 = parse(num2)
-        r, i = r1 * r2 - i1 * i2, r1 * i2 + r2 * i1
-        return f"{r}+{i}i"
+        return f"{r1 * r2 - i1 * i2}+{r1 * i2 + r2 * i1}i"
 
 
 # TESTS

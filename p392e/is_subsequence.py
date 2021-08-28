@@ -20,6 +20,10 @@ class Solution:
                 return False
         return True
 
+    def isSubsequenceV3(self, s: str, t: str) -> bool:
+        t = iter(t)
+        return all(c in t for c in s)
+
     def isSubsequenceFollowup(self, s: str, t: str) -> bool:
         occurrence = defaultdict(list)
         for i, c in enumerate(t):
@@ -46,16 +50,16 @@ class Solution:
 
 
 # TESTS
-tests = [
+for s, t, expected in [
     ("a", "zzb", False),
     ("a", "bbbbbbba", True),
     ("abc", "ahbgdc", True),
     ("axc", "ahbgdc", False),
     ("aaaaaa", "bbaaaa", False),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.isSubsequenceV2(t[0], t[1])
-    print(f"Is '{t[0]}' a subsequence of {t[1]}? -> {actual}")
-    assert actual == t[2]
-    assert t[2] == sol.isSubsequenceFollowup(t[0], t[1])
+    actual = sol.isSubsequenceV2(s, t)
+    print(f"Is '{s}' a subsequence of {t}? -> {actual}")
+    assert actual == expected
+    assert expected == sol.isSubsequenceV3(s, t)
+    assert expected == sol.isSubsequenceFollowup(s, t)

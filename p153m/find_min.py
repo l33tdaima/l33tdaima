@@ -14,7 +14,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums, expected in [
     [[1], 1],
     [[2, 1], 1],
     [[2, 0, 3], 0],
@@ -22,9 +22,9 @@ tests = [
     [[1, 2, 3], 1],
     [[3, 4, 5, 1, 2], 1],
     [[4, 5, 6, 7, 0, 1, 2], 0],
-]
-for t in tests:
+    [[11, 13, 15, 17], 11],
+]:
     sol = Solution()
-    actual = sol.findMin(t[0])
-    print("Find min in", t[0], "->", actual)
-    assert actual == t[1]
+    actual = sol.findMin(nums)
+    print("Find min in", nums, "->", actual)
+    assert actual == expected

@@ -10,46 +10,38 @@
  * @return {TreeNode[]}
  */
 const Tree = require('binary_tree');
-var generateTrees = function(n) {
-    if (n === 0) {
-        return [];
+var generateTrees = function (n) {
+  /**
+   * @param {number} s: start
+   * @param {number} e: end
+   * @return {TreeNode[]}
+   */
+  const recTrees = function (s, e) {
+    if (s > e) return [null];
+    let trees = [];
+    for (let root = s; root <= e; ++root) {
+      let ltrees = recTrees(s, root - 1);
+      for (let left of ltrees) {
+        let rtrees = recTrees(root + 1, e);
+        for (let right of rtrees) {
+          let node = new Tree.TreeNode(root);
+          node.left = left;
+          node.right = right;
+          trees.push(node);
+        }
+      }
     }
-    /**
-     * @param {number} s: start
-     * @param {number} e: end 
-     * @return {TreeNode[]}
-     */
-    var recGenerateTreesByRange = function(s, e) {
-        let trees = new Array();
-        if (s > e) {
-            trees.push(null);
-            return trees;
-        }
-        if (s === e) {
-            trees.push(new Tree.TreeNode(parseInt(s)));
-            return trees;
-        }
-        for (let rtVal = s; rtVal <= e; ++rtVal) {
-            // root node by each value in the range
-            let lhsTrees = recGenerateTreesByRange(s, rtVal - 1);
-            for (let il = 0, lenl = lhsTrees.length; il < lenl; ++il) {
-                let rhsTrees = recGenerateTreesByRange(rtVal + 1, e);
-                for (let ir = 0, lenr = rhsTrees.length; ir < lenr; ++ir) {
-                    let root = new Tree.TreeNode(parseInt(rtVal));
-                    root.left = lhsTrees[il];
-                    root.right = rhsTrees[ir];
-                    trees.push(root);
-                }
-            }
-        }
-        return trees;
-    };
-    return recGenerateTreesByRange(1, n);
+    return trees;
+  };
+  return recTrees(1, n);
 };
 
-var n = (process.argv[2] === undefined) ? 1 : parseInt(process.argv[2]);
-var trees = generateTrees(n);
-console.log("The number of unique BSTs is:", trees.length);
-trees.forEach(function(tree) {
-    console.log(Tree.serialize(tree));
-}, this);
+// TESTS
+[1, 2, 3, 4].forEach((n) => {
+  console.log(
+    'Unique BST of n =',
+    n,
+    '->',
+    generateTrees(n).map(Tree.serialize)
+  );
+});

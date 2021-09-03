@@ -1,14 +1,28 @@
 # 95. Unique Binary Search Trees II (Medium)
 
-Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1...n.
+Given an integer `n`, return all the structurally unique BST's (binary search trees), which has exactly `n` nodes of unique values from 1 to n. Return the answer in _any order_.
 
-For example,
-Given n = 3, your program should return all 5 unique BST's shown below.
+### Example 1:
 
+```
    1         3     3      2      1
     \       /     /      / \      \
      3     2     1      1   3      2
     /     /       \                 \
    2     1         2                 3
+Input: n = 3
+Output: [[1,null,2,null,3],[1,null,3,2],[2,1,3],[3,1,null,null,2],[3,2,null,1]]
+```
 
-#Tree #Dynamic Programming
+### Example 2:
+
+```
+Input: n = 1
+Output: [[1]]
+```
+
+### Constraints:
+
+- `1 <= n <= 8`
+
+#Tree #Dynamic Programming #Backtracking #Binary Search Tree #Binary Tree

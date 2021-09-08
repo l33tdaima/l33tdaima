@@ -10,41 +10,37 @@ const List = require('list');
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseListIterative = function(head) {
-    if(head === null) {
-        return head;
-    }
-    var rev = null;
-    while(head) {
-        var temp = rev;
-        rev = head;
-        head = head.next;
-        rev.next = temp;
-    }
-    return rev;
+var reverseListIter = function (head) {
+  let prev = null;
+  while (head) {
+    let nxt = head.next;
+    head.next = prev;
+    [prev, head] = [head, nxt];
+  }
+  return prev;
 };
-var reverseListRecursive = function(head) {
-    let recRev = function(hd, rev) {
-        if (hd == null) {
-            return rev;
-        } else {
-            let next = hd.next;
-            hd.next = rev;
-            rev = hd;
-            return recRev(next, rev);
-        }
-    };
-    return recRev(head, null);
+var reverseList = function (head) {
+  if (head == null || head.next == null) return head;
+  const h2 = head.next;
+  const ret = reverseList(h2);
+  [h2.next, head.next] = [head, null];
+  return ret;
 };
-let reverseList = reverseListRecursive;
 // TEST
 [
-    [],
-    [1],
-    [1,2,3],
-    [1,2,3,4,5,6,7,8,9],
-].forEach(t => {
-    let hd = List.fromArray(t);
-    console.log("Reversed List of ", t, "->",
-                List.toArray(reverseList(hd)));
+  [
+    [1, 2, 3, 4, 5],
+    [5, 4, 3, 2, 1],
+  ],
+  [
+    [1, 2],
+    [2, 1],
+  ],
+  [[], []],
+].forEach(([array, expected]) => {
+  let actual1 = List.toArray(reverseListIter(List.fromArray(array)));
+  let actual2 = List.toArray(reverseList(List.fromArray(array)));
+  console.log('Reverse linked list', array, '->', actual2);
+  console.assert(actual1.toString() === expected.toString());
+  console.assert(actual2.toString() === expected.toString());
 });

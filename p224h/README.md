@@ -1,24 +1,40 @@
 # 224. Basic Calculator (Hard)
 
-Implement a basic calculator to evaluate a simple expression string.
+Given a string `s` representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation.
 
-The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .
+_Note:_ You are _not_ allowed to use any built-in function which evaluates strings as mathematical expressions, such as `eval()`.
 
-You may assume that the given expression is always valid.
+### Example 1:
 
-Some examples:
-"1 + 1" = 2
-" 2-1 + 2 " = 3
-"(1+(4+5+2)-3)+(6+8)" = 23
-Note: Do not use the eval built-in library function.
+```
+Input: s = "1 + 1"
+Output: 2
+```
 
-## Solution
-1. Tokenize the string input;
-2. Iterate the token list, do the following:
-   - Alway push (, +, - into stack;
-   - If number and top of stack is also number, *10+ to update;
-   - If ), pop the items up to (, push back the number.
-Note that 1 and 2 can be combined in one loop.
+### Example 2:
+
+```
+Input: s = " 2-1 + 2 "
+Output: 3
+```
+
+### Example 3:
+
+```
+Input: s = "(1+(4+5+2)-3)+(6+8)"
+Output: 23
+```
+
+### Constraints:
+
+- 1 <= s.length <= 3 \* 10^5
+- s consists of digits, '+', '-', '(', ')', and ' '.
+- s represents a valid expression.
+- '+' is not used as a unary operation.
+- '-' could be used as a unary operation but it has to be inside parentheses.
+- There will be no two consecutive operators in the input.
+- Every number and running calculation will fit in a signed 32-bit integer.
 
 #Math #Stack
+
 #GOOGL

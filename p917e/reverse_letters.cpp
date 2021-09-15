@@ -1,35 +1,32 @@
 // g++ -std=c++11 *.cpp -o test && ./test && rm -f test
-#include <string>
-#include <utility>
-
-#include <vector>
+#include <cassert>
 #include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
-
 class Solution {
 public:
-    string reverseOnlyLetters(string S) {
-        int l = 0, r = S.length() - 1;
-        while (l < r) {
-            if ((S[l] < 'A' || S[l] > 'Z') &&
-                (S[l] < 'a' || S[l] > 'z')) {
-                l++; continue;
+    string reverseOnlyLetters(string s)
+    {
+        for (int i = 0, j = s.length() - 1; i < j;) {
+            if ((s[i] < 'A' || s[i] > 'Z') && (s[i] < 'a' || s[i] > 'z')) {
+                i++;
+            } else if ((s[j] < 'A' || s[j] > 'Z') && (s[j] < 'a' || s[j] > 'z')) {
+                j--;
+            } else {
+                swap(s[i++], s[j--]);
             }
-            if ((S[r] < 'A' || S[r] > 'Z') &&
-                (S[r] < 'a' || S[r] > 'z')) {
-                r--; continue;
-            }
-            swap(S[l++], S[r--]);
         }
-        return S;
+        return s;
     }
 };
 // TESTS
 struct Test {
     string input;
     string expected;
-    void run() {
+    void run()
+    {
         Solution sol;
         string actual = sol.reverseOnlyLetters(input);
         cout << "Reverse only letters of "
@@ -37,12 +34,14 @@ struct Test {
         assert(actual == expected);
     }
 };
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
     vector<Test> tests = {
         { "ab-cd", "dc-ba" },
         { "a-bC-dEf-ghIj", "j-Ih-gfE-dCba" },
         { "Test1ng-Leet=code-Q!", "Qedo1ct-eeLg=ntse-T!" }
     };
-    for (auto& t: tests) t.run();
+    for (auto& t : tests)
+        t.run();
     return 0;
 }

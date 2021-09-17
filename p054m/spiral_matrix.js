@@ -2,55 +2,50 @@
  * @param {number[][]} matrix
  * @return {number[]}
  */
-var spiralOrder = function(matrix) {
-    let res = [];
-    let m = matrix.length;
-    if (m === 0) { return res; }
-    let n = matrix[0].length;
-
-    let seen = Array.from({length: m},
-                          (v) => Array.from({length: n}, (v) => false));
-    // travesal point moving directions
-    let dirs = [
-        {rowStep: 0, colStep: 1},
-        {rowStep: 1, colStep: 0},
-        {rowStep: 0, colStep: -1},
-        {rowStep: -1, colStep: 0}
-    ];
-    let i = 0, j = 0;
-    let k = 0, d = dirs[k];
-    for (let c = 0; c < m * n; ++c) {
-        res.push(matrix[i][j]);
-        seen[i][j] = true;
-        let ni = i + d.rowStep;
-        let nj = j + d.colStep;
-        if (ni >= 0 && ni < m && nj >= 0 && nj < n && !seen[ni][nj]) {
-            i = ni;
-            j = nj;
-        } else {
-            // switch direction
-            k = (k + 1) % 4;
-            d = dirs[k];
-            i += d.rowStep;
-            j += d.colStep;
-        }
+var spiralOrder = function (matrix) {
+  const ans = [];
+  let [rowBegin, rowEnd, colBegin, colEnd] = [
+    0,
+    matrix.length - 1,
+    0,
+    matrix[0].length - 1,
+  ];
+  while (rowBegin <= rowEnd && colBegin <= colEnd) {
+    for (let j = colBegin; j <= colEnd; ++j) ans.push(matrix[rowBegin][j]);
+    rowBegin++;
+    for (let i = rowBegin; i <= rowEnd; ++i) ans.push(matrix[i][colEnd]);
+    colEnd--;
+    if (rowBegin <= rowEnd) {
+      for (let j = colEnd; j >= colBegin; --j) ans.push(matrix[rowEnd][j]);
+      rowEnd--;
     }
-    return res;
+    if (colBegin <= colEnd) {
+      for (let i = rowEnd; i >= rowBegin; --i) ans.push(matrix[i][colBegin]);
+      colBegin++;
+    }
+  }
+  return ans;
 };
 // TEST
 [
+  [
     [
-        [ 5, 6, 7, 8 ]
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
     ],
+    [1, 2, 3, 6, 9, 8, 7, 4, 5],
+  ],
+  [
     [
-        [ 1, 2, 3, 4],
-        [ 5, 6, 7, 8 ]
+      [1, 2, 3, 4],
+      [5, 6, 7, 8],
+      [9, 10, 11, 12],
     ],
-    [
-        [ 1, 2, 3 ],
-        [ 4, 5, 6 ],
-        [ 7, 8, 9 ]
-    ],
-].forEach((test) => {
-    console.log("Spiral order of", test, "->", spiralOrder(test));
+    [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7],
+  ],
+].forEach(([matrix, expected]) => {
+  const actual = spiralOrder(matrix);
+  console.log('Spiral order of', matrix, '->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

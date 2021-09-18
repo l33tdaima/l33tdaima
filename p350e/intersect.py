@@ -3,9 +3,7 @@ from collections import Counter
 
 
 class Solution:
-    def intersect_hashtable(
-        self, nums1: List[int], nums2: List[int]
-    ) -> List[int]:
+    def intersectV1(self, nums1: List[int], nums2: List[int]) -> List[int]:
         ans = []
         counter1 = Counter(nums1)
         for n2 in nums2:
@@ -14,7 +12,10 @@ class Solution:
                 counter1[n2] -= 1
         return ans
 
-    def intersect_sort(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    def intersectV2(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        return list((Counter(nums1) & Counter(nums2)).elements())
+
+    def intersectV3(self, nums1: List[int], nums2: List[int]) -> List[int]:
         nums1.sort()
         nums2.sort()
         i1, i2 = 0, 0
@@ -31,15 +32,14 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums1, nums2, expected in [
     ([1, 2, 2, 1], [2, 2], [2, 2]),
     ([1, 2, 2, 1], [2, 2, 2, 3], [2, 2]),
     ([4, 9, 5], [9, 4, 9, 8, 4], [4, 9]),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual_ht = sol.intersect_hashtable(t[0], t[1])
-    actual_sort = sol.intersect_sort(t[0], t[1])
-    print("Interset", t[0], t[1], "->", actual_ht)
-    assert actual_ht.sort() == t[2].sort()
-    assert actual_sort.sort() == t[2].sort()
+    actual1 = sol.intersectV1(nums1, nums2)
+    actual2 = sol.intersectV2(nums1, nums2)
+    actual3 = sol.intersectV3(nums1, nums2)
+    print("Interset", nums1, nums2, "->", actual1)
+    assert actual1.sort() == actual2.sort() == actual3.sort() == expected.sort()

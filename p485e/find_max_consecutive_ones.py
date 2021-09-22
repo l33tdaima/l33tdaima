@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
         count, ans = 0, 0
@@ -10,15 +11,17 @@ class Solution:
             else:
                 count = 0
         return ans
+
+
 # TESTS
-tests = [
-    ([0,0,0,0,0,0], 0),
-    ([1,0,1,1,1,0], 3),
-    ([1,1,0,1,1,1], 3),
-    ([1,1,1,1,1,1], 6)
-]
-for t in tests:
+for nums, expected in [
+    ([0, 0, 0, 0, 0, 0], 0),
+    ([1, 0, 1, 1, 1, 0], 3),
+    ([1, 1, 0, 1, 1, 1], 3),
+    ([1, 0, 1, 1, 0, 1], 2),
+    ([1, 1, 1, 1, 1, 1], 6),
+]:
     sol = Solution()
-    actual = sol.findMaxConsecutiveOnes(t[0])
-    print("Max consecutive ones in", t[0], "->", actual)
-    assert(actual == t[1])
+    actual = sol.findMaxConsecutiveOnes(nums)
+    print("Max consecutive ones in", nums, "->", actual)
+    assert actual == expected

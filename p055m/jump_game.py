@@ -5,9 +5,9 @@ class Solution:
     def canJump(self, nums: List[int]) -> bool:
         canreach = 0
         for i, n in enumerate(nums):
-            if i > canreach:
+            if canreach < i:
                 return False
-            canreach = max(i + n, canreach)
+            canreach = max(canreach, i + n)
         return True
 
 

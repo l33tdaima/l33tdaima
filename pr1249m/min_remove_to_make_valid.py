@@ -9,21 +9,6 @@ class Solution:
                 matched.add(i)
         return "".join([c for i, c in enumerate(s) if c not in "()" or i in matched])
 
-    def minRemoveToMakeValidV2(self, s: str) -> str:
-        removed, stack = set(), list()
-        for i, c in enumerate(s):
-            if c == "(":
-                stack.append(i)
-            elif c == ")":
-                if len(stack) > 0:
-                    stack.pop()
-                else:
-                    removed.add(i)
-        removed |= set(stack)
-        return "".join(
-            [c for i, c in enumerate(s) if c not in "()" or i not in removed]
-        )
-
 
 # TESTS
 for s, expected in [
@@ -36,4 +21,3 @@ for s, expected in [
     actual = sol.minRemoveToMakeValidV1(s)
     print(f"Minimum Remove to Make '{s}' Valid Parentheses -> {actual}")
     assert actual == expected
-    assert expected == sol.minRemoveToMakeValidV2(s)

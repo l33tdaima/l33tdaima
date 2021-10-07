@@ -4,24 +4,24 @@
  * @return {boolean}
  */
 var exist = function (board, word) {
-  const used = Array.from(board, (r) => Array.from(r, (c) => false));
+  const visited = Array.from(board, (r) => Array.from(r, (c) => false));
   const [rows, cols] = [board.length, board[0].length];
 
   // Check if word starting from [iw] available starting board[ib, jb],
   // board, word are accessed under closure
-  const recExist = function (ib, jb, iw) {
-    if (iw === word.length) return true;
-    if (ib < 0 || jb < 0 || ib >= rows || jb >= cols) return false;
-    if (used[ib][jb] || board[ib][jb] !== word[iw]) return false;
+  const recExist = function (i, j, c) {
+    if (c === word.length) return true;
+    if (i < 0 || j < 0 || i >= rows || j >= cols) return false;
+    if (visited[i][j] || board[i][j] !== word[c]) return false;
 
-    used[ib][jb] = true;
+    visited[i][j] = true;
     // DFS search for the next char with backtracking
     const found =
-      recExist(ib - 1, jb, iw + 1) || // up
-      recExist(ib, jb - 1, iw + 1) || // left
-      recExist(ib + 1, jb, iw + 1) || // down
-      recExist(ib, jb + 1, iw + 1); // right
-    used[ib][jb] = false;
+      recExist(i - 1, j, c + 1) || // up
+      recExist(i, j - 1, c + 1) || // left
+      recExist(i + 1, j, c + 1) || // down
+      recExist(i, j + 1, c + 1); // right
+    visited[i][j] = false;
     return found;
   };
 
@@ -62,8 +62,8 @@ var exist = function (board, word) {
     'ABCB',
     false,
   ],
-].forEach((t) => {
-  const actual = exist(t[0], t[1]);
-  console.log('Word', t[1], 'exist in the board ->', actual);
-  console.assert(actual === t[2]);
+].forEach(([board, word, expected]) => {
+  const actual = exist(board, word);
+  console.log('Word', word, 'exist in the board ->', actual);
+  console.assert(actual === expected);
 });

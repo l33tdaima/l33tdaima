@@ -30,7 +30,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for board, word, expected in [
     (
         [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
         "ABCCED",
@@ -46,9 +46,8 @@ tests = [
         "ABCB",
         False,
     ),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.exist(t[0], t[1])
-    print("Word", t[1], "exists in the board ->", actual)
-    assert actual == t[2]
+    actual = sol.exist(board, word)
+    print("Word", word, "exists in the board ->", actual)
+    assert actual == expected

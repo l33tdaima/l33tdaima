@@ -1,10 +1,11 @@
 # 79. Word Search (Medium)
 
-Given a 2D board and a word, find if the word exists in the grid.
+Given an `m x n` grid of characters board and a string `word`, return `true` if `word` exists in the grid.
 
-The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
+The `word` can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
 
-### Example
+### Example 1:
+
 ```
 board =
 [
@@ -12,20 +13,36 @@ board =
   ['S','F','C','S'],
   ['A','D','E','E']
 ]
-Given word = "ABCCED", returns true,
-Given word = "SEE", returns true,
-Given word = "ABCB", returns false.
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+Output: true
+```
+
+### Example 2:
+
+```
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "SEE"
+Output: true
+```
+
+### Example 3:
+
+```
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
+Output: false
 ```
 
 ### Constraints:
-- board and word consists only of lowercase and uppercase English letters.
-- 1 <= board.length <= 200
-- 1 <= board[i].length <= 200
-- 1 <= word.length <= 10^3
 
+- `m == board.length`
+- `n = board[i].length`
+- `1 <= m, n <= 6`
+- `1 <= word.length <= 15`
+- `board` and `word` consists of only lowercase and uppercase English letters.
 
 ## Solution
+
 Scan the board and do DFS search from each cell and word index 0
+
 - If the char matches, mark it has been used, and do DFS with index + 1 on 4 adjacent cells, mark unused after return from DFS.
 - If not matches, or has been used, or out of boundary, return false.
 

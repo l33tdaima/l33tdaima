@@ -29,26 +29,26 @@ var findWords = function (board, words) {
   // build the trie from the words dictionary
   const trie = new Trie();
   for (let w of words) trie.insert(w);
-  const result = [];
+  const ans = [];
 
-  const recFind = function (ib, jb, ptrie) {
-    const idx = board[ib][jb].charCodeAt(0) - 97;
-    if (board[ib][jb] === '+' || ptrie.links[idx] === null) return;
+  const recFind = function (i, j, ptrie) {
+    const idx = board[i][j].charCodeAt(0) - 97;
+    if (board[i][j] === '+' || ptrie.links[idx] === null) return;
 
     let pn = ptrie.links[idx];
     if (pn.word) {
-      result.push(pn.word);
+      ans.push(pn.word);
       pn.word = null; // de-duplicate
     }
 
-    let c = board[ib][jb];
-    board[ib][jb] = '+';
+    let c = board[i][j];
+    board[i][j] = '+';
     // DFS search for the next char
-    if (ib > 0) recFind(ib - 1, jb, pn);
-    if (jb > 0) recFind(ib, jb - 1, pn);
-    if (ib < board.length - 1) recFind(ib + 1, jb, pn);
-    if (jb < board[ib].length - 1) recFind(ib, jb + 1, pn);
-    board[ib][jb] = c;
+    if (i > 0) recFind(i - 1, j, pn);
+    if (j > 0) recFind(i, j - 1, pn);
+    if (i < board.length - 1) recFind(i + 1, j, pn);
+    if (j < board[i].length - 1) recFind(i, j + 1, pn);
+    board[i][j] = c;
   };
 
   for (let i = 0; i < board.length; ++i) {
@@ -56,15 +56,31 @@ var findWords = function (board, words) {
       recFind(i, j, trie);
     }
   }
-  return result;
+  return ans;
 };
 
-const board = [
-  ['o', 'a', 'a', 'n'],
-  ['e', 't', 'a', 'e'],
-  ['i', 'h', 'k', 'r'],
-  ['i', 'f', 'l', 'v'],
-];
-const words = ['oath', 'pea', 'eat', 'rain', 'a'];
-const res = findWords(board, words);
-console.log('Word search results', res);
+const t = (board, words, expected) => [board, words, expected];
+[
+  t(
+    [
+      ['o', 'a', 'a', 'n'],
+      ['e', 't', 'a', 'e'],
+      ['i', 'h', 'k', 'r'],
+      ['i', 'f', 'l', 'v'],
+    ],
+    ['oath', 'pea', 'eat', 'rain', 'a'],
+    ['oath', 'a', 'eat']
+  ),
+  t(
+    [
+      ['a', 'b'],
+      ['c', 'd'],
+    ],
+    ['abcb'],
+    []
+  ),
+].forEach(([board, words, expected]) => {
+  const actual = findWords(board, words);
+  console.log('Word search from', words, '->', actual);
+  console.assert(actual.sort().toString() === expected.sort().toString());
+});

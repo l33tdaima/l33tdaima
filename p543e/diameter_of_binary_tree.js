@@ -28,9 +28,8 @@ var diameterOfBinaryTree = function (root) {
   ['1,2,#,#,3,#,#', 2],
   ['1,2,4,#,#,5,#,#,3,#,#', 3],
   ['1,2,4,6,7,#,#,#,#,5,#,8,#,9,#,#,3,#,#', 6],
-].forEach((t) => {
-  const tree = Tree.deserialize(t[0]);
-  const actual = diameterOfBinaryTree(tree);
-  console.log('Diagmeter of', t[0], '->', actual);
-  console.assert(actual === t[1]);
+].forEach(([tree, expected]) => {
+  const actual = diameterOfBinaryTree(Tree.deserialize(tree));
+  console.log('Diagmeter of', tree, '->', actual);
+  console.assert(actual === expected);
 });

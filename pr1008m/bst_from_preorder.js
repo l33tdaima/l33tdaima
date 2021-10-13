@@ -39,13 +39,8 @@ var bstFromPreorderON = function (preorder) {
   [[2, 3], '2,#,3,#,#'],
   [[2, 1, 3], '2,1,#,#,3,#,#'],
   [[8, 5, 1, 7, 10, 12], '8,5,1,#,#,7,#,#,10,#,12,#,#'],
-].forEach((t) => {
-  const actual = bstFromPreorderON(t[0]);
-  console.log(
-    'BST from preorder traversal',
-    t[0],
-    '->',
-    Tree.serialize(actual)
-  );
-  console.assert(Tree.serialize(actual) === t[1]);
+].forEach(([preorder, expected]) => {
+  const actual = Tree.serialize(bstFromPreorderON(preorder));
+  console.log('BST from preorder traversal', preorder, '->', actual);
+  console.assert(actual === expected);
 });

@@ -11,7 +11,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for n, expected in [
     [1, 1],  # 1
     [2, 2],  # 1 + 1
     [3, 3],  # 1 + 1 + 1
@@ -22,12 +22,13 @@ tests = [
     [8, 2],  # 4 + 4
     [12, 3],
     [13, 2],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.numSquares(t[0])
+    actual = sol.numSquares(n)
     print(
-        "The least # of perfect squares sum to", t[0], "->", actual,
+        "The least # of perfect squares sum to",
+        n,
+        "->",
+        actual,
     )
-    assert actual == t[1]
-
+    assert actual == expected

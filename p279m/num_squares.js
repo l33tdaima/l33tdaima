@@ -3,14 +3,14 @@
  * @return {number}
  */
 var numSquares = function (n) {
-  const numSq = [0];
+  const ans = [0];
   for (let i = 1; i <= n; ++i) {
     let least = Number.MAX_SAFE_INTEGER;
     for (let k = 1; k * k <= i; ++k)
-      least = Math.min(least, numSq[i - k * k] + 1);
-    numSq.push(least);
+      least = Math.min(least, ans[i - k * k] + 1);
+    ans.push(least);
   }
-  return numSq[n];
+  return ans[n];
 };
 // TESTS
 [
@@ -24,8 +24,8 @@ var numSquares = function (n) {
   [8, 2],
   [12, 3],
   [13, 2],
-].forEach((t) => {
-  const actual = numSquares(t[0]);
-  console.log('The least # of squares sum to', t[0], '->', actual);
-  console.assert(actual === t[1]);
+].forEach(([n, expected]) => {
+  const actual = numSquares(n);
+  console.log('The least # of squares sum to', n, '->', actual);
+  console.assert(actual === expected);
 });

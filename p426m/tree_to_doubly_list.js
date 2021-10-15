@@ -11,50 +11,39 @@ const Tree = require('binary_tree');
  * @param {Node} root
  * @return {Node}
  */
-var treeToDoublyList = function(root) {
-  // Helper function to convert a given node
-  // return the references to first and last of converted linked list
-  const recConvert = function(node) {
-    let [first, last] = [node, node];
-    if (node.left !== null) {
-      let [lfirst, llast] = recConvert(node.left);
-      first = lfirst;
-      llast.right = node;
-      node.left = llast;
-    }
-    if (node.right !== null) {
-      let [rfirst, rlast] = recConvert(node.right);
-      last = rlast;
-      node.right = rfirst;
-      rfirst.left = node;
-    }
-    return [first, last];
+var treeToDoublyList = function (root) {
+  if (root == null) return root;
+  dummy = new Tree.TreeNode(-1);
+  prev = dummy;
+
+  const inorder = (node) => {
+    if (node == null) return;
+    inorder(node.left);
+    [prev.right, node.left] = [node, prev];
+    prev = node;
+    inorder(node.right);
   };
 
-  if (root == null) return null;
-  let [first, last] = recConvert(root);
-  first.left = last;
-  last.right = first;
-  return first;
+  inorder(root);
+  [dummy.right.left, prev.right] = [prev, dummy.right];
+  return dummy.right;
 };
 
 // TEST
 [
-  '#',
-  '1,#,#',
-  '2,1,#,#,3,#,#',
-  '4,2,1,#,#,3,#,#,5,#,#',
-  '4,2,1,#,#,3,#,#,5,#,6,#,7,#,8,#,#'
-].forEach(t => {
-  const root = Tree.deserialize(t);
-  const head = treeToDoublyList(root);
-  let deserList = [];
-  if (head !== null) {
-    let p = head;
-    do {
-      deserList.push(p.val);
-      p = p.right;
-    } while (p !== head);
+  ['#', []],
+  ['1,#,#', [1]],
+  ['2,1,#,#,3,#,#', [1, 2, 3]],
+  ['4,2,1,#,#,3,#,#,5,#,#', [1, 2, 3, 4, 5]],
+  ['4,2,1,#,#,3,#,#,5,#,6,#,7,#,8,#,#', [1, 2, 3, 4, 5, 6, 7, 8]],
+].forEach(([tree, expected]) => {
+  const head = treeToDoublyList(Tree.deserialize(tree));
+  let [actual, p] = [[], head];
+  while (p && p.right != head) {
+    actual.push(p.val);
+    p = p.right;
   }
-  console.log('Tree', t, 'to doubly linked list ->', deserList);
+  if (p) actual.push(p.val);
+  console.log('Convert tree', tree, 'to doubly linked list ->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

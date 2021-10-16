@@ -21,8 +21,8 @@ var maxProfit = function (prices) {
   [[3, 3, 5, 0, 0, 3, 1, 4], 6],
   [[1, 2, 3, 4, 5], 4],
   [[7, 6, 4, 3, 1], 0],
-].forEach((t) => {
-  const actual = maxProfit(t[0]);
-  console.log('Max profit by 2 transactions in', t[0], '->', actual);
-  console.assert(actual === t[1]);
+].forEach(([prices, expected]) => {
+  const actual = maxProfit(prices);
+  console.log('Max profit by 2 transactions in', prices, '->', actual);
+  console.assert(actual === expected);
 });

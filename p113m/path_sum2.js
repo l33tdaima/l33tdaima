@@ -8,24 +8,23 @@
 const Tree = require('binary_tree');
 /**
  * @param {TreeNode} root
- * @param {number} sum
+ * @param {number} targetSum
  * @return {number[][]}
  */
-var pathSum = function (root, sum) {
-  let result = [];
-  const dfs = (p, s, path) => {
-    if (p == null) return;
-
-    path.push(p.val);
-    if (p.left === null && p.right === null && p.val === s)
-      result.push(Array.from(path));
-    dfs(p.left, s - p.val, path);
-    dfs(p.right, s - p.val, path);
-    path.pop(p.val);
+var pathSum = function (root, targetSum) {
+  let ans = [];
+  const dfs = (node, s, path) => {
+    if (node == null) return;
+    path.push(node.val);
+    if (node.val === s && node.left == null && node.right == null)
+      ans.push(Array.from(path));
+    dfs(node.left, s - node.val, path);
+    dfs(node.right, s - node.val, path);
+    path.pop();
   };
 
-  dfs(root, sum, new Array());
-  return result;
+  dfs(root, targetSum, []);
+  return ans;
 };
 
 [
@@ -38,8 +37,8 @@ var pathSum = function (root, sum) {
     ],
   ],
   ['1,2,#,#,3,#,#', 5, []],
-  ['1,2,#,#,3,#,#', 4, [[1, 3]]],
   ['1,2,#,#,#', 0, []],
+  ['1,2,#,#,3,#,#', 4, [[1, 3]]],
   ['1,2,#,#,#', 3, [[1, 2]]],
   ['#', 0, []],
 ].forEach(([tree, targetSum, expected]) => {

@@ -17,7 +17,7 @@ class Solution:
                 return
             pathsum += node.val
             path.append(node.val)
-            if not node.left and not node.right and pathsum == targetSum:
+            if pathsum == targetSum and node.left is None and node.right is None:
                 ans.append(list(path))
             dfs(node.left, pathsum, path)
             dfs(node.right, pathsum, path)
@@ -31,8 +31,8 @@ class Solution:
 for tree, targetSum, expected in [
     ("5,4,11,7,#,#,2,#,#,#,8,13,#,#,4,5,#,#,1,#,#", 22, [[5, 4, 11, 2], [5, 8, 4, 5]]),
     ("1,2,#,#,3,#,#", 5, []),
-    ("1,2,#,#,3,#,#", 4, [[1, 3]]),
     ("1,2,#,#,#", 0, []),
+    ("1,2,#,#,3,#,#", 4, [[1, 3]]),
     ("1,2,#,#,#", 3, [[1, 2]]),
     ("#", 0, []),
 ]:

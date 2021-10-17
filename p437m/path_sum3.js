@@ -19,18 +19,21 @@ var pathSumFrom = function (p, s) {
     pathSumFrom(p.right, s - p.val)
   );
 };
-var pathSum = function (root, sum) {
+var pathSum = function (root, targetSum) {
   if (root == null) return 0;
   return (
-    pathSumFrom(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum)
+    pathSumFrom(root, targetSum) +
+    pathSum(root.left, targetSum) +
+    pathSum(root.right, targetSum)
   );
 };
 // TESTS
 [
+  ['10,5,3,3,#,#,-2,#,#,2,#,1,#,#,-3,#,11,#,#', 8, 3],
+  ['5,4,11,7,#,#,2,#,#,#,8,13,#,#,4,5,#,#,1,#,#', 22, 3],
   ['#', 0, 0],
   ['1', 1, 1],
   ['1,-2,1,-1,#,#,3,#,#,-3,-2,#,#,#', -1, 4],
-  ['10,5,3,3,#,#,-2,#,#,2,#,1,#,#,-3,#,11,#,#', 8, 3],
 ].forEach((t) => {
   const tree = Tree.deserialize(t[0]);
   const actual = pathSum(tree, t[1]);

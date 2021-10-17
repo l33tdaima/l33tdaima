@@ -4,12 +4,13 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from typing import Optional
 from collections import defaultdict
 from local_packages.binary_tree import TreeNode
 
 
 class SolutionV1:  # O(n^2)
-    def pathSumFrom(self, root: TreeNode, s: int) -> int:
+    def pathSumFrom(self, root: Optional[TreeNode], s: int) -> int:
         if root is None:
             return 0
         return (
@@ -18,30 +19,30 @@ class SolutionV1:  # O(n^2)
             + self.pathSumFrom(root.right, s - root.val)
         )
 
-    def pathSum(self, root: TreeNode, s: int) -> int:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
         if root is None:
             return 0
         return (
-            self.pathSumFrom(root, s)
-            + self.pathSum(root.left, s)
-            + self.pathSum(root.right, s)
+            self.pathSumFrom(root, targetSum)
+            + self.pathSum(root.left, targetSum)
+            + self.pathSum(root.right, targetSum)
         )
 
 
 class SolutionV2:  # O(n)
-    def pathSum(self, root: TreeNode, target: int) -> int:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
         ans, seen = 0, defaultdict(int)
 
-        def dfs(node: TreeNode, ps: int) -> None:
+        def dfs(node: Optional[TreeNode], pathsum: int) -> None:
             nonlocal ans
             if node is None:
                 return
-            ps += node.val
-            ans += seen[ps - target]
-            seen[ps] += 1
-            dfs(node.left, ps)
-            dfs(node.right, ps)
-            seen[ps] -= 1
+            pathsum += node.val
+            ans += seen[pathsum - targetSum]
+            seen[pathsum] += 1
+            dfs(node.left, pathsum)
+            dfs(node.right, pathsum)
+            seen[pathsum] -= 1
 
         seen[0] = 1
         dfs(root, 0)
@@ -49,17 +50,17 @@ class SolutionV2:  # O(n)
 
 
 # TESTS
-tests = [
+for tree, targetSum, expected in [
+    ["10,5,3,3,#,#,-2,#,#,2,#,1,#,#,-3,#,11,#,#", 8, 3],
+    ["5,4,11,7,#,#,2,#,#,#,8,13,#,#,4,5,#,#,1,#,#", 22, 3],
     ["#", 0, 0],
     ["1", 1, 1],
-    ["10,5,3,3,#,#,-2,#,#,2,#,1,#,#,-3,#,11,#,#", 8, 3],
     ["1,-2,1,-1,#,#,3,#,#,-3,-2,#,#,#", -1, 4],
-]
-for t in tests:
+]:
     sol1 = SolutionV1()
-    actual1 = sol1.pathSum(TreeNode.deserialize(t[0]), t[1])
+    actual1 = sol1.pathSum(TreeNode.deserialize(tree), targetSum)
     sol2 = SolutionV2()
-    actual2 = sol2.pathSum(TreeNode.deserialize(t[0]), t[1])
-    print("# of paths that sum to", t[1], "in", t[0], "->", actual2)
-    assert actual1 == t[2]
-    assert actual2 == t[2]
+    actual2 = sol2.pathSum(TreeNode.deserialize(tree), targetSum)
+    print("# of paths that sum to", targetSum, "in", tree, "->", actual2)
+    assert actual1 == expected
+    assert actual2 == expected

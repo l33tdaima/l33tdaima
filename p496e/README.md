@@ -1,8 +1,12 @@
 # 496. Next Greater Element I (Easy)
 
-You are given two arrays _(without duplicates)_ nums1 and nums2 where nums1’s elements are subset of nums2. Find all the next greater numbers for nums1's elements in the corresponding places of nums2.
+The next greater element of some element `x` in an array is the first greater element that is to the right of `x` in the same array.
 
-The Next Greater Number of a number x in nums1 is the first greater number to its right in nums2. If it does not exist, output -1 for this number.
+You are given two _distinct 0-indexed_ integer arrays `nums1` and `nums2`, where `nums1` is a subset of `nums2`.
+
+For each `0 <= i < nums1.length`, find the index `j` such that `nums1[i] == nums2[j]` and determine the _next greater element_ of `nums2[j]` in `nums2`. If there is no next greater element, then the answer for this query is `-1`.
+
+Return an array `ans` of length `nums1.length` such that `ans[i]` is the next greater element as described above.
 
 ### Example 1:
 
@@ -25,16 +29,20 @@ Explanation:
     For number 4 in the first array, there is no next greater number for it in the second array, so output -1.
 ```
 
-### Note:
+### Constraints:
 
-All elements in nums1 and nums2 are unique.
-The length of both nums1 and nums2 would not exceed 1000.
+- `1 <= nums1.length <= nums2.length <= 1000`
+- `0 <= nums1[i], nums2[i] <= 10^4`
+- All integers in `nums1` and `nums2` are unique.
+- All the integers of `nums1` also appear in `nums2`.
+
+**Follow up:** Could you find an O(nums1.length + nums2.length) solution?
 
 ## Solution
 
 ### Intuitive Approach
 
-Use a hashmap to store the value to index mappoing in nums2. Then for each value in nums1, locate the position in O(1), then linearly search for the next greater number. The worst case, all the numbers are decreasing, the complexity becomes O(N1 \* N2).
+Use a hashmap to store the value to index mapping in nums2. Then for each value in nums1, locate the position in O(1), then linearly search for the next greater number. The worst case, all the numbers are decreasing, the complexity becomes O(N1 \* N2).
 
 ### Optimal Approach
 
@@ -47,6 +55,8 @@ Can we precalculate the next greater number for each value in nums2 in O(N2), so
 #GOOGL
 #GOOGL.MJ
 
-#Stack #Hash Table
+#Stack #Hash Table #Stack #Monotonic Stack
 
-#Similar questions [#496e](../p496e/README.md) [#503m](../p503m/README.md)
+### Similar questions
+
+[#496](../p496e/README.md) [#503](../p503m/README.md) [#556](../p556m/README.md)

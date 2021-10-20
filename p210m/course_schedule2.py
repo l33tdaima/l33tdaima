@@ -1,19 +1,16 @@
 from typing import List
+from collections import defaultdict
 
 
 class Solution:
-    def findOrder(
-        self, numCourses: int, prerequisites: List[List[int]]
-    ) -> List[int]:
-        graph = [[] for _ in range(numCourses)]
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        graph = defaultdict(list)
         for c, pre in prerequisites:
             graph[c].append(pre)
 
-        ans, visited, onpath = (
-            [],
-            [False for _ in range(numCourses)],
-            [False for _ in range(numCourses)],
-        )
+        ans = []
+        visited = [False for _ in range(numCourses)]
+        onpath = [False for _ in range(numCourses)]
 
         # return true if there is cycle in the graph
         def topologicalSort(v: int) -> bool:
@@ -34,15 +31,38 @@ class Solution:
 
 
 # TESTS
-tests = [
+for numCourses, prerequisites, expected in [
     (1, [], [0]),
     (2, [[0, 1]], [1, 0]),
-    (2, [[0, 1], [1, 0],], []),
-    (4, [[0, 1], [1, 2], [3, 1],], [2, 1, 0, 3]),
-    (4, [[1, 0], [2, 0], [3, 1], [3, 2],], [0, 1, 2, 3]),
-]
-for t in tests:
+    (
+        2,
+        [
+            [0, 1],
+            [1, 0],
+        ],
+        [],
+    ),
+    (
+        4,
+        [
+            [0, 1],
+            [1, 2],
+            [3, 1],
+        ],
+        [2, 1, 0, 3],
+    ),
+    (
+        4,
+        [
+            [1, 0],
+            [2, 0],
+            [3, 1],
+            [3, 2],
+        ],
+        [0, 1, 2, 3],
+    ),
+]:
     sol = Solution()
-    actual = sol.findOrder(t[0], t[1])
-    print("Order of", t[0], "courses depicted by", t[1], "->", actual)
-    assert actual == t[2]
+    actual = sol.findOrder(numCourses, prerequisites)
+    print("Order of", numCourses, "courses depicted by", prerequisites, "->", actual)
+    assert actual == expected

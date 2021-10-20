@@ -58,8 +58,15 @@ var canFinish = function (numCourses, prerequisites) {
     ],
     false,
   ],
-].forEach((t) => {
-  actual = canFinish(t[0], t[1]);
-  console.log('Can finish', t[0], 'courses depicted by', t[1], '->', actual);
-  console.assert(actual === t[2]);
+].forEach(([numCourses, prerequisites, expected]) => {
+  actual = canFinish(numCourses, prerequisites);
+  console.log(
+    'Can finish',
+    numCourses,
+    'courses with prerequisites',
+    prerequisites,
+    '->',
+    actual
+  );
+  console.assert(actual === expected);
 });

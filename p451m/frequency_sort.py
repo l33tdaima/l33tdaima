@@ -5,10 +5,7 @@ class Solution:
     def frequencySort(self, s: str) -> str:
         counter = Counter(s)
         return "".join(
-            k * v
-            for k, v in sorted(
-                counter.items(), key=lambda x: x[1], reverse=True
-            )
+            k * v for k, v in sorted(counter.items(), key=lambda x: x[1], reverse=True)
         )
 
     def frequencySort1Line(self, s: str) -> str:
@@ -16,9 +13,12 @@ class Solution:
 
 
 # TESTS
-tests = [("tree", "eetr"), ("cccaaa", "cccaaa"), ("Aabb", "bbAa")]
-for t in tests:
+for s, expected in [
+    ("tree", "eetr"),
+    ("cccaaa", "cccaaa"),
+    ("Aabb", "bbAa"),
+]:
     sol = Solution()
-    actual = sol.frequencySort(t[0])
-    print("Sort characters in", t[0], "by frequency ->", actual)
-    assert actual == t[1]
+    actual = sol.frequencySort(s)
+    print("Sort characters in", s, "by frequency ->", actual)
+    assert actual == expected

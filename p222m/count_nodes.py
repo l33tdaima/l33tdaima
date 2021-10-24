@@ -4,16 +4,15 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from typing import Optional
 from local_packages.binary_tree import TreeNode
 
 
 class Solution:
-    def depth(self, node: TreeNode) -> int:
-        if node is None:
-            return 0
-        return 1 + self.depth(node.left)
+    def depth(self, node: Optional[TreeNode]) -> int:
+        return 1 + self.depth(node.left) if node else 0
 
-    def countNodes(self, root: TreeNode) -> int:
+    def countNodes(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
         left_depth = self.depth(root.left)
@@ -23,17 +22,30 @@ class Solution:
         else:
             return pow(2, right_depth) + self.countNodes(root.left)
 
+    def countNodesIter(self, root: Optional[TreeNode]) -> int:
+        ans, depth = 0, self.depth(root)
+        while root:
+            rdepth = self.depth(root.right)
+            ans += pow(2, rdepth)
+            if rdepth == depth - 1:
+                root = root.right
+            else:
+                root = root.left
+            depth -= 1
+        return ans
+
 
 # TESTS
-tests = [
+for tree, expected in [
     ("#", 0),
     ("1,#,#", 1),
     ("1,2,4,#,#,#,3,#,#", 4),
     ("1,2,4,#,#,5,#,#,3,6,#,#,#", 6),
     ("1,2,4,#,#,5,#,#,3,6,#,#,7,#,#", 7),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.countNodes(TreeNode.deserialize(t[0]))
-    print("Count nodes in", t[0], "->", actual)
-    assert actual == t[1]
+    root = TreeNode.deserialize(tree)
+    actual = sol.countNodes(root)
+    print("Count nodes in", tree, "->", actual)
+    assert actual == expected
+    assert expected == sol.countNodesIter(root)

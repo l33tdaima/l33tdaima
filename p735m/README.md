@@ -1,6 +1,6 @@
 # 735. Asteroid Collision (Medium)
 
-We are given an array asteroids of integers representing asteroids in a row.
+We are given an array `asteroids` of integers representing asteroids in a row.
 
 For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.
 
@@ -41,8 +41,10 @@ Explanation: The -2 and -1 are moving left, while the 1 and 2 are moving right. 
 
 ### Constraints:
 
-- 1 <= asteroids <= 10^4
-- -1000 <= asteroids[i] <= 1000
-- asteroids[i] != 0
+- `2 <= asteroids <= 10^4`
+- `-1000 <= asteroids[i] <= 1000`
+- `asteroids[i] != 0`
+
+#GOOGL #AMZN #MSFT
 
 #Stack

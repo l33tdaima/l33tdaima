@@ -5,7 +5,7 @@ class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
         stack = []
         for n in asteroids:
-            while n < 0 and len(stack) > 0 and stack[-1] > 0:
+            while n < 0 and stack and stack[-1] > 0:
                 if n + stack[-1] == 0:
                     stack.pop()
                     break

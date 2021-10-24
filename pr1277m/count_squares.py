@@ -5,12 +5,17 @@ class Solution:
     # Without modifying input
     def countSquaresV1(self, matrix: List[List[int]]) -> int:
         ans, rows, cols = 0, len(matrix), len(matrix[0])
-        dp = [[0 for j in range(cols + 1)] for k in range(rows + 1)]
+        dp = [[0] * (cols + 1) for _ in range(rows + 1)]
         for i in range(rows):
             for j in range(cols):
                 if matrix[i][j] == 1:
                     dp[i + 1][j + 1] = (
-                        min(dp[i + 1][j], dp[i][j + 1], dp[i][j],) + 1
+                        min(
+                            dp[i + 1][j],
+                            dp[i][j + 1],
+                            dp[i][j],
+                        )
+                        + 1
                     )
                 ans += dp[i + 1][j + 1]
         return ans
@@ -34,7 +39,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for matrix, expected in [
     ([[0]], 0),
     ([[1]], 1),
     ([[1, 0]], 1),
@@ -43,11 +48,10 @@ tests = [
     ([[1, 0, 1], [1, 1, 0], [1, 1, 0]], 7),
     ([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 14),
     ([[0, 1, 1, 1], [1, 1, 1, 1], [0, 1, 1, 1]], 15),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual1 = sol.countSquaresV1(t[0])
-    actual2 = sol.countSquaresV2(t[0])
+    actual1 = sol.countSquaresV1(matrix)
+    actual2 = sol.countSquaresV2(matrix)
     print("Square submatrices have all ones ->", actual2)
-    assert actual1 == t[1]
-    assert actual2 == t[1]
+    assert actual1 == expected
+    assert actual2 == expected

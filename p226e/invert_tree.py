@@ -18,7 +18,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for tree, expected in [
     ["#", "#"],
     ["1", "1,#,#"],
     ["1,2,#,#,#", "1,#,2,#,#"],
@@ -30,10 +30,8 @@ tests = [
     ["1,#,2,#,3,#,4,#,#", "1,2,3,4,#,#,#,#,#"],
     ["1,#,2,3,4,#,#,#,#", "1,2,#,3,#,4,#,#,#"],
     ["1,#,2,3,#,#,4,#,#", "1,2,4,#,#,3,#,#,#"],
-]
-
-for t in tests:
+]:
     sol = Solution()
-    actual = TreeNode.serialize(sol.invertTree(TreeNode.deserialize(t[0])))
-    print("Invert tree", t[0], "->", actual)
-    assert t[1] == actual
+    actual = TreeNode.serialize(sol.invertTree(TreeNode.deserialize(tree)))
+    print("Invert tree", tree, "->", actual)
+    assert actual == expected

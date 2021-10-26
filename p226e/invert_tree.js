@@ -32,8 +32,8 @@ var invertTree = function (root) {
   ['1,#,2,#,3,#,4,#,#', '1,2,3,4,#,#,#,#,#'],
   ['1,#,2,3,4,#,#,#,#', '1,2,#,3,#,4,#,#,#'],
   ['1,#,2,3,#,#,4,#,#', '1,2,4,#,#,3,#,#,#'],
-].forEach((t) => {
-  const actual = Tree.serialize(invertTree(Tree.deserialize(t[0])));
-  console.log('Invert tree', t[0], '->', actual);
-  console.assert(t[1] === actual);
+].forEach(([tree, expected]) => {
+  const actual = Tree.serialize(invertTree(Tree.deserialize(tree)));
+  console.log('Invert tree', tree, '->', actual);
+  console.assert(actual === expected);
 });

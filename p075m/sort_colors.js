@@ -28,7 +28,7 @@ var sortColors = function (nums) {
   [2, 2, 2],
   [2, 1, 0, 2, 1, 0],
   [2, 2, 2, 1, 1, 0, 0, 0],
-].forEach((t) => {
-  sortColors(t);
-  console.log('Sort colors ->', t);
+].forEach((nums) => {
+  sortColors(nums);
+  console.log('Sort colors ->', nums);
 });

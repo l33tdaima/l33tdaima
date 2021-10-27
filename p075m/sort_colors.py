@@ -21,7 +21,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums in [
     [],
     [1, 0],
     [2, 1],
@@ -31,8 +31,7 @@ tests = [
     [2, 2, 2],
     [2, 1, 0, 2, 1, 0],
     [2, 2, 2, 1, 1, 0, 0, 0],
-]
-for t in tests:
+]:
     sol = Solution()
-    sol.sortColors(t)
-    print("Sort colors ->", t)
+    sol.sortColors(nums)
+    print("Sort colors ->", nums)

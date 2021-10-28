@@ -25,16 +25,14 @@ class Solution:
 
 
 # TEST
-tests = [
+for nums in [
     [0],
     [0, 0, 0],
     [0, 1, -1, -1, 0, 1, 2, -1, -4],
     [-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6],
-]
-for t in tests:
-    print("Solutions of 3 sum for", t, "->")
+]:
+    print("Solutions of 3 sum for", nums, "->")
     sol = Solution()
-    actual = sol.threeSum(t)
+    actual = sol.threeSum(nums)
     for i, v in enumerate(actual):
         print("  ", i, ": ", v)
-

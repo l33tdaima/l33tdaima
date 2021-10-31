@@ -5,6 +5,7 @@ You are given a doubly linked list which in addition to the next and previous po
 Flatten the list so that all the nodes appear in a single-level, doubly linked list. You are given the head of the first level of the list.
 
 ### Example 1:
+
 ```
 Input: head = [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
 Output: [1,2,3,7,8,11,12,9,10,4,5,6]
@@ -12,13 +13,17 @@ Explanation:
 
 The multilevel linked list in the input is as follows:
 ```
+
 ![pic](multilevellinkedlist.png)
+
 ```
 After flattening the multilevel linked list it becomes:
 ```
+
 ![pic](multilevellinkedlistflattened.png)
 
 ### Example 2:
+
 ```
 Input: head = [1,2,null,3]
 Output: [1,3,2]
@@ -32,6 +37,7 @@ The input multilevel linked list is as follows:
 ```
 
 ### Example 3:
+
 ```
 Input: head = []
 Output: []
@@ -40,6 +46,7 @@ Output: []
 ### How multilevel linked list is represented in test case:
 
 We use the multilevel linked list from Example 1 above:
+
 ```
  1---2---3---4---5---6--NULL
          |
@@ -47,28 +54,36 @@ We use the multilevel linked list from Example 1 above:
              |
              11--12--NULL
 ```
+
 The serialization of each level is as follows:
+
 ```
 [1,2,3,4,5,6,null]
 [7,8,9,10,null]
 [11,12,null]
 ```
+
 To serialize all levels together we will add nulls in each level to signify no node connects to the upper node of the previous level. The serialization becomes:
+
 ```
 [1,2,3,4,5,6,null]
 [null,null,7,8,9,10,null]
 [null,11,12,null]
 ```
+
 Merging the serialization of each level and removing trailing nulls we obtain:
+
 ```
 [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
 ```
 
 ### Constraints:
+
 - Number of Nodes will not exceed 1000.
 - 1 <= Node.val <= 10^5
 
 ## Solution
-Put head of our list to stack. In a while loop, pop top of stack and add two two elements instead: its next and its child. The order is important: we first want to visit child and then next, that is why we put child to the top of our stack.
+
+Put head of our list to stack. In a while loop, pop top of stack and add two two elements instead: its next and its child. The order is important: we first want to visit child and then next, that is why we put next first then child to the top of our stack.
 
 #Linked List #Depth-first Search

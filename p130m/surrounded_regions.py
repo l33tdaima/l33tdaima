@@ -19,8 +19,6 @@ class Solution:
                 if j < COLS - 1:
                     mark(i, j + 1)
 
-        if not any(board):
-            return
         ROWS, COLS = len(board), len(board[0])
 
         for i in range(ROWS):

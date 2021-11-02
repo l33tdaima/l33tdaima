@@ -31,12 +31,11 @@ class Solution:
 
 
 # TESTS
-tests = [
+for grid, expected in [
     ([[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]], 2),
     ([[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]], 4),
     ([[0, 1], [2, 0]], 0),
-]
-for grid, expected in tests:
+]:
     sol = Solution()
     actual = sol.uniquePathsIII(grid)
     print("Unique path III of", grid, "->", actual)

@@ -23,14 +23,13 @@ class Solution:
 
 
 # TESTS
-tests = [
+for tree, expected in [
     ("2,#,#", 2),
     ("1,2,#,#,3,#,#", 25),
     ("4,9,5,#,#,1,#,#,0,#,#", 1026),
     ("5,2,1,3,#,#,#,4,#,#", 5737),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.sumNumbers(TreeNode.deserialize(t[0]))
-    print("Sum Root to Leaf Numbers of", t[0], "->", actual)
-    assert actual == t[1]
+    actual = sol.sumNumbers(TreeNode.deserialize(tree))
+    print("Sum Root to Leaf Numbers of", tree, "->", actual)
+    assert actual == expected

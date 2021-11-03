@@ -1,14 +1,16 @@
 # 129. Sum Root to Leaf Numbers (Medium)
 
-Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.
+You are given the `root` of a binary tree containing digits from `0` to `9` only.
 
-An example is the root-to-leaf path 1->2->3 which represents the number 123.
+Each root-to-leaf path in the tree represents a number.
 
-Find the total sum of all root-to-leaf numbers.
+For example, the root-to-leaf path `1 -> 2 -> 3` represents the number `123`.
+Return _the total sum of all root-to-leaf_ numbers. Test cases are generated so that the answer will fit in a `32-bit` integer.
 
-Note: A leaf is a node with no children.
+A _leaf_ node is a node with no children.
 
 ### Example:
+
 ```
 Input: [1,2,3]
     1
@@ -22,6 +24,7 @@ Therefore, sum = 12 + 13 = 25.
 ```
 
 ### Example 2:
+
 ```
 Input: [4,9,0,5,1]
     4
@@ -37,4 +40,12 @@ The root-to-leaf path 4->0 represents the number 40.
 Therefore, sum = 495 + 491 + 40 = 1026.
 ```
 
-#Tree #Depth-first Search
+### Constraints:
+
+- The number of nodes in the tree is in the range `[1, 1000]`.
+- `0 <= Node.val <= 9`
+- The depth of the tree will not exceed `10`.
+
+#Tree #Depth-first Search #Tree
+
+#FB

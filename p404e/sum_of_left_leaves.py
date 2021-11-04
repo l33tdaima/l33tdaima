@@ -8,28 +8,26 @@ from local_packages.binary_tree import TreeNode
 
 
 class Solution:
-    def sumOfLeftLeaves(self, root: TreeNode) -> int:
-        def helper(node: TreeNode, is_left: bool) -> int:
-            if node is None:
-                return 0
-            if node.left is None and node.right is None:
-                return node.val if is_left else 0
-            else:
-                return helper(node.left, True) + helper(node.right, False)
-
-        return helper(root, False)
+    def sumOfLeftLeaves(self, root: TreeNode, isLeft: bool = False) -> int:
+        if root is None:
+            return 0
+        if root.left is None and root.right is None:
+            return root.val if isLeft else 0
+        else:
+            return self.sumOfLeftLeaves(
+                root.left, True
+            ) + self.sumOfLeftLeaves(root.right, False)
 
 
 # TESTS
-tests = [
+for tree, expected in [
     ("#", 0),
     ("1,2,#,#,#", 2),
     ("1,#,3,#,#", 0),
     ("1,2,#,#,3,#,#", 2),
     ("3,9,#,#,20,15,#,#,7,#,#", 24),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.sumOfLeftLeaves(TreeNode.deserialize(t[0]))
-    print("Sum of left leaves of", t[0], "->", actual)
-    assert actual == t[1]
+    actual = sol.sumOfLeftLeaves(TreeNode.deserialize(tree))
+    print("Sum of left leaves of", tree, "->", actual)
+    assert actual == expected

@@ -29,8 +29,8 @@ var sumOfLeftLeaves = function (root) {
   ['1,#,3,#,#', 0],
   ['1,2,#,#,3,#,#', 2],
   ['3,9,#,#,20,15,#,#,7,#,#', 24],
-].forEach((t) => {
-  const actual = sumOfLeftLeaves(Tree.deserialize(t[0]));
-  console.log('Sum of left leaves of', t[0], '->', actual);
-  console.assert(actual === t[1]);
+].forEach(([tree, expected]) => {
+  const actual = sumOfLeftLeaves(Tree.deserialize(tree));
+  console.log('Sum of left leaves of', tree, '->', actual);
+  console.assert(actual === expected);
 });

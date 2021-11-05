@@ -11,16 +11,15 @@ class Solution:
 
 
 # TESTS
-tests = [
+for n, expected in [
     (0, 0),
     (1, 1),
     (2, 1),
     (3, 2),
     (5, 2),
     (8, 3),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.arrangeCoins(t[0])
-    print("Given n =", t[0], "the total # of full staircase rows ->", actual)
-    assert actual == t[1]
+    actual = sol.arrangeCoins(n)
+    print("Given n =", n, "the total # of full staircase rows ->", actual)
+    assert actual == expected

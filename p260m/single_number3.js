@@ -19,13 +19,19 @@ var singleNumber = function (nums) {
     [3, 5],
   ],
   [
+    [-1, 0],
+    [-1, 0],
+  ],
+  [
+    [0, 1],
+    [0, 1],
+  ],
+  [
     [1, 5, 5, 1, 98, 98, 23, 58, -1, -1],
     [23, 58],
   ],
-].forEach((t) => {
-  const actual = singleNumber(t[0]);
-  console.log('Two single nums in', t[0], '->', actual);
-  actual.sort();
-  console.assert(t[1][0] === actual[0]);
-  console.assert(t[1][1] === actual[1]);
+].forEach(([nums, expected]) => {
+  const actual = singleNumber(nums).sort();
+  console.log('Two single nums in', nums, '->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

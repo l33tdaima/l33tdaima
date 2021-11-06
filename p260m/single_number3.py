@@ -15,12 +15,19 @@ class Solution:
 
 
 # TESTS
-tests = [
-    [[1, 2, 1, 3, 2, 5], [3, 5],],
-    [[1, 5, 5, 1, 98, 98, 23, 58, -1, -1], [23, 58],],
-]
-for t in tests:
+for nums, expected in [
+    [
+        [1, 2, 1, 3, 2, 5],
+        [3, 5],
+    ],
+    [[-1, 0], [-1, 0]],
+    [[0, 1], [0, 1]],
+    [
+        [1, 5, 5, 1, 98, 98, 23, 58, -1, -1],
+        [23, 58],
+    ],
+]:
     sol = Solution()
-    actual = sol.singleNumber(t[0])
-    print("Two single nums in", t[0], "->", actual)
-    assert sorted(actual) == t[1]
+    actual = sol.singleNumber(nums)
+    print("Two single nums in", nums, "->", actual)
+    assert sorted(actual) == expected

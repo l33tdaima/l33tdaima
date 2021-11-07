@@ -15,15 +15,13 @@ class Solution:
 
 
 # TESTS
-tests = [
+for num1, num2, expected in [
     ["0", "987", "0"],
     ["2", "3", "6"],
     ["123", "456", "56088"],
     ["123", "45", "5535"],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.multiply(t[0], t[1])
-    print(t[0], "*", t[1], "->", actual)
-    assert t[2] == actual
-
+    actual = sol.multiply(num1, num2)
+    print(num1, "*", num2, "->", actual)
+    assert actual == expected

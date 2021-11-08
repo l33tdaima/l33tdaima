@@ -14,7 +14,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for n, expected in [
     [0, 1],
     [1, 1],
     [2, 2],
@@ -22,10 +22,8 @@ tests = [
     [4, 14],
     [5, 42],
     [6, 132],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.numTrees(t[0])
-    print("# of unique BSTs storing values up to", t[0], "->", actual)
-    assert actual == t[1]
-
+    actual = sol.numTrees(n)
+    print("# of unique BSTs storing values up to", n, "->", actual)
+    assert actual == expected

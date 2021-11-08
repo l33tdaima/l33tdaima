@@ -28,8 +28,8 @@ var numTrees = function (n) {
   [4, 14],
   [5, 42],
   [6, 132],
-].forEach((t) => {
-  const actual = numTrees(t[0]);
-  console.log('# of unique BSTs storing values up to', t[0], '->', actual);
-  console.assert(actual == t[1]);
+].forEach(([n, expected]) => {
+  const actual = numTrees(n);
+  console.log('# of unique BSTs storing values up to', n, '->', actual);
+  console.assert(actual == expected);
 });

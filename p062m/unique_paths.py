@@ -20,7 +20,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for m, n, expected in [
     (1, 1, 1),
     (5, 1, 1),
     (1, 4, 1),
@@ -28,9 +28,8 @@ tests = [
     (3, 2, 3),
     (2, 3, 3),
     (7, 3, 28),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.uniquePathsV2(t[0], t[1])
-    print("Unique paths of", t[0], "x", t[1], "grid ->", actual)
-    assert actual == t[2]
+    actual = sol.uniquePathsV2(m, n)
+    print("Unique paths of", m, "x", n, "grid ->", actual)
+    assert actual == expected

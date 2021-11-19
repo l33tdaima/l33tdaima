@@ -15,7 +15,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for x, y, expected in [
     [1, 1, 0],
     [2, 3, 1],
     [1, 4, 2],
@@ -23,9 +23,8 @@ tests = [
     [4, 9, 3],
     [4, 10, 3],
     [1, 19091801, 10],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.hammingDistanceV2(t[0], t[1])
-    print("Hamming distance of", t[0], t[1], "->", actual)
-    assert actual == t[2]
+    actual = sol.hammingDistanceV2(x, y)
+    print("Hamming distance of", x, y, "->", actual)
+    assert actual == expected

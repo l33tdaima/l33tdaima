@@ -20,8 +20,8 @@ var hammingDistance = function (x, y) {
   [4, 9, 3],
   [4, 10, 3],
   [1, 19091801, 10],
-].forEach((t) => {
-  actual = hammingDistance(t[0], t[1]);
-  console.log('Hamming distance of', t[0], t[1], '->', actual);
-  console.assert(actual === t[2]);
+].forEach(([x, y, expected]) => {
+  actual = hammingDistance(x, y);
+  console.log('Hamming distance of', x, y, '->', actual);
+  console.assert(actual === expected);
 });

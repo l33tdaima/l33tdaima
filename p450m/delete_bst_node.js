@@ -42,8 +42,8 @@ var deleteNode = function (root, key) {
   ['2,1,#,#,3,#,#', 2, '3,1,#,#,#'],
   ['2,1,#,#,3,#,#', 3, '2,1,#,#,#'],
   ['5,3,2,#,#,4,#,#,6,#,7,#,#', 3, '5,4,2,#,#,#,6,#,7,#,#'],
-].forEach((t) => {
-  const actual = Tree.serialize(deleteNode(Tree.deserialize(t[0]), t[1]));
-  console.log('Delete', t[1], 'from', t[0], '->', actual);
-  console.assert(t[2] === actual);
+].forEach(([tree, key, expected]) => {
+  const actual = Tree.serialize(deleteNode(Tree.deserialize(tree), key));
+  console.log('Delete', key, 'from', tree, '->', actual);
+  console.assert(actual === expected);
 });

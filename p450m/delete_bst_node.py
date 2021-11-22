@@ -31,7 +31,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for tree, key, expected in [
     ["#", 1, "#"],
     ["1,#,#", 2, "1,#,#"],
     ["1,#,#", 1, "#"],
@@ -39,9 +39,10 @@ tests = [
     ["2,1,#,#,3,#,#", 2, "3,1,#,#,#"],
     ["2,1,#,#,3,#,#", 3, "2,1,#,#,#"],
     ["5,3,2,#,#,4,#,#,6,#,7,#,#", 3, "5,4,2,#,#,#,6,#,7,#,#"],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = TreeNode.serialize(sol.deleteNode(TreeNode.deserialize(t[0]), t[1]))
-    print("Delete", t[1], "from", t[0], "->", actual)
-    assert t[2] == actual
+    actual = TreeNode.serialize(
+        sol.deleteNode(TreeNode.deserialize(tree), key)
+    )
+    print("Delete", key, "from", tree, "->", actual)
+    assert actual == expected

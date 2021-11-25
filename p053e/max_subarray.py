@@ -11,15 +11,14 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums, expected in [
     ([-1], -1),
     ([-2, 1, -3], 1),
     ([-2, -1, -3], -1),
     ([-2, 1, -3, 4], 4),
     ([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6),
-]
-for t in tests:
+]:
     sol = Solution()
-    act = sol.maxSubArray(t[0])
-    print("Largest sum of subarray in", t, "->", act)
-    assert act == t[1]
+    actual = sol.maxSubArray(nums)
+    print("Largest sum of subarray in", nums, "->", actual)
+    assert actual == expected

@@ -39,8 +39,8 @@ var searchInsert = function (nums, target) {
     target: 0,
     expected: 0,
   },
-].forEach((t) => {
-  const actual = searchInsert(t.nums, t.target);
-  console.log('Search insert in', t.nums, 'for', t.target, '->', actual);
-  console.assert(actual === t.expected);
+].forEach(({ nums, target, expected }) => {
+  const actual = searchInsert(nums, target);
+  console.log('Search insert in', nums, 'for', target, '->', actual);
+  console.assert(actual === expected);
 });

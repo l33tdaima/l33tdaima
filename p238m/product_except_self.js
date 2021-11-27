@@ -18,10 +18,16 @@ var productExceptSelf = function (nums) {
 };
 // TEST
 [
-  [0, 0],
-  [1, 2],
-  [2, 3, 4],
-  [1, 2, 3, 4],
-].forEach((t) => {
-  console.log('Product array except itself ->', productExceptSelf(t));
+  [
+    [1, 2, 3, 4],
+    [24, 12, 8, 6],
+  ],
+  [
+    [-1, 1, 0, -3, 3],
+    [0, 0, 9, 0, 0],
+  ],
+].forEach(([nums, expected]) => {
+  const actual = productExceptSelf(nums);
+  console.log('Product array except itself ->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

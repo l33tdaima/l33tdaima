@@ -1,8 +1,8 @@
-# 198. House Robber (Easy)
+# 198. House Robber (Medium)
 
 You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and _it will automatically contact the police if two adjacent houses were broken into on the same night_.
 
-Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.
+Given an integer array `nums` representing the amount of money of each house, return the maximum amount of money you can rob tonight _without alerting the police_.
 
 ### Example 1:
 
@@ -36,4 +36,6 @@ f(k) = max( f(k-2) + nums[k], f(k-1) )
 
 #Dynamic Programming
 
-#Similar question [#198](../p198e/README.md) [#213](../p213m/README.md) [#337](../p337m/README.md)
+#Similar question
+
+[#198](../p198m/README.md) [#213](../p213m/README.md) [#337](../p337m/README.md)

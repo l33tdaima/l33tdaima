@@ -30,7 +30,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums, expected in [
     ([2, 3, -2, 4], 6),
     ([-2, 0, -1], 0),
     ([], 0),
@@ -45,8 +45,7 @@ tests = [
     ([-2, 1, -3, 1, -4], 12),
     ([-2, 1, -3, 1, -4, -2], 48),
     ([-2, 1, -3, 1, -4, -2, 0, 49], 49),
-]
-for nums, expected in tests:
+]:
     sol = Solution()
     actual = sol.maxProductV1(nums)
     print("Max subarray product of", nums, "->", actual)

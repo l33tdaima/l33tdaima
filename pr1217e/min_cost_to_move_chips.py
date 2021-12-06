@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def minCostToMoveChips(self, position: List[int]) -> int:
+    def minCostToMoveChips(self, position: list[int]) -> int:
         odds = sum(x % 2 for x in position)
         return min(odds, len(position) - odds)
 

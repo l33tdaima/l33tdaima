@@ -1,6 +1,6 @@
 # 563. Binary Tree Tilt (Easy)
 
-Given the root of a binary tree, return the sum of every tree node's tilt.
+Given the `root` of a binary tree, return the sum of every tree node's tilt.
 
 The tilt of a tree node is the absolute difference between the sum of all left subtree node values and all right subtree node values. If a node does not have a left child, then the sum of the left subtree node values is treated as 0. The rule is similar if there the node does not have a right child.
 
@@ -48,7 +48,7 @@ Output: 9
 
 ### Constraints:
 
-- The number of nodes in the tree is in the range [0, 10^4].
-- -1000 <= Node.val <= 1000
+- The number of nodes in the tree is in the range `[0, 10^4]`.
+- `-1000 <= Node.val <= 1000`
 
 #Tree #Depth-first Search #Recursion

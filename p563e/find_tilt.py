@@ -4,17 +4,22 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+from typing import Tuple
 from local_packages.binary_tree import TreeNode
 
 
 class Solution:
     def findTilt(self, root: TreeNode) -> int:
-        def helper(node: TreeNode) -> (int, int):
+        def helper(node: TreeNode) -> Tuple(int, int):
             if not node:
                 return 0, 0
             lsum, ltilt_sum = helper(node.left)
             rsum, rtilt_sum = helper(node.right)
-            return node.val + lsum + rsum, abs(lsum - rsum) + ltilt_sum + rtilt_sum
+            return (
+                node.val + lsum + rsum,
+                abs(lsum - rsum) + ltilt_sum + rtilt_sum,
+            )
 
         return helper(root)[1]
 

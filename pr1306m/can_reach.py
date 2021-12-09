@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def canReach(self, arr: List[int], start: int) -> bool:
+    def canReach(self, arr: list[int], start: int) -> bool:
         visited = [False] * len(arr)
 
         def helper(i: int):
@@ -12,6 +9,16 @@ class Solution:
             return False
 
         return helper(start)
+
+    def canReachV2(self, arr: list[int], i: int) -> bool:
+        if 0 <= i < len(arr) and arr[i] >= 0:
+            arr[i] = -arr[i]
+            return (
+                arr[i] == 0
+                or self.canReach(arr, i + arr[i])
+                or self.canReach(arr, i - arr[i])
+            )
+        return False
 
 
 # TESTS
@@ -24,3 +31,4 @@ for arr, start, expected in [
     actual = sol.canReach(arr, start)
     print("Can reach 0 starting from", start, "in", arr, "->", actual)
     assert actual == expected
+    assert expected == sol.canReachV2(arr, start)

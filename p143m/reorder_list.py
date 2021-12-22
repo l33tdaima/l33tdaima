@@ -35,14 +35,14 @@ class Solution:
 
 
 # TEST
-tests = [
+for array, expected in [
     ([1, 2, 3, 4], [1, 4, 2, 3]),
     ([1, 2, 3, 4, 5], [1, 5, 2, 4, 3]),
     ([0, 1, 2, 3, 4, 5], [0, 5, 1, 4, 2, 3]),
-]
-for t in tests:
+]:
     sol = Solution()
-    head = ListNode.from_array(t[0])
+    head = ListNode.from_array(array)
     sol.reorderList(head)
-    print("Reorder list ->", ListNode.to_array(head))
-    assert ListNode.to_array(head) == t[1]
+    actual = ListNode.to_array(head)
+    print("Reorder list array ->", actual)
+    assert actual == expected

@@ -3,11 +3,12 @@
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
+from typing import Optional
 from local_packages.list import ListNode
 
 
 class Solution:
-    def middleNode(self, head: ListNode) -> ListNode:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         slow, fast = head, head
         while fast and fast.next:
             slow = slow.next
@@ -16,15 +17,14 @@ class Solution:
 
 
 # TESTS
-tests = [
+for array, expected in [
     [[1], 1],
     [[1, 2], 2],
     [[1, 2, 3], 2],
     [[1, 2, 3, 4, 5], 3],
     [[1, 2, 3, 4, 5, 6], 4],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.middleNode(ListNode.from_array(t[0]))
-    print("Middle node of", t, "->", actual.val)
-    assert actual.val == t[1]
+    actual = sol.middleNode(ListNode.from_array(array))
+    print("Middle node of", array, "->", actual.val)
+    assert actual.val == expected

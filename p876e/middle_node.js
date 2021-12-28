@@ -25,8 +25,8 @@ var middleNode = function (head) {
   [[1, 2, 3], 2],
   [[1, 2, 3, 4, 5], 3],
   [[1, 2, 3, 4, 5, 6], 4],
-].forEach((t) => {
-  const actual = middleNode(LinkedList.fromArray(t));
-  console.log('Middle node of', t, '->', actual.val);
-  console.assert(actual.val === t[1]);
+].forEach(([array, expected]) => {
+  const actual = middleNode(LinkedList.fromArray(array));
+  console.log('Middle node of', array, '->', actual.val);
+  console.assert(actual.val === expected);
 });

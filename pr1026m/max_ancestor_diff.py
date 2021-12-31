@@ -15,10 +15,10 @@ class Solution:
                 return upper - lower
             lower, upper = min(lower, node.val), max(upper, node.val)
             return max(
-                helper(node.left, lower, upper), helper(node.right, lower, upper)
+                helper(node.left, lower, upper),
+                helper(node.right, lower, upper),
             )
 
-        assert root != None
         return helper(root, root.val, root.val)
 
 

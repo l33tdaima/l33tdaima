@@ -1,16 +1,16 @@
 class Solution:
-    def bitwiseComplement(self, N: int) -> int:
+    def bitwiseComplement(self, n: int) -> int:
         i = 1
-        while i < N:
+        while i < n:
             i = (i << 1) + 1
-        return i ^ N  # i - N
+        return i ^ n  # i - n
 
-    def bitwiseComplementV2(self, N: int) -> int:
-        return N ^ ((1 << N.bit_length()) - 1) if N else 1
+    def bitwiseComplementV2(self, n: int) -> int:
+        return n ^ ((1 << n.bit_length()) - 1) if n else 1
 
 
 # TESTS
-tests = [
+for n, expected in [
     [0, 1],
     [5, 2],
     [1, 0],
@@ -20,9 +20,8 @@ tests = [
     [10001, 6382],
     [999999, 48576],
     [12345678, 4431537],
-]
-for N, expected in tests:
+]:
     sol = Solution()
-    actual = sol.bitwiseComplement(N)
-    assert actual == expected
-    assert sol.bitwiseComplementV2(N) == expected
+    actual = sol.bitwiseComplement(n)
+    print("Complement of", n, "->", actual)
+    assert actual == expected and sol.bitwiseComplementV2(n) == expected

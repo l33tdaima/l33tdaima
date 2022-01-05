@@ -15,17 +15,15 @@ var partition = function (s) {
   const dfs = function (s, path) {
     if (!s) {
       ans.push(Array.from(path));
-      return;
-    }
-
-    for (let i = 1; i <= s.length; ++i) {
-      if (isPalindrome(s.substring(0, i))) {
-        path.push(s.substring(0, i));
-        dfs(s.substring(i), path);
-        path.pop();
+    } else {
+      for (let i = 1; i <= s.length; ++i) {
+        if (isPalindrome(s.substring(0, i))) {
+          path.push(s.substring(0, i));
+          dfs(s.substring(i), path);
+          path.pop();
+        }
       }
     }
-    return ans;
   };
 
   dfs(s, []);

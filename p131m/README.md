@@ -1,8 +1,8 @@
 # 131. Palindrome Partition (Medium)
 
-Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
+Given a string `s`, partition `s` such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of `s`.
 
-A palindrome string is a string that reads the same backward as forward.
+A **palindrome** string is a string that reads the same backward as forward.
 
 ### Example 1:
 
@@ -20,8 +20,8 @@ Output: [["a"]]
 
 ### Constraints:
 
-- 1 <= s.length <= 16
-- s contains only lowercase English letters.
+- `1 <= s.length <= 16`
+- `s` contains only lowercase English letters.
 
 ## Solution:
 

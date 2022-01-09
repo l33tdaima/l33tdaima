@@ -12,13 +12,14 @@ class Solution:
 
 
 # TESTS
-tests = [
+for instructions, expected in [
     ("GGLLGG", True),
     ("GG", False),
     ("GL", True),
-]
-for ins, expected in tests:
+]:
     sol = Solution()
-    actual = sol.isRobotBounded(ins)
-    print("Robot bounded in circle with instruction", ins, "->", actual)
+    actual = sol.isRobotBounded(instructions)
+    print(
+        "Robot bounded in circle with instruction", instructions, "->", actual
+    )
     assert actual == expected

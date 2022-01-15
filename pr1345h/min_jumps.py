@@ -1,23 +1,22 @@
-from typing import List
 from collections import defaultdict, deque
 
 
 class Solution:
-    def minJumps(self, arr: List[int]) -> int:
-        value_idx = defaultdict(list)
+    def minJumps(self, arr: list[int]) -> int:
+        id_of_val = defaultdict(list)
         for i, v in enumerate(arr):
-            value_idx[v].append(i)
+            id_of_val[v].append(i)
 
         queue = deque([(0, 0)])
-        visited_idx, visited_val = set(), set()
+        visited_id, visited_val = set(), set()
         while queue:
             i, step = queue.popleft()
             if i == len(arr) - 1:
                 return step
-            visited_idx.add(i)
+            visited_id.add(i)
             v = arr[i]
-            for j in [i - 1, i + 1] + value_idx[v] * (v not in visited_val):
-                if 0 <= j < len(arr) and j not in visited_idx:
+            for j in [i - 1, i + 1] + id_of_val[v] * (v not in visited_val):
+                if 0 <= j < len(arr) and j not in visited_id:
                     queue.append((j, step + 1))
             visited_val.add(v)
         return 0

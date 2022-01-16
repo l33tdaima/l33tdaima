@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def maxDistToClosest(self, seats: List[int]) -> int:
+    def maxDistToClosest(self, seats: list[int]) -> int:
         l, r, ans = -1, 0, 0
         for r in range(0, len(seats)):
             if seats[r] == 1:

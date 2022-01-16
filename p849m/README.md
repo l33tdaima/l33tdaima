@@ -1,6 +1,6 @@
 # 849. Maximize Distance to Closest Person (Medium)
 
-You are given an array representing a row of seats where `seats[i] = 1` represents a person sitting in the `i`th seat, and `seats[i] = 0` represents that the ith seat is empty (0-indexed).
+You are given an array representing a row of `seats` where `seats[i] = 1` represents a person sitting in the `i`th seat, and `seats[i] = 0` represents that the `i`th seat is empty **(0-indexed)**.
 
 There is at least one empty seat, and at least one person sitting.
 
@@ -38,8 +38,8 @@ Output: 1
 
 ### Constraints:
 
-- 2 <= seats.length <= 2 \* 10^4
-- seats[i] is 0 or 1.
+- `2 <= seats.length <= 2 \* 10^4`
+- `seats[i]` is `0` or `1`.
 - At least one seat is empty.
 - At least one seat is occupied.
 
@@ -56,7 +56,7 @@ For every spot with zero, search left and right to probe the width to calculate 
 3. Scan right to left to compute the max distance to the right of each zero, and then find the lesser with the value from the first pass.
 4. Compute the max during the second pass.
 
-O(2\*N) time, and O(N) space.
+O(2N) time, and O(N) space.
 
 ### One Pass Approach
 

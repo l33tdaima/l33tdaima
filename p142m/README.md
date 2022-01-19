@@ -1,10 +1,10 @@
 # 142. Linked List Cycle II (Medium)
 
-Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+Given the `head` of a linked list, return the node where the cycle begins. If there is no cycle, return `null`.
 
-There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the `next` pointer. Internally, `pos` is used to denote the index of the node that tail's `next` pointer is connected to (0-indexed). It is `-1` if there is no cycle. Note that `pos` is not passed as a parameter.
 
-Notice that you should not modify the linked list.
+_Do not modify_ the linked list.
 
 ### Follow up:
 
@@ -34,6 +34,14 @@ Output: no cycle
 Explanation: There is no cycle in the linked list.
 ```
 
+### Constraints:
+
+- The number of the nodes in the list is in the range `[0, 10^4]`.
+- `-10^5 <= Node.val <= 10^5`
+- pos is `-1` or a valid index in the linked-list.
+
+**Follow up**: Can you solve it using O(1) (i.e. constant) memory?
+
 ## Solution
 
 Consider the following linked list, where E is the cylce entry and X, the crossing point of fast and slow.
@@ -43,15 +51,15 @@ Consider the following linked list, where E is the cylce entry and X, the crossi
         D: distance from E to X
         L: cycle length
                           _____
-                         /     \
+                         /     X
         head_____H______E       \
                         \       /
-                         X_____/
+                         \_____/
 ```
 
-If fast and slow both start at head, when fast catches slow, slow has traveled H+D and fast 2(H+D).
-Assume fast has traveled n loops in the cycle, we have:
+If fast and slow both start at head, when fast catches slow, slow has traveled H+D and fast must travel twice of slow's distance 2(H+D).
+Assume fast has traveled `n` loops in the cycle, we have:
 `2H + 2D = H + D + nL --> H + D = nL --> H = nL - D`
 Thus if two pointers start from head and X, respectively, one first reaches E, the other also reaches E.
 
-#Linked List #Two Pointera
+#Linked List #Two Pointers

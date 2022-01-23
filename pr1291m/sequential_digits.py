@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def sequentialDigits(self, low: int, high: int) -> List[int]:
+    def sequentialDigits(self, low: int, high: int) -> list[int]:
         candidates = [
             12,
             23,
@@ -45,11 +42,10 @@ class Solution:
 
 
 # TESTS
-tests = [
+for low, high, expected in [
     (100, 300, [123, 234]),
     (1000, 13000, [1234, 2345, 3456, 4567, 5678, 6789, 12345]),
-]
-for low, high, expected in tests:
+]:
     sol = Solution()
     actual = sol.sequentialDigits(low, high)
     print("Sequential digits in [", low, ",", high, "] ->", actual)

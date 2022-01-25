@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def validMountainArray(self, arr: List[int]) -> bool:
+    def validMountainArray(self, arr: list[int]) -> bool:
         if len(arr) < 3 or arr[0] > arr[1]:
             return False
         peak = False

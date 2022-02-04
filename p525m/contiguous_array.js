@@ -21,8 +21,8 @@ var findMaxLength = function (nums) {
   [[0, 1, 0, 0, 1, 1, 0], 6],
   [[0, 0, 0, 0, 0, 0, 0], 0],
   [[1, 1, 1, 1, 1], 0],
-].forEach((t) => {
-  let act = findMaxLength(t[0]);
-  console.log('Max length of breakeven subarray in', t[0], '->', act);
-  console.assert(act === t[1]);
+].forEach(([nums, expected]) => {
+  const actual = findMaxLength(nums);
+  console.log('Max length of breakeven subarray in', nums, '->', actual);
+  console.assert(actual === expected);
 });

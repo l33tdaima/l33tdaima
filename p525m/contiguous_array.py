@@ -1,10 +1,7 @@
-from typing import List
-
-
 class Solution:
-    def findMaxLength(self, nums: List[int]) -> int:
+    def findMaxLength(self, nums: list[int]) -> int:
         ans, count = 0, 0
-        ht = {0: -1}
+        ht = {0: -1}  # count: first_index
         for i in range(len(nums)):
             count += nums[i] or -1
             if count in ht:
@@ -15,16 +12,15 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums, expected in [
     [[1, 0], 2],
     [[0, 1, 0], 2],
     [[0, 1, 0, 0, 1], 4],
     [[0, 1, 0, 0, 1, 1, 0], 6],
     [[0, 0, 0, 0, 0, 0, 0], 0],
     [[1, 1, 1, 1, 1], 0],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.findMaxLength(t[0])
-    print("Max length of breakeven subarray in", t[0], "->", actual)
-    assert actual == t[1]
+    actual = sol.findMaxLength(nums)
+    print("Max length of breakeven subarray in", nums, "->", actual)
+    assert actual == expected

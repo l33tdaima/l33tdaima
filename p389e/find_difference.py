@@ -14,13 +14,12 @@ class Solution:
 
 
 # TESTS
-tests = [
+for s, t, expected in [
     ("abcd", "abcde", "e"),
     ("abcd", "abcdd", "d"),
     ("aaaaa", "aaaaaa", "a"),
     ("aaaaa", "aabaaa", "b"),
-]
-for s, t, expected in tests:
+]:
     sol = Solution()
     actual = sol.findTheDifference(s, t)
     print("The letter that was added in", t, "from", s, "->", actual)

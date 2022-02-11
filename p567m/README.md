@@ -1,8 +1,11 @@
-# Permutation in String (Medium)
+# 567. Permutation in String (Medium)
 
-Given two strings s1 and s2, write a function to return true if s2 contains the permutation of s1. In other words, one of the first string's permutations is the substring of the second string.
+Given two strings `s1` and `s2`, return `true` if `s2` contains a permutation of `s1`, or `false` otherwise.
+
+In other words, return `true` if one of `s1`'s permutations is the substring of `s2`.
 
 ### Example 1:
+
 ```
 Input: s1 = "ab" s2 = "eidbaooo"
 Output: True
@@ -10,13 +13,15 @@ Explanation: s2 contains one permutation of s1 ("ba").
 ```
 
 ### Example 2:
+
 ```
 Input:s1= "ab" s2 = "eidboaoo"
 Output: False
 ```
- 
-### Note:
-- The input strings only contain lower case letters.
-- The length of both given strings is in range [1, 10,000].
+
+### Constraints:
+
+- `1 <= s1.length, s2.length <= 10^4`
+- `s1` and `s2` consist of lowercase English letters.
 
 #Similar Questions [#438](../p438m/README.md) [#567](../p567m/README.md)

@@ -1,9 +1,10 @@
-from typing import List
 import string
 
 
 class Solution:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+    def ladderLength(
+        self, beginWord: str, endWord: str, wordList: list[str]
+    ) -> int:
         wordset = set(wordList)
         if not endWord in wordset:
             return 0

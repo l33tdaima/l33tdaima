@@ -1,8 +1,6 @@
 # 24. Swap Nodes in Pairs (Medium)
 
-Given a linked list, swap every two adjacent nodes and return its head.
-
-You may not modify the values in the list's nodes. Only nodes itself may be changed.
+Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)
 
 ### Example 1:
 
@@ -27,8 +25,8 @@ Output: [1]
 
 ### Constraints:
 
-- The number of nodes in the list is in the range [0, 100].
-- 0 <= Node.val <= 100
+- The number of nodes in the list is in the range `[0, 100]`.
+- `0 <= Node.val <= 100`
 
 ## Solution
 

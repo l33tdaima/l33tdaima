@@ -4,14 +4,14 @@ You are given an array `nums` of `n` positive integers.
 
 You can perform two types of operations on any element of the array any number of times:
 
-- If the element is even, divide it by 2.
-  - For example, if the array is [1,2,3,4], then you can do this operation on the last element, and the array will be [1,2,3,2].
-- If the element is odd, multiply it by 2.
-  - For example, if the array is [1,2,3,4], then you can do this operation on the first element, and the array will be [2,2,3,4].
+- If the element is _even_, _divide_ it by `2`.
+  - For example, if the array is `[1,2,3,4]`, then you can do this operation on the last element, and the array will be `[1,2,3,2]`.
+- If the element is _odd_, _multiply_ it by `2`.
+  - For example, if the array is `[1,2,3,4]`, then you can do this operation on the first element, and the array will be `[2,2,3,4]`.
 
-The deviation of the array is the maximum difference between any two elements in the array.
+The _deviation_ of the array is the _maximum difference_ between any two elements in the array.
 
-Return the minimum deviation the array can have after performing some number of operations.
+Return the _minimum deviation_ the array can have after performing some number of operations.
 
 ### Example 1:
 
@@ -38,9 +38,9 @@ Output: 3
 
 ## Constraints:
 
-- n == nums.length
-- 2 <= n <= 10^5
-- 1 <= nums[i] <= 10^9
+- `n == nums.length`
+- `2 <= n <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ## Solution
 

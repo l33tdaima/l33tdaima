@@ -1,9 +1,8 @@
-from typing import List
 from heapq import heappop, heappush, heapify
 
 
 class Solution:
-    def minimumDeviation(self, nums: List[int]) -> int:
+    def minimumDeviation(self, nums: list[int]) -> int:
         maxheap = [-n * 2 if n & 1 else -n for n in nums]
         heapify(maxheap)
 

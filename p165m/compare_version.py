@@ -16,14 +16,13 @@ class Solution:
 
 
 # TESTS
-tests = [
+for version1, version2, expected in [
     ("0.1", "1.1", -1),
     ("1.0.1", "1", 1),
     ("7.5.2.4", "7.5.3", -1),
     ("1.01", "1.001", 0),
     ("1.0", "1.0.0", 0),
-]
-for version1, version2, expected in tests:
+]:
     sol = Solution()
     actual = sol.compareVersion(version1, version2)
     print("Compare version", version1, version2, "->", actual)

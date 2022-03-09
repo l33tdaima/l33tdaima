@@ -9,19 +9,14 @@ from local_packages.list import ListNode
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         sentinal = ListNode(0, next=head)
-        p, was_dup = sentinal, False
-        while p and p.next:
-            if p.next.next:
-                is_dup = p.next.val == p.next.next.val
-                if is_dup or was_dup:
-                    p.next = p.next.next  # delete p.next but not iterate
-                else:
-                    p = p.next
-                was_dup = is_dup
+        pre = sentinal
+        while head and head.next:
+            if head.val == head.next.val:
+                while head and head.next and head.val == head.next.val:
+                    head = head.next
+                pre.next, head = head.next, head.next
             else:
-                if was_dup:
-                    p.next = None  # delete the last duplicate
-                p = p.next
+                pre, head = pre.next, head.next
         return sentinal.next
 
 
@@ -33,6 +28,8 @@ for given, expected in [
     ([1, 4, 4, 4], [1]),
 ]:
     sol = Solution()
-    actual = ListNode.to_array(sol.deleteDuplicates(ListNode.from_array(given)))
+    actual = ListNode.to_array(
+        sol.deleteDuplicates(ListNode.from_array(given))
+    )
     print("Delete duplicates from", given, "->", actual)
     assert actual == expected

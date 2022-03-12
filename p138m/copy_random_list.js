@@ -16,10 +16,9 @@ var copyRandomList = function (head) {
   // Round 1: copy the node and insert it right behind
   let it = head;
   while (it) {
-    let next = it.next;
-    let cp = new Node(it.val, next, null);
+    let cp = new Node(it.val, it.next, null);
     it.next = cp;
-    it = next;
+    it = cp.next;
   }
   // Round 2: copy the random link
   it = head;

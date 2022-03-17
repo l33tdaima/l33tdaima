@@ -1,25 +1,7 @@
 class Solution:
-    def scoreOfParenthesesV1(self, S: str) -> int:
-        stack = []
-        for c in S:
-            if c == "(":
-                stack.append(c)
-            else:
-                op = stack.pop()
-                if op == "(":
-                    op = 1
-                else:
-                    op *= 2
-                    stack.pop()
-                if len(stack) > 0 and stack[-1] != "(":
-                    stack[-1] += op
-                else:
-                    stack.append(op)
-        return stack[0]
-
-    def scoreOfParenthesesV2(self, S: str) -> int:
+    def scoreOfParentheses(self, s: str) -> int:
         stack, cur = [], 0
-        for c in S:
+        for c in s:
             if c == "(":
                 stack.append(cur)
                 cur = 0
@@ -27,16 +9,24 @@ class Solution:
                 cur += stack.pop() + max(cur, 1)
         return cur
 
+    def scoreOfParenthesesO1(self, s: str) -> int:
+        ans, l = 0, 0
+        for p, n in zip(s, s[1:]):
+            if p + n == "()":
+                ans += 2 ** l
+            l += 1 if p == "(" else -1
+        return ans
+
 
 # TESTS
-for S, expected in [
+for s, expected in [
     ("()", 1),
     ("(())", 2),
     ("()()", 2),
     ("(()(()))", 6),
 ]:
     sol = Solution()
-    actual = sol.scoreOfParenthesesV1(S)
-    print("Score of", S, "->", actual)
+    actual = sol.scoreOfParentheses(s)
+    print("Score of", s, "->", actual)
     assert actual == expected
-    assert expected == sol.scoreOfParenthesesV2(S)
+    assert expected == sol.scoreOfParenthesesO1(s)

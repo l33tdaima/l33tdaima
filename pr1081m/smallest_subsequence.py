@@ -13,18 +13,19 @@ class Solution:
             counter[c] -= 1
             if counter[c] == 0:
                 break
-        return s[pos] + self.smallestSubsequence(s[pos + 1 :].replace(s[pos], ""))
+        return s[pos] + self.smallestSubsequence(
+            s[pos + 1 :].replace(s[pos], "")
+        )
 
 
 # TESTS
-tests = [
+for s, expected in [
     ("a", "a"),
     ("bca", "bca"),
     ("abacb", "abc"),
     ("bcabc", "abc"),
     ("cbacdcbc", "acdb"),
-]
-for s, expected in tests:
+]:
     sol = Solution()
     actual = sol.smallestSubsequence(s)
     print("Removing duplicates in", s, "->", actual)

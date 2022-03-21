@@ -28,5 +28,5 @@ var partitionLabels = function (S) {
 ].forEach(([s, expected]) => {
   const actual = partitionLabels(s);
   console.log('Partition labels of', s, '->', actual);
-  console.assert(JSON.stringify(actual) === JSON.stringify(expected));
+  console.assert(actual.toString() === expected.toString());
 });

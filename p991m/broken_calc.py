@@ -1,17 +1,17 @@
 class Solution:
-    def brokenCalc(self, X: int, Y: int) -> int:
+    def brokenCalc(self, startValue: int, target: int) -> int:
         ans = 0
-        while X < Y:
-            if Y % 2 == 0:
-                Y //= 2
+        while startValue < target:
+            if target % 2 == 0:
+                target //= 2
             else:
-                Y += 1
+                target += 1
             ans += 1
-        return ans + X - Y
+        return ans + startValue - target
 
 
 # TESTS
-for X, Y, expected in [
+for startValue, target, expected in [
     (2, 3, 2),
     (5, 8, 2),
     (3, 10, 3),
@@ -19,6 +19,13 @@ for X, Y, expected in [
     (1, 1000000000, 39),
 ]:
     sol = Solution()
-    actual = sol.brokenCalc(X, Y)
-    print("The minimum number of operations", X, "to", Y, "->", actual)
+    actual = sol.brokenCalc(startValue, target)
+    print(
+        "The minimum number of operations",
+        startValue,
+        "to",
+        target,
+        "->",
+        actual,
+    )
     assert actual == expected

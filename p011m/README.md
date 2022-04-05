@@ -1,6 +1,10 @@
 # 11. Container With Most Water (Medium)
 
-Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate `(i, ai)`. n vertical lines are drawn such that the two endpoints of the line `i` is at `(i, ai) and (i, 0)`. Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `i`th line are `(i, 0)` and `(i, height[i])`.
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return _the maximum amount of water a container can store_.
 
 Notice that you may not slant the container.
 
@@ -37,10 +41,10 @@ Output: 2
 
 ### Constraints:
 
-- n == height.length
-- 2 <= n <= 3 \* 10^4
-- 0 <= height[i] <= 3 \* 10^4
+- `n == height.length`
+- `2 <= n <= 10^5`
+- `0 <= height[i] <= 10^4`
 
-#Array #Two Pointers
+#Array #Two Pointers #Greedy
 
 #Similar questions [#11](../p011m/README.md) [#42](../p042h/README.md)

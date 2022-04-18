@@ -5,10 +5,11 @@
 #         self.left = left
 #         self.right = right
 from local_packages.binary_tree import TreeNode
+from typing import Optional
 
 
 class Solution:
-    def kthSmallest(self, root: TreeNode, k: int) -> int:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         def inorder(node: TreeNode):
             if node:
                 yield from inorder(node.left)
@@ -21,7 +22,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for array, k, expected in [
     ["1,#,#", 1, 1],
     ["2,1,#,#,3,#,#", 2, 2],
     ["2,1,#,#,3,#,#", 3, 3],
@@ -31,10 +32,9 @@ tests = [
     ["5,3,2,#,#,4,#,#,6,#,7,#,#", 4, 5],
     ["5,3,2,#,#,4,#,#,6,#,7,#,#", 5, 6],
     ["5,3,2,#,#,4,#,#,6,#,7,#,#", 6, 7],
-]
-for t in tests:
+]:
     sol = Solution()
-    tree = TreeNode.deserialize(t[0])
-    actual = sol.kthSmallest(tree, t[1])
-    print("The", f"{t[1]}-th smallest value in BST", t[0], "->", actual)
-    # assert actual == t[2]
+    tree = TreeNode.deserialize(array)
+    actual = sol.kthSmallest(tree, k)
+    print("The", f"{k}-th smallest value in BST", array, "->", actual)
+    assert actual == expected

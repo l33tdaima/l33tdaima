@@ -33,9 +33,9 @@ var kthSmallest = function (root, k) {
   ['5,3,2,#,#,4,#,#,6,#,7,#,#', 4, 5],
   ['5,3,2,#,#,4,#,#,6,#,7,#,#', 5, 6],
   ['5,3,2,#,#,4,#,#,6,#,7,#,#', 6, 7],
-].forEach((t) => {
-  const tree = Tree.deserialize(t[0]);
-  const actual = kthSmallest(tree, t[1]);
-  console.log('The', t[1] + '-th smallest value in BST', t[0], '->', actual);
-  console.assert(actual === t[2]);
+].forEach(([array, k, expected]) => {
+  const tree = Tree.deserialize(array);
+  const actual = kthSmallest(tree, k);
+  console.log('The', k + '-th smallest value in BST', array, '->', actual);
+  console.assert(actual === expected);
 });

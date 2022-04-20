@@ -32,7 +32,7 @@ BSTIterator.prototype.hasNext = function () {
  * @returns {number} - the next smallest number
  */
 BSTIterator.prototype.next = function () {
-  let top = this.stack.pop();
+  const top = this.stack.pop();
   this.pushLeft(top.right, this.stack);
   return top.val;
 };

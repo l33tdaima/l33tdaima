@@ -1,9 +1,8 @@
-from typing import List
 from heapq import heappop, heappush
 
 
 class Solution:
-    def minimumEffortPath(self, heights: List[List[int]]) -> int:
+    def minimumEffortPath(self, heights: list[list[int]]) -> int:
         rows, cols = len(heights), len(heights[0])
         dist = [[float("inf")] * cols for _ in range(rows)]
         minheap = [(0, 0, 0)]  # (dist, row, col)

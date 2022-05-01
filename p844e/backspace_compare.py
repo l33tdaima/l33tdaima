@@ -2,20 +2,19 @@ from functools import reduce
 
 
 class Solution:
-    def backspaceCompare(self, S: str, T: str) -> bool:
+    def backspaceCompare(self, s: str, t: str) -> bool:
         func = lambda res, c: res[:-1] if c == "#" else res + [c]
-        return reduce(func, S, []) == reduce(func, T, [])
+        return reduce(func, s, []) == reduce(func, t, [])
 
 
 # TESTS
-tests = [
+for s, t, expected in [
     ("ab#c", "ad#c", True),
     ("ab##", "c#d#", True),
     ("a##c", "#a#c", True),
     ("a#c", "b", False),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.backspaceCompare(t[0], t[1])
-    print("Backspace compare(", t[0], ",", t[1], ") ->", actual)
-    assert actual == t[2]
+    actual = sol.backspaceCompare(s, t)
+    print("Backspace compare(", s, ",", t, ") ->", actual)
+    assert actual == expected

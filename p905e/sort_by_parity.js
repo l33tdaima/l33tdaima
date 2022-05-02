@@ -1,36 +1,36 @@
 /**
- * @param {number[]} A
+ * @param {number[]} nums
  * @return {number[]}
  */
 
-var sortArrayByParityOutPlace = function (A) {
-  let ans = new Array(A.length);
-  let [le, ro] = [0, A.length - 1];
-  for (let a of A) {
+var sortArrayByParityOutPlace = function (nums) {
+  let ans = new Array(nums.length);
+  let [le, ro] = [0, nums.length - 1];
+  for (let a of nums) {
     if ((a & 1) === 0) ans[le++] = a;
     else ans[ro--] = a;
   }
   return ans;
 };
 
-var sortArrayByParityFunctional = function (A) {
-  return A.reduce((ans, a) => {
+var sortArrayByParityFunctional = function (nums) {
+  return nums.reduce((ans, a) => {
     if (a % 2 === 0) ans.unshift(a);
     else ans.push(a);
     return ans;
   }, []);
 };
 
-var sortArrayByParityInPlace = function (A) {
-  let [le, ro] = [0, A.length - 1];
+var sortArrayByParityInPlace = function (nums) {
+  let [le, ro] = [0, nums.length - 1];
   while (le < ro) {
-    if (A[le] % 2 === 0) le++;
-    else if (A[ro] % 2 !== 0) ro--;
-    else if (le < ro && le < A.length && ro > 0) {
-      [A[le], A[ro]] = [A[ro], A[le]];
+    if (nums[le] % 2 === 0) le++;
+    else if (nums[ro] % 2 !== 0) ro--;
+    else if (le < ro && le < nums.length && ro > 0) {
+      [nums[le], nums[ro]] = [nums[ro], nums[le]];
     }
   }
-  return A;
+  return nums;
 };
 // TESTS
 [

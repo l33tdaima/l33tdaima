@@ -1,21 +1,21 @@
 class Solution:
-    def sortArrayByParity(self, A: list[int]) -> list[int]:
+    def sortArrayByParity(self, nums: list[int]) -> list[int]:
         even, odd = [], []
-        for a in A:
+        for a in nums:
             if a & 1:
                 odd.append(a)
             else:
                 even.append(a)
         return even + odd
 
-    def sortArrayByParityInPlace(self, A: list[int]) -> list[int]:
+    def sortArrayByParityInPlace(self, nums: list[int]) -> list[int]:
         e, o = 0, 0
-        while o < len(A):
-            if not (A[o] & 1):
-                A[e], A[o] = A[o], A[e]
+        while o < len(nums):
+            if not (nums[o] & 1):
+                nums[e], nums[o] = nums[o], nums[e]
                 e += 1
             o += 1
-        return A
+        return nums
 
 
 # TESTS

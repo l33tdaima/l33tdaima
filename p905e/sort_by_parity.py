@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def sortArrayByParity(self, A: List[int]) -> List[int]:
+    def sortArrayByParity(self, A: list[int]) -> list[int]:
         even, odd = [], []
         for a in A:
             if a & 1:
@@ -11,7 +8,7 @@ class Solution:
                 even.append(a)
         return even + odd
 
-    def sortArrayByParityInPlace(self, A: List[int]) -> List[int]:
+    def sortArrayByParityInPlace(self, A: list[int]) -> list[int]:
         e, o = 0, 0
         while o < len(A):
             if not (A[o] & 1):
@@ -22,13 +19,12 @@ class Solution:
 
 
 # TESTS
-tests = [
+for nums, expected in [
     ([3, 1, 2, 4], [2, 4, 3, 1]),
     ([3, 1], [3, 1]),
     ([2, 4], [2, 4]),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.sortArrayByParity(t[0])
-    assert actual == t[1]
-    print("Sort by partiy ->", sol.sortArrayByParityInPlace(t[0]))
+    actual = sol.sortArrayByParity(nums)
+    assert actual == expected
+    print("Sort by partiy ->", sol.sortArrayByParityInPlace(nums))

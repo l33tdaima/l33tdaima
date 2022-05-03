@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def findUnsortedSubarray(self, nums: List[int]) -> int:
+    def findUnsortedSubarray(self, nums: list[int]) -> int:
         sorted_nums = sorted(nums)
         left, right = 0, len(nums) - 1
         while left <= right:
@@ -14,10 +11,9 @@ class Solution:
                 break
         return right - left + 1
 
-    def findUnsortedSubarrayOpt(self, nums: List[int]) -> int:
-        maxv, minv = nums[0], nums[-1]
+    def findUnsortedSubarrayOpt(self, nums: list[int]) -> int:
+        maxv, minv, n = nums[0], nums[-1], len(nums)
         left, right = 0, -1
-        n = len(nums)
         for i in range(n):
             maxv = max(maxv, nums[i])
             minv = min(minv, nums[-i - 1])

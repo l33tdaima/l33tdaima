@@ -1,9 +1,8 @@
-from typing import List
 from collections import defaultdict
 
 
 class Solution:
-    def maxOperations(self, nums: List[int], k: int) -> int:
+    def maxOperations(self, nums: list[int], k: int) -> int:
         seen, ans = defaultdict(int), 0
         for n in nums:
             if k - n in seen and seen[k - n] > 0:

@@ -1,24 +1,29 @@
 // g++ -std=c++11 *.cpp -o test && ./test && rm -f test
-#include <queue>
+#include <cassert>
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
 class MyStack {
     queue<int> qimpl;
     queue<int> qbuff;
+
 public:
     /** Initialize your data structure here. */
-    MyStack() {
+    MyStack()
+    {
     }
-    
+
     /** Push element x onto stack. */
-    void push(int x) {
+    void push(int x)
+    {
         qimpl.push(x);
     }
-    
+
     /** Removes the element on top of the stack and returns that element. */
-    int pop() {
+    int pop()
+    {
         assert(!empty());
         int size = qimpl.size();
         for (int i = 1; i < size; ++i) {
@@ -30,15 +35,17 @@ public:
         qimpl.swap(qbuff);
         return ret;
     }
-    
+
     /** Get the top element. */
-    int top() {
+    int top()
+    {
         assert(!empty());
         return qimpl.back();
     }
-    
+
     /** Returns whether the stack is empty. */
-    bool empty() {
+    bool empty()
+    {
         return qimpl.empty();
     }
 };
@@ -51,7 +58,7 @@ public:
  * int param_3 = obj.top();
  * bool param_4 = obj.empty();
  */
-int main(int argc, char const *argv[])
+int main(int argc, char const* argv[])
 {
     MyStack stack;
     stack.push(1);

@@ -1,10 +1,8 @@
 # 456. 132 Pattern (Medium)
 
-Given an array of n integers nums, a 132 pattern is a subsequence of three integers nums[i], nums[j] and nums[k] such that i < j < k and nums[i] < nums[k] < nums[j].
+Given an array of `n` integers `nums`, a **132 pattern** is a subsequence of three integers `nums[i]`, `nums[j]` and `nums[k]` such that `i < j < k` and `nums[i] < nums[k] < nums[j]`.
 
-Return true if there is a 132 pattern in nums, otherwise, return false.
-
-Follow up: The O(n^2) is trivial, could you come up with the O(n logn) or the O(n) solution?
+Return `true` if there is a **132 pattern** in `nums`, otherwise, return `false`.
 
 ### Example 1:
 
@@ -32,9 +30,9 @@ Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0
 
 ### Constraints:
 
-- n == nums.length
-- 1 <= n <= 10^4
-- -10^9 <= nums[i] <= 10^9
+- `n == nums.length`
+- `1 <= n <= 10^4`
+- `-10^9 <= nums[i] <= 10^9`
 
 ## Solution
 

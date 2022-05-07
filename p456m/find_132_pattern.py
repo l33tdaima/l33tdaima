@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def find132pattern(self, nums: List[int]) -> bool:
+    def find132pattern(self, nums: list[int]) -> bool:
         stack, s3 = [], float("-Inf")
         for i in range(len(nums) - 1, -1, -1):
             if nums[i] < s3:

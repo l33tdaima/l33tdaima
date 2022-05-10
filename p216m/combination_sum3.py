@@ -1,11 +1,8 @@
-from typing import List
-
-
 class Solution:
-    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+    def combinationSum3(self, k: int, n: int) -> list[list[int]]:
         ans = []
 
-        def backtrack(path: List[int], k: int, rem: int, start: int) -> None:
+        def backtrack(path: list[int], k: int, rem: int, start: int) -> None:
             if k == 0:
                 if rem == 0:
                     ans.append(path)
@@ -19,11 +16,11 @@ class Solution:
 
 
 # TESTS
-tests = [
+for k, n, expected in [
     (3, 7, [[1, 2, 4]]),
     (3, 9, [[1, 2, 6], [1, 3, 5], [2, 3, 4]]),
-]
-for k, n, expected in tests:
+    (4, 1, []),
+]:
     sol = Solution()
     actual = sol.combinationSum3(k, n)
     print("Combination sum k =", k, ", n =", n, "->", actual)

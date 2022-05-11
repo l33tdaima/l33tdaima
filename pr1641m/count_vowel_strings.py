@@ -1,10 +1,9 @@
-from typing import List
 from itertools import accumulate
 
 
 class Solution:
     def countVowelStringsDP(self, n: int) -> int:
-        def helper(n: int) -> List[int]:
+        def helper(n: int) -> list[int]:
             if n == 1:
                 return [1] * 5
             return list(accumulate(helper(n - 1)))

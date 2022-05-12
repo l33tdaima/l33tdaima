@@ -1,13 +1,10 @@
-from typing import List
-
-
 class Solution:
-    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+    def permuteUnique(self, nums: list[int]) -> list[list[int]]:
         ans = []
         visited = [False] * len(nums)
         nums.sort()
 
-        def backtrack(wip: List[int]):
+        def backtrack(wip: list[int]):
             if len(wip) == len(nums):
                 ans.append(list(wip))
                 return
@@ -30,7 +27,10 @@ class Solution:
 for nums, expected in [
     ([3, 3], [[3, 3]]),
     ([1, 2, 1], [[1, 1, 2], [1, 2, 1], [2, 1, 1]]),
-    ([1, 2, 3], [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]),
+    (
+        [1, 2, 3],
+        [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]],
+    ),
 ]:
     sol = Solution()
     actual = sol.permuteUnique(nums)

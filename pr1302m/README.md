@@ -1,6 +1,6 @@
 # 1302. Deepest Leaves Sum (Medium)
 
-Given the root of a binary tree, return the sum of values of its deepest leaves.
+Given the `root` of a binary tree, return **the sum of values** of its deepest leaves.
 
 ### Example 1:
 
@@ -26,7 +26,7 @@ Output: 19
 
 ### Constraints:
 
-- The number of nodes in the tree is in the range [1, 10^4].
-- 1 <= Node.val <= 100
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `1 <= Node.val <= 100`
 
 #Tree #Depth-first Search #Breadth-first Search

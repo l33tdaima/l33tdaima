@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def coinChangeTD(self, coins: List[int], amount: int) -> int:
+    def coinChangeTD(self, coins: list[int], amount: int) -> int:
         dp = dict()
 
         def helper(amt: int) -> int:
@@ -19,7 +16,7 @@ class Solution:
 
         return helper(amount)
 
-    def coinChangeBU(self, coins: List[int], amount: int) -> int:
+    def coinChangeBU(self, coins: list[int], amount: int) -> int:
         dp = [0] + [-1] * amount
         for amt in range(1, amount + 1):
             sub = [dp[amt - c] for c in coins if amt - c >= 0]
@@ -39,6 +36,13 @@ for coins, amount, expected in [
 ]:
     sol = Solution()
     actual = sol.coinChangeTD(coins, amount)
-    print("The fewest number of coins in", coins, "to make up", amount, "->", actual)
+    print(
+        "The fewest number of coins in",
+        coins,
+        "to make up",
+        amount,
+        "->",
+        actual,
+    )
     assert actual == expected
     assert expected == sol.coinChangeBU(coins, amount)

@@ -1,21 +1,31 @@
-from typing import List
 from bisect import bisect_left
 
 
 class Solution:
-    def maxEnvelopesN2(self, envelopes: List[List[int]]) -> int:
-        heights = [e[1] for e in sorted(envelopes, key=lambda e: (e[0], -e[1]))]
+    def maxEnvelopesN2(self, envelopes: list[list[int]]) -> int:
+        heights = [
+            e[1] for e in sorted(envelopes, key=lambda e: (e[0], -e[1]))
+        ]
         dp, ans = [1] * len(heights), 1
         for i in range(1, len(heights)):
             dp[i] = (
-                max([d for j, d in enumerate(dp[:i]) if heights[j] < heights[i]] or [0])
+                max(
+                    [
+                        d
+                        for j, d in enumerate(dp[:i])
+                        if heights[j] < heights[i]
+                    ]
+                    or [0]
+                )
                 + 1
             )
             ans = max(ans, dp[i])
         return ans
 
-    def maxEnvelopesNLogN(self, envelopes: List[List[int]]) -> int:
-        heights = [e[1] for e in sorted(envelopes, key=lambda e: (e[0], -e[1]))]
+    def maxEnvelopesNLogN(self, envelopes: list[list[int]]) -> int:
+        heights = [
+            e[1] for e in sorted(envelopes, key=lambda e: (e[0], -e[1]))
+        ]
         tails = []
         for h in heights:
             i = bisect_left(tails, h)
@@ -33,4 +43,3 @@ for envelopes, expected in [
     print("The maximum # of envelopes from", envelopes, "->", actual)
     assert actual == expected
     assert expected == sol.maxEnvelopesNLogN(envelopes)
-

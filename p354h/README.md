@@ -1,6 +1,6 @@
 # 354. Russian Doll Envelopes (Hard)
 
-You are given a 2D array of integers envelopes where envelopes[i] = [wi, hi] represents the width and the height of an envelope.
+You are given a 2D array of integers `envelopes` where `envelopes[i] = [wi, hi]` represents the width and the height of an envelope.
 
 One envelope can fit into another if and only if both the width and height of one envelope are greater than the other envelope's width and height.
 
@@ -25,9 +25,9 @@ Output: 1
 
 ### Constraints:
 
-- 1 <= envelopes.length <= 5000
-- envelopes[i].length == 2
-- 1 <= wi, hi <= 10^4
+- `1 <= envelopes.length <= 5000`
+- `envelopes[i].length == 2`
+- `1 <= wi, hi <= 10^4`
 
 ## Solution
 

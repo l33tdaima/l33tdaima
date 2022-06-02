@@ -1,23 +1,30 @@
 # 867. Transpose Matrix (Easy)
 
-Given a matrix A, return the transpose of A.
+Given a 2D integer array `matrix`, return the transpose of `matrix`.
 
-The transpose of a matrix is the matrix flipped over it's main diagonal, switching the row and column indices of the matrix.
+The transpose of a matrix is the matrix flipped over its main diagonal, switching the matrix's row and column indices.
 
 ### Example 1:
+
 ```
 Input: [[1,2,3],[4,5,6],[7,8,9]]
 Output: [[1,4,7],[2,5,8],[3,6,9]]
 ```
+
 ### Example 2:
+
 ```
 Input: [[1,2,3],[4,5,6]]
 Output: [[1,4],[2,5],[3,6]]
 ```
 
-### Note:
-1. 1 <= A.length <= 1000
-2. 1 <= A[0].length <= 1000
+### Constraints:
+
+- `m == matrix.length`
+- `n == matrix[i].length`
+- `1 <= m, n <= 1000`
+- `1 <= m \* n <= 10^5`
+- `-10^9 <= matrix[i][j] <= 10^9`
 
 #INTC
 

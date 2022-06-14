@@ -21,8 +21,8 @@ Output: 4
 
 ### Constraints:
 
-- 1 <= word1.length, word2.length <= 500
-- word1 and word2 consist of only lowercase English letters.
+- `1 <= word1.length, word2.length <= 500`
+- `word1` and `word2` consist of only lowercase English letters.
 
 ## Solution
 

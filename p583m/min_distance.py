@@ -4,8 +4,12 @@ class Solution:
         dp = [[0] * (L2 + 1) for _ in range(L1 + 1)]
         for i in range(L1):
             for j in range(L2):
-                dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j], dp[i][j] + (word1[i] == word2[j]))
-        return L1 + L2 - 2* dp[L1][L2]
+                dp[i + 1][j + 1] = max(
+                    dp[i][j + 1],
+                    dp[i + 1][j],
+                    dp[i][j] + (word1[i] == word2[j]),
+                )
+        return L1 + L2 - 2 * dp[L1][L2]
 
 
 # TESTS

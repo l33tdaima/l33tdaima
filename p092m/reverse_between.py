@@ -7,19 +7,20 @@ from local_packages.list import ListNode
 
 
 class Solution:
-    def reverseBetween(self, head: ListNode, left: int, right: int) -> ListNode:
+    def reverseBetween(
+        self, head: ListNode, left: int, right: int
+    ) -> ListNode:
         if not head:
             return head
         dummy = ListNode(0, head)
-
-        pre, i = dummy, 0
-        while i < left - 1:
+        pre, i = dummy, 1
+        while i < left:
             i, pre = i + 1, pre.next
 
         start = pre.next
         then = start.next
 
-        while i < right - 1:
+        while i < right:
             start.next = then.next
             then.next = pre.next
             pre.next = then

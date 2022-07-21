@@ -17,12 +17,12 @@ class Solution:
         return ret
 
     def reverseListIter(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev = None
+        rhead = None
         while head:
             nxt = head.next
-            head.next = prev
-            prev, head = head, nxt
-        return prev
+            head.next = rhead
+            rhead, head = head, nxt
+        return rhead
 
 
 # TESTS
@@ -32,7 +32,9 @@ for array, expected in [
     ([], []),
 ]:
     sol = Solution()
-    actual1 = ListNode.to_array(sol.reverseListIter(ListNode.from_array(array)))
+    actual1 = ListNode.to_array(
+        sol.reverseListIter(ListNode.from_array(array))
+    )
     actual2 = ListNode.to_array(sol.reverseList(ListNode.from_array(array)))
     print("Reverse linked list", array, "->", actual1)
     assert actual1 == expected == actual2

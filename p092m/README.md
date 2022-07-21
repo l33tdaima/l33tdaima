@@ -18,7 +18,12 @@ Output: [5]
 
 ### Constraints:
 
-- The number of nodes in the list is n.
-- 1 <= n <= 500
-- -500 <= Node.val <= 500
-- 1 <= left <= right <= n
+- The number of nodes in the list is `n`.
+- `1 <= n <= 500`
+- `-500 <= Node.val <= 500`
+- `1 <= left <= right <= n`
+
+#Linked List
+
+#Similar Questions
+[#92](../p092m/README.md) [#206](../p206e/README.md)

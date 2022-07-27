@@ -28,10 +28,10 @@ class Solution:
     def flattenV2(self, root: TreeNode) -> None:
         pre = None
 
-        def helper(p: TreeNode):
+        def helper(p: TreeNode) -> None:
             nonlocal pre
             if not p:
-                return p
+                return
             helper(p.right)
             helper(p.left)
             p.left, p.right = None, pre

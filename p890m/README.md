@@ -28,3 +28,5 @@ Output: ["a","b","c"]
 - 1 <= words.length <= 50
 - words[i].length == pattern.length
 - pattern and words[i] are lowercase English letters.
+
+#Array #Hash Table #String

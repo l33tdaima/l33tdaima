@@ -1,12 +1,14 @@
 # 916. Word Subsets (Medium)
 
-We are given two arrays A and B of words. Each word is a string of lowercase letters.
+You are given two string arrays `words1` and `words2`.
 
-Now, say that word b is a subset of word a if every letter in b occurs in a, including multiplicity. For example, "wrr" is a subset of "warrior", but is not a subset of "world".
+A string `b` is a subset of string `a` if every letter in `b` occurs in `a` including multiplicity.
 
-Now say a word a from A is universal if for every b in B, b is a subset of a.
+- For example, `"wrr"` is a subset of `"warrior"` but is not a subset of `"world"`.
 
-Return a list of all universal words in A. You can return the words in any order.
+A string `a` from `words1` is **universal** if for every string `b` in words2, `b` is a subset of `a`.
+
+Return an array of all the universal strings in words1. You may return the answer in any order.
 
 ### Example 1:
 
@@ -45,14 +47,14 @@ Output: ["facebook","leetcode"]
 
 ### Note:
 
-- 1 <= A.length, B.length <= 10000
-- 1 <= A[i].length, B[i].length <= 10
-- A[i] and B[i] consist only of lowercase letters.
-- All words in A[i] are unique: there isn't i != j with A[i] == A[j].
+- `1 <= words1.length, words2.length <= 10^4`
+- `1 <= words1[i].length, words2[i].length <= 10`
+- `words1[i]` and `words2[i]` consist only of lowercase English letters.
+- All the strings of `words1` are unique.
 
 ## Solution
 
-- For each word b in B, we use function counter to count occurrence of each letter.
+- For each word in `words2`, we use function counter to count occurrence of each letter.
 - We take the maximum occurrences of counts, and use it as a filter of A.
 
 #String

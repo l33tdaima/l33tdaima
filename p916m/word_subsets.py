@@ -1,18 +1,17 @@
-from typing import List
 from collections import Counter
 
 
 class Solution:
-    def wordSubsets(self, A: List[str], B: List[str]) -> List[str]:
+    def wordSubsets(self, words1: list[str], words2: list[str]) -> list[str]:
         counter = Counter()
-        for b in B:
+        for b in words2:
             # union of counter will take the maximum count of recurring letter
             counter |= Counter(b)
-        return [a for a in A if not (counter - Counter(a))]
+        return [a for a in words1 if not (counter - Counter(a))]
 
 
 # TESTS
-for A, B, expected in [
+for words1, words2, expected in [
     (
         ["amazon", "apple", "facebook", "google", "leetcode"],
         ["e", "o"],
@@ -40,6 +39,6 @@ for A, B, expected in [
     ),
 ]:
     sol = Solution()
-    actual = sol.wordSubsets(A, B)
+    actual = sol.wordSubsets(words1, words2)
     print("All universal words ->", actual)
     assert actual == expected

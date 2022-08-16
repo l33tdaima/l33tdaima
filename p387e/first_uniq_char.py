@@ -1,4 +1,6 @@
+from cmath import exp
 from collections import Counter
+from unittest import expectedFailure
 
 
 class Solution:
@@ -11,14 +13,14 @@ class Solution:
 
 
 # TESTS
-tests = [
+for s, expected in [
     ["leetcode", 0],
+    ["loveleetcode", 2],
+    ["aabb", -1],
     ["teetcooce", -1],
     ["dddccdbba", 8],
-    ["loveleetcode", 2],
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.firstUniqChar(t[0])
-    print("First unique char of", t[0], "->", actual)
-    assert actual == t[1]
+    actual = sol.firstUniqChar(s)
+    print("First unique char of", s, "->", actual)
+    assert actual == expected

@@ -12,11 +12,12 @@ var firstUniqChar = function (s) {
 // TEST
 [
   ['leetcode', 0],
+  ['loveleetcode', 2],
+  ['aabb', -1],
   ['teetcooce', -1],
   ['dddccdbba', 8],
-  ['loveleetcode', 2],
-].forEach((t) => {
-  const actual = firstUniqChar(t[0]);
-  console.log('First unique char of', t[0], '->', actual);
-  console.assert(actual === t[1]);
+].forEach(([s, expected]) => {
+  const actual = firstUniqChar(s);
+  console.log('First unique char of', s, '->', actual);
+  console.assert(actual === expected);
 });

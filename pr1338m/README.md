@@ -2,7 +2,7 @@
 
 Given an array `arr`. You can choose a set of integers and remove all the occurrences of these integers in the array.
 
-Return the minimum size of the set so that at least half of the integers of the array are removed.
+Return _the minimum size of the set so that **at least** half of the integers of the array are removed_.
 
 ### Example 1:
 
@@ -45,6 +45,8 @@ Output: 5
 
 ### Constraints:
 
-- 1 <= arr.length <= 10^5
-- arr.length is even.
-- 1 <= arr[i] <= 10^5
+- `1 <= arr.length <= 10^5`
+- `arr.length` is even.
+- `1 <= arr[i] <= 10^5`
+
+#Array #Hash Table #Greedy #Sorting #Heap

@@ -1,10 +1,9 @@
-from typing import List
 from collections import Counter
 from heapq import heapify, heappop
 
 
 class Solution:
-    def minSetSize(self, arr: List[int]) -> int:
+    def minSetSize(self, arr: list[int]) -> int:
         counter = Counter(arr)
         maxheap = [-c for _, c in counter.items()]
         heapify(maxheap)

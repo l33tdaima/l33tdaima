@@ -10,9 +10,8 @@ const Tree = require('binary_tree');
  * @param {TreeNode} root
  * @return {number[]}
  */
-var inorderTraversal = function(root) {
-  let ans = [];
-  let stack = [];
+var inorderTraversal = function (root) {
+  let [ans, stack] = [[], []];
   let node = root;
   while (node != null || stack.length > 0) {
     while (node) {
@@ -33,11 +32,9 @@ var inorderTraversal = function(root) {
   ['1,2,3,4,#,#,#,#,#', [4, 3, 2, 1]],
   ['1,#,2,#,3,#,4,#,#', [1, 2, 3, 4]],
   ['1,#,2,3,4,#,#,#,#', [1, 4, 3, 2]],
-  ['1,2,4,#,#,5,#,7,#,#,3,6,#,8,#,#,#', [4, 2, 5, 7, 1, 6, 8, 3]]
-].forEach(t => {
-  let tree = Tree.deserialize(t[0]);
-  const actual = inorderTraversal(tree);
-  console.log('Inorder traversal of', t[0], '->', actual);
-  console.assert(actual.length === t[1].length);
-  for (let i = 0; i < actual.length; ++i) console.assert(actual[i] === t[1][i]);
+  ['1,2,4,#,#,5,#,7,#,#,3,6,#,8,#,#,#', [4, 2, 5, 7, 1, 6, 8, 3]],
+].forEach(([t, expected]) => {
+  const actual = inorderTraversal(Tree.deserialize(t));
+  console.log('Inorder traversal of', t, '->', actual);
+  console.assert(actual.toString() === expected.toString());
 });

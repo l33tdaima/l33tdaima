@@ -19,7 +19,11 @@ Output: 5
 
 ### Constraints:
 
-- 1 <= nums1.length, nums2.length <= 1000
-- 0 <= nums1[i], nums2[i] <= 100
+- `1 <= nums1.length, nums2.length <= 1000`
+- `0 <= nums1[i], nums2[i] <= 100`
+
+## Solution
+
+Since a common subarray of A and B must start at some `A[i]` and `B[j]`, let `dp[i][j]` be the longest common prefix of `A[i:]` and `B[j:]`. Whenever `A[i] == B[j]`, we know `dp[i][j] = dp[i+1][j+1] + 1`. Also, the answer is `max(dp[i][j]) over all i, j`.
 
 #Array #Binary Search #Dynamic Programming #Sliding Windows #Rolling Hash #Hash Function

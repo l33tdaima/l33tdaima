@@ -1,15 +1,12 @@
-from typing import List
-
-
 class Solution:
-    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+    def findLength(self, nums1: list[int], nums2: list[int]) -> int:
         M, N, ans = len(nums1), len(nums2), 0
-        # dp[i][j] is that LCW for nums1[:i], nums2[:j]
+        # dp[i][j] is that longest common prefix length for nums1[:i], nums2[:j]
         dp = [[0] * (N + 1) for _ in range(M + 1)]
-        for i in range(1, M + 1):
-            for j in range(1, N + 1):
-                if nums1[i - 1] == nums2[j - 1]:
-                    dp[i][j] = 1 + dp[i - 1][j - 1]
+        for i in range(M - 1, -1, -1):
+            for j in range(N - 1, -1, -1):
+                if nums1[i] == nums2[j]:
+                    dp[i][j] = dp[i + 1][j + 1] + 1
                     ans = max(dp[i][j], ans)
         return ans
 

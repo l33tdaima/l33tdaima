@@ -4,18 +4,23 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from typing import Optional
 from local_packages.binary_tree import TreeNode
 
 
 class Solution:
-    def addOneRow(self, root: TreeNode, v: int, d: int, left: bool = True) -> TreeNode:
-        if d == 1:
-            nroot = TreeNode(v, root if left else None, None if left else root)
+    def addOneRow(
+        self, root: Optional[TreeNode], val: int, depth: int, left: bool = True
+    ) -> Optional[TreeNode]:
+        if depth == 1:
+            nroot = TreeNode(
+                val, root if left else None, None if left else root
+            )
             return nroot
         if not root:
             return root
-        root.left = self.addOneRow(root.left, v, d - 1, True)
-        root.right = self.addOneRow(root.right, v, d - 1, False)
+        root.left = self.addOneRow(root.left, val, depth - 1, True)
+        root.right = self.addOneRow(root.right, val, depth - 1, False)
         return root
 
 
@@ -27,7 +32,8 @@ for tree, v, d, expected in [
     ("1,2,4,#,#,#,3,#,#", 5, 4, "1,2,4,5,#,#,5,#,#,#,3,#,#"),
 ]:
     sol = Solution()
-    actual = TreeNode.serialize(sol.addOneRow(TreeNode.deserialize(tree), v, d))
+    actual = TreeNode.serialize(
+        sol.addOneRow(TreeNode.deserialize(tree), v, d)
+    )
     print("Add a row", v, "to depth", d, "to tree", tree, "->", actual)
     assert actual == expected
-

@@ -15,14 +15,10 @@ class Solution:
         def helper(node: Optional[TreeNode]) -> bool:
             if not node:
                 return False
-            if helper(node.left):
-                return True
             if k - node.val in seen:
                 return True
             seen.add(node.val)
-            if helper(node.right):
-                return True
-            return False
+            return helper(node.left) or helper(node.right)
 
         return helper(root)
 

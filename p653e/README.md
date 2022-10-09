@@ -54,10 +54,10 @@ Output: true
 
 ### Constraints:
 
-- The number of nodes in the tree is in the range [1, 10^4].
-- -10^4 <= Node.val <= 10^4
-- root is guaranteed to be a valid binary search tree.
-- -10^5 <= k <= 10^5
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `-10^4 <= Node.val <= 10^4`
+- `root` is guaranteed to be a valid binary search tree.
+- `-10^5 <= k <= 10^5`
 
 ## Solution
 

@@ -4,9 +4,9 @@
  */
 var increasingTriplet = function (nums) {
   let [t1, t2] = [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
-  for (let num of nums) {
-    if (num <= t1) t1 = num;
-    else if (num <= t2) t2 = num;
+  for (let n of nums) {
+    if (n <= t1) t1 = n;
+    else if (n <= t2) t2 = n;
     else return true;
   }
   return false;

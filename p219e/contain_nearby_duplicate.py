@@ -1,22 +1,27 @@
-from typing import List
-
 class Solution:
-    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        num_idx_dict = {}
-        for i in range(len(nums)):
-            if nums[i] in num_idx_dict and i - num_idx_dict[nums[i]] <= k:
+    def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
+        seen_at = {}
+        for i, n in enumerate(nums):
+            if n in seen_at and i - seen_at[n] <= k:
                 return True
             else:
-                num_idx_dict[nums[i]] = i
+                seen_at[n] = i
         return False
+
+
 # TESTS
-tests = [
-    ([1,2,3,1], 3, True),
-    ([1,0,1,1], 1, True),
-    ([1,2,3,1,2,3], 2, False)
-]
-for t in tests:
+for nums, k, expected in [
+    ([1, 2, 3, 1], 3, True),
+    ([1, 0, 1, 1], 1, True),
+    ([1, 2, 3, 1, 2, 3], 2, False),
+]:
     sol = Solution()
-    actual = sol.containsNearbyDuplicate(t[0], t[1])
-    print(t[0], "contains duplicates away from each other at most", t[1], "->", actual)
-    assert(actual == t[2])
+    actual = sol.containsNearbyDuplicate(nums, k)
+    print(
+        nums,
+        "contains duplicates away from each other at most",
+        k,
+        "->",
+        actual,
+    )
+    assert actual == expected

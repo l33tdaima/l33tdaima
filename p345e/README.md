@@ -1,15 +1,28 @@
 # 345. Reverse Vowels of a String (Easy)
 
-Write a function that takes a string as input and reverse only the vowels of a string.
+Given a string `s`, reverse only all the vowels in the string and return it.
 
-Example 1:
-Given s = "hello", return "holle".
+The vowels are `'a', 'e', 'i', 'o',` and `'u'`, and they can appear in both lower and upper cases, more than once.
 
-Example 2:
-Given s = "leetcode", return "leotcede".
+### Example 1:
 
-Note:
-The vowels does not include the letter "y".
+```
+Input: s = "hello"
+Output: "holle"
+```
+
+### Example 2:
+
+```
+Input: s = "leetcode"
+Output: "leotcede"
+```
+
+### Constraints:
+
+- `1 <= s.length <= 3 \* 10^5`
+- `s` consist of printable ASCII characters.
 
 #GOOGL
+
 #String #Two Pointers

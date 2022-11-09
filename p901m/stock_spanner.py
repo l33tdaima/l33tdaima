@@ -11,9 +11,16 @@ class StockSpanner:
 
 
 # Your StockSpanner object will be instantiated and called as such:
-obj = StockSpanner()
-tests = [(100, 1), (80, 1), (60, 1), (70, 2), (60, 1), (75, 4), (85, 6)]
-for t in tests:
-    actual = obj.next(t[0])
-    print("Span of price", t[0], "->", actual)
-    assert actual == t[1]
+ss = StockSpanner()
+for price, expected in [
+    (100, 1),
+    (80, 1),
+    (60, 1),
+    (70, 2),
+    (60, 1),
+    (75, 4),
+    (85, 6),
+]:
+    actual = ss.next(price)
+    print("Span of price", price, "->", actual)
+    assert actual == expected

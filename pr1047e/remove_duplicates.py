@@ -1,7 +1,7 @@
 class Solution:
-    def removeDuplicates(self, S: str) -> str:
+    def removeDuplicates(self, s: str) -> str:
         ans = []
-        for c in S:
+        for c in s:
             if ans and ans[-1] == c:
                 ans.pop()
             else:

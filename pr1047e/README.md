@@ -1,10 +1,10 @@
 # 1047. Remove All Adjacent Duplicates In String (Easy)
 
-Given a string `s` of lowercase letters, a duplicate removal consists of choosing two adjacent and equal letters, and removing them.
+You are given a string `s` consisting of lowercase English letters. A duplicate removal consists of choosing two **adjacent** and **equal** letters and removing them.
 
-We repeatedly make duplicate removals on S until we no longer can.
+We repeatedly make duplicate removals on `s` until we no longer can.
 
-Return the final string after all such duplicate removals have been made. It is guaranteed the answer is unique.
+Return the final string after all such duplicate removals have been made. It can be proven that the answer is unique.
 
 ### Example 1:
 
@@ -22,14 +22,10 @@ Input: s = "azxxzy"
 Output: "ay"
 ```
 
-### Note:
+### Constraints:
 
-1. 1 <= S.length <= 20000
-2. S consists only of English lowercase letters.
-
-## Solution
-
-In C++, OJ runtime of using std stack or using string to simulate stack seems the same, 20ms.
+- `1 <= s.length <= 105`
+- `s` consists of lowercase English letters.
 
 #GOOGL
 

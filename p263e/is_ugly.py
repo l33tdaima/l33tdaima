@@ -17,7 +17,7 @@ class Solution:
 
 
 # TESTS
-tests = [
+for num, expected in [
     (1, True),
     (6, True),
     (8, True),
@@ -25,9 +25,8 @@ tests = [
     (11, False),
     (14, False),
     (70, False),
-]
-for t in tests:
+]:
     sol = Solution()
-    actual = sol.isUgly(t[0])
-    print("Is", t[0], "ugly ->", actual)
-    assert actual == t[1] == sol.isUglyV2(t[0])
+    actual = sol.isUgly(num)
+    print("Is", num, "ugly ->", actual)
+    assert actual == actual == sol.isUglyV2(num)

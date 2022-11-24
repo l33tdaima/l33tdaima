@@ -1,25 +1,21 @@
-from typing import List
-from collections import defaultdict
-
-
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
+    def exist(self, board: list[list[str]], word: str) -> bool:
         rows, cols = len(board), len(board[0])
         dirs = [(-1, 0), (0, 1), (1, 0), (0, -1)]
-        visited = defaultdict(bool)
 
         def helper(i: int, j: int, c: int) -> bool:
             if c == len(word):
                 return True
             if i < 0 or i >= rows or j < 0 or j >= cols:
                 return False
-            if visited[(i, j)] or board[i][j] != word[c]:
+            if board[i][j] != word[c]:
                 return False
-            visited[(i, j)] = True
+            mem = board[i][j]
+            board[i][j] = "#"
             for di, dj in dirs:
                 if helper(i + di, j + dj, c + 1):
                     return True
-            visited[(i, j)] = False
+            board[i][j] = mem
             return False
 
         for i in range(rows):
@@ -44,6 +40,18 @@ for board, word, expected in [
     (
         [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
         "ABCB",
+        False,
+    ),
+    (
+        [
+            ["A", "A", "A", "A", "A", "A"],
+            ["A", "A", "A", "A", "A", "A"],
+            ["A", "A", "A", "A", "A", "A"],
+            ["A", "A", "A", "A", "A", "A"],
+            ["A", "A", "A", "A", "A", "A"],
+            ["A", "A", "A", "A", "A", "A"],
+        ],
+        "AAAAAAAAAAAABAA",
         False,
     ),
 ]:

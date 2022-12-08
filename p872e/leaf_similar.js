@@ -11,27 +11,8 @@ const Tree = require('binary_tree');
  * @param {TreeNode} root2
  * @return {boolean}
  */
-var leafSimilarV1 = function(root1, root2) {
-  const leafSequence = (root, seq) => {
-    if (root == null) return;
-    if (root.left == null && root.right == null) {
-      seq.push(root.val);
-      return;
-    }
-    leafSequence(root.left, seq);
-    leafSequence(root.right, seq);
-  };
-  let [seq1, seq2] = [[], []];
-  leafSequence(root1, seq1);
-  leafSequence(root2, seq2);
-  if (seq1.length !== seq2.length) return false;
-  for (let i = 0; i < seq1.length; ++i) {
-    if (seq1[i] !== seq2[i]) return false;
-  }
-  return true;
-};
 // Generator version is much slower
-var leafSimilarV2 = function(root1, root2) {
+var leafSimilar = function (root1, root2) {
   function* seqGenerator(root) {
     if (root == null) return;
     if (root.left == null && root.right == null) yield root.val;
@@ -52,18 +33,17 @@ var leafSimilarV2 = function(root1, root2) {
   {
     tree1: '3,#,#',
     tree2: '1,#,#',
-    expected: false
+    expected: false,
   },
   {
     tree1: '3,5,6,#,#,2,7,#,#,4,#,#,1,9,#,#,8,#,#',
     tree2: '3,5,6,#,#,7,#,#,1,4,#,#,2,9,#,#,8,#,#',
-    expected: true
-  }
-].forEach(t => {
-  const root1 = Tree.deserialize(t.tree1);
-  const root2 = Tree.deserialize(t.tree2);
-  const actual = leafSimilarV1(root1, root2);
-  console.log('Two tree', t.tree1, t.tree2, 'are leaf similar ->', actual);
-  console.assert(actual === t.expected);
-  console.assert(leafSimilarV2(root1, root2) === t.expected);
+    expected: true,
+  },
+].forEach(({ tree1, tree2, expected }) => {
+  const root1 = Tree.deserialize(tree1);
+  const root2 = Tree.deserialize(tree2);
+  const actual = leafSimilar(root1, root2);
+  console.log('Two trees', tree1, tree2, 'are leaf similar ->', actual);
+  console.assert(actual === expected);
 });

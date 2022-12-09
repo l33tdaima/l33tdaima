@@ -29,11 +29,10 @@ class Solution:
     def accountsMerge(self, accounts: list[list[str]]) -> list[list[str]]:
         union_find = UnionFind()
         email_to_name = dict()
-        for account in accounts:
-            name = account[0]
-            for email in account[1:]:
+        for name, *emails in accounts:
+            for email in emails:
                 email_to_name[email] = name
-                union_find.union(email, account[1])
+                union_find.union(email, emails[0])
 
         return [
             [email_to_name[root]] + sorted(emails)

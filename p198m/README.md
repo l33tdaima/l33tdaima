@@ -24,8 +24,8 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 
 ### Constraints:
 
-- 0 <= nums.length <= 100
-- 0 <= nums[i] <= 400
+- `0 <= nums.length <= 100`
+- `0 <= nums[i] <= 400`
 
 ## Solution
 

@@ -1,15 +1,14 @@
-from typing import List
 from collections import defaultdict
 
 
 class Solution:
-    def possibleBipartition(self, N: int, dislikes: List[List[int]]) -> bool:
+    def possibleBipartition(self, n: int, dislikes: list[list[int]]) -> bool:
         graph = defaultdict(list)
         for a, b in dislikes:
             graph[a].append(b)
             graph[b].append(a)
 
-        RED, BLUE = 0, 1
+        RED, _ = 0, 1
         color = dict()
 
         def dfs(person: int, c: int) -> bool:
@@ -18,21 +17,16 @@ class Solution:
             color[person] = c
             return all(dfs(nb, c ^ 1) for nb in graph[person])
 
-        return all(dfs(n, RED) for n in range(1, N + 1) if n not in color)
+        return all(dfs(p, RED) for p in range(1, n + 1) if p not in color)
 
 
 # TESTS
-tests = [
-    {"N": 4, "dislikes": [[1, 2], [1, 3], [2, 4]], "expected": True},
-    {"N": 3, "dislikes": [[1, 2], [1, 3], [2, 3]], "expected": False},
-    {
-        "N": 5,
-        "dislikes": [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]],
-        "expected": False,
-    },
-]
-for t in tests:
+for n, dislikes, expected in [
+    (4, [[1, 2], [1, 3], [2, 4]], True),
+    (3, [[1, 2], [1, 3], [2, 3]], False),
+    (5, [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]], False),
+]:
     sol = Solution()
-    actual = sol.possibleBipartition(t["N"], t["dislikes"])
-    print("Possible bipartition in", t["dislikes"], "->", actual)
-    assert actual == t["expected"]
+    actual = sol.possibleBipartition(n, dislikes)
+    print("Possible bipartition in", dislikes, "->", actual)
+    assert actual == expected

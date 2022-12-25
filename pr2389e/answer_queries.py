@@ -5,7 +5,7 @@ from bisect import bisect_right
 class Solution:
     def answerQueries(self, nums: list[int], queries: list[int]) -> list[int]:
         psum = list(accumulate(sorted(nums)))
-        return list(map(lambda q: bisect_right(psum, q), queries))
+        return [bisect_right(psum, q) for q in queries]
 
 
 # TESTS

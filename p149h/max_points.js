@@ -1,67 +1,62 @@
 /**
- * Definition for a point.
- */
-function Point(x, y) {
-    this.x = x;
-    this.y = y;
-}
-function gcd(a, b) {
-    if (b === 0) { return a; }
-    return gcd(b, a % b);
-}
-/**
- * @param {Point[]} points
+ * @param {number[][]} points
  * @return {number}
  */
-var maxPoints = function(points) {
-    let len = points.length;
-    if (len === 0) { return 0; }
-    if (len === 1) { return 1; }
-    let maxPt = 0;
-    for (let i = 0; i < len - 1; ++i) {
-        let maxLines = 0;
-        let dup = 0;
-        let map = new Map();
-        for (let j = i + 1; j < len; ++j) {
-            // distances of each coordinate
-            let dx = points[j].x - points[i].x;
-            let dy = points[j].y - points[i].y;
-            // count the duplicates
-            if (dx === 0 && dy === 0) {
-                dup ++;
-                continue;
-            }
-            let d = gcd(dx, dy);
-            dx /= d; dy /= d;
-            let key = dx.toString() + dy.toString();
-            let count = 0;
-            if (map.has(key)) {
-                count = map.get(key);
-            }
-            count ++;
-            map.set(key, count);
-            maxLines = Math.max(maxLines, count);
-        }
-        maxPt = Math.max(maxPt, maxLines + dup + 1);
-        // console.log("DEBUG: map =", map);
+var maxPoints = function (points) {
+  const gcd = (a, b) => {
+    if (b === 0) return a;
+    else return gcd(b, a % b);
+  };
+  let maxPt = 0;
+  for (let i = 0; i < points.length; ++i) {
+    let maxLines = 0;
+    const map = new Map();
+    for (let j = i + 1; j < points.length; ++j) {
+      // distances of each coordinate
+      let [dx, dy] = [points[j][0] - points[i][0], points[j][1] - points[i][1]];
+      const d = gcd(dx, dy);
+      dx /= d;
+      dy /= d;
+      const key = `${dy}/${dx}`;
+      const count = (map.get(key) || 0) + 1;
+      map.set(key, count);
+      maxLines = Math.max(maxLines, count);
     }
-    return maxPt;
+    maxPt = Math.max(maxPt, maxLines + 1);
+  }
+  return maxPt;
 };
-// TEST
-[[
-],[
-    [0,0],
-],[
-    [0,0],[1,1]
-],[
-    [0,0],[1,1],[2,2]
-],[
-    [0,0],[1,1],[1,1],[2,3]
-]
-].forEach(function (test) {
-    let points = [];
-    for (let t of test) {
-        points.push(new Point(t[0],t[1]));
-    }
-    console.log("Max points in", points, "->", maxPoints(points));
+// TESTS
+[
+  [[[0, 0]], 1],
+  [
+    [
+      [0, 0],
+      [1, 1],
+    ],
+    2,
+  ],
+  [
+    [
+      [1, 1],
+      [2, 2],
+      [3, 3],
+    ],
+    3,
+  ],
+  [
+    [
+      [1, 1],
+      [3, 2],
+      [5, 3],
+      [4, 1],
+      [2, 3],
+      [1, 4],
+    ],
+    4,
+  ],
+].forEach(([points, expected]) => {
+  const actual = maxPoints(points);
+  console.log('Max points in', points, '->', actual);
+  console.assert(actual === expected);
 });

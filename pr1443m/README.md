@@ -40,4 +40,6 @@ Output: 0
 - `fromi < toi`
 - `hasApple.length == n`
 
-#Tree #Depth-First Search #Breadth-First Search
+#Hash Table #Tree #Depth-First Search #Breadth-First Search
+
+#Similar questions [#1443](../pr1443m/README.md) [#1519](../pr1519m/README.md)

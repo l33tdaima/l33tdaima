@@ -39,6 +39,7 @@ for n, edges, hasApple, expected in [
         [False, False, False, False, False, False, False],
         0,
     ),
+    (4, [[0, 2], [0, 3], [1, 2]], [False, True, False, False], 4),
 ]:
     sol = Solution()
     actual = sol.minTime(n, edges, hasApple)

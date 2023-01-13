@@ -53,4 +53,4 @@ Output: [3,2,1,1,1]
 
 #Hash Table #Tree #Depth-First Search #Breadth-First Search #Counting
 
-#Similar questions [#1443](../pr1443m/README.md) [#1519](../pr1519m/README.md)
+#Similar questions [#1443](../pr1443m/README.md) [#1519](../pr1519m/README.md) [#2246](../pr2246h/README.md)

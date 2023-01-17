@@ -35,4 +35,13 @@ Explanation: We flip to get 00000000.
 - `1 <= s.length <= 10^5`
 - `s[i]` is either '0' or '1'.
 
+## Solution
+
+Denote the DP state to be the number of `flips` for `s` of length `n` which is also the answer we are looking for.
+
+There are two scenarios to update `flips` when introducing a new character `c`,
+
+- `c == '1'`: `flips` has no change
+- `c == '0'`: `flips + 1` by flipping it, or flipping all the previous `1`s to `0`, whichever is smaller.
+
 #String #Dynamic Programming

@@ -29,4 +29,4 @@ Output: [[2,2,2,2]]
 
 #Array #Hash Table #Two Pointers
 
-#Simlar questions [#18](../p018m/README.md) [#454](../p454m/README.md)
+#Similar questions [#18](../p018m/README.md) [#454](../p454m/README.md)

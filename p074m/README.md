@@ -35,4 +35,4 @@ Output: false
 
 #Array #Binary Search
 
-#Simlar questions [#74](../p074m/README.md) [#240](../p240m/README.md)
+#Similar questions [#74](../p074m/README.md) [#240](../p240m/README.md)

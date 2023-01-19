@@ -42,3 +42,5 @@ Since the modulo 60 results fall into a range of [0, 59], we can use an array in
 #Array
 
 #GS #AMZN
+
+#Similar questions [#974](../p974m/README.md) [#1010](../pr1010m/README.md)

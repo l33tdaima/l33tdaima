@@ -34,4 +34,4 @@ Output: 1
 
 #Hash Table #Binary Search
 
-#Simlar questions [#18](../p018m/README.md) [#454](../p454m/README.md)
+#Similar questions [#18](../p018m/README.md) [#454](../p454m/README.md)

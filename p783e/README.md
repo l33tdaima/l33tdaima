@@ -32,3 +32,7 @@ Output: 1
 
 - The number of nodes in the tree is in the range `[2, 100]`.
 - `0 <= Node.val <= 10^5`
+
+#Tree #Depth-First Search #Breadth-First Search #Binary Search Tree #Binary Tree
+
+#Similar questions [#530](../p530e/README.md)
